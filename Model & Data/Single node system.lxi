@@ -1,0 +1,42 @@
+B 3 C o m p i l a t i o n
+B 242 Include File Summary
+B 261 Equation Listing    SOLVE TEP_IEEE_24_to_single_node Using LP From line 202
+D 264 Total_costs
+D 1250 Balance
+D 1288 max_gen
+D 1300 max_cap
+D 1311 min_cap
+D 1322 startup_constr
+D 1333 Ramp_up_constr
+D 1344 Ramp_down_constr
+D 1355 P_on_start
+D 1366 EQ_wind_cap
+B 1378 Column Listing      SOLVE TEP_IEEE_24_to_single_node Using LP From line 202
+E 1381 Costs
+E 1388 Su
+E 1404 gen
+E 1426 gen_wind
+E 1445 P_on
+E 1473 LS
+B 1493 Model Statistics    SOLVE TEP_IEEE_24_to_single_node Using LP From line 202
+B 1510 Solution Report     SOLVE TEP_IEEE_24_to_single_node Using LP From line 202
+F 1544 Total_costs
+F 1546 Balance
+F 1623 max_gen
+F 2564 max_cap
+F 3505 min_cap
+F 4407 startup_constr
+F 5348 Ramp_up_constr
+F 6250 Ramp_down_constr
+F 7152 P_on_start
+F 7196 EQ_wind_cap
+G 7635 Costs
+G 7637 Su
+G 8578 gen
+G 9519 gen_wind
+G 9956 P_on
+G 10897 LS
+B 10982 E x e c u t i o n
+I 10982 price
+I 11014 LOLH
+I 11019 EENS

@@ -1,0 +1,14 @@
+[PROJECT]
+
+[RP:SINGLE NODE SYSTEM]
+1=
+
+[OPENWINDOW_1]
+FILE0=\\SERVER-LSEW\serverdaten\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Single node system.gms
+FILE1=\\SERVER-LSEW\serverdaten\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Single node system.lst
+FILE2=\\SERVER-LSEW\serverdaten\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Single node system.lst
+MAXIM=0
+TOP=50
+LEFT=50
+HEIGHT=400
+WIDTH=786

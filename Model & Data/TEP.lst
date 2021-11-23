@@ -1,0 +1,634 @@
+GAMS 35.1.0  r82a9585 Released Apr 29, 2021 WEX-WEI x86 64bit/MS Windows - 11/23/21 17:46:06 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  option profile = 1;
+   2  option profiletol = 0.01;
+   3   
+   4   
+  10  ;
+  11   
+  12  Sets
+  13   
+  14  n /n1*n509/
+  15  *d /d1*d511/
+  16  l /l1*l1680/
+  17  g /g1*g559/
+  18  s /s1*s175/
+  19  Res/res1*res1018/
+  20  t/t1*t23/
+  21  sr/sr1*sr59/
+  22  wr/wr1*wr60/
+  23   
+  24  *H(t,it)
+  25   
+  26  ****************************thermal***************************************
+      *********
+  27  gas(g)
+  28  lig(g)
+  29  coal(g)
+  30  nuc(g)
+  31  oil(g)
+  32  waste(g)
+  33   
+  34  ****************************renewable*************************************
+      **********
+  35  wind(res)
+  36  sun(res)
+  37  biomass(res)
+  38   
+  39  ****************************hydro*****************************************
+      **********
+  40  ror(s)
+  41  reservoir(s)
+  42  psp(s)
+  43  psp_DE(s)
+  44   
+  45  ****************************lines*****************************************
+      **********
+  46  exist(l)/l1*l840/
+  47  prosp(l)/l841*l1680/
+  48   
+  49  Border_exist_DE(l)
+  50  Border_exist_total(l)
+  51   
+  52  Border_prosp_DE(l)
+  53  Border_prosp_total(l)
+  54   
+  55   
+  56  ****************************nodes*****************************************
+      **********
+  57  ref(n)   /n1/
+  58  DE(n)    /n1*n495/
+  59  NoDeSciGrid(n) /n65,n97,n182,n203,n222,n237,n263,n273,n274,n317,n321,n325,
+      n328,n355,n357,n358
+  60  n359,n361,n362,n404,n405,n416,n417,n430,n432/
+  61  border_states(n) /n500*n509/
+  62  connected_states(n) /n500*n508/
+  63   
+  64  DK(n) /n500/
+  65  SW(n) /n501/
+  66  PL(n) /n502/
+  67  CZ(n) /n503/
+  68  AT(n) /n504/
+  69  CH(n) /n505/
+  70  FR(n) /n506/
+  71  LU(n) /n507/
+  72  NL(n) /n508/
+  73  BE(n) /n509/
+  74   
+  75   
+  76  Relevant_Nodes(n)/n1*n495,n500*n509/
+  77   
+  78  *****************************mapping**************************************
+      **********
+  79  Map_grid(l,n)
+  80  Map_send_L(l,n)
+  81  Map_res_L(l,n)
+  82  MapG(g,n)
+  83  MapS(s,n)
+  84  *MapD(d,n)
+  85   
+  86  MapRes(res,n)
+  87   
+  88  MapSr(n,sr)
+  89  MapWr(n,wr)
+  90   
+  91   
+  92  ;
+  93  alias (n,nn),(t,tt),(l,ll)
+  94   
+  95  ;
+  96  ****************************************scalars***************************
+      ***********
+  97  Scalars
+  98  ILmax        /2000000000/
+  99  *max invest budget
+ 100  M            /5000/
+ 101  *big M
+ 102  reliability  /1/
+ 103  *reliability of powerlines (simplification of n-1 criteria)
+ 104  cur_costs    /150/
+ 105  *curtailment costs
+ 106  store_cpf    /7/
+ 107  *ratio storage capacity factor
+ 108  MVABase      /500/
+ 109  ;
+ 110   
+ 111  **************************************parameters**************************
+      ************
+ 112  Parameter
+ 113  Node_Demand                     upload table
+ 114  Ger_Demand                      upload table
+ 115  Grid_tech                       upload table
+ 116  Gen_conv                        upload table
+ 117  Gen_res                         upload table
+ 118  Gen_Hydro                       upload table
+ 119  priceup                         upload table
+ 120  availup_hydro                   upload table
+ 121  availup_res
+ 122  *availup_sun                     upload table
+ 123  *availup_wind                    upload table
+ 124  Grid_invest                     upload table
+ 125   
+ 126  B(l)                            susceptance of existing lines in german Gr
+      id
+ 127  B_prosp_220(l)                  susceptance of existing lines in german Gr
+      id
+ 128  B_prosp_380(l)                  susceptance of existing lines in german Gr
+      id
+ 129   
+ 130  H(l,n)                          flow senitivity matrix
+ 131  Incidence(l,n)
+ 132   
+ 133  L_cap(l)                        max. power of each existing line (220 & 38
+      0)
+ 134  L_cap_inv_220(l)                max. power of each prospective 220 kv line
+ 135  L_cap_inv_380(l)                max. power of each prospective 380 kv line
+ 136  circuits(l)                     number of parallel lines in grid
+ 137   
+ 138  I_costs_220(l)                  investment sost per prospective 220 kv lin
+      e
+ 139  I_costs_380(l)                  investment sost per prospective 380 kv lin
+      e
+ 140  Fc_conv(g,t)                    fuel costs conventional powerplants
+ 141  Fc_res(res,t)                   fuel costs renewable powerplants
+ 142  CO2_content(g)                  Co2 content
+ 143  CO2_costs(t)                    CO2 costs
+ 144  SU_costs(g,t)                   start-up costs conventionals
+ 145   
+ 146  su_fact(g)                      start-up factor conventionals
+ 147  fuel_start(g)                   fuel consumption factor if start-up decisi
+      on
+ 148  depri_costs(g)                  deprication costs conventionals
+ 149   
+ 150  total_load(t)                   electrical demand in germany in hour t
+ 151  load(n,t)                       electrical demand in each node in hour t
+ 152  load_share(n)                   electrical demand share per node
+ 153  Neighbor_Demand(t,n)            electrical demand in neighboring countries
+       of germany in hour t
+ 154  LS_costs(n)                     loadshedding costs per node
+ 155  var_costs(g,t)                  variable costs conventional power plants
+ 156   
+ 157  cap_conv(g)                     max. generation capacity of each conventio
+      nal generator
+ 158  cap_hydro(s)                    max. generation capacity of each psp
+ 159  cap_res(res)                    max. generation capacity of each RES
+ 160   
+ 161  Eff_conv(g)                     efficiency of conventional powerplants
+ 162  Eff_hydro(s)                    efficiency of hydro powerplants
+ 163  Eff_res(res)                    efficiency of renewable powerplants
+ 164   
+ 165  af_hydro(s,t)                   availability of hydro potential
+ 166  af_sun(t,sr,n)                  capacity factor of solar energy
+ 167  af_wind(t,wr,n)                 capacity factor of wind energy
+ 168   
+ 169  phy_flow_to_DE(t,n)             physical cross border flow for each countr
+      y specific node in direct realtion with germany
+ 170  phy_flow_states_exo(t,n)        physical cross border flow for each countr
+      y specific node in no realtion with germany
+ 171   
+ 172  *********************************************report parameters************
+      ********************************************
+ 173   
+ 174  Time_restrict_up
+ 175  Time_restrict_lo
+ 176  *solve_time(,*)
+ 177   
+ 178  mapped_flow(l,t)                directed flow report
+ 179  mapped_flow_DE(t)               saldo flow report regarding total Ex and i
+      mports of germany
+ 180  mapped_ExIm_flow(l,t)           directed flow report from and to DE neigbo
+      ring countries
+ 181  mapped_ExIm_sum_flow(n)            directed summarized flow report from an
+      d to DE neigboring countries
+ 182   
+ 183  resulting_load_De(t)
+ 184  price(n,t)
+ 185  price_de(t)
+ 186   
+ 187  total_gen(t)
+ 188  total_gen_g(t)
+ 189  total_gen_r(t)
+ 190  total_gen_s(t)
+ 191   
+ 192  DE_gen_lig(t)
+ 193  DE_gen_coal(t)
+ 194  DE_gen_gas(t)
+ 195  DE_gen_oil(t)
+ 196  DE_gen_nuc(t)
+ 197  DE_gen_waste(t)
+ 198   
+ 199  DE_gen_Sun(t)
+ 200  DE_gen_Wind(t)
+ 201  DE_gen_BIO(t)
+ 202   
+ 203  DE_gen_ROR(t)
+ 204  DE_gen_PSP(t)
+ 205  DE_gen_Reservoir(t)
+ 206   
+ 207  DE_charge(t)
+ 208   
+ 209  countries_gen_lig(n,t)
+ 210  countries_gen_coal(n,t)
+ 211  countries_gen_gas(n,t)
+ 212  countries_gen_oil(n,t)
+ 213  countries_gen_nuc(n,t)
+ 214  countries_gen_waste(n,t)
+ 215   
+ 216  countries_gen_sun(n,t)
+ 217  countries_gen_wind(n,t)
+ 218  countries_gen_bio(n,t)
+ 219   
+ 220  countries_gen_ROR(n,t)
+ 221  countries_gen_PSP(n,t)
+ 222  countries_gen_Reservoir(n,t)
+ 223   
+ 224  Gen_Denmark(n,t)
+ 225  Gen_Sweden(n,t)
+ 226  Gen_Poland(n,t)
+ 227  Gen_Czechia(n,t)
+ 228  Gen_Austria(n,t)
+ 229  Gen_Swiss(n,t)
+ 230  Gen_France(n,t)
+ 231  Gen_Luxemburg(n,t)
+ 232  Gen_Belgium(n,t)
+ 233  Gen_Netherland(n,t)
+ 234   
+ 235  **********************************************input Excel table***********
+      ********************************************
+ 236  ;
+ 237   
+ 266   
+**** File: \\SERVER-LSEW\serverdaten\MitarbeiterOrdner\Bernecker\GitHub Desktop 
+          Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data.gdx
+**** Msg : No such file or directory
+ 269  $GDXin  Data.gdx
+****                 $510
+**** 510  Unable to open gdx file for $GDXIN
+ 270  $load   Map_send_L, Map_res_L, MapG, MapS, MapRes, MapSr, MapWr
+****      $502
+**** 502  GDXIN  file not open - ignore rest of line
+ 271  $load   Border_exist_DE, Border_exist_total, Border_prosp_DE, Border_prosp
+****      $502
+      _total
+**** 502  GDXIN  file not open - ignore rest of line
+ 272  $load   Node_Demand,Neighbor_Demand, Ger_demand, Grid_tech
+****      $502
+**** 502  GDXIN  file not open - ignore rest of line
+ 273  $load   Gen_conv, Gen_res, Gen_Hydro, priceup
+****      $502
+**** 502  GDXIN  file not open - ignore rest of line
+ 274  $load   availup_hydro, availup_res
+****      $502
+**** 502  GDXIN  file not open - ignore rest of line
+ 275  $load   phy_flow_to_DE, Phy_flow_states_exo
+****      $502
+**** 502  GDXIN  file not open - ignore rest of line
+ 276  $load   Grid_invest
+****      $502
+**** 502  GDXIN  file not open - ignore rest of line
+ 279  ;
+ 280  *####################################subset definitions###################
+      ##########
+ 281   
+ 282  Map_Grid(l,n)$(Map_send_L(l,n)) = yes
+****                          $141
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+ 283  ;
+ 284  Map_Grid(l,n)$(Map_res_L(l,n)) = yes
+****                         $141
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+ 285  ;
+ 286  Relevant_Nodes(n)$NoDeSciGrid(n)  = no
+ 287  ;
+ 288  De(n)$NoDeSciGrid(n)  = no
+ 289  ;
+ 290  *no expansion of broderlines
+ 291   prosp(l)$(prosp_borderlines_DE(l)) = no
+****                                $140
+**** 140  Unknown symbol
+ 292  ;
+ 293  *Thermal(g) = Gen_conv(g,'class') = 1
+ 294  *;
+ 295          gas(g)      =    Gen_conv(g,'tech')  = 1
+****                                  $141     $116
+**** 116  Label is unknown
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+ 296  ;
+ 297          oil(g)      =    Gen_conv(g,'tech')  = 2
+ 298  ;
+ 299          coal(g)     =    Gen_conv(g,'tech')  = 3
+ 300  ;
+ 301          lig(g)      =    Gen_conv(g,'tech')  = 4
+ 302  ;
+ 303          nuc(g)      =    Gen_conv(g,'tech')  = 5
+ 304  ;
+ 305          waste(g)    =    Gen_conv(g,'tech')  = 6
+ 306  ;
+ 307   
+ 308  ***************************************hydro******************************
+      **********
+ 309   
+ 310          psp(s)      =    Gen_Hydro(s,'tech') = 1
+****                                   $141
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+ 311  ;
+ 312          reservoir(s)=    Gen_Hydro(s,'tech') = 2
+ 313  ;
+ 314          ror(s)      =    Gen_Hydro(s,'tech') = 3
+ 315  ;
+ 316   
+ 317  ****************************************res*******************************
+      **********
+ 318   
+ 319          wind(res)   =    Gen_res(res,'tech') = 1
+****                                 $141
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+ 320  ;
+ 321          sun(res)    =    Gen_res(res,'tech') = 2
+ 322  ;
+ 323          biomass(res)=    Gen_res(res,'tech') = 3
+ 324  ;
+ 325   
+ 326  *###################################loading parameter#####################
+      ##########
+ 327   
+ 328  *****************************************demand***************************
+      **********
+ 329   
+ 330  total_load(t)       =          Ger_demand(t,'total_load')
+****                                          $141           $116
+**** 116  Label is unknown
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+ 331  ;
+ 332  LS_costs(n)         =          Node_Demand(n,'LS_costs')
+****                                           $141         $116
+**** 116  Label is unknown
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+ 333  ;
+ 334  load_share(n)       =          Node_Demand(n,'share')
+****                                                     $116
+**** 116  Label is unknown
+ 335  ;
+ 336   
+ 337  *****************************************prices***************************
+      **********
+ 338   
+ 339  Fc_conv(gas,t)      =          priceup(t,'gas')
+****                                       $141    $116
+**** 116  Label is unknown
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+ 340  ;
+ 341  Fc_conv(oil,t)      =          priceup(t,'oil')
+****                                               $116
+**** 116  Label is unknown
+ 342  ;
+ 343  Fc_conv(coal,t)     =          priceup(t,'coal')
+****                                                $116
+**** 116  Label is unknown
+ 344  ;
+ 345  Fc_conv(lig,t)      =          priceup(t,'lignite')
+****                                                   $116
+**** 116  Label is unknown
+ 346  ;
+ 347  Fc_conv(nuc,t)      =          priceup(t,'nuclear')
+****                                                   $116
+**** 116  Label is unknown
+ 348  ;
+ 349  Fc_conv(waste,t)    =          priceup(t,'waste')
+****                                                 $116
+**** 116  Label is unknown
+ 350  ;
+ 351  Fc_res(biomass,t)   =          priceup(t,'biomass')
+****                                                   $116
+**** 116  Label is unknown
+ 352  ;
+ 353  CO2_costs(t)        =          priceup(t,'CO2')
+****                                               $116
+**** 116  Label is unknown
+ 354  ;
+ 355   
+ 356  ************************************Grid technical************************
+      **********
+ 357   
+ 358  B(l)                =          Grid_tech(l,'Susceptance')
+****                                         $141            $116
+**** 116  Label is unknown
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+ 359  ;
+ 360  incidence(l,n)      =          Map_Grid(l,n)
+ 361  ;
+ 362  L_cap(l)            =          Grid_tech(l,'L_cap')
+****                                                   $116
+**** 116  Label is unknown
+ 363  ;
+ 364  circuits(l)         =          Grid_tech(l,'circuits')
+****                                                      $116
+**** 116  Label is unknown
+ 365  ;
+ 366  L_cap_inv_220(l)    =          Grid_invest(l,'cap_inv_220')
+****                                           $141            $116
+**** 116  Label is unknown
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+ 367  ;
+ 368  L_cap_inv_380(l)    =          Grid_invest(l,'cap_inv_380')
+****                                                           $116
+**** 116  Label is unknown
+ 369  ;
+ 370  B_prosp_220(l)      =          Grid_invest(l,'Suscep_220')
+****                                                          $116
+**** 116  Label is unknown
+ 371  ;
+ 372  B_prosp_380(l)      =          Grid_invest(l,'Suscep_380')
+****                                                          $116
+**** 116  Label is unknown
+ 373  ;
+ 374   
+ 375   
+ 376  *************************************generators***************************
+      **********
+ 377   
+ 378  Cap_conv(g)         =          Gen_conv(g,'Gen_cap')
+****                                                    $116
+**** 116  Label is unknown
+ 379  ;
+ 380  Cap_hydro(s)        =          Gen_Hydro(s,'Gen_cap')
+ 381  ;
+ 382  Cap_res(res)        =          Gen_res(res,'Gen_cap')
+ 383  ;
+ 384  Eff_conv(g)         =          Gen_conv(g,'eff')
+****                                                $116
+**** 116  Label is unknown
+ 385  ;
+ 386  Eff_hydro(s)        =          Gen_Hydro(s,'eff')
+ 387  ;
+ 388  Eff_res(res)        =          Gen_res(res,'eff')
+ 389  ;
+ 390  Co2_content(g)      =          Gen_conv(g,'CO2')
+ 391  ;
+ 392  su_fact(g)          =          Gen_conv(g,'su_fact')
+****                                                    $116
+**** 116  Label is unknown
+ 393  ;
+ 394  depri_costs(g)      =          Gen_conv(g,'depri_costs')
+****                                                        $116
+**** 116  Label is unknown
+ 395  ;
+ 396  fuel_start(g)       =          Gen_conv(g,'fuel_start')
+****                                                       $116
+**** 116  Label is unknown
+ 397  ;
+ 398   
+ 399  ************************************availability**************************
+      **********
+ 400   
+ 401   
+ 402  af_hydro(ror,t)             =          availup_hydro(t,'ror')
+****                                                     $141    $116
+**** 116  Label is unknown
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+ 403  ;
+ 404  af_hydro(psp,t)             =          availup_hydro(t,'psp')
+****                                                             $116
+**** 116  Label is unknown
+ 405  ;
+ 406  af_hydro(reservoir,t)       =          availup_hydro(t,'reservoir')
+****                                                                   $116
+**** 116  Label is unknown
+ 407  ;
+ 408  af_sun(t,sr,n)$MapSR(n,sr)  =          availup_res(t,sr)
+****                     $141                          $141
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+ 409  ;
+ 410  af_wind(t,wr,n)$MapWR(n,wr) =          availup_res(t,wr)
+****                      $141
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+ 411  ;
+ 412  *************************************Investments**************************
+      **********
+ 413   
+ 414  I_costs_220(l)      =  Grid_invest(l,'Inv_costs_220')/(8760/card(t))
+****                                                     $116
+**** 116  Label is unknown
+ 415  ;
+ 416  I_costs_380(l)      =  Grid_invest(l,'Inv_costs_380')/(8760/card(t))
+****                                                     $116
+**** 116  Label is unknown
+ 417  ;
+ 418   
+ 419  *************************************calculating**************************
+      **********
+ 420   
+ 421  H(l,n)                              =            B(l)* incidence(l,n)
+ 422  ;
+ 423  load(n,t)$(De(n))                   =            load_share(n)*total_load(
+      t)
+ 424  ;
+ 425  load(n,t)$(border_states(n))        =            Neighbor_Demand(t,n)
+****                                                                 $141
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+ 426  ;
+ 427  var_costs(g,t)                      =            ((FC_conv(g,t)+ co2_costs
+      (t) * co2_content(g)) / Eff_conv(g))
+ 428  ;
+ 429  su_costs(g,t)                       =            depri_costs(g) + su_fact(
+      g) * fuel_start(g) * FC_conv(g,t) + co2_content(g) * co2_costs(t)
+ 430  ;
+ 431   
+ 432  execute_unload "check.gdx";
+STOP \\SERVER-LSEW\serverdaten\MitarbeiterOrdner\Bernecker\GitHub Desktop Projec
+     t Foulder\SARO-Dunkelflaute\Model\TEP.gms
+
+**** 53 ERROR(S)   0 WARNING(S)
+GAMS 35.1.0  r82a9585 Released Apr 29, 2021 WEX-WEI x86 64bit/MS Windows - 11/23/21 17:46:06 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Include File Summary
+
+
+   SEQ   GLOBAL TYPE      PARENT   LOCAL  FILENAME
+
+     1        1 INPUT          0       0  \\SERVER-LSEW\serverdaten\MitarbeiterO
+                                          rdner\Bernecker\GitHub Desktop Project
+                                          Foulder\SARO-Dunkelflaute\Model\TEP.gm
+                                          s
+     2      268 CALL           1     268  gdxxrw Data.xlsx @TEP.txt
+     3      433 STOP           1     433  \\SERVER-LSEW\serverdaten\MitarbeiterO
+                                          rdner\Bernecker\GitHub Desktop Project
+                                          Foulder\SARO-Dunkelflaute\Model\TEP.gm
+                                          s
+
+
+COMPILATION TIME     =        0.625 SECONDS      3 MB  35.1.0 r82a9585 WEX-WEI
+
+
+USER: Small MUD - 5 User License                     S201118/0001AN-WIN
+      BTU Cottbus-Senftenberg, FG Energiewirtschaft              DC5591
+      License for teaching and research at degree granting institutions
+
+
+**** FILE SUMMARY
+
+Input      \\SERVER-LSEW\serverdaten\MitarbeiterOrdner\Bernecker\GitHub Desktop 
+           Project Foulder\SARO-Dunkelflaute\Model\TEP.gms
+Output     \\SERVER-LSEW\serverdaten\MitarbeiterOrdner\Bernecker\GitHub Desktop 
+           Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\TEP.lst
+
+**** USER ERROR(S) ENCOUNTERED

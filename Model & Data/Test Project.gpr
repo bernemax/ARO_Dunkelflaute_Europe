@@ -3,10 +3,17 @@
 [RP:SINGLE NODE SYSTEM]
 1=
 
+[RP:TEP]
+1=
+
+[MRUFILES]
+1=\\SERVER-LSEW\serverdaten\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\SARO-Dunkelflaute\Model\TEP.gms
+
 [OPENWINDOW_1]
 FILE0=\\SERVER-LSEW\serverdaten\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Single node system.gms
 FILE1=\\SERVER-LSEW\serverdaten\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Single node system.lst
-FILE2=\\SERVER-LSEW\serverdaten\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Single node system.lst
+FILE2=\\SERVER-LSEW\serverdaten\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\TEP.lst
+FILE3=\\SERVER-LSEW\serverdaten\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\TEP.lst
 MAXIM=0
 TOP=50
 LEFT=50

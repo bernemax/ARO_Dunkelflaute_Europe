@@ -1,5 +1,5 @@
 
---- Job IEEE 24 node system.gms Start 11/25/21 07:33:46 34.2.0 r6925a71 WEX-WEI x86 64bit/MS Windows
+--- Job IEEE 24 node system.gms Start 11/25/21 07:30:39 34.2.0 r6925a71 WEX-WEI x86 64bit/MS Windows
 --- Applying:
     C:\GAMS\34\gmsprmNT.txt
 --- GAMS Parameters defined
@@ -23,18 +23,18 @@ GAMS 34.2.0   Copyright (C) 1987-2021 GAMS Development. All rights reserved
 GDXXRW           34.2.0 r6925a71 Released Feb 05, 2021 WEI x86 64bit/MS Window
 Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_Input.xlsx
 Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_Input.gdx
-Total time = 3828 Ms
+Total time = 3562 Ms
 --- IEEE 24 node system.gms(111) 3 Mb
 --- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_Input.gdx
 --- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_Input.gdx
 --- IEEE 24 node system.gms(382) 3 Mb
---- Starting execution: elapsed 0:00:06.163
+--- Starting execution: elapsed 0:00:05.566
 --- IEEE 24 node system.gms(344) 4 Mb
 --- Generating MIP model TEP_IEEE_24
 --- IEEE 24 node system.gms(347) 8 Mb  6 secs
 ---   19,147 rows  12,025 columns  39,052 non-zeroes
 --- IEEE 24 node system.gms(347) 8 Mb  7 secs
---- Executing CPLEX (Solvelink=2): elapsed 0:00:15.394
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:14.922
 
 IBM ILOG CPLEX   34.2.0 r6925a71 Released Feb 05, 2021 WEI x86 64bit/MS Window
 
@@ -84,7 +84,7 @@ Dual crossover.
   Primal:  Fixed no variables.
 
 --- LP status (1): optimal.
---- Cplex Time: 0.09sec (det. 59.92 ticks)
+--- Cplex Time: 0.14sec (det. 59.92 ticks)
 
 
 Optimal solution found
@@ -92,7 +92,7 @@ Objective:      8325541.249714
 
 --- Reading solution for model TEP_IEEE_24
 --- IEEE 24 node system.gms(347) 8 Mb  65 secs
---- Executing after solve: elapsed 0:01:15.748
+--- Executing after solve: elapsed 0:01:12.968
 --- IEEE 24 node system.gms(369) 8 Mb  3 secs
 --- GDX File (execute_unload) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\check.gdx
 --- IEEE 24 node system.gms(382) 8 Mb
@@ -104,16 +104,24 @@ Adding new sheet: LOLH
 Adding new sheet: EENS
 Adding new sheet: Price
 Adding new sheet: Sys_costs
-Total time = 7703 Ms
---- Profile Summary (8 records processed)
-    54.828   0.008GB       347 Solve Read TEP_IEEE_24
-     8.563   0.008GB       382 Execute    
-     7.187   0.008GB       347 Solve Fini TEP_IEEE_24 (39052)
-     5.516   0.008GB       347 Solve Alg  TEP_IEEE_24
-     3.484   0.008GB       369 Unload     
-     1.953   0.005GB       221 Equation   Total_costs (1)
-     0.094   0.008GB       271 Equation   Ex_line_angle (2448)
+****  Dimension error for : LoLH
+****  Dimension error for : EENS
+****  Dimension error for : price
+****  Dimension error for : Sys_costs
+
+Any changes made to the spreadsheet were not saved
+Total time = 3719 Ms
+--- Profile Summary (10 records processed)
+    52.297   0.008GB       347 Solve Read TEP_IEEE_24
+     7.156   0.008GB       347 Solve Fini TEP_IEEE_24 (39052)
+     5.750   0.008GB       347 Solve Alg  TEP_IEEE_24
+     4.516   0.008GB       382 Execute    
+     3.500   0.008GB       369 Unload     
+     2.094   0.005GB       221 Equation   Total_costs (1)
+     0.079   0.008GB       271 Equation   Ex_line_angle (2448)
      0.062   0.008GB       382 GAMS Fini   
+     0.015   0.006GB       231 Equation   Balance (2304)
+     0.015   0.008GB       287 Equation   Theta_LB (1728)
 *** Status: Normal completion
---- IEEE 24 node system.gms(382) 8 Mb  8 secs
---- Job IEEE 24 node system.gms Stop 11/25/21 07:35:15 elapsed 0:01:28.299
+--- IEEE 24 node system.gms(382) 8 Mb  5 secs
+--- Job IEEE 24 node system.gms Stop 11/25/21 07:32:01 elapsed 0:01:21.615

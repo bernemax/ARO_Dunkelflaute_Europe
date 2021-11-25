@@ -1,0 +1,7 @@
+
+   par=LoLH            rng=LOLH!A5                rdim=0 cdim=1
+   par=EENS            rng=EENS!A5                rdim=0 cdim=1
+   par=price           rng=Price!H1               rdim=1 cdim=1
+   par=Sys_costs       rng=Sys_costs!C1           rdim=0 cdim=0
+
+

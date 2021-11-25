@@ -1,57 +1,51 @@
 
---- Job Single node system.gms Start 11/23/21 14:31:12 35.1.0 r82a9585 WEX-WEI x86 64bit/MS Windows
+--- Job Single node system.gms Start 11/25/21 07:42:44 34.2.0 r6925a71 WEX-WEI x86 64bit/MS Windows
 --- Applying:
-    C:\GAMS\35\gmsprmNT.txt
+    C:\GAMS\34\gmsprmNT.txt
 --- GAMS Parameters defined
-    Input "\\SERVER-LSEW\serverdaten\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Single node system.gms"
-    PageWidth 80
+    Input "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Single node system.gms"
     PageSize 0
-    PageContr 3
-    Action CE
-    ScrDir "Y:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\225a\"
-    SysDir C:\GAMS\35\
-    WorkDir "\\SERVER-LSEW\serverdaten\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\"
+    ScrDir "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\225a\"
+    SysDir C:\GAMS\34\
     LogOption 3
-    DFormat 0
-    TFormat 0
+    ErrMsg 1
     ErrorLog 99
     IDE 1
+    LstTitleLeftAligned 1
 Licensee: Small MUD - 5 User License                     S201118/0001AN-WIN
           BTU Cottbus-Senftenberg, FG Energiewirtschaft              DC5591
-          C:\Users\Max Bernecker\Documents\GAMS\gamslice.txt
-GAMS 35.1.0   Copyright (C) 1987-2021 GAMS Development. All rights reserved
+          C:\Users\berne\Documents\GAMS\gamslice.txt
+GAMS 34.2.0   Copyright (C) 1987-2021 GAMS Development. All rights reserved
 --- Starting compilation
---- Single node system.gms(81) 3 Mb
---- $echo File \\SERVER-LSEW\serverdaten\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\IEEE.txt
---- Single node system.gms(87) 3 Mb
---- call gdxxrw Data_24_toys.xlsx @IEEE.txt
+--- Single node system.gms(93) 3 Mb
+--- call gdxxrw Data_Input.xlsx @IEEE.txt
 
-GDXXRW           35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
-Input file : Y:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_24_toys.xlsx
-Output file: Y:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_24_toys.gdx
-Total time = 422 Ms
---- Single node system.gms(88) 3 Mb
---- GDXin=\\SERVER-LSEW\serverdaten\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_24_toys.gdx
---- GDX File ($gdxIn) \\SERVER-LSEW\serverdaten\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_24_toys.gdx
---- Single node system.gms(203) 3 Mb
---- Starting execution: elapsed 0:00:00.524
---- Single node system.gms(195) 4 Mb
+GDXXRW           34.2.0 r6925a71 Released Feb 05, 2021 WEI x86 64bit/MS Window
+Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_Input.xlsx
+Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_Input.gdx
+Total time = 3703 Ms
+--- Single node system.gms(94) 3 Mb
+--- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_Input.gdx
+--- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_Input.gdx
+--- Single node system.gms(230) 3 Mb
+--- Starting execution: elapsed 0:00:05.550
+--- Single node system.gms(201) 4 Mb
 --- Generating LP model TEP_IEEE_24_to_single_node
---- Single node system.gms(198) 5 Mb
+--- Single node system.gms(204) 5 Mb
 ---   6,043 rows  3,313 columns  11,692 non-zeroes
---- Executing CPLEX (Solvelink=2): elapsed 0:00:00.689
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:09.253
 
-IBM ILOG CPLEX   35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
+IBM ILOG CPLEX   34.2.0 r6925a71 Released Feb 05, 2021 WEI x86 64bit/MS Window
 
 --- GAMS/Cplex Link licensed for continuous and discrete problems.
 --- Space for names approximately 0.24 Mb
 --- Use option 'names no' to turn use of names off
 --- GMO memory 2.06 Mb (peak 2.09 Mb)
 --- Dictionary memory 0.00 Mb
---- Cplex 20.1.0.1 link memory 0.13 Mb (peak 0.57 Mb)
+--- Cplex 20.1.0.0 link memory 0.13 Mb (peak 0.57 Mb)
 --- Starting Cplex
 
-Version identifier: 20.1.0.1 | 2021-04-07 | 3a818710c
+Version identifier: 20.1.0.0 | 2020-11-10 | 9bedb6d68
 CPXPARAM_Advance                                 0
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Display                             4
@@ -78,21 +72,32 @@ Dual crossover.
   Primal:  Pushed 0, exchanged 6.
 
 --- LP status (1): optimal.
---- Cplex Time: 0.06sec (det. 6.83 ticks)
+--- Cplex Time: 0.02sec (det. 6.83 ticks)
 
 
 Optimal solution found
 Objective:      5082509.889900
 
 --- Reading solution for model TEP_IEEE_24_to_single_node
---- Executing after solve: elapsed 0:00:00.974
---- Single node system.gms(202) 5 Mb
---- GDX File (execute_unload) \\SERVER-LSEW\serverdaten\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\check_single.gdx
---- Profile Summary (5 records processed)
-     0.187   0.005GB       198 Solve Alg  TEP_IEEE_24_to_single_node
-     0.094   0.005GB       198 Solve Read TEP_IEEE_24_to_single_node
-     0.047   0.005GB       198 Solve Fini TEP_IEEE_24_to_single_node (11692)
-     0.047   0.005GB       202 Unload     
-     0.016   0.004GB       161 Equation   Total_costs (1)
+--- Single node system.gms(204) 5 Mb  20 secs
+--- Executing after solve: elapsed 0:00:27.489
+--- Single node system.gms(218) 5 Mb
+--- GDX File (execute_unload) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\check_single.gdx
+--- Single node system.gms(230) 5 Mb
+
+GDXXRW           34.2.0 r6925a71 Released Feb 05, 2021 WEI x86 64bit/MS Window
+Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\check.gdx
+Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\output.xlsx
+Total time = 7375 Ms
+--- Profile Summary (8 records processed)
+    15.687   0.005GB       204 Solve Read TEP_IEEE_24_to_single_node
+     8.157   0.005GB       230 Execute    
+     2.860   0.005GB       204 Solve Fini TEP_IEEE_24_to_single_node (11692)
+     2.547   0.005GB       204 Solve Alg  TEP_IEEE_24_to_single_node
+     1.156   0.005GB       218 Unload     
+     0.750   0.004GB       167 Equation   Total_costs (1)
+     0.078   0.005GB       183 Equation   max_cap (936)
+     0.015   0.005GB       181 Equation   max_gen (936)
 *** Status: Normal completion
---- Job Single node system.gms Stop 11/23/21 14:31:14 elapsed 0:00:01.129
+--- Single node system.gms(230) 5 Mb  8 secs
+--- Job Single node system.gms Stop 11/25/21 07:43:21 elapsed 0:00:37.235

@@ -1,0 +1,57 @@
+B 3 C o m p i l a t i o n
+B 370 Include File Summary
+B 383 Equation Listing    SOLVE TEP_IEEE_24 Using MIP From line 347
+D 386 Total_costs
+D 396 Balance
+D 407 max_gen
+D 418 max_cap
+D 429 min_cap
+D 440 startup_constr
+D 451 Ramp_up_constr
+D 462 Ramp_down_constr
+D 473 P_on_start
+D 484 EQ_wind_cap
+D 495 Ex_line_angle
+D 507 Ex_Line_neg_flow
+D 518 Ex_line_pos_flow
+D 529 Theta_LB
+D 540 Theta_UB
+D 551 Theta_ref
+B 563 Column Listing      SOLVE TEP_IEEE_24 Using MIP From line 347
+E 566 Costs
+E 573 Power_flow
+E 601 Theta
+E 632 Su
+E 648 gen_conv
+E 670 gen_wind
+E 689 P_on
+E 717 X_dem
+E 733 LS
+B 753 Model Statistics    SOLVE TEP_IEEE_24 Using MIP From line 347
+B 768 Solution Report     SOLVE TEP_IEEE_24 Using MIP From line 347
+F 802 Total_costs
+F 804 Balance
+F 3113 max_gen
+F 4054 max_cap
+F 4995 min_cap
+F 5897 startup_constr
+F 6838 Ramp_up_constr
+F 7740 Ramp_down_constr
+F 8642 P_on_start
+F 8686 EQ_wind_cap
+F 9123 Ex_line_angle
+F 11576 Ex_Line_neg_flow
+F 14029 Ex_line_pos_flow
+F 16482 Theta_LB
+F 18215 Theta_UB
+F 19948 Theta_ref
+G 20027 Costs
+G 20029 Power_flow
+G 22482 Theta
+G 24215 Su
+G 25156 gen_conv
+G 26097 gen_wind
+G 26534 P_on
+G 27475 X_dem
+G 29784 LS
+B 32101 E x e c u t i o n

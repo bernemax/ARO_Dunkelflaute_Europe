@@ -43,16 +43,18 @@ ramp_down_reserve(g)           Maximum down reserve capacity of generating unit
 gen_costs(g)
 su_costs(g)
 
-price(t,year)
+
 ANF(year)
 Discount(year)
-
+************************report parameters
+price(t,year)
 EENS(year)
 Count(t)
 LOLH(year)
+Sys_costs
 ;
 
-table System_demand (t,year,*)  Total system demand for each t
+table System_demand (t,year,*)  Total system demand for each t in MW
 *first column: set t . year 1 to year 10
              load
 t1.1*3       1775.835
@@ -88,8 +90,8 @@ par=availup                     rng=Availability!A1:B25           rdim=1 cDim=1
 $offecho
 
 $onUNDF
-$call   gdxxrw Data_24_toys.xlsx @IEEE.txt
-$GDXin  Data_24_toys.gdx
+$call   gdxxrw Data_Input.xlsx @IEEE.txt
+$GDXin  Data_Input.gdx
 $load   genup, availup
 $offUNDF
 
@@ -201,13 +203,28 @@ TEP_IEEE_24_to_single_node.scaleopt = 1
 
 solve TEP_IEEE_24_to_single_node using LP minimizing costs;
 
-price(t,year) = Balance.m(t,year)*(-1);
-
-Count(t)$(sum((year),LS.l(t,year))gt 0) =1;
-LOLH(year) = sum(t, count(t));
-EENS(year) = sum((t),LS.l(t,year));
-
+price(t,year) = Balance.m(t,year)*(-1)
+;
+Count(t)$(sum((year),LS.l(t,year))gt 0) =1
+;
+LOLH(year) = sum(t, count(t)) +EPS
+;
+EENS(year) = sum((t),LS.l(t,year)) +EPS
+;
+Sys_costs = costs.l
+;
 display price, LOLH, EENS
 
 execute_unload "check_single.gdx" 
 ;
+$onecho >out.tmp
+
+   par=LoLH            rng=LOLH!A5                rdim=0 cdim=1
+   par=EENS            rng=EENS!A5                rdim=0 cdim=1
+   par=price           rng=Price!H1               rdim=1 cdim=1
+   par=Sys_costs       rng=Sys_costs!C1           rdim=0 cdim=0
+
+
+$offecho
+*$offtext
+execute 'gdxxrw check_single.gdx o=output.xlsx EpsOut=0 @out.tmp'

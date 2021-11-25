@@ -50,9 +50,9 @@ lineup                      upload table for line data
 availup                     upload table for wind availability factors
 
 
-System_demand(t) 
-nodal_Load_share(n)
-nodal_demand(n,t,year)
+System_demand(t)            in MW
+nodal_Load_share(n)         in %
+nodal_demand(n,t,year)      in MW
 
 P_max(g)
 P_min(g)
@@ -83,6 +83,11 @@ EENS(year)
 Count(t)
 LOLH(year)
 
+scale_conv
+scale_res
+
+Sys_costs
+
 ;
 *########################################################set & parameter loading####################################################
 $onecho > IEEE.txt
@@ -102,8 +107,8 @@ par=nodal_Load_share            rng=Demand!D2:E18                 rdim=1 cDim=0
 $offecho
 
 $onUNDF
-$call   gdxxrw Data_24_toys.xlsx @IEEE.txt
-$GDXin  Data_24_toys.gdx
+$call   gdxxrw Data_Input.xlsx @IEEE.txt
+$GDXin  Data_Input.gdx
 $load   Map_gen, Map_wind, Map_send, Map_res, Map_prosp_send_Line_node, Map_prosp_res_Line_node
 $load   genup, lineup, availup,
 $load   System_demand, nodal_Load_share
@@ -166,7 +171,7 @@ gen_conv(g,t,year)
 gen_wind(w,t,year)
 P_on(g,t,year)
 
-
+X_dem(n,t,year)
 LS(n,t,year)
 ;
 Binary Variable
@@ -223,7 +228,7 @@ Total_costs..                costs                  =e=   (sum((g,t,year), gen_c
 ;
 *##################################################################Energy balance################################################
 
-Balance(n,t,year)..          nodal_demand(n,t,year) - LS (n,t,year) =e=  sum(g$Map_gen(g,n), gen_conv(g,t,year)*0.7)
+Balance(n,t,year)..          nodal_demand(n,t,year) - LS (n,t,year) + X_dem(n,t,year) =e=  sum(g$Map_gen(g,n), gen_conv(g,t,year)*0.7)
                                                                                    + sum(w$Map_wind(w,n),gen_wind(w,t,year))
 
                                                         + sum(l$Map_res(l,n),power_flow(l,t,year))
@@ -258,7 +263,8 @@ Ramp_down_constr(g,t,year)$(ord(t) gt 1)..              Su(g,t,year) =g= -ramp_d
 ;
 P_on_start(g,t,year)$(ord(t) = 1)..                     P_on(g,t,year) =e= P_init(g)
 ;
-EQ_wind_cap(w,t,year)..                                 gen_wind(w,t,year) =e= wind_cap(w) * wind_af(t,year)
+
+EQ_wind_cap(w,t,year)..                                    gen_wind(w,t,year) =e= wind_cap(w) * wind_af(t,year)
 ;
 *###############################################################Grid technical functioning#########################################
 
@@ -344,16 +350,33 @@ solve TEP_IEEE_24 using MIP minimizing costs;
 ;
 %NO_Invest% z.fx(n,t,year) = z.l(n,t,year)
 ;
-EENS(year) = sum((n,t),LS.l(n,t,year));
-
-Count(t)$(sum((n,year),LS.l(n,t,year))gt 0) =1;
-
-LOLH(year) = sum(t, count(t));
-price(n,t,year) = Balance.m(n,t,year)*(-1);
-
-%NO_Invest% line_investment(l) = sum((t,year), Inv_costs(l,year) * x.l(l,t,year));
-%NO_Invest% total_investment(l,year) = sum((tt,period),Inv_costs(l,year)* ANF(year) * (x.l(l,tt,period)));
-
-execute_unload "check.gdx" 
+************************************report parameters*******************************
+Count(t)$(sum((n,year),LS.l(n,t,year))gt 0) =1
 ;
+LOLH(year) = sum(t, count(t))
+;
+EENS(year) = sum((n,t),LS.l(n,t,year))
+;
+price(n,t,year) = Balance.m(n,t,year)*(-1)
+;
+Sys_costs = costs.l
+;
+%NO_Invest% line_investment(l) = sum((t,year), Inv_costs(l,year) * x.l(l,t,year))
+;
+%NO_Invest% total_investment(l,year) = sum((tt,period),Inv_costs(l,year)* ANF(year) * (x.l(l,tt,period)))
+;
+*************************************Output to excel********************************
+execute_unload "check.gdx"
+;
+*$ontext
+$onecho >out.tmp
 
+   par=LoLH            rng=LOLH!A1                rdim=0 cdim=1
+   par=EENS            rng=EENS!A1                rdim=0 cdim=1
+   par=price           rng=Price!A1               rdim=2 cdim=1
+   par=Sys_costs       rng=Sys_costs!A1           rdim=0 cdim=0
+
+
+$offecho
+*$offtext
+execute 'gdxxrw check.gdx o=output.xlsx EpsOut=0 @out.tmp'

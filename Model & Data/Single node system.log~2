@@ -1,10 +1,11 @@
---- Job Single node system.gms Start 11/24/21 17:10:52 34.2.0 r6925a71 WEX-WEI x86 64bit/MS Windows
+
+--- Job Single node system.gms Start 11/25/21 17:47:35 34.2.0 r6925a71 WEX-WEI x86 64bit/MS Windows
 --- Applying:
     C:\GAMS\34\gmsprmNT.txt
 --- GAMS Parameters defined
     Input "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Single node system.gms"
     PageSize 0
-    ScrDir "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\225a\"
+    ScrDir "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\225d\"
     SysDir C:\GAMS\34\
     LogOption 3
     ErrMsg 1
@@ -16,79 +17,30 @@ Licensee: Small MUD - 5 User License                     S201118/0001AN-WIN
           C:\Users\berne\Documents\GAMS\gamslice.txt
 GAMS 34.2.0   Copyright (C) 1987-2021 GAMS Development. All rights reserved
 --- Starting compilation
---- Single node system.gms(91) 3 Mb
---- call gdxxrw Data_24_toys.xlsx @IEEE.txt
+--- Single node system.gms(101) 3 Mb
+--- call gdxxrw Data_Input.xlsx @IEEE.txt
 
 GDXXRW           34.2.0 r6925a71 Released Feb 05, 2021 WEI x86 64bit/MS Window
-Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_24_toys.xlsx
-Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_24_toys.gdx
-Total time = 4250 Ms
---- Single node system.gms(92) 3 Mb
---- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_24_toys.gdx
---- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_24_toys.gdx
---- Single node system.gms(213) 3 Mb
---- Starting execution: elapsed 0:00:06.471
---- Single node system.gms(199) 4 Mb
---- Generating LP model TEP_IEEE_24_to_single_node
---- Single node system.gms(202) 5 Mb
----   6,043 rows  3,313 columns  11,692 non-zeroes
---- Single node system.gms(202) 5 Mb  3 secs
---- Executing CPLEX (Solvelink=2): elapsed 0:00:10.895
-
-IBM ILOG CPLEX   34.2.0 r6925a71 Released Feb 05, 2021 WEI x86 64bit/MS Window
-
---- GAMS/Cplex Link licensed for continuous and discrete problems.
---- Space for names approximately 0.24 Mb
---- Use option 'names no' to turn use of names off
---- GMO memory 2.06 Mb (peak 2.09 Mb)
---- Dictionary memory 0.00 Mb
---- Cplex 20.1.0.0 link memory 0.13 Mb (peak 0.57 Mb)
---- Starting Cplex
-
-Version identifier: 20.1.0.0 | 2020-11-10 | 9bedb6d68
-CPXPARAM_Advance                                 0
-CPXPARAM_Threads                                 1
-CPXPARAM_MIP_Display                             4
-CPXPARAM_MIP_Tolerances_AbsMIPGap                0
-Tried aggregator 1 time.
-LP Presolve eliminated 5418 rows and 1981 columns.
-Aggregator did 3 substitutions.
-Reduced LP has 621 rows, 1329 columns, and 2139 nonzeros.
-Presolve time = 0.00 sec. (3.69 ticks)
-Symmetry aggregator did 1416 additional substitutions.
-Initializing dual steep norms . . .
-
-Iteration log . . .
-Iteration:     1   Dual infeasibility =             0.000000
-Iteration:     2   Dual objective     =     -64113904.335000
-Iteration:    63   Dual objective     =     -57897678.364350
-Iteration:   133   Dual objective     =       5044708.854600
-
-Dual crossover.
-  Dual:  Fixed no variables.
-  Primal:  Fixing 6 variables.
-        5 PMoves:  Infeasibility  0.00000000e+00  Objective  5.08250989e+06
-        0 PMoves:  Infeasibility  0.00000000e+00  Objective  5.08250989e+06
-  Primal:  Pushed 0, exchanged 6.
-
---- LP status (1): optimal.
---- Cplex Time: 0.02sec (det. 6.83 ticks)
-
-
-Optimal solution found
-Objective:      5082509.889900
-
---- Reading solution for model TEP_IEEE_24_to_single_node
---- Single node system.gms(202) 5 Mb  20 secs
---- Executing after solve: elapsed 0:00:27.803
---- Single node system.gms(212) 5 Mb
---- GDX File (execute_unload) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\check_single.gdx
---- Profile Summary (6 records processed)
-    13.468   0.005GB       202 Solve Read TEP_IEEE_24_to_single_node
-     3.734   0.005GB       202 Solve Fini TEP_IEEE_24_to_single_node (11692)
-     3.454   0.005GB       202 Solve Alg  TEP_IEEE_24_to_single_node
-     1.500   0.005GB       212 Unload     
-     0.546   0.004GB       165 Equation   Total_costs (1)
-     0.141   0.005GB       183 Equation   min_cap (897)
-*** Status: Normal completion
---- Job Single node system.gms Stop 11/24/21 17:11:21 elapsed 0:00:29.634
+Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_Input.xlsx
+Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_Input.gdx
+Total time = 3782 Ms
+--- Single node system.gms(102) 3 Mb
+--- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_Input.gdx
+--- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_Input.gdx
+--- Single node system.gms(213) 3 Mb 2 Errors
+*** Error  66 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Single node system.gms
+    The symbol shown has not been defined or assigned
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+*** Error 256 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Single node system.gms
+    Error(s) in analyzing solve statement.
+*** The following LP errors were detected in model TEP_IEEE_24_to_single_node:
+     66 equation Balance.. symbol "scale_conv" has no values assigned
+     66 equation Balance.. symbol "scale_res" has no values assigned
+--- Single node system.gms(221) 3 Mb 3 Errors
+*** Error 148 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Single node system.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- Single node system.gms(245) 3 Mb 3 Errors
+*** Status: Compilation error(s)
+--- Job Single node system.gms Stop 11/25/21 17:47:41 elapsed 0:00:06.379

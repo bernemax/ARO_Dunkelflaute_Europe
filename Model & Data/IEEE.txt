@@ -1,2 +1,3 @@
-par=genup                       rng=Generation!A1:R14             rdim=1 cDim=1
+par=genup                       rng=Generation!A1:R19             rdim=1 cDim=1
 par=availup                     rng=Availability!A1:B25           rdim=1 cDim=1
+par=System_demand               rng=Demand!A1:B25                 rdim=1 cDim=0

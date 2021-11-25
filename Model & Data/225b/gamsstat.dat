@@ -1,0 +1,62 @@
+=1
+=2
+=0IBM ILOG CPLEX   34.2.0 r6925a71 Released Feb 05, 2021 WEI x86 64bit/MS Window
+=1
+--- GAMS/Cplex Link licensed for continuous and discrete problems.
+=2
+=1
+--- Space for names approximately 0.24 Mb
+=2
+=1
+--- Use option 'names no' to turn use of names off
+=2
+=1
+--- GMO memory 2.06 Mb (peak 2.09 Mb)
+=2
+=1
+--- Dictionary memory 0.00 Mb
+=2
+=1
+--- Cplex 20.1.0.0 link memory 0.13 Mb (peak 0.57 Mb)
+=2
+=1
+--- Starting Cplex
+=2
+=C
+Version identifier: 20.1.0.0 | 2020-11-10 | 9bedb6d68
+CPXPARAM_Advance                                 0
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 5418 rows and 1981 columns.
+Aggregator did 3 substitutions.
+Reduced LP has 621 rows, 1329 columns, and 2139 nonzeros.
+Presolve time = 0.00 sec. (3.69 ticks)
+Symmetry aggregator did 1416 additional substitutions.
+Initializing dual steep norms . . .
+
+Iteration log . . .
+Iteration:     1   Dual infeasibility =             0.000000
+Iteration:     2   Dual objective     =     -64113904.335000
+Iteration:    63   Dual objective     =     -57897678.364350
+Iteration:   133   Dual objective     =       5044708.854600
+
+Dual crossover.
+  Dual:  Fixed no variables.
+  Primal:  Fixing 6 variables.
+        5 PMoves:  Infeasibility  0.00000000e+00  Objective  5.08250989e+06
+        0 PMoves:  Infeasibility  0.00000000e+00  Objective  5.08250989e+06
+  Primal:  Pushed 0, exchanged 6.
+=C
+=1
+--- LP status (1): optimal.
+=2
+=1
+--- Cplex Time: 0.00sec (det. 6.83 ticks)
+
+=2
+=C
+=COptimal solution found
+=CObjective:      5082509.889900
+=C

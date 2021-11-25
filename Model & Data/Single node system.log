@@ -1,11 +1,11 @@
 
---- Job Single node system.gms Start 11/25/21 07:44:42 34.2.0 r6925a71 WEX-WEI x86 64bit/MS Windows
+--- Job Single node system.gms Start 11/25/21 17:54:33 34.2.0 r6925a71 WEX-WEI x86 64bit/MS Windows
 --- Applying:
     C:\GAMS\34\gmsprmNT.txt
 --- GAMS Parameters defined
     Input "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Single node system.gms"
     PageSize 0
-    ScrDir "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\225a\"
+    ScrDir "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\225d\"
     SysDir C:\GAMS\34\
     LogOption 3
     ErrMsg 1
@@ -17,23 +17,24 @@ Licensee: Small MUD - 5 User License                     S201118/0001AN-WIN
           C:\Users\berne\Documents\GAMS\gamslice.txt
 GAMS 34.2.0   Copyright (C) 1987-2021 GAMS Development. All rights reserved
 --- Starting compilation
---- Single node system.gms(93) 3 Mb
+--- Single node system.gms(101) 3 Mb
 --- call gdxxrw Data_Input.xlsx @IEEE.txt
 
 GDXXRW           34.2.0 r6925a71 Released Feb 05, 2021 WEI x86 64bit/MS Window
 Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_Input.xlsx
 Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_Input.gdx
-Total time = 3656 Ms
---- Single node system.gms(94) 3 Mb
+Total time = 3594 Ms
+--- Single node system.gms(102) 3 Mb
 --- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_Input.gdx
 --- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\Data_Input.gdx
---- Single node system.gms(230) 3 Mb
---- Starting execution: elapsed 0:00:05.648
---- Single node system.gms(201) 4 Mb
+--- Single node system.gms(249) 3 Mb
+--- Starting execution: elapsed 0:00:05.703
+--- Single node system.gms(216) 4 Mb
 --- Generating LP model TEP_IEEE_24_to_single_node
---- Single node system.gms(204) 5 Mb
+--- Single node system.gms(218) 5 Mb
+--- LOOPS it = 1
 ---   6,043 rows  3,313 columns  11,692 non-zeroes
---- Executing CPLEX (Solvelink=2): elapsed 0:00:09.254
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:09.346
 
 IBM ILOG CPLEX   34.2.0 r6925a71 Released Feb 05, 2021 WEI x86 64bit/MS Window
 
@@ -54,49 +55,258 @@ Tried aggregator 1 time.
 LP Presolve eliminated 5418 rows and 1981 columns.
 Aggregator did 3 substitutions.
 Reduced LP has 621 rows, 1329 columns, and 2139 nonzeros.
-Presolve time = 0.02 sec. (3.69 ticks)
+Presolve time = 0.01 sec. (3.69 ticks)
 Symmetry aggregator did 1416 additional substitutions.
 Initializing dual steep norms . . .
 
 Iteration log . . .
 Iteration:     1   Dual infeasibility =             0.000000
-Iteration:     2   Dual objective     =     -64113904.335000
-Iteration:    63   Dual objective     =     -57897678.364350
-Iteration:   133   Dual objective     =       5044708.854600
+Iteration:     2   Dual objective     =     -64122427.113000
+Iteration:    63   Dual objective     =     -56507222.653320
+Iteration:   135   Dual objective     =       4780369.290990
 
 Dual crossover.
   Dual:  Fixed no variables.
-  Primal:  Fixing 6 variables.
-        5 PMoves:  Infeasibility  0.00000000e+00  Objective  5.08250989e+06
-        0 PMoves:  Infeasibility  0.00000000e+00  Objective  5.08250989e+06
-  Primal:  Pushed 0, exchanged 6.
+  Primal:  Fixing 36 variables.
+       35 PMoves:  Infeasibility  0.00000000e+00  Objective  4.78036929e+06
+        0 PMoves:  Infeasibility  0.00000000e+00  Objective  4.78036929e+06
+  Primal:  Pushed 0, exchanged 36.
 
 --- LP status (1): optimal.
---- Cplex Time: 0.02sec (det. 6.83 ticks)
+--- Cplex Time: 0.01sec (det. 6.78 ticks)
 
 
 Optimal solution found
-Objective:      5082509.889900
+Objective:      4780369.290990
 
 --- Reading solution for model TEP_IEEE_24_to_single_node
---- Single node system.gms(204) 5 Mb  20 secs
---- Executing after solve: elapsed 0:00:26.766
---- Single node system.gms(218) 5 Mb
+--- Single node system.gms(218) 5 Mb  20 secs
+--- Executing after solve: elapsed 0:00:27.119
+--- Single node system.gms(216) 5 Mb
+--- Generating LP model TEP_IEEE_24_to_single_node
+--- Single node system.gms(218) 6 Mb
+--- LOOPS it = 2
+---   6,043 rows  3,313 columns  11,692 non-zeroes
+--- Single node system.gms(218) 6 Mb  3 secs
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:31.393
+
+IBM ILOG CPLEX   34.2.0 r6925a71 Released Feb 05, 2021 WEI x86 64bit/MS Window
+
+--- GAMS/Cplex Link licensed for continuous and discrete problems.
+--- Space for names approximately 0.24 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 2.06 Mb (peak 2.09 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 20.1.0.0 link memory 0.13 Mb (peak 0.57 Mb)
+--- Starting Cplex
+
+Version identifier: 20.1.0.0 | 2020-11-10 | 9bedb6d68
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 5421 rows and 1999 columns.
+Aggregator did 3 substitutions.
+Reduced LP has 618 rows, 1311 columns, and 2121 nonzeros.
+Presolve time = 0.02 sec. (3.75 ticks)
+
+Iteration log . . .
+Iteration:     1   Dual infeasibility =           962.339999
+Iteration:   112   Dual infeasibility =           369.019961
+Iteration:   217   Dual infeasibility =           254.999961
+Iteration:   312   Dual infeasibility =           103.319961
+Iteration:   385   Dual objective     =       4755170.336775
+Perturbation started.
+Iteration:   486   Dual objective     =       4755170.336775
+Iteration:   607   Dual objective     =       5383446.112958
+Removing perturbation.
+
+--- LP status (1): optimal.
+--- Cplex Time: 0.02sec (det. 13.40 ticks)
+
+
+Optimal solution found
+Objective:      5615890.494450
+
+--- Reading solution for model TEP_IEEE_24_to_single_node
+--- Single node system.gms(218) 6 Mb  20 secs
+--- Executing after solve: elapsed 0:00:48.842
+--- Single node system.gms(216) 6 Mb
+--- Generating LP model TEP_IEEE_24_to_single_node
+--- Single node system.gms(218) 6 Mb
+--- LOOPS it = 3
+---   6,043 rows  3,313 columns  11,692 non-zeroes
+--- Single node system.gms(218) 6 Mb  3 secs
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:53.107
+
+IBM ILOG CPLEX   34.2.0 r6925a71 Released Feb 05, 2021 WEI x86 64bit/MS Window
+
+--- GAMS/Cplex Link licensed for continuous and discrete problems.
+--- Space for names approximately 0.24 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 2.06 Mb (peak 2.09 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 20.1.0.0 link memory 0.13 Mb (peak 0.57 Mb)
+--- Starting Cplex
+
+Version identifier: 20.1.0.0 | 2020-11-10 | 9bedb6d68
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 5421 rows and 1999 columns.
+Aggregator did 3 substitutions.
+Reduced LP has 618 rows, 1311 columns, and 2121 nonzeros.
+Presolve time = 0.00 sec. (3.75 ticks)
+
+Iteration log . . .
+Iteration:     1   Dual infeasibility =          1146.339998
+Iteration:   119   Dual infeasibility =           192.489927
+Iteration:   230   Dual infeasibility =           120.119927
+Iteration:   331   Dual objective     =       5229362.207850
+Iteration:   488   Dual objective     =       8565139.748850
+Iteration:   605   Dual objective     =       8868995.481183
+Iteration:   730   Dual objective     =      21447792.742500
+Iteration:   847   Dual objective     =      28636479.092750
+
+--- LP status (1): optimal.
+--- Cplex Time: 0.01sec (det. 14.02 ticks)
+
+
+Optimal solution found
+Objective:     28642286.377850
+
+--- Reading solution for model TEP_IEEE_24_to_single_node
+--- Single node system.gms(218) 6 Mb  21 secs
+--- Executing after solve: elapsed 0:01:11.483
+--- Single node system.gms(216) 6 Mb
+--- Generating LP model TEP_IEEE_24_to_single_node
+--- Single node system.gms(218) 6 Mb
+--- LOOPS it = 4
+---   6,043 rows  3,313 columns  11,692 non-zeroes
+--- Single node system.gms(218) 6 Mb  3 secs
+--- Executing CPLEX (Solvelink=2): elapsed 0:01:15.786
+
+IBM ILOG CPLEX   34.2.0 r6925a71 Released Feb 05, 2021 WEI x86 64bit/MS Window
+
+--- GAMS/Cplex Link licensed for continuous and discrete problems.
+--- Space for names approximately 0.24 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 2.06 Mb (peak 2.09 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 20.1.0.0 link memory 0.13 Mb (peak 0.57 Mb)
+--- Starting Cplex
+
+Version identifier: 20.1.0.0 | 2020-11-10 | 9bedb6d68
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 5421 rows and 1999 columns.
+Aggregator did 3 substitutions.
+Reduced LP has 618 rows, 1311 columns, and 2121 nonzeros.
+Presolve time = 0.00 sec. (3.75 ticks)
+
+Iteration log . . .
+Iteration:     1   Dual infeasibility =        190283.159997
+Iteration:   117   Dual infeasibility =          1044.309838
+Iteration:   345   Dual infeasibility =             2.959838
+Iteration:   358   Dual objective     =      11518169.826750
+Iteration:   522   Dual objective     =      14062128.737250
+Perturbation started.
+Iteration:   560   Dual objective     =      14062128.737250
+Iteration:   671   Dual objective     =      15117690.504643
+Iteration:   758   Dual objective     =      39226971.997951
+Iteration:   861   Dual objective     =     114620481.955188
+Removing perturbation.
+
+--- LP status (1): optimal.
+--- Cplex Time: 0.01sec (det. 13.54 ticks)
+
+
+Optimal solution found
+Objective:    130738160.059050
+
+--- Reading solution for model TEP_IEEE_24_to_single_node
+--- Single node system.gms(218) 6 Mb  20 secs
+--- Executing after solve: elapsed 0:01:33.010
+--- Single node system.gms(216) 6 Mb
+--- Generating LP model TEP_IEEE_24_to_single_node
+--- Single node system.gms(218) 6 Mb
+--- LOOPS it = 5
+---   6,043 rows  3,313 columns  11,692 non-zeroes
+--- Single node system.gms(218) 6 Mb  3 secs
+--- Executing CPLEX (Solvelink=2): elapsed 0:01:37.376
+
+IBM ILOG CPLEX   34.2.0 r6925a71 Released Feb 05, 2021 WEI x86 64bit/MS Window
+
+--- GAMS/Cplex Link licensed for continuous and discrete problems.
+--- Space for names approximately 0.24 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 2.06 Mb (peak 2.09 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 20.1.0.0 link memory 0.13 Mb (peak 0.57 Mb)
+--- Starting Cplex
+
+Version identifier: 20.1.0.0 | 2020-11-10 | 9bedb6d68
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 5421 rows and 1999 columns.
+Aggregator did 3 substitutions.
+Reduced LP has 618 rows, 1311 columns, and 2121 nonzeros.
+Presolve time = 0.02 sec. (3.75 ticks)
+
+Iteration log . . .
+Iteration:     1   Dual infeasibility =        134182.200000
+Iteration:   118   Dual infeasibility =          1416.359814
+Iteration:   225   Dual infeasibility =          1379.459814
+Iteration:   336   Dual infeasibility =          1135.139803
+Iteration:   405   Dual infeasibility =           703.779777
+Iteration:   467   Dual infeasibility =           364.199758
+Iteration:   554   Dual infeasibility =           244.260000
+Iteration:   619   Dual infeasibility =           163.800000
+Iteration:   683   Dual infeasibility =            55.090000
+Iteration:   707   Dual objective     =      24617185.061250
+Iteration:   768   Dual objective     =     114541077.382650
+Iteration:   840   Dual objective     =     227443144.728400
+Iteration:  1029   Dual objective     =     264470108.020498
+
+--- LP status (1): optimal.
+--- Cplex Time: 0.02sec (det. 19.85 ticks)
+
+
+Optimal solution found
+Objective:    265548862.992001
+
+--- Reading solution for model TEP_IEEE_24_to_single_node
+--- Single node system.gms(218) 6 Mb  20 secs
+--- Executing after solve: elapsed 0:01:54.294
+--- Single node system.gms(237) 6 Mb
 --- GDX File (execute_unload) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\check_single.gdx
---- Single node system.gms(230) 5 Mb
+--- Single node system.gms(249) 6 Mb
 
 GDXXRW           34.2.0 r6925a71 Released Feb 05, 2021 WEI x86 64bit/MS Window
 Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\check_single.gdx
 Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\Model & Data\output.xlsx
-Total time = 7187 Ms
---- Profile Summary (7 records processed)
-    14.812   0.005GB       204 Solve Read TEP_IEEE_24_to_single_node
-     7.953   0.005GB       230 Execute    
-     2.766   0.005GB       204 Solve Fini TEP_IEEE_24_to_single_node (11692)
-     2.703   0.005GB       204 Solve Alg  TEP_IEEE_24_to_single_node
-     1.188   0.005GB       218 Unload     
-     0.766   0.004GB       167 Equation   Total_costs (1)
-     0.078   0.005GB       183 Equation   max_cap (936)
+Total time = 7968 Ms
+--- Profile Summary (31 records processed)
+   108.688   0.006GB       216 Loop       
+--- Single node system.gms(249) 6 Mb  8 secs
+    15.828   0.006GB       218 Solve Read TEP_IEEE_24_to_single_node
+    15.031   0.005GB       218 Solve Read TEP_IEEE_24_to_single_node
+    14.985   0.006GB       218 Solve Read TEP_IEEE_24_to_single_node
+    14.297   0.006GB       218 Solve Read TEP_IEEE_24_to_single_node
+    14.266   0.006GB       218 Solve Read TEP_IEEE_24_to_single_node
+     8.719   0.006GB       249 Execute    
+     3.500   0.006GB       218 Solve Fini TEP_IEEE_24_to_single_node (11692)
+     3.484   0.006GB       218 Solve Fini TEP_IEEE_24_to_single_node (11692)
+     3.422   0.006GB       218 Solve Fini TEP_IEEE_24_to_single_node (11692)
 *** Status: Normal completion
---- Single node system.gms(230) 5 Mb  8 secs
---- Job Single node system.gms Stop 11/25/21 07:45:18 elapsed 0:00:36.267
+--- Single node system.gms(249) 6 Mb  9 secs
+--- Job Single node system.gms Stop 11/25/21 17:56:38 elapsed 0:02:04.917

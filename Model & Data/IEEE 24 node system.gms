@@ -15,9 +15,11 @@ l /l1*l60/
 *node set
 n /n1*n32/
 *expansion Korridor
-*k /k1*k4/
+k /k1*k4/
 *years in model
 year/1*3/
+*iteration index
+it  /1*5/
 
 *referenze node
 ref(n) /n1/
@@ -35,7 +37,7 @@ Map_prosp_nodeconnection(l,n)
 ;
 
 alias
-(t,tt), (year,period)
+(t,tt), (year,period), (it,iitt)
 ;
 scalars
 Sbase /100/
@@ -43,6 +45,11 @@ M    /1000/
 ILmax /100000/
 dis   /0.06/
 intr  /0.1/
+
+scale_conv /1/
+scale_res  /1/
+
+loop_scale /0.2/
 ;
 Parameter
 genup                       upload table for generation data\parameter like costs\startups and co.
@@ -70,23 +77,20 @@ su_costs(g)
 
 line_cap(l)                    line capacity
 b(l)                           line susceptance = 1\line reactance
-
 Inv_costs(l,year)
-price(n,t,year)
+
+price(n,t,year,it)
 
 line_investment(l)
 total_investment(l,year)
 ANF(year)
 Discount(year)
 
-EENS(year)
-Count(t)
-LOLH(year)
+EENS(year,it)
+Count(t,it)
+LOLH(year,it)
 
-scale_conv
-scale_res
-
-Sys_costs
+Sys_costs(it)
 
 ;
 *########################################################set & parameter loading####################################################
@@ -151,10 +155,10 @@ wind_cap(w)             =   genup(w,'Pi_max')
 ;
 wind_af(t,year)         =   availup(t,'Wind_low')
 ;
-*ANF(year)           =   (((1 + dis)**(ord(year) - 1)) * dis)/ (((1+dis)**ord(year)) - 1)
-*;
-*Discount(year)      =    1 / (1+intr)**(ord(year) -1 )
-*;
+ANF(year)               =   (((1 + dis)**(ord(year) - 1)) * dis)/ (((1+dis)**ord(year)) - 1)
+;
+Discount(year)          =    1 / (1+intr)**(ord(year) -1 )
+;
 *execute_unload "check.gdx";
 *$stop
 *############################################################variables########################################################
@@ -228,8 +232,8 @@ Total_costs..                costs                  =e=   (sum((g,t,year), gen_c
 ;
 *##################################################################Energy balance################################################
 
-Balance(n,t,year)..          nodal_demand(n,t,year) - LS (n,t,year) + X_dem(n,t,year) =e=  sum(g$Map_gen(g,n), gen_conv(g,t,year)*0.7)
-                                                                                   + sum(w$Map_wind(w,n),gen_wind(w,t,year))
+Balance(n,t,year)..          nodal_demand(n,t,year) - LS (n,t,year) + X_dem(n,t,year) =e=  sum(g$Map_gen(g,n), gen_conv(g,t,year)* scale_conv)
+                                                                                   + sum(w$Map_wind(w,n),gen_wind(w,t,year) * scale_res)
 
                                                         + sum(l$Map_res(l,n),power_flow(l,t,year))
                                                         - sum(l$Map_send(l,n),power_flow(l,t,year))
@@ -343,7 +347,7 @@ Theta_ref
 *option limrow = 1e9;
 TEP_IEEE_24.scaleopt = 1
 ;
-
+loop(it,
 solve TEP_IEEE_24 using MIP minimizing costs;
 
 %NO_Invest% x.fx(l,t,year) = x.l(l,t,year)
@@ -351,30 +355,35 @@ solve TEP_IEEE_24 using MIP minimizing costs;
 %NO_Invest% z.fx(n,t,year) = z.l(n,t,year)
 ;
 ************************************report parameters*******************************
-Count(t)$(sum((n,year),LS.l(n,t,year))gt 0) =1
+Count(t,it)$(sum((n,year),LS.l(n,t,year))gt 0) =1
 ;
-LOLH(year) = sum(t, count(t))
+LOLH(year,it) = sum(t, count(t,it))
 ;
-EENS(year) = sum((n,t),LS.l(n,t,year))
+EENS(year,it) = sum((n,t),LS.l(n,t,year))
 ;
-price(n,t,year) = Balance.m(n,t,year)*(-1)
+price(n,t,year,it) = Balance.m(n,t,year)*(-1)
 ;
-Sys_costs = costs.l
+Sys_costs(it) = costs.l
 ;
 %NO_Invest% line_investment(l) = sum((t,year), Inv_costs(l,year) * x.l(l,t,year))
 ;
 %NO_Invest% total_investment(l,year) = sum((tt,period),Inv_costs(l,year)* ANF(year) * (x.l(l,tt,period)))
 ;
+scale_conv = scale_conv - loop_scale
+;
+scale_res  = scale_conv + 9$(ord(it) = 5)
+;
+)
 *************************************Output to excel********************************
 execute_unload "check.gdx"
 ;
 *$ontext
 $onecho >out.tmp
 
-   par=LoLH            rng=LOLH!A1                rdim=0 cdim=1
-   par=EENS            rng=EENS!A1                rdim=0 cdim=1
-   par=price           rng=Price!A1               rdim=2 cdim=1
-   par=Sys_costs       rng=Sys_costs!A1           rdim=0 cdim=0
+   par=LoLH            rng=LOLH!A1                rdim=1 cdim=1
+   par=EENS            rng=EENS!A1                rdim=1 cdim=1
+   par=price           rng=Price!A1               rdim=3 cdim=1
+   par=Sys_costs       rng=Sys_costs!A1           rdim=1 cdim=0
 
 
 $offecho

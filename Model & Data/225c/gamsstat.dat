@@ -1,0 +1,67 @@
+=1
+=2
+=0IBM ILOG CPLEX   34.2.0 r6925a71 Released Feb 05, 2021 WEI x86 64bit/MS Window
+=1
+--- GAMS/Cplex Link licensed for continuous and discrete problems.
+=2
+=1
+--- Space for names approximately 0.24 Mb
+=2
+=1
+--- Use option 'names no' to turn use of names off
+=2
+=1
+--- GMO memory 2.06 Mb (peak 2.09 Mb)
+=2
+=1
+--- Dictionary memory 0.00 Mb
+=2
+=1
+--- Cplex 20.1.0.0 link memory 0.13 Mb (peak 0.57 Mb)
+=2
+=1
+--- Starting Cplex
+=2
+=C
+Version identifier: 20.1.0.0 | 2020-11-10 | 9bedb6d68
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Row 'Balance(t1,1)' infeasible, all entries at implied bounds.
+Presolve time = 0.00 sec. (1.02 ticks)
+=C
+=1
+--- LP status (3): infeasible.
+=2
+=1
+--- Cplex Time: 0.02sec (det. 3.04 ticks)
+
+=2
+=1
+--- Rerunning with presolve turned off and solving with LPMETHOD=1.
+=2
+=C
+Version identifier: 20.1.0.0 | 2020-11-10 | 9bedb6d68
+CPXPARAM_Advance                                 2
+CPXPARAM_Preprocessing_Presolve                  0
+CPXPARAM_LPMethod                                1
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Using devex.
+
+Iteration log . . .
+Iteration:     1    Infeasibility =         36342.300000
+Iteration:    24    Infeasibility =         11919.900000
+=C
+=1
+--- LP status (3): infeasible.
+=2
+=1
+--- Cplex Time: 0.00sec (det. 4.48 ticks)
+
+=2
+=C
+=CModel has been proven infeasible
+=C

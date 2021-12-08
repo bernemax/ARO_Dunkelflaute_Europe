@@ -2,12 +2,13 @@ Sets
 
 n /DE,DK,SE,PL,CZ,AT,CH,FR,BE,NL,
    NO,GB,IT,SP,PT/
-g /g1*g20/
-s /s1*s20/
+g /g1*g60/
+s /s1*s30/
+res/res1*res30/
 NTC/ntc1*ntc100/
 t/t1*t8760/
-sr/sr1*sr20/
-wr/wr1*wr20/
+sr/sr1*sr10/
+wr/wr1*wr10/
 
 *H(t,it)
 
@@ -20,24 +21,21 @@ oil(g)
 waste(g)
 
 ****************************renewable***********************************************
-wind(g)
-sun(g)
-biomass(g)
+wind(res)
+sun(res)
+biomass(res)
 
 ****************************hydro***************************************************
-ror(g)
-reservoir(g)
-psp(g)
+ror(s)
+reservoir(s)
+psp(s)
 
 ****************************mapping*************************************************
 
-MapG(g,n)
-MapNTC(NTC,n,nn)
-
-*MapNTC_send(NTC,n)
-*MapNTC_res(NTC,n)
-
-MapRes(res,n)
+MapG(n,g)
+MapS(n,s)
+MapRes(n,res)
+MapNTC(n,ntc)
 MapSr(n,sr)
 MapWr(n,wr)
 ;
@@ -49,13 +47,16 @@ Parameters
 
 Country_load                    upload table
 
-Gen_upload                      upload table
+Gen_conv                        upload table
+Gen_res                         upload table
+Gen_hydro                       upload table
 
 priceup                         upload table
-availup_hydro                   upload table
-availup_res
+availup                         upload table
 
-NTC_up
+NTC_up(n,nn,t)                  upload table
+
+
 NTC_cap(ntc)                    max. net transfer capacity 
 
 
@@ -82,26 +83,26 @@ Eff_hydro(s)                    efficiency of hydro powerplants
 Eff_res(res)                    efficiency of renewable powerplants
 
 af_hydro(s,t)                   availability of hydro potential
-af_sun(t,sr,n)                  capacity factor of solar energy
-af_wind(t,wr,n)                 capacity factor of wind energy
+af_sun(n,sr,t)                  capacity factor of solar energy
+af_wind(n,wr,t)                 capacity factor of wind energy
 
 
 **********************************************input Excel table*******************************************************
 ;
 
 $onecho > TEP.txt
-set=MapG                        rng=Mapping!G3:H561                     rdim=2 cDim=0
-set=MapS                        rng=Mapping!J3:K177                     rdim=2 cDim=0
-set=MapRes                      rng=Mapping!S3:T1027                    rdim=2 cDim=0
-set=MapWr                       rng=Mapping!M3:N482                     rdim=2 cDim=0
-set=MapSr                       rng=Mapping!P3:Q482                     rdim=2 cDim=0
-
+set=MapG                        rng=Mapping!A2:B100                     rdim=2 cDim=0
+set=MapS                        rng=Mapping!D2:E100                     rdim=2 cDim=0
+set=MapRes                      rng=Mapping!G2:H100                     rdim=2 cDim=0
+set=MapSr                       rng=Mapping!J2:K30                      rdim=2 cDim=0
+set=MapWr                       rng=Mapping!M2:N30                      rdim=2 cDim=0
 
 par=Country_load                rng=Load!A1:C506                        rDim=1 cdim=1
-par=Gen_upload                  rng=Generation!A1:L500                  rDim=1 cdim=1
+par=Gen_conv                    rng=Gen_conv!B1:J561                    rDim=1 cdim=1
+par=Gen_res                     rng=Gen_res!B1:E1120                    rDim=1 cdim=1
+par=Gen_Hydro                   rng=Gen_Hydro!B1:F177                   rDim=1 cdim=1
 par=priceup                     rng=prices!A1:I8761                     rDim=1 cdim=1
-par=availup_hydro               rng=Availability!A2:D8762               rDim=1 cdim=1
-par=availup_res                 rng=Availability!E2:DU8762              rDim=1 cdim=1
+par=availup                     rng=Availability!A1:D8762               rDim=1 cdim=1
 
 $offecho
 
@@ -109,54 +110,55 @@ $onUNDF
 $call   gdxxrw Data_input.xlsx @TEP.txt
 $GDXin  Data_input.gdx
 $load   MapG, MapS, MapRes, MapSr, MapWr
-$load   Node_Demand,
-$load   Gen_upload, priceup
-$load   availup_hydro, availup_res
+$load   Country_load
+$load   Gen_conv, Gen_res, Gen_Hydro
+$load   priceup
+$load   availup
 $GDXin
 $offUNDF
 
 *####################################subset definitions#############################
 
-        gas(g)      =    Gen_upload(g,'tech')  = 1
+        gas(g)      =    Gen_conv(g,'tech')  = 1
 ;
-        oil(g)      =    Gen_upload(g,'tech')  = 2
+        oil(g)      =    Gen_conv(g,'tech')  = 2
 ;
-        coal(g)     =    Gen_upload(g,'tech')  = 3
+        coal(g)     =    Gen_conv(g,'tech')  = 3
 ;
-        lig(g)      =    Gen_upload(g,'tech')  = 4
+        lig(g)      =    Gen_conv(g,'tech')  = 4
 ;
-        nuc(g)      =    Gen_upload(g,'tech')  = 5
+        nuc(g)      =    Gen_conv(g,'tech')  = 5
 ;
-        waste(g)    =    Gen_upload(g,'tech')  = 6
+        waste(g)    =    Gen_conv(g,'tech')  = 6
 ;
 
 ***************************************hydro****************************************
 
-        psp(s)      =    Gen_upload(g,'tech') = 7
+        psp(s)      =    Gen_Hydro(s,'tech') = 7
 ;
-        reservoir(s)=    Gen_upload(g,'tech') = 8
+        reservoir(s)=    Gen_Hydro(s,'tech') = 8
 ;
-        ror(s)      =    Gen_upload(g,'tech') = 9
+        ror(s)      =    Gen_Hydro(s,'tech') = 9
 ;
 
 ****************************************res*****************************************
 
-        wind(res)   =    Gen_upload(g,'tech') = 10
+        wind(res)   =    Gen_res(res,'tech') = 10
 ;
-        sun(res)    =    Gen_upload(g,'tech') = 11
+        sun(res)    =    Gen_res(res,'tech') = 11
 ;
-        biomass(res)=    Gen_upload(g,'tech') = 12
+        biomass(res)=    Gen_res(res,'tech') = 12
 ;
 
+execute_unload "check.gdx";
+$stop
 *###################################loading parameter###############################
 
 *****************************************demand*************************************
 
-load(t)             =          Ger_demand(t,'total_load')
+load(t)             =          Country_load(t,'total_load')
 ;
-LS_costs(n)         =          Node_Demand(n,'LS_costs')
-;
-load_share(n)       =          Node_Demand(n,'share')
+LS_costs(n)         =          3000
 ;
 
 *****************************************prices*************************************
@@ -178,51 +180,30 @@ Fc_res(biomass,t)   =          priceup(t,'biomass')
 CO2_costs(t)        =          priceup(t,'CO2')
 ;
 
-************************************Grid technical**********************************
-
-B(l)                =          Grid_tech(l,'Susceptance')
-;
-incidence(l,n)      =          Map_Grid(l,n)
-;
-L_cap(l)            =          Grid_tech(l,'L_cap')
-;
-circuits(l)         =          Grid_tech(l,'circuits')
-;
-L_cap_inv_220(l)    =          Grid_invest(l,'cap_inv_220')
-;
-L_cap_inv_380(l)    =          Grid_invest(l,'cap_inv_380')
-;
-B_prosp_220(l)      =          Grid_invest(l,'Suscep_220')
-;
-B_prosp_380(l)      =          Grid_invest(l,'Suscep_380')
-;
-
-
 *************************************generators*************************************
 
-Cap_conv(g)         =          Gen_conv(g,'Gen_cap')
+Cap_conv(g)         =          Gen_upload(g,'Gen_cap')
 ;
-Cap_hydro(s)        =          Gen_Hydro(s,'Gen_cap')
+Cap_hydro(s)        =          Gen_upload(s,'Gen_cap')
 ;
-Cap_res(res)        =          Gen_res(res,'Gen_cap')
+Cap_res(res)        =          Gen_upload(res,'Gen_cap')
 ;
-Eff_conv(g)         =          Gen_conv(g,'eff')
+Eff_conv(g)         =          Gen_upload(g,'eff')
 ;
-Eff_hydro(s)        =          Gen_Hydro(s,'eff')
+Eff_hydro(s)        =          Gen_upload(s,'eff')
 ;
-Eff_res(res)        =          Gen_res(res,'eff')
+Eff_res(res)        =          Gen_upload(res,'eff')
 ;
-Co2_content(g)      =          Gen_conv(g,'CO2')
+Co2_content(g)      =          Gen_upload(g,'CO2')
 ;
-su_fact(g)          =          Gen_conv(g,'su_fact')
+su_fact(g)          =          Gen_upload(g,'su_fact')
 ;
-depri_costs(g)      =          Gen_conv(g,'depri_costs')
+depri_costs(g)      =          Gen_upload(g,'depri_costs')
 ;
-fuel_start(g)       =          Gen_conv(g,'fuel_start')
+fuel_start(g)       =          Gen_upload(g,'fuel_start')
 ;
 
 ************************************availability************************************
-
 
 af_hydro(ror,t)             =          availup_hydro(t,'ror')
 ;
@@ -234,21 +215,13 @@ af_sun(t,sr,n)$MapSR(n,sr)  =          availup_res(t,sr)
 ;
 af_wind(t,wr,n)$MapWR(n,wr) =          availup_res(t,wr)
 ;
-*************************************Investments************************************
 
-I_costs_220(l)      =  Grid_invest(l,'Inv_costs_220')/(8760/card(t))
-;
-I_costs_380(l)      =  Grid_invest(l,'Inv_costs_380')/(8760/card(t))
-;
+*************************************NTC********************************************
+
+NTC_cap(t)                  =          ntc_up(n,nn,t)
 
 *************************************calculating************************************
 
-H(l,n)                              =            B(l)* incidence(l,n)
-;
-load(n,t)$(De(n))                   =            load_share(n)*total_load(t)
-;
-load(n,t)$(border_states(n))        =            Neighbor_Demand(t,n)
-;
 var_costs(g,t)                      =            ((FC_conv(g,t)+ co2_costs(t) * co2_content(g)) / Eff_conv(g))
 ;
 su_costs(g,t)                       =            depri_costs(g) + su_fact(g) * fuel_start(g) * FC_conv(g,t) + co2_content(g) * co2_costs(t)
@@ -258,22 +231,13 @@ execute_unload "check.gdx";
 $stop
 *************************************upload table clearing**************************
 
-option kill = Node_Demand ;   
-option kill = Ger_Demand ; 
-option kill = Grid_tech ;
-option kill = Gen_conv ;
-option kill = Gen_res ;
-option kill = Gen_Hydro ;
-option kill = priceup ;
-option kill = availup_hydro ;
-option kill = availup_res ;
-option kill = Grid_invest ;
+*option kill = Node_Demand ;   
+
 
 *######################################variables######################################
 Variables
 Costs
-Power_flow(l,t)
-Theta(n,t)
+Power_flow(t,n,nn)
 ;
 
 positive Variables
@@ -289,7 +253,6 @@ P_on(g,t)
 
 Load_shed (n,t)
 Curtailment (res,t)
-X_dem(n,t)             variable to prevent model from infeasibility due to increasing el. demand at high costs
 ;
 
 Binary variables
@@ -323,19 +286,8 @@ Store_level_max
 Store_prod_max
 Store_prod_max_end
 
-Ex_line_angle
-Ex_Line_neg_flow
-Ex_line_pos_flow
+NTC_max
 
-
-Prosp_line_neg_flow
-Prosp_line_pos_flow
-
-Linearization_prosp_220_line_neg
-Linearization_prosp_220_line_pos
-
-Linearization_prosp_380_line_neg
-Linearization_prosp_380_line_pos
 
 LS_det
 Theta_LB
@@ -426,46 +378,11 @@ min_reservoir(reservoir,t)..                                gen_s(reservoir,t) =
 max_reservoir(reservoir,t)..                                gen_s(reservoir,t) =l= cap_hydro(reservoir) * af_hydro(reservoir,t)
 ;
 
-*##########################################################Grid###########################################################
+*##########################################################NTC exchange###########################################################
+
+ntc_max..                                                   Power_flow(t,n,nn) =l= 
 
 
-
-Ex_line_angle(l,t)$exist(l)..                               power_flow(l,t) + EPS =e=  (B(l)*(sum(n$Map_send_L(l,n), Theta(n,t))-sum(n$Map_res_L(l,n), Theta(n,t))))* MVABase
-;
-*Ex_line_angle(l,t)$exist(l)..                               power_flow(l,t) + EPS =e=  (B(l)*(sum(n$Map_Grid(l,n), Theta(n,t) -Theta)nn,t)* MVABase
-*;
-*Ex_line_angle(l,t)$exist(l)..                               power_flow(l,t) =e=  sum(n$H(l,n), H(l,n)*(Theta(n,t)$Map_send_L(l,n) - Theta(n,t)$Map_res_L(l,n))) *500
-*;
-Ex_line_neg_flow(l,t)$exist(l)..                            power_flow(l,t) + EPS =g= -L_cap(l)*circuits(l)*reliability
-;
-Ex_line_pos_flow(l,t)$exist(l)..                            power_flow(l,t) + EPS =l=  L_cap(l)*circuits(l)*reliability
-;
-
-Prosp_line_neg_flow(l,t)$prosp(l)..                         power_flow(l,t) + EPS =g= (- y(l) * L_cap_inv_380(l)
-%only_380%                                                                             - x(l) * L_cap_inv_220(l)
-                                                                                                                ) * reliability
-;
-Prosp_line_pos_flow(l,t)$prosp(l)..                         power_flow(l,t) + EPS =l= (  y(l) * L_cap_inv_380(l)
-%only_380%                                                                             + x(l) * L_cap_inv_220(l) 
-                                                                                                                ) * reliability
-;
-Linearization_prosp_220_line_neg(l,t)$prosp(l)..            -(1-x(l))*M   =l= power_flow(l,t) - B_prosp_220(l) * (sum(n$Map_send_L(l,n),Theta(n,t))-sum(n$Map_res_l(l,n),Theta(n,t))) * MVABase  + EPS
-;
-Linearization_prosp_220_line_pos(l,t)$prosp(l)..            (1-x(l))*M    =g= power_flow(l,t) - B_prosp_220(l) * (sum(n$Map_send_L(l,n),Theta(n,t))-sum(n$Map_res_l(l,n),Theta(n,t))) * MVABase  + EPS
-;
-Linearization_prosp_380_line_neg(l,t)$prosp(l)..            -(1-y(l))*M   =l= power_flow(l,t) - B_prosp_380(l) * (sum(n$Map_send_L(l,n),Theta(n,t))-sum(n$Map_res_l(l,n),Theta(n,t))) * MVABase  + EPS
-;
-Linearization_prosp_380_line_pos(l,t)$prosp(l)..            (1-y(l))*M    =g= power_flow(l,t) - B_prosp_380(l) * (sum(n$Map_send_L(l,n),Theta(n,t))-sum(n$Map_res_l(l,n),Theta(n,t))) * MVABase  + EPS
-;
-
-LS_det(n,t)..                                               load_shed(n,t)  =l= load(n,t)
-;
-Theta_LB(n,t)..                                             -3.1415         =l= Theta(n,t)
-;
-Theta_UB(n,t)..                                             3.1415          =g= Theta(n,t)
-;
-Theta_ref(n,t)..                                            Theta(n,t)$ref(n) =l= 0
-;
 *execute_unload "check.gdx";
 *$stop
 *#########################################################Solving##########################################################
@@ -495,24 +412,5 @@ Store_level_max
 Store_prod_max
 Store_prod_max_end
 
-Ex_line_angle
-Ex_Line_neg_flow
-Ex_line_pos_flow
-
-
-%Prosp_exist%Prosp_line_neg_flow
-%Prosp_exist%Prosp_line_pos_flow
-
-%only_380%%Prosp_exist%Linearization_prosp_220_line_neg
-%only_380%%Prosp_exist%Linearization_prosp_220_line_pos
-
-%Prosp_exist%Linearization_prosp_380_line_neg
-%Prosp_exist%Linearization_prosp_380_line_pos
-
-
 LS_det
-Theta_LB
-Theta_UB
-Theta_ref
-
 /;

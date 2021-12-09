@@ -1,11 +1,11 @@
 Sets
 
 n /DE,DK,SE,PL,CZ,AT,CH,FR,BE,NL,
-   NO,GB,IT,SP,PT/
+   NO,UK,IT,ES,PT,BALT,SI/
 g /g1*g60/
 s /s1*s30/
 res/res1*res30/
-NTC/ntc1*ntc100/
+*NTC/ntc1*ntc100/
 t/t1*t8760/
 sr/sr1*sr10/
 wr/wr1*wr10/
@@ -35,7 +35,7 @@ psp(s)
 MapG(n,g)
 MapS(n,s)
 MapRes(n,res)
-MapNTC(n,ntc)
+MapNTC(n,n)
 MapSr(n,sr)
 MapWr(n,wr)
 ;
@@ -54,10 +54,8 @@ Gen_hydro                       upload table
 priceup                         upload table
 availup                         upload table
 
-NTC_up(n,nn,t)                  upload table
+NTC_cap(n,nn)                   upload parameter
 
-
-NTC_cap(ntc)                    max. net transfer capacity 
 
 
 Fc_conv(g,t)                    fuel costs conventional powerplants
@@ -96,24 +94,25 @@ set=MapS                        rng=Mapping!D2:E100                     rdim=2 c
 set=MapRes                      rng=Mapping!G2:H100                     rdim=2 cDim=0
 set=MapSr                       rng=Mapping!J2:K30                      rdim=2 cDim=0
 set=MapWr                       rng=Mapping!M2:N30                      rdim=2 cDim=0
+set=MapNTC                      
 
 par=Country_load                rng=Load!A1:C506                        rDim=1 cdim=1
 par=Gen_conv                    rng=Gen_conv!B1:J561                    rDim=1 cdim=1
 par=Gen_res                     rng=Gen_res!B1:E1120                    rDim=1 cdim=1
 par=Gen_Hydro                   rng=Gen_Hydro!B1:F177                   rDim=1 cdim=1
 par=priceup                     rng=prices!A1:I8761                     rDim=1 cdim=1
-par=availup                     rng=Availability!A1:D8762               rDim=1 cdim=1
+par=availup                     rng=Availability!A1:X8762               rDim=1 cdim=1
+par=NTC_cap                     rng=NTC!A1:BE57                         rDim=1 cdim=1
 
 $offecho
 
 $onUNDF
 $call   gdxxrw Data_input.xlsx @TEP.txt
 $GDXin  Data_input.gdx
-$load   MapG, MapS, MapRes, MapSr, MapWr
+$load   MapG, MapS, MapRes, MapSr, MapWr, MapNTC
 $load   Country_load
 $load   Gen_conv, Gen_res, Gen_Hydro
-$load   priceup
-$load   availup
+$load   priceup, availup, NTC_cap
 $GDXin
 $offUNDF
 
@@ -150,13 +149,12 @@ $offUNDF
         biomass(res)=    Gen_res(res,'tech') = 12
 ;
 
-execute_unload "check.gdx";
-$stop
+
 *###################################loading parameter###############################
 
 *****************************************demand*************************************
 
-load(t)             =          Country_load(t,'total_load')
+load(n,t)           =          Country_load(n,t)
 ;
 LS_costs(n)         =          3000
 ;
@@ -182,49 +180,45 @@ CO2_costs(t)        =          priceup(t,'CO2')
 
 *************************************generators*************************************
 
-Cap_conv(g)         =          Gen_upload(g,'Gen_cap')
+Cap_conv(g)         =          Gen_conv(g,'Gen_cap')
 ;
-Cap_hydro(s)        =          Gen_upload(s,'Gen_cap')
+Cap_hydro(s)        =          Gen_Hydro(s,'Gen_cap')
 ;
-Cap_res(res)        =          Gen_upload(res,'Gen_cap')
+Cap_res(res)        =          Gen_res(res,'Gen_cap')
 ;
-Eff_conv(g)         =          Gen_upload(g,'eff')
+Eff_conv(g)         =          Gen_conv(g,'eff')
 ;
-Eff_hydro(s)        =          Gen_upload(s,'eff')
+Eff_hydro(s)        =          Gen_hydro(s,'eff')
 ;
-Eff_res(res)        =          Gen_upload(res,'eff')
+Eff_res(res)        =          Gen_res(res,'eff')
 ;
-Co2_content(g)      =          Gen_upload(g,'CO2')
+Co2_content(g)      =          Gen_conv(g,'CO2')
 ;
-su_fact(g)          =          Gen_upload(g,'su_fact')
+su_fact(g)          =          Gen_conv(g,'su_fact')
 ;
-depri_costs(g)      =          Gen_upload(g,'depri_costs')
+depri_costs(g)      =          Gen_conv(g,'depri_costs')
 ;
-fuel_start(g)       =          Gen_upload(g,'fuel_start')
+fuel_start(g)       =          Gen_conv(g,'fuel_start')
 ;
 
 ************************************availability************************************
 
-af_hydro(ror,t)             =          availup_hydro(t,'ror')
+af_hydro(ror,t)             =          availup(t,'ror')
 ;
-af_hydro(psp,t)             =          availup_hydro(t,'psp')
+af_hydro(psp,t)             =          availup(t,'psp')
 ;
-af_hydro(reservoir,t)       =          availup_hydro(t,'reservoir')
+af_hydro(reservoir,t)       =          availup(t,'reservoir')
 ;
-af_sun(t,sr,n)$MapSR(n,sr)  =          availup_res(t,sr)
+af_sun(n,sr,t)$MapSR(n,sr)  =          availup(t,sr)
 ;
-af_wind(t,wr,n)$MapWR(n,wr) =          availup_res(t,wr)
+af_wind(n,wr,t)$MapWR(n,wr) =          availup(t,wr)
 ;
-
-*************************************NTC********************************************
-
-NTC_cap(t)                  =          ntc_up(n,nn,t)
 
 *************************************calculating************************************
 
-var_costs(g,t)                      =            ((FC_conv(g,t)+ co2_costs(t) * co2_content(g)) / Eff_conv(g))
+var_costs(g,t)              =          ((FC_conv(g,t)+ co2_costs(t) * co2_content(g)) / Eff_conv(g))
 ;
-su_costs(g,t)                       =            depri_costs(g) + su_fact(g) * fuel_start(g) * FC_conv(g,t) + co2_content(g) * co2_costs(t)
+su_costs(g,t)               =          depri_costs(g) + su_fact(g) * fuel_start(g) * FC_conv(g,t) + co2_content(g) * co2_costs(t)
 ;
 
 execute_unload "check.gdx";

@@ -1,11 +1,11 @@
 
---- Job Toy_1.gms Start 12/08/21 16:33:08 34.2.0 r6925a71 WEX-WEI x86 64bit/MS Windows
+--- Job Toy_1.gms Start 12/09/21 18:07:16 34.2.0 r6925a71 WEX-WEI x86 64bit/MS Windows
 --- Applying:
     C:\GAMS\34\gmsprmNT.txt
 --- GAMS Parameters defined
     Input "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Toy_1.gms"
     PageSize 0
-    ScrDir "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\225a\"
+    ScrDir "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\225c\"
     SysDir C:\GAMS\34\
     LogOption 3
     ErrMsg 1
@@ -17,19 +17,19 @@ Licensee: Small MUD - 5 User License                     S201118/0001AN-WIN
           C:\Users\berne\Documents\GAMS\gamslice.txt
 GAMS 34.2.0   Copyright (C) 1987-2021 GAMS Development. All rights reserved
 --- Starting compilation
---- Toy_1.gms(109) 4 Mb
+--- Toy_1.gms(110) 4 Mb
 --- call gdxxrw Data_input.xlsx @TEP.txt
 
 GDXXRW           34.2.0 r6925a71 Released Feb 05, 2021 WEI x86 64bit/MS Window
 Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Data_input.xlsx
 Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Data_input.gdx
-Total time = 19079 Ms
---- Toy_1.gms(110) 4 Mb
+Total time = 26297 Ms
+--- Toy_1.gms(111) 4 Mb
 --- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Data_input.gdx
 --- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Data_input.gdx
---- Toy_1.gms(153) 7 Mb
---- Starting execution: elapsed 0:00:24.548
---- Toy_1.gms(152) 8 Mb  8 secs
---- GDX File (execute_unload) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\check.gdx
-*** Status: Normal completion
---- Job Toy_1.gms Stop 12/08/21 16:33:42 elapsed 0:00:33.249
+--- Toy_1.gms(115) 11 Mb 1 Error  3 secs
+*** Error 492 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Toy_1.gms
+    Symbol not in GDX
+--- Toy_1.gms(225) 11 Mb 1 Error
+*** Status: Compilation error(s)
+--- Job Toy_1.gms Stop 12/09/21 18:07:52 elapsed 0:00:35.677

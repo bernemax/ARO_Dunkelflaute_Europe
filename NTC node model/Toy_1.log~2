@@ -1,11 +1,11 @@
 
---- Job Toy_1.gms Start 12/08/21 16:31:38 34.2.0 r6925a71 WEX-WEI x86 64bit/MS Windows
+--- Job Toy_1.gms Start 12/09/21 18:04:14 34.2.0 r6925a71 WEX-WEI x86 64bit/MS Windows
 --- Applying:
     C:\GAMS\34\gmsprmNT.txt
 --- GAMS Parameters defined
     Input "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Toy_1.gms"
     PageSize 0
-    ScrDir "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\225a\"
+    ScrDir "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\225c\"
     SysDir C:\GAMS\34\
     LogOption 3
     ErrMsg 1
@@ -17,34 +17,20 @@ Licensee: Small MUD - 5 User License                     S201118/0001AN-WIN
           C:\Users\berne\Documents\GAMS\gamslice.txt
 GAMS 34.2.0   Copyright (C) 1987-2021 GAMS Development. All rights reserved
 --- Starting compilation
---- Toy_1.gms(109) 4 Mb
+--- Toy_1.gms(112) 4 Mb
 --- call gdxxrw Data_input.xlsx @TEP.txt
 
 GDXXRW           34.2.0 r6925a71 Released Feb 05, 2021 WEI x86 64bit/MS Window
 Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Data_input.xlsx
 Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Data_input.gdx
-Total time = 19172 Ms
---- Toy_1.gms(110) 4 Mb
+Total time = 26047 Ms
+--- Toy_1.gms(113) 4 Mb
 --- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Data_input.gdx
 --- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Data_input.gdx
---- Toy_1.gms(136) 7 Mb 1 Error
-*** Error 171 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Toy_1.gms
-    Domain violation for set
---- Toy_1.gms(138) 7 Mb 2 Errors
-*** Error 171 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Toy_1.gms
-    Domain violation for set
---- Toy_1.gms(140) 7 Mb 3 Errors
-*** Error 171 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Toy_1.gms
-    Domain violation for set
---- Toy_1.gms(145) 7 Mb 4 Errors
-*** Error 171 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Toy_1.gms
-    Domain violation for set
---- Toy_1.gms(147) 7 Mb 5 Errors
-*** Error 171 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Toy_1.gms
-    Domain violation for set
---- Toy_1.gms(149) 7 Mb 6 Errors
-*** Error 171 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Toy_1.gms
-    Domain violation for set
---- Toy_1.gms(153) 7 Mb 6 Errors
+--- Toy_1.gms(222) 11 Mb 1 Error
+*** Error 148 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Toy_1.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- Toy_1.gms(231) 11 Mb 1 Error
 *** Status: Compilation error(s)
---- Job Toy_1.gms Stop 12/08/21 16:32:02 elapsed 0:00:23.965
+--- Job Toy_1.gms Stop 12/09/21 18:04:46 elapsed 0:00:31.552

@@ -2,13 +2,13 @@ Sets
 
 n /DE,DK,SE,PL,CZ,AT,CH,FR,BE,NL,
    NO,UK,IT,ES,PT,BALT,SI/
-g /g1*g60/
-s /s1*s30/
-res/res1*res30/
+g /g1*g102/
+s /s1*s51/
+res/res1*res51/
 *NTC/ntc1*ntc100/
 t/t1*t8760/
-sr/sr1*sr10/
-wr/wr1*wr10/
+sr/sr1*sr17/
+wr/wr1*wr17/
 
 *H(t,it)
 
@@ -44,7 +44,7 @@ alias (n,nn)
 ;
 
 Parameters
-
+**********************************************************Input parameter********************************************
 Country_load                    upload table
 
 Gen_conv                        upload table
@@ -55,8 +55,6 @@ priceup                         upload table
 availup                         upload table
 
 NTC_cap(n,nn)                   upload parameter
-
-
 
 Fc_conv(g,t)                    fuel costs conventional powerplants
 Fc_res(res,t)                   fuel costs renewable powerplants
@@ -84,12 +82,17 @@ af_hydro(s,t)                   availability of hydro potential
 af_sun(n,sr,t)                  capacity factor of solar energy
 af_wind(n,wr,t)                 capacity factor of wind energy
 
+**********************************************************report parameter*******************************************
 
-**********************************************input Excel table*******************************************************
+price(n,t)
+
+
+
+**********************************************************input Excel table******************************************
 ;
 
 $onecho > TEP.txt
-set=MapG                        rng=Mapping!A2:B100                     rdim=2 cDim=0
+set=MapG                        rng=Mapping!A2:B104                     rdim=2 cDim=0
 set=MapS                        rng=Mapping!D2:E100                     rdim=2 cDim=0
 set=MapRes                      rng=Mapping!G2:H100                     rdim=2 cDim=0
 set=MapSr                       rng=Mapping!J2:K30                      rdim=2 cDim=0
@@ -231,7 +234,7 @@ $stop
 *######################################variables######################################
 Variables
 Costs
-Power_flow(t,n,nn)
+Power_flow(n,nn,t)
 ;
 
 positive Variables
@@ -249,16 +252,8 @@ Load_shed (n,t)
 Curtailment (res,t)
 ;
 
-Binary variables
-x(l)                  investment in 220 kV line
-y(l)                  investment in 380 kV line
-;
-
-
-
 Equations
 Total_costs
-Line_investment
 Balance
 
 max_gen
@@ -281,55 +276,35 @@ Store_prod_max
 Store_prod_max_end
 
 NTC_max
-
-
 LS_det
-Theta_LB
-Theta_UB
-Theta_ref
+
 ;
 *#######################################################objective##########################################################
 
 Total_costs..                costs =e=   sum((g,t), Var_costs(g,t) * Gen_g(g,t))
-%Start_up%                             + sum((g,t), Su(g,t) *su_costs(g,t))
+                                       + sum((g,t), Su(g,t) *su_costs(g,t))
                                        + sum((res,t), Fc_res(res,t) * Gen_r(res,t))
                                        + sum((n,t), LS_costs(n) * Load_shed(n,t))
                                        + sum((res,t), Curtailment(res,t) * cur_costs)
                                        
-%Prosp_exist%                          + sum((n,t), X_dem(n,t))* 350
-%Prosp_exist%                          + sum((l,t)$prosp(l),I_costs_220(l)*x(l)+I_costs_380(l)*y(l))
 ;
 
-Line_investment..            sum((l)$prosp(l), I_costs_380(l)*y(l)
-%only_380%                                   + I_costs_220(l)*x(l)
-                                                                    )
-                                                                    =l= ILmax
-;
 
 *####################################################energy balance########################################################
 
 Balance(n,t)$(Relevant_Nodes(n))..                (load(n,t) - Load_shed(n,t))  =e= sum(g$MapG(g,n),Gen_g(g,t))
 
-
                                                            + sum(biomass$MapRes(biomass,n),Gen_r(biomass,t))
                                                            + sum(sun$MapRes(sun,n),Gen_r(sun,t))
                                                            + sum(wind$MapRes(wind,n),Gen_r(wind,t))
 
+                                                           - Power_flow(n,nn,t)
+                                                           + Power_flow(nn,n,t)
+
                                                            + sum(s$MapS(s,n), Gen_s(s,t))
-                                                           - sum(l$(Map_send_L(l,n) and exist(l)),Power_flow(l,t))
-                                                           + sum(l$(Map_res_L(l,n) and exist(l)),Power_flow(l,t))
-*                                                           + sum(l$map_grid(l,n),Power_flow(l,t)$exist(l))
-*                                                           
-
-%Prosp_exist%                                              - sum(l$(Map_send_L(l,n) and prosp(l)),Power_flow(l,t))
-%Prosp_exist%                                              + sum(l$(Map_res_L(l,n) and prosp(l)),Power_flow(l,t))
-
                                                            - sum(psp$MapS(psp,n), charge(psp,t))
                                                            
 
-%endotrans%                                                + phy_flow_to_DE(t,n)
-                                                           + phy_flow_states_exo(t,n)
-*                                                           - X_dem(n,t)
 ;
 **Eff_res(biomass)
 *######################################################generation##########################################################
@@ -357,7 +332,7 @@ Store_level_start(psp,t)$(ord(t) =1)..                      storagelvl(psp,t) =e
 ;
 Store_level(psp,t)$(ord(t) gt 1)..                          storagelvl(psp,t) =e= storagelvl(psp,t-1) + charge(psp,t-1) * eff_hydro(psp) - gen_s(psp,t-1)
 ;
-Store_level_end(psp,t)$(ord(t) = card(t))..                 storagelvl(psp,t) =e= cap_hydro(psp) *0.5 
+Store_level_end(psp,t)$(ord(t) = card(t))..                 storagelvl(psp,t) =e= cap_hydro(psp) * 0.5 
 ;
 Store_level_max(psp,t)..                                    storagelvl(psp,t) =l= cap_hydro(psp) * store_cpf
 ;
@@ -374,22 +349,24 @@ max_reservoir(reservoir,t)..                                gen_s(reservoir,t) =
 
 *##########################################################NTC exchange###########################################################
 
-ntc_max..                                                   Power_flow(t,n,nn) =l= 
+ntc_max(n,nn,t)..                                           power_flow(n,nn,t) =l= NTC_cap(n,nn)
+;
+*****************************************************load shedding determination*******************************************
 
-
+LS_det(n,t)..                                               Load_shed(n,t)     =l= load(n,t)
+;
 *execute_unload "check.gdx";
 *$stop
-*#########################################################Solving##########################################################
+*#########################################################Model definition##########################################################
 
-Model Large_Stat_det_Tep
+Model Quant_reliab_res_EU
 /
 Total_costs
-%Prosp_exist%Line_investment
 Balance
 
 max_gen
 max_cap
-%Start_up%startup_constr
+startup_constr
 
 max_res_biomass
 max_res_sun
@@ -406,5 +383,16 @@ Store_level_max
 Store_prod_max
 Store_prod_max_end
 
+ntc_max
 LS_det
-/;
+/
+;
+
+*#########################################################Solving##################################################################
+
+solve Quant_reliab_res_EU using MIP minimizing costs
+;
+*****************************************************parameter report********************************************************
+
+price(n,t) = Balance.m(n,t)*(-1)
+;

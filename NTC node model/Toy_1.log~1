@@ -1,11 +1,11 @@
 
---- Job Toy_1.gms Start 12/09/21 18:07:16 34.2.0 r6925a71 WEX-WEI x86 64bit/MS Windows
+--- Job Toy_1.gms Start 12/20/21 23:02:51 34.2.0 r6925a71 WEX-WEI x86 64bit/MS Windows
 --- Applying:
     C:\GAMS\34\gmsprmNT.txt
 --- GAMS Parameters defined
     Input "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Toy_1.gms"
     PageSize 0
-    ScrDir "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\225c\"
+    ScrDir "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\225b\"
     SysDir C:\GAMS\34\
     LogOption 3
     ErrMsg 1
@@ -17,19 +17,85 @@ Licensee: Small MUD - 5 User License                     S201118/0001AN-WIN
           C:\Users\berne\Documents\GAMS\gamslice.txt
 GAMS 34.2.0   Copyright (C) 1987-2021 GAMS Development. All rights reserved
 --- Starting compilation
---- Toy_1.gms(110) 4 Mb
+--- Toy_1.gms(110) 3 Mb
 --- call gdxxrw Data_input.xlsx @TEP.txt
 
 GDXXRW           34.2.0 r6925a71 Released Feb 05, 2021 WEI x86 64bit/MS Window
 Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Data_input.xlsx
 Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Data_input.gdx
-Total time = 26297 Ms
---- Toy_1.gms(111) 4 Mb
+Total time = 17968 Ms
+--- Toy_1.gms(111) 3 Mb
 --- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Data_input.gdx
 --- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Data_input.gdx
---- Toy_1.gms(115) 11 Mb 1 Error  3 secs
-*** Error 492 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\Toy_1.gms
-    Symbol not in GDX
---- Toy_1.gms(225) 11 Mb 1 Error
-*** Status: Compilation error(s)
---- Job Toy_1.gms Stop 12/09/21 18:07:52 elapsed 0:00:35.677
+--- Toy_1.gms(402) 9 Mb
+--- Starting execution: elapsed 0:00:21.765
+--- Toy_1.gms(221) 12 Mb
+--- Generating MIP model Quant_reliab_res_EU
+--- Toy_1.gms(283) 13 Mb  16 secs
+--- Toy_1.gms(396) 35 Mb  20 secs
+---   99,935 rows  76,101 columns  236,533 non-zeroes
+--- Toy_1.gms(396) 35 Mb  21 secs
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:59.937
+
+IBM ILOG CPLEX   34.2.0 r6925a71 Released Feb 05, 2021 WEI x86 64bit/MS Window
+
+--- GAMS/Cplex Link licensed for continuous and discrete problems.
+--- Space for names approximately 4.66 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 31.06 Mb (peak 31.64 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 20.1.0.0 link memory 2.60 Mb (peak 11.47 Mb)
+--- Starting Cplex
+
+Version identifier: 20.1.0.0 | 2020-11-10 | 9bedb6d68
+CPXPARAM_Advance                                 0
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 85219 rows and 49728 columns.
+Aggregator did 615 substitutions.
+Reduced LP has 14100 rows, 25758 columns, and 49294 nonzeros.
+Presolve time = 0.06 sec. (69.78 ticks)
+Initializing dual steep norms . . .
+
+Iteration log . . .
+Iteration:     1   Dual objective     =    7071831541.108208
+Iteration:   633   Dual objective     =    7594344928.309674
+Iteration:  1237   Dual objective     =    7707611601.066631
+Iteration:  1808   Dual objective     =    7750695089.727758
+Iteration:  2365   Dual objective     =    8169711360.717883
+Iteration:  2863   Dual objective     =    8188121119.338297
+Iteration:  3276   Dual objective     =    8203221743.651663
+Iteration:  3742   Dual objective     =    8325775880.134644
+Iteration:  4208   Dual objective     =    9076871216.586576
+Iteration:  4681   Dual objective     =    9159430926.322760
+Iteration:  5113   Dual objective     =    9280805420.537928
+Iteration:  5519   Dual objective     =    9318969388.496433
+Iteration:  5972   Dual objective     =    9340194797.207157
+Iteration:  6337   Dual objective     =    9463670823.619823
+Iteration:  6688   Dual objective     =    9466274536.547834
+Iteration:  7033   Dual objective     =    9468835103.298210
+Iteration:  7349   Dual objective     =    9493777926.287758
+Iteration:  7571   Dual objective     =    9494607513.824436
+Iteration:  7766   Dual objective     =    9495049739.931152
+Iteration:  7988   Dual objective     =    9495152949.233109
+Perturbation started.
+Iteration:  8017   Dual objective     =    9495152949.232870
+Iteration:  8183   Dual objective     =    9499736893.743999
+Removing perturbation.
+
+--- LP status (1): optimal.
+--- Cplex Time: 0.33sec (det. 402.84 ticks)
+
+
+Optimal solution found
+Objective:   9499740827.041325
+
+--- Reading solution for model Quant_reliab_res_EU
+--- Toy_1.gms(396) 35 Mb  179 secs
+--- Executing after solve: elapsed 0:03:39.821
+--- Toy_1.gms(402) 35 Mb  15 secs
+--- GDX File (execute_unload) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC node model\check.gdx
+*** Status: Normal completion
+--- Job Toy_1.gms Stop 12/20/21 23:06:47 elapsed 0:03:55.542

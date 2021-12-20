@@ -1,12 +1,12 @@
 Sets
 
 n /DE,DK,SE,PL,CZ,AT,CH,FR,BE,NL,
-   NO,UK,IT,ES,PT,BALT,SI/
+   NO,UK,IT,ES,BALT,SI/
 g /g1*g102/
 s /s1*s51/
 res/res1*res51/
 *NTC/ntc1*ntc100/
-t/t1*t8760/
+t/t1*t100/
 sr/sr1*sr17/
 wr/wr1*wr17/
 
@@ -32,21 +32,21 @@ psp(s)
 
 ****************************mapping*************************************************
 
-MapG(n,g)
-MapS(n,s)
-MapRes(n,res)
-MapNTC(n,n)
-MapSr(n,sr)
-MapWr(n,wr)
+MapG(g,n)
+MapS(s,n)
+MapRes(res,n)
+MapSr(sr,n)
+MapWr(wr,n)
 ;
 
 alias (n,nn)
 ;
-
+Scalars
+cur_costs /150/
+store_cpf /7/
+;
 Parameters
 **********************************************************Input parameter********************************************
-Country_load                    upload table
-
 Gen_conv                        upload table
 Gen_res                         upload table
 Gen_hydro                       upload table
@@ -66,7 +66,7 @@ su_fact(g)                      start-up factor conventionals
 fuel_start(g)                   fuel consumption factor if start-up decision
 depri_costs(g)                  deprication costs conventionals
 
-load(n,t)                       electrical demand in each node in hour t
+load(t,n)                       electrical demand in each node in hour t
 LS_costs(n)                     loadshedding costs per node
 var_costs(g,t)                  variable costs conventional power plants
 
@@ -79,14 +79,11 @@ Eff_hydro(s)                    efficiency of hydro powerplants
 Eff_res(res)                    efficiency of renewable powerplants
 
 af_hydro(s,t)                   availability of hydro potential
-af_sun(n,sr,t)                  capacity factor of solar energy
-af_wind(n,wr,t)                 capacity factor of wind energy
-
+af_sun(t,sr,n)                  capacity factor of solar energy
+af_wind(t,wr,n)                 capacity factor of wind energy
 **********************************************************report parameter*******************************************
 
 price(n,t)
-
-
 
 **********************************************************input Excel table******************************************
 ;
@@ -97,14 +94,14 @@ set=MapS                        rng=Mapping!D2:E100                     rdim=2 c
 set=MapRes                      rng=Mapping!G2:H100                     rdim=2 cDim=0
 set=MapSr                       rng=Mapping!J2:K30                      rdim=2 cDim=0
 set=MapWr                       rng=Mapping!M2:N30                      rdim=2 cDim=0
-set=MapNTC                      
 
-par=Country_load                rng=Load!A1:C506                        rDim=1 cdim=1
-par=Gen_conv                    rng=Gen_conv!B1:J561                    rDim=1 cdim=1
-par=Gen_res                     rng=Gen_res!B1:E1120                    rDim=1 cdim=1
-par=Gen_Hydro                   rng=Gen_Hydro!B1:F177                   rDim=1 cdim=1
+
+par=load                        rng=Load!A1:R8761                       rDim=1 cdim=1
+par=Gen_conv                    rng=Gen_conv!B1:J103                    rDim=1 cdim=1
+par=Gen_res                     rng=Gen_res!B1:F52                      rDim=1 cdim=1
+par=Gen_Hydro                   rng=Gen_Hydro!B1:F52                    rDim=1 cdim=1
 par=priceup                     rng=prices!A1:I8761                     rDim=1 cdim=1
-par=availup                     rng=Availability!A1:X8762               rDim=1 cdim=1
+par=availup                     rng=Availability!A1:AL8762              rDim=1 cdim=1
 par=NTC_cap                     rng=NTC!A1:BE57                         rDim=1 cdim=1
 
 $offecho
@@ -112,12 +109,14 @@ $offecho
 $onUNDF
 $call   gdxxrw Data_input.xlsx @TEP.txt
 $GDXin  Data_input.gdx
-$load   MapG, MapS, MapRes, MapSr, MapWr, MapNTC
-$load   Country_load
+$load   MapG, MapS, MapRes, MapSr, MapWr
+$load   load
 $load   Gen_conv, Gen_res, Gen_Hydro
 $load   priceup, availup, NTC_cap
 $GDXin
 $offUNDF
+
+
 
 *####################################subset definitions#############################
 
@@ -157,8 +156,6 @@ $offUNDF
 
 *****************************************demand*************************************
 
-load(n,t)           =          Country_load(n,t)
-;
 LS_costs(n)         =          3000
 ;
 
@@ -212,9 +209,9 @@ af_hydro(psp,t)             =          availup(t,'psp')
 ;
 af_hydro(reservoir,t)       =          availup(t,'reservoir')
 ;
-af_sun(n,sr,t)$MapSR(n,sr)  =          availup(t,sr)
+af_sun(t,sr,n)$MapSR(sr,n)  =          availup(t,sr)
 ;
-af_wind(n,wr,t)$MapWR(n,wr) =          availup(t,wr)
+af_wind(t,wr,n)$MapWR(wr,n) =          availup(t,wr)
 ;
 
 *************************************calculating************************************
@@ -224,8 +221,8 @@ var_costs(g,t)              =          ((FC_conv(g,t)+ co2_costs(t) * co2_conten
 su_costs(g,t)               =          depri_costs(g) + su_fact(g) * fuel_start(g) * FC_conv(g,t) + co2_content(g) * co2_costs(t)
 ;
 
-execute_unload "check.gdx";
-$stop
+*execute_unload "check.gdx";
+*$stop
 *************************************upload table clearing**************************
 
 *option kill = Node_Demand ;   
@@ -234,7 +231,6 @@ $stop
 *######################################variables######################################
 Variables
 Costs
-Power_flow(n,nn,t)
 ;
 
 positive Variables
@@ -242,14 +238,16 @@ Gen_g (g,t)             generation conventionals
 Gen_r(res,t)            generation renewables
 Gen_s (s,t)             generation hydro
 
+Power_flow(n,nn,t)
+
 storagelvl(s,t)
 charge(s,t)
 
 Su(g,t)
 P_on(g,t)
 
-Load_shed (n,t)
-Curtailment (res,t)
+Load_shed(t,n)
+Curtailment(res,t)
 ;
 
 Equations
@@ -275,7 +273,8 @@ Store_level_max
 Store_prod_max
 Store_prod_max_end
 
-NTC_max
+NTC_max_ex
+NTC_max_im
 LS_det
 
 ;
@@ -284,7 +283,7 @@ LS_det
 Total_costs..                costs =e=   sum((g,t), Var_costs(g,t) * Gen_g(g,t))
                                        + sum((g,t), Su(g,t) *su_costs(g,t))
                                        + sum((res,t), Fc_res(res,t) * Gen_r(res,t))
-                                       + sum((n,t), LS_costs(n) * Load_shed(n,t))
+                                       + sum((t,n), LS_costs(n) * Load_shed(t,n))
                                        + sum((res,t), Curtailment(res,t) * cur_costs)
                                        
 ;
@@ -292,14 +291,14 @@ Total_costs..                costs =e=   sum((g,t), Var_costs(g,t) * Gen_g(g,t))
 
 *####################################################energy balance########################################################
 
-Balance(n,t)$(Relevant_Nodes(n))..                (load(n,t) - Load_shed(n,t))  =e= sum(g$MapG(g,n),Gen_g(g,t))
+Balance(n,t)..                (load(t,n) - Load_shed(t,n))  =e= sum(g$MapG(g,n),Gen_g(g,t))
 
                                                            + sum(biomass$MapRes(biomass,n),Gen_r(biomass,t))
                                                            + sum(sun$MapRes(sun,n),Gen_r(sun,t))
                                                            + sum(wind$MapRes(wind,n),Gen_r(wind,t))
 
-                                                           - Power_flow(n,nn,t)
-                                                           + Power_flow(nn,n,t)
+                                                           - sum(nn, Power_flow(n,nn,t))
+                                                           + sum(nn, Power_flow(nn,n,t))
 
                                                            + sum(s$MapS(s,n), Gen_s(s,t))
                                                            - sum(psp$MapS(psp,n), charge(psp,t))
@@ -317,9 +316,9 @@ startup_constr(g,t)..                                           P_on(g,t) - P_on
 ;
 max_res_biomass(biomass,t)..                                    gen_r(biomass,t) =l=  cap_res(biomass)
 ;
-max_res_sun(sun,sr,n,t)$(MapSR(n,sr) and MapRes(sun,n))..       gen_r(sun,t) =e=  af_sun(t,sr,n) * cap_res(sun)- Curtailment(sun,t)
+max_res_sun(sun,sr,n,t)$(MapSR(sr,n) and MapRes(sun,n))..       gen_r(sun,t) =e=  af_sun(t,sr,n) * cap_res(sun)- Curtailment(sun,t)
 ;
-max_res_wind(wind,wr,n,t)$(MapWR(n,wr) and MapRes(wind,n))..    gen_r(wind,t) =e= af_wind(t,wr,n) * cap_res(wind)- Curtailment(wind,t)
+max_res_wind(wind,wr,n,t)$(MapWR(wr,n) and MapRes(wind,n))..    gen_r(wind,t) =e= af_wind(t,wr,n) * cap_res(wind)- Curtailment(wind,t)
 ;
 
 ********************************************************Hydro RoR**********************************************************
@@ -349,11 +348,13 @@ max_reservoir(reservoir,t)..                                gen_s(reservoir,t) =
 
 *##########################################################NTC exchange###########################################################
 
-ntc_max(n,nn,t)..                                           power_flow(n,nn,t) =l= NTC_cap(n,nn)
+ntc_max_ex(n,nn,t)..                                        power_flow(n,nn,t) =l= NTC_cap(n,nn)
+;
+ntc_max_im(nn,n,t)..                                        power_flow(nn,n,t) =l= NTC_cap(nn,n)
 ;
 *****************************************************load shedding determination*******************************************
 
-LS_det(n,t)..                                               Load_shed(n,t)     =l= load(n,t)
+LS_det(t,n)..                                               Load_shed(t,n)     =l= load(t,n)
 ;
 *execute_unload "check.gdx";
 *$stop
@@ -383,7 +384,8 @@ Store_level_max
 Store_prod_max
 Store_prod_max_end
 
-ntc_max
+NTC_max_ex
+NTC_max_im
 LS_det
 /
 ;
@@ -396,3 +398,5 @@ solve Quant_reliab_res_EU using MIP minimizing costs
 
 price(n,t) = Balance.m(n,t)*(-1)
 ;
+
+execute_unload "check.gdx";

@@ -6,7 +6,7 @@ g /g1*g102/
 s /s1*s51/
 res/res1*res51/
 *NTC/ntc1*ntc100/
-t/t1*t100/
+t/t1000*t1100/
 sr/sr1*sr17/
 wr/wr1*wr17/
 
@@ -79,11 +79,16 @@ Eff_hydro(s)                    efficiency of hydro powerplants
 Eff_res(res)                    efficiency of renewable powerplants
 
 af_hydro(s,t)                   availability of hydro potential
-af_sun(t,sr,n)                  capacity factor of solar energy
-af_wind(t,wr,n)                 capacity factor of wind energy
+af_sun(n,sr,t)                  capacity factor of solar energy
+*t,sr,n                 
+af_wind(n,wr,t)                 capacity factor of wind energy
 **********************************************************report parameter*******************************************
 
-price(n,t)
+price(t,n)
+Average_price(n)
+count_time(t)
+Count_LS_hours(t,n)
+report(n,*)
 
 **********************************************************input Excel table******************************************
 ;
@@ -209,9 +214,9 @@ af_hydro(psp,t)             =          availup(t,'psp')
 ;
 af_hydro(reservoir,t)       =          availup(t,'reservoir')
 ;
-af_sun(t,sr,n)$MapSR(sr,n)  =          availup(t,sr)
+af_sun(n,sr,t)$MapSR(sr,n)  =          availup(t,sr)
 ;
-af_wind(t,wr,n)$MapWR(wr,n) =          availup(t,wr)
+af_wind(n,wr,t)$MapWR(wr,n) =          availup(t,wr)
 ;
 
 *************************************calculating************************************
@@ -221,7 +226,7 @@ var_costs(g,t)              =          ((FC_conv(g,t)+ co2_costs(t) * co2_conten
 su_costs(g,t)               =          depri_costs(g) + su_fact(g) * fuel_start(g) * FC_conv(g,t) + co2_content(g) * co2_costs(t)
 ;
 
-*execute_unload "check.gdx";
+*execute_unload "check_Toy_1.gdx";
 *$stop
 *************************************upload table clearing**************************
 
@@ -291,7 +296,7 @@ Total_costs..                costs =e=   sum((g,t), Var_costs(g,t) * Gen_g(g,t))
 
 *####################################################energy balance########################################################
 
-Balance(n,t)..                (load(t,n) - Load_shed(t,n))  =e= sum(g$MapG(g,n),Gen_g(g,t))
+Balance(t,n)..                (load(t,n) - Load_shed(t,n))  =e= sum(g$MapG(g,n),Gen_g(g,t))
 
                                                            + sum(biomass$MapRes(biomass,n),Gen_r(biomass,t))
                                                            + sum(sun$MapRes(sun,n),Gen_r(sun,t))
@@ -316,9 +321,9 @@ startup_constr(g,t)..                                           P_on(g,t) - P_on
 ;
 max_res_biomass(biomass,t)..                                    gen_r(biomass,t) =l=  cap_res(biomass)
 ;
-max_res_sun(sun,sr,n,t)$(MapSR(sr,n) and MapRes(sun,n))..       gen_r(sun,t) =e=  af_sun(t,sr,n) * cap_res(sun)- Curtailment(sun,t)
+max_res_sun(sun,n,sr,t)$(MapSR(sr,n) and MapRes(sun,n))..       gen_r(sun,t) =e=  af_sun(n,sr,t) * cap_res(sun)- Curtailment(sun,t)
 ;
-max_res_wind(wind,wr,n,t)$(MapWR(wr,n) and MapRes(wind,n))..    gen_r(wind,t) =e= af_wind(t,wr,n) * cap_res(wind)- Curtailment(wind,t)
+max_res_wind(wind,n,wr,t)$(MapWR(wr,n) and MapRes(wind,n))..    gen_r(wind,t) =e= af_wind(n,wr,t) * cap_res(wind)- Curtailment(wind,t)
 ;
 
 ********************************************************Hydro RoR**********************************************************
@@ -356,7 +361,7 @@ ntc_max_im(nn,n,t)..                                        power_flow(nn,n,t) =
 
 LS_det(t,n)..                                               Load_shed(t,n)     =l= load(t,n)
 ;
-*execute_unload "check.gdx";
+*execute_unload "check_Toy_1.gdx";
 *$stop
 *#########################################################Model definition##########################################################
 
@@ -394,9 +399,41 @@ LS_det
 
 solve Quant_reliab_res_EU using MIP minimizing costs
 ;
-*****************************************************parameter report********************************************************
+*****************************************************parameter calibration*********************************************************
 
-price(n,t) = Balance.m(n,t)*(-1)
+count_time(t) = card(t)
+;
+price(t,n) = Balance.m(t,n)*(-1)
+;
+Average_price(n) = sum(t,price(t,n)/count_time(t))
+;
+Count_LS_hours(t,n)$(Load_shed.l(t,n) gt 0) = 1
 ;
 
-execute_unload "check.gdx";
+******************************************************report parameter definition**************************************************
+
+report(n,'Average Price') = Average_price(n)
+;
+report(n,'LOLH') = sum(t, Count_LS_hours(t,n))
+;
+report(n,'EENS') = sum((t),Load_shed.l(t,n))
+;
+****************************************************write to gdx*******************************************************************
+execute_unload "check_Toy_1.gdx"
+;
+
+****************************************************output*************************************************************************
+
+execute "gdxxrw check_Toy_1.gdx output=Output_toy_1.xlsx  par=report  rng=report!A1"
+;
+
+
+
+
+
+
+
+
+
+
+

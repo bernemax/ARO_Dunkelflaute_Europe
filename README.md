@@ -1,29 +1,30 @@
-# Quant.-Reliability-Energy-Systems
-# Dynamic-Transmission-Expansion-planning 
-## Topic: IEEE 24 node system
-### Two objectives are inplemented into the model:
+# Quantification-of-Reliability-of-future-Energy-Systems-with-a-high-share-of-renewable-generation-under-extreme-weather-effects
 
-**1) Total cost minimization**
-- amount of investment into lines: xxx
+* The composition of the future EU elecricity energy system will change significantly in the next decades.
+* The stochastic nature of weather based energy sources will play a greater role in the future. 
+* Goal of this work is to point a view on reliability and cost efficiency of Energy systems with a high share of renewable penetration under extreme weather effects.
+* Therefore a system of 18 EU countries is examined.
 
-**2) Investment-costs minimization**
-- amount of investment into lines: xxx
+## Modelling framework
+- GEP  
+- unit commitment  
+
+## Reliability frameworks:
+- loss of load hours (LOLH) and expected energy not served (EENS)
+
+## Consideration: 
+- renewable elecricity resources like PV, wind, hydro & biomass
+- technical constraints like ramping times of conventional power plants
+- storages like battery, psp, reservoire
+- NTC between the countries
+- future synthetic country based demand profiles (8760 h)
+- wind and PV generation capacity profiles (historically)
+- water availability country wise
+- engineering risks (FOR)
 
 
-## Content
-* There is an existing "Model-base" which is about the so-called "Transmission extension problem".
-* A little networt structure was taken from the IEEE 24 (test case system) node structure (see picture below).
-* In this repository the option of node expansion with corresponding generators is included.
-* The model solves a muliperiodic problem represented by 24 representative hours in a year (three years in total). The different total load in each hour is distributed due to the specific share of each node.
-* The load changes with the corresponding year. 
-* The model can decide in with hour t and in which year the best transmission and node expension plan/choise is done.
-* Important remark: A building decision in period t in a sepcific year remains in the following periods and years.
+## Map 
+![](https://github.com/bernemax/Quant.-Reliability-Energy-Systems/blob/main/NTC%20node%20model/Synthetic%20demand%20EU18/Europe18.png)
 
-## Network
-![](https://github.com/bernemax/bernemax-s-doings/blob/IEEE-24-node-system/pictures/24%20IEEE%20node%20system.jpg)
 
-## Bus data
-In the .xlsx file
 
-## Line data
-In the .xlsx file

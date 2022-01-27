@@ -24,7 +24,7 @@
 
 
 ## Map 
-![](https://github.com/bernemax/Quant.-Reliability-Energy-Systems/blob/main/NTC%20node%20model/Synthetic%20demand%20EU18/Europe18.png)
+![](https://github.com/bernemax/Quant.-Reliability-Energy-Systems/blob/main/NTC_node_model/Pictures/Europe18.png)
 
 
 

@@ -19,6 +19,7 @@ res/res1*res51/
 t/t1*t8760/
 sr/sr1*sr17/
 wr/wr1*wr17/
+hr/hr1*hr17/
 
 *H(t,it)
 
@@ -93,7 +94,7 @@ Eff_conv(g)                     efficiency of conventional powerplants
 Eff_hydro(s)                    efficiency of hydro powerplants
 Eff_res(res)                    efficiency of renewable powerplants
 
-af_hydro(s,t)                   availability of hydro potential
+af_hydro(n,hr,t)                availability of hydro potential
 af_sun(n,sr,t)                  capacity factor of solar energy
 *t,sr,n
 af_wind(n,wr,t)                 capacity factor of wind energy
@@ -122,7 +123,7 @@ par=Gen_conv                    rng=Gen_conv!B1:J103                    rDim=1 c
 par=Gen_res                     rng=Gen_res!B1:F52                      rDim=1 cdim=1
 par=Gen_Hydro                   rng=Gen_Hydro!B1:F52                    rDim=1 cdim=1
 par=priceup                     rng=prices!A1:I8761                     rDim=1 cdim=1
-par=availup_hydro               rng=Availability!A1:D8762               rDim=1 cdim=1
+par=availup_hydro               rng=Availability!AJ1:AZ8762             rDim=1 cdim=1
 par=NTC_cap                     rng=NTC!A1:BE57                         rDim=1 cdim=1
 
 $offecho
@@ -345,7 +346,8 @@ max_res_biomass
 max_res_sun
 max_res_wind
 
-max_ror
+max_gencap_ror
+max_inflow_ror
 min_reservoir
 max_reservoir
 
@@ -406,8 +408,9 @@ max_res_wind(wind,n,wr,t)$(MapWR(wr,n) and MapRes(wind,n))..    gen_r(wind,t) =e
 
 ********************************************************Hydro RoR**********************************************************
 
-max_ror(ror,t)..                                            gen_s(ror,t) =l= af_hydro(ror,t) * cap_hydro(ror)
+max_gencap_ror(ror,t)..                                            gen_s(ror,t) =l=  cap_hydro(ror)
 ;
+max_inflow_ror(ror,t)..                                            gen_s(ror,t) =l=          
 
 ********************************************************Hydro PsP**********************************************************
 Store_level_start(psp,t)$(ord(t) =1)..                      storagelvl(psp,t) =e= cap_hydro(psp) *0.5 + charge(psp,t) * eff_hydro(psp) - gen_s(psp,t)

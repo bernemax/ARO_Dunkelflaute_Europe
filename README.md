@@ -3,7 +3,8 @@
 * The composition of the future EU elecricity energy system will change significantly in the next decades.
 * The stochastic nature of weather based energy sources will play a greater role in the future. 
 * Goal of this work is to point a view on reliability and cost efficiency of Energy systems with a high share of renewable penetration under extreme weather effects.
-* Therefore a system of 18 EU countries is examined.
+* Therefore a system of 18 EU countries is examined. 
+* test
 
 ## Modelling framework
 - GEP  

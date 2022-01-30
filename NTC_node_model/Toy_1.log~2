@@ -1,12 +1,12 @@
 
---- Job Toy_1.gms Start 01/19/22 13:14:34 35.1.0 r82a9585 WEX-WEI x86 64bit/MS Windows
+--- Job Toy_1.gms Start 01/30/22 15:38:30 34.2.0 r6925a71 WEX-WEI x86 64bit/MS Windows
 --- Applying:
-    C:\GAMS\35\gmsprmNT.txt
+    C:\GAMS\34\gmsprmNT.txt
 --- GAMS Parameters defined
     Input "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms"
     PageSize 0
     ScrDir "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\225a\"
-    SysDir C:\GAMS\35\
+    SysDir C:\GAMS\34\
     LogOption 3
     ErrMsg 1
     ErrorLog 99
@@ -14,346 +14,161 @@
     LstTitleLeftAligned 1
 Licensee: Small MUD - 5 User License                     S201118/0001AN-WIN
           BTU Cottbus-Senftenberg, FG Energiewirtschaft              DC5591
-          C:\Users\Max Bernecker\Documents\GAMS\gamslice.txt
-GAMS 35.1.0   Copyright (C) 1987-2021 GAMS Development. All rights reserved
+          C:\Users\berne\Documents\GAMS\gamslice.txt
+GAMS 34.2.0   Copyright (C) 1987-2021 GAMS Development. All rights reserved
 --- Starting compilation
---- Toy_1.gms(112) 4 Mb
---- $echo File Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\TEP.txt
---- Toy_1.gms(131) 4 Mb
+--- Toy_1.gms(134) 4 Mb
 --- call gdxxrw I=Data_input\Data.xlsx O=Data_input\Data.gdx @TEP.txt
 
-GDXXRW           35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
+GDXXRW           34.2.0 r6925a71 Released Feb 05, 2021 WEI x86 64bit/MS Window
 Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data.xlsx
 Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data.gdx
-Total time = 2375 Ms
---- Toy_1.gms(132) 4 Mb
---- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data.gdx
---- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data.gdx
---- Toy_1.gms(141) 12 Mb
---- $echo File Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\TEP.txt
---- Toy_1.gms(149) 12 Mb
+Value expected in cell: Gen_hydro!B2; found AT
+Value expected in cell: Gen_hydro!G2; found psp
+Value expected in cell: Gen_hydro!B3; found AT
+Value expected in cell: Gen_hydro!G3; found reservoir
+Value expected in cell: Gen_hydro!B4; found AT
+Additional errors suppressed
+Total number of bad values for symbol Gen_Hydro = 99
+**** There were 2 duplicate entries for symbol NTC_cap
+ 1: DE,DK
+ 2: DK,SE
+Output gdx file deleted: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data.gdx
+Total time = 37062 Ms
+The option "MaxDupeErrors = <integer>" can be used to allow for some duplicate records
+--- Toy_1.gms(135) 4 Mb
+*** GDXIN failed Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data.gdx
+*** Msg: No such file or directory
+--- Toy_1.gms(135) 4 Mb 1 Error
+*** Error 510 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Unable to open gdx file for $GDXIN
+--- Toy_1.gms(136) 4 Mb 2 Errors
+*** Error 502 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    GDXIN  file not open - ignore rest of line
+--- Toy_1.gms(137) 4 Mb 3 Errors
+*** Error 502 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    GDXIN  file not open - ignore rest of line
+--- Toy_1.gms(138) 4 Mb 4 Errors
+*** Error 502 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    GDXIN  file not open - ignore rest of line
+--- Toy_1.gms(139) 4 Mb 5 Errors
+*** Error 502 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    GDXIN  file not open - ignore rest of line
+--- Toy_1.gms(152) 4 Mb
 --- call gdxxrw I=Data_input\Weather_cap_factors.xlsx O=Data_input\Weather_cap_factors.gdx @TEP.txt
 
-GDXXRW           35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
+GDXXRW           34.2.0 r6925a71 Released Feb 05, 2021 WEI x86 64bit/MS Window
 Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.xlsx
 Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.gdx
-Total time = 4203 Ms
---- Toy_1.gms(150) 12 Mb
+Total time = 75422 Ms
+--- Toy_1.gms(153) 4 Mb
 --- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.gdx
 --- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.gdx
---- Toy_1.gms(517) 42 Mb
---- Starting execution: elapsed 0:00:07.046
---- Toy_1.gms(304) 154 Mb
---- Generating MIP model Quant_reliab_res_EU
---- Toy_1.gms(366) 397 Mb  30 secs
---- Toy_1.gms(377) 1169 Mb  1255 secs
---- Toy_1.gms(479) 2280 Mb  25 secs
----   8,751,275 rows  6,666,361 columns  20,726,093 non-zeroes
---- Executing CPLEX (Solvelink=2): elapsed 0:22:08.324
-
-IBM ILOG CPLEX   35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
-
---- GAMS/Cplex Link licensed for continuous and discrete problems.
---- Space for names approximately 436.57 Mb
---- Use option 'names no' to turn use of names off
---- GMO memory 2705.46 Mb (peak 2756.32 Mb)
---- Dictionary memory 0.00 Mb
---- Cplex 20.1.0.1 link memory 227.30 Mb (peak 1033.12 Mb)
---- Starting Cplex
-
-Version identifier: 20.1.0.1 | 2021-04-07 | 3a818710c
-CPXPARAM_Advance                                 0
-CPXPARAM_Threads                                 1
-CPXPARAM_MIP_Display                             4
-CPXPARAM_MIP_Tolerances_AbsMIPGap                0
-Tried aggregator 1 time.
-LP Presolve eliminated 7317526 rows and 4124446 columns.
-Aggregator did 189928 substitutions.
-Reduced LP has 1243820 rows, 2351987 columns, and 4427943 nonzeros.
-Presolve time = 10.33 sec. (6457.92 ticks)
-Initializing dual steep norms . . .
-
-Iteration log . . .
-Iteration:     1   Dual objective     =  526113991152.314026
-Perturbation started.
-Iteration:  3131   Dual objective     =  530182419691.744873
-Iteration:  8371   Dual objective     =  536509771798.284119
-Iteration: 13538   Dual objective     =  542536450672.407837
-Iteration: 18716   Dual objective     =  546769522019.194641
-Iteration: 23308   Dual objective     =  548106581868.746399
-Elapsed time = 12.59 sec. (10102.37 ticks, 27829 iterations)
-Iteration: 27829   Dual objective     =  550005255066.536987
-Iteration: 32006   Dual objective     =  551567444805.167480
-Iteration: 35929   Dual objective     =  552742558592.908081
-Iteration: 40001   Dual objective     =  554609086063.066406
-Iteration: 44012   Dual objective     =  556431002686.554932
-Iteration: 48200   Dual objective     =  558131011444.456909
-Iteration: 52356   Dual objective     =  559797565862.000366
-Iteration: 57154   Dual objective     =  560411539363.354126
-Iteration: 61350   Dual objective     =  560840399468.180298
-Iteration: 65233   Dual objective     =  561632919244.951782
-Iteration: 69011   Dual objective     =  562224686306.800537
-Iteration: 72873   Dual objective     =  562827728198.088013
-Iteration: 77001   Dual objective     =  563888822646.443359
-Iteration: 81021   Dual objective     =  564915848036.049805
-Iteration: 84811   Dual objective     =  565625373961.575439
-Iteration: 88425   Dual objective     =  566306968720.622314
-Iteration: 91922   Dual objective     =  566945408422.537476
-Iteration: 95831   Dual objective     =  567612697459.866821
-Iteration: 99523   Dual objective     =  568338373510.433472
-Iteration: 102626   Dual objective     =  568789605290.289307
-Iteration: 105628   Dual objective     =  569153203973.705933
-Iteration: 108412   Dual objective     =  569449990673.810791
-Iteration: 111004   Dual objective     =  569742104625.526245
-Iteration: 113894   Dual objective     =  569966121337.826416
-Iteration: 116966   Dual objective     =  569967366202.272217
-Iteration: 119674   Dual objective     =  570124184269.264648
-Iteration: 122467   Dual objective     =  570367799875.703125
-Iteration: 127065   Dual objective     =  570408315676.669556
-Elapsed time = 19.05 sec. (20179.02 ticks, 130753 iterations)
-Iteration: 130753   Dual objective     =  570456950788.329102
-Iteration: 133154   Dual objective     =  570653948410.891235
-Iteration: 136582   Dual objective     =  571132235105.971924
-Iteration: 139813   Dual objective     =  571186854176.225830
-Iteration: 143543   Dual objective     =  571188673601.107544
-Iteration: 146622   Dual objective     =  571246472051.031128
-Iteration: 149376   Dual objective     =  571344425925.624268
-Iteration: 152902   Dual objective     =  571432898448.957153
-Iteration: 156827   Dual objective     =  571434721448.855225
-Iteration: 160649   Dual objective     =  571439483945.812744
-Iteration: 163957   Dual objective     =  571440197593.676392
-Iteration: 167259   Dual objective     =  571440198714.746460
-Iteration: 169870   Dual objective     =  571524933931.137329
-Iteration: 172646   Dual objective     =  571860488387.479614
-Iteration: 176747   Dual objective     =  581170747095.915894
-Iteration: 180653   Dual objective     =  589803467307.280273
-Iteration: 184369   Dual objective     =  598072710091.313599
-Iteration: 187853   Dual objective     =  602526615155.402588
-Iteration: 191301   Dual objective     =  602535246310.157593
-Iteration: 194484   Dual objective     =  602536455460.166870
-Iteration: 198189   Dual objective     =  605540189157.597412
-Iteration: 201332   Dual objective     =  605654213924.740845
-Iteration: 204092   Dual objective     =  605929809992.512817
-Iteration: 208110   Dual objective     =  606636391300.871338
-Iteration: 211051   Dual objective     =  606953333068.061401
-Iteration: 214504   Dual objective     =  607056243919.696045
-Iteration: 218485   Dual objective     =  607071238491.682495
-Iteration: 222104   Dual objective     =  607114790729.856079
-Iteration: 224759   Dual objective     =  607275035994.569458
-Iteration: 227707   Dual objective     =  607433564576.863770
-Iteration: 230608   Dual objective     =  607586620665.241333
-Iteration: 233478   Dual objective     =  607735549020.154663
-Iteration: 236282   Dual objective     =  607747830644.146729
-Iteration: 239131   Dual objective     =  607753537407.307129
-Iteration: 242956   Dual objective     =  607758807097.318848
-Elapsed time = 25.91 sec. (30198.38 ticks, 243120 iterations)
-Iteration: 245726   Dual objective     =  607951320517.905273
-Iteration: 248397   Dual objective     =  608169867818.247437
-Iteration: 251191   Dual objective     =  608416209909.893799
-Iteration: 254157   Dual objective     =  608615032147.629883
-Iteration: 256909   Dual objective     =  608627154033.606445
-Iteration: 259721   Dual objective     =  608627417850.302368
-Iteration: 262590   Dual objective     =  608627487341.540649
-Iteration: 265468   Dual objective     =  608718464240.119263
-Iteration: 267983   Dual objective     =  608829724912.220215
-Iteration: 270764   Dual objective     =  609018660305.906616
-Iteration: 273583   Dual objective     =  609019229766.817139
-Iteration: 276498   Dual objective     =  609157530652.244141
-Iteration: 279420   Dual objective     =  609433563973.209473
-Iteration: 281910   Dual objective     =  609443751299.736938
-Iteration: 284390   Dual objective     =  609444596589.283569
-Iteration: 286748   Dual objective     =  609444816857.369019
-Iteration: 289436   Dual objective     =  609487728760.358276
-Iteration: 292442   Dual objective     =  609742673154.421631
-Iteration: 295307   Dual objective     =  609938615188.107300
-Iteration: 298634   Dual objective     =  610255598313.523438
-Iteration: 302189   Dual objective     =  610681348027.337402
-Iteration: 304763   Dual objective     =  610880998765.156250
-Iteration: 307600   Dual objective     =  611141731484.128052
-Iteration: 310259   Dual objective     =  611447587050.273315
-Iteration: 314235   Dual objective     =  626723964042.020142
-Iteration: 317113   Dual objective     =  629706735367.013916
-Iteration: 319585   Dual objective     =  630596631880.758057
-Iteration: 321989   Dual objective     =  631433475546.711792
-Iteration: 324583   Dual objective     =  632480107293.810303
-Iteration: 328475   Dual objective     =  632981767580.879028
-Iteration: 332661   Dual objective     =  632990243400.254761
-Iteration: 335001   Dual objective     =  633368839562.704834
-Elapsed time = 33.19 sec. (40214.00 ticks, 337394 iterations)
-Iteration: 337394   Dual objective     =  633677649796.755371
-Iteration: 339916   Dual objective     =  634067283644.002930
-Iteration: 342559   Dual objective     =  634090581158.721680
-Iteration: 345073   Dual objective     =  634090834209.110474
-Iteration: 347768   Dual objective     =  634192132874.257446
-Iteration: 351009   Dual objective     =  634310088327.608032
-Iteration: 354054   Dual objective     =  634310722357.676025
-Iteration: 356745   Dual objective     =  634405957060.804443
-Iteration: 359690   Dual objective     =  634781412745.919678
-Iteration: 361878   Dual objective     =  635059665089.100708
-Iteration: 364521   Dual objective     =  635106364999.620483
-Iteration: 367393   Dual objective     =  635106399693.767700
-Iteration: 369875   Dual objective     =  635106445137.035156
-Iteration: 372496   Dual objective     =  635363572563.418213
-Iteration: 374970   Dual objective     =  635910091032.788452
-Iteration: 378254   Dual objective     =  636619004685.562012
-Iteration: 380867   Dual objective     =  637283193975.858398
-Iteration: 383371   Dual objective     =  637764469083.557617
-Iteration: 385950   Dual objective     =  638242268733.157593
-Iteration: 388736   Dual objective     =  638704319769.494873
-Iteration: 391167   Dual objective     =  638803393981.714966
-Iteration: 393598   Dual objective     =  638804712936.883789
-Iteration: 395886   Dual objective     =  638805046708.193848
-Iteration: 398417   Dual objective     =  639113072694.013794
-Iteration: 400881   Dual objective     =  639113614363.153320
-Iteration: 403461   Dual objective     =  639113844445.983032
-Iteration: 406028   Dual objective     =  639218970315.618164
-Iteration: 408459   Dual objective     =  640107233399.563232
-Iteration: 410884   Dual objective     =  640664951377.326782
-Iteration: 413440   Dual objective     =  641186226813.258667
-Iteration: 415921   Dual objective     =  641539818086.659546
-Iteration: 418643   Dual objective     =  641905703327.625610
-Iteration: 421037   Dual objective     =  641922152373.543457
-Iteration: 423109   Dual objective     =  641922754111.551025
-Elapsed time = 40.98 sec. (50284.00 ticks, 425570 iterations)
-Iteration: 425570   Dual objective     =  641922779130.348389
-Iteration: 428179   Dual objective     =  642004106189.509521
-Iteration: 430835   Dual objective     =  642310105536.093872
-Iteration: 433531   Dual objective     =  642586360853.852661
-Iteration: 436098   Dual objective     =  642729097315.106689
-Iteration: 438687   Dual objective     =  642847263834.598755
-Iteration: 441560   Dual objective     =  643032243091.919678
-Iteration: 444192   Dual objective     =  643034710141.766968
-Iteration: 446342   Dual objective     =  643035458081.253418
-Iteration: 448172   Dual objective     =  643073437953.828247
-Iteration: 449529   Dual objective     =  643073464730.289673
-Iteration: 452260   Dual objective     =  643193433511.435059
-Iteration: 454692   Dual objective     =  643312391999.384644
-Iteration: 457491   Dual objective     =  643418876482.783813
-Iteration: 459988   Dual objective     =  643422169215.246338
-Iteration: 462770   Dual objective     =  643422243651.407227
-Iteration: 464285   Dual objective     =  643422258826.188477
-Iteration: 467021   Dual objective     =  643491865727.030273
-Iteration: 469104   Dual objective     =  644247804067.357422
-Iteration: 472025   Dual objective     =  644426984622.035889
-Iteration: 474988   Dual objective     =  644427035646.624634
-Iteration: 477910   Dual objective     =  644427120340.565552
-Iteration: 480280   Dual objective     =  644888991334.378662
-Iteration: 482486   Dual objective     =  645007583520.930542
-Iteration: 484596   Dual objective     =  646268090656.673218
-Iteration: 487064   Dual objective     =  646385256944.446777
-Iteration: 489594   Dual objective     =  646393723762.140747
-Iteration: 491916   Dual objective     =  646393724367.800415
-Iteration: 494694   Dual objective     =  646467541295.221802
-Iteration: 496839   Dual objective     =  647125141949.931885
-Iteration: 499330   Dual objective     =  647353962124.347046
-Iteration: 501541   Dual objective     =  647405871439.364380
-Iteration: 504325   Dual objective     =  647526425029.018799
-Elapsed time = 48.81 sec. (60335.48 ticks, 506858 iterations)
-Iteration: 506858   Dual objective     =  647660794023.471069
-Iteration: 509397   Dual objective     =  647708218292.588379
-Iteration: 511377   Dual objective     =  647770835182.463135
-Iteration: 513639   Dual objective     =  647860150522.373657
-Iteration: 516931   Dual objective     =  647873290963.594116
-Iteration: 520329   Dual objective     =  647873308871.194580
-Iteration: 523445   Dual objective     =  647881919007.213013
-Iteration: 525409   Dual objective     =  647940469966.616821
-Iteration: 527783   Dual objective     =  647978317066.061279
-Iteration: 529794   Dual objective     =  648017899847.462769
-Iteration: 532035   Dual objective     =  648066754877.585327
-Iteration: 534400   Dual objective     =  648151809325.027466
-Iteration: 536555   Dual objective     =  648186161187.334106
-Iteration: 538805   Dual objective     =  648218329254.843262
-Iteration: 541125   Dual objective     =  648249857554.568481
-Iteration: 543704   Dual objective     =  648279426197.622559
-Iteration: 546061   Dual objective     =  648303625112.063721
-Iteration: 548350   Dual objective     =  648337840921.494629
-Iteration: 551536   Dual objective     =  648338095629.487915
-Iteration: 554466   Dual objective     =  648338121358.835571
-Iteration: 557561   Dual objective     =  648343140971.017456
-Iteration: 559946   Dual objective     =  648371870024.449707
-Iteration: 564070   Dual objective     =  648372081203.308350
-Iteration: 568522   Dual objective     =  648372105126.347168
-Iteration: 571185   Dual objective     =  648381648439.293091
-Iteration: 574601   Dual objective     =  648381686873.109863
-Iteration: 577901   Dual objective     =  648381709300.857178
-Iteration: 580316   Dual objective     =  648397053995.526123
-Iteration: 582772   Dual objective     =  648414149782.731567
-Iteration: 585166   Dual objective     =  648430534885.918579
-Iteration: 587643   Dual objective     =  648440755187.602417
-Elapsed time = 57.16 sec. (70574.60 ticks, 589882 iterations)
-Iteration: 589882   Dual objective     =  648449587745.991089
-Iteration: 592281   Dual objective     =  648455926350.047607
-Iteration: 594698   Dual objective     =  648463776387.089111
-Iteration: 596790   Dual objective     =  648467490998.456055
-Iteration: 598974   Dual objective     =  648472316245.929932
-Iteration: 601201   Dual objective     =  648475093168.272461
-Iteration: 607337   Dual objective     =  648475327751.732178
-Iteration: 611323   Dual objective     =  648476893892.769775
-Iteration: 613470   Dual objective     =  648478850670.568115
-Iteration: 615722   Dual objective     =  648481996518.492432
-Iteration: 618333   Dual objective     =  648484807353.492188
-Iteration: 620783   Dual objective     =  648487010807.416260
-Iteration: 623172   Dual objective     =  648488850855.066528
-Iteration: 625899   Dual objective     =  648492729664.757935
-Iteration: 629114   Dual objective     =  648493950782.236206
-Iteration: 631218   Dual objective     =  648494860620.147095
-Iteration: 633976   Dual objective     =  648495867151.117065
-Iteration: 636817   Dual objective     =  648496396819.684326
-Elapsed time = 66.06 sec. (80574.85 ticks, 637793 iterations)
-Iteration: 639476   Dual objective     =  648496889423.320313
-Iteration: 642453   Dual objective     =  648497414272.932251
-Iteration: 645285   Dual objective     =  648498159100.144897
-Iteration: 648088   Dual objective     =  648498522514.118164
-Iteration: 651392   Dual objective     =  648499111761.675293
-Iteration: 654722   Dual objective     =  648499486975.901489
-Elapsed time = 78.13 sec. (90576.04 ticks, 657297 iterations)
-Iteration: 657553   Dual objective     =  648499614316.582397
-Iteration: 660940   Dual objective     =  648499749721.623413
-Iteration: 663931   Dual objective     =  648500125246.356201
-Iteration: 666108   Dual objective     =  648500176347.896118
-Iteration: 668077   Dual objective     =  648500199069.198364
-Elapsed time = 90.16 sec. (100576.91 ticks, 668339 iterations)
-Iteration: 670101   Dual objective     =  648500263349.878418
-Iteration: 670942   Dual objective     =  648500297770.507568
-Iteration: 671959   Dual objective     =  648500303129.816528
-Iteration: 672951   Dual objective     =  648500305558.580688
-Iteration: 673767   Dual objective     =  648500307406.097168
-Iteration: 674002   Dual objective     =  648500307406.477295
-Iteration: 674754   Dual objective     =  648500309379.432007
-Iteration: 675402   Dual objective     =  648500311433.973145
-Iteration: 676029   Dual objective     =  648500316534.119507
-Elapsed time = 98.78 sec. (110577.21 ticks, 676237 iterations)
-Iteration: 676834   Dual objective     =  648500318770.685791
-Iteration: 677616   Dual objective     =  648500320687.873657
-Iteration: 678760   Dual objective     =  648500321156.056030
-Iteration: 680459   Dual objective     =  648500322385.416260
-Iteration: 681976   Dual objective     =  648500332359.520142
-Iteration: 683294   Dual objective     =  648500341444.080933
-Iteration: 684280   Dual objective     =  648500352852.862305
-Iteration: 686013   Dual objective     =  648500357682.808960
-Iteration: 687768   Dual objective     =  648500360074.400757
-Iteration: 690908   Dual objective     =  648500362517.804688
-Iteration: 694053   Dual objective     =  648500362549.347168
-Iteration: 696454   Dual objective     =  648500363278.087402
-Removing perturbation.
-
---- LP status (1): optimal.
---- Cplex Time: 108.94sec (det. 122519.04 ticks)
-
-
-Optimal solution found
-Objective:  648500361108.620483
-
---- Reading solution for model Quant_reliab_res_EU
---- Toy_1.gms(479) 2280 Mb  365 secs
---- Executing after solve: elapsed 0:27:52.687
---- Toy_1.gms(500) 2280 Mb  9 secs
---- GDX File (execute_unload) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\check_Toy_1.gdx
---- Toy_1.gms(505) 2280 Mb
-
-GDXXRW           35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
-Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\check_Toy_1.gdx
-Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Output_toy_1.xlsx
-
-*** Status: Normal completion
---- Job Toy_1.gms Stop 01/19/22 13:42:37 elapsed 0:28:03.368
+--- Toy_1.gms(154) 27 Mb  10 secs
+--- Toy_1.gms(160) 33 Mb 7 Errors
+*** Error 141 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+*** Error 116 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Label is unknown
+--- Toy_1.gms(175) 33 Mb 8 Errors
+*** Error 141 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- Toy_1.gms(181) 33 Mb 10 Errors
+*** Error 141 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+*** Error 116 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Label is unknown
+--- Toy_1.gms(185) 33 Mb 11 Errors
+*** Error 141 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- Toy_1.gms(202) 33 Mb 13 Errors
+*** Error 141 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+*** Error 116 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Label is unknown
+--- Toy_1.gms(204) 33 Mb 14 Errors
+*** Error 116 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Label is unknown
+--- Toy_1.gms(206) 33 Mb 15 Errors
+*** Error 116 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Label is unknown
+--- Toy_1.gms(208) 33 Mb 16 Errors
+*** Error 116 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Label is unknown
+--- Toy_1.gms(210) 33 Mb 17 Errors
+*** Error 116 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Label is unknown
+--- Toy_1.gms(212) 33 Mb 18 Errors
+*** Error 116 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Label is unknown
+--- Toy_1.gms(214) 33 Mb 19 Errors
+*** Error 116 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Label is unknown
+--- Toy_1.gms(216) 33 Mb 20 Errors
+*** Error 116 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Label is unknown
+--- Toy_1.gms(221) 33 Mb 21 Errors
+*** Error 116 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Label is unknown
+--- Toy_1.gms(227) 33 Mb 22 Errors
+*** Error 116 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Label is unknown
+--- Toy_1.gms(235) 33 Mb 23 Errors
+*** Error 116 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Label is unknown
+--- Toy_1.gms(237) 33 Mb 24 Errors
+*** Error 116 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Label is unknown
+--- Toy_1.gms(239) 33 Mb 25 Errors
+*** Error 116 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Label is unknown
+--- Toy_1.gms(247) 33 Mb 26 Errors
+*** Error 141 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- Toy_1.gms(249) 33 Mb 27 Errors
+*** Error 141 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- Toy_1.gms(251) 33 Mb 29 Errors
+*** Error 141 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+*** Error 141 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- Toy_1.gms(300) 33 Mb 29 Errors
+*** Status: Compilation error(s)
+--- Job Toy_1.gms Stop 01/30/22 15:40:38 elapsed 0:02:07.741

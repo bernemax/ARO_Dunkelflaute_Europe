@@ -282,9 +282,9 @@ $offtext
 
 af_hydro(t,hr,n)$MapHR(hr,n)=          availup_hydro(t,hr)
 ;
-af_sun(t,sr,n)$MapSR(sr,n)    =          availup_vola_12(t,sr)
+af_sun(t,sr,n)$MapSR(sr,n)  =          availup_vola_12(t,sr)
 ;
-af_wind(t,wr,n)$MapWR(wr,n)   =          availup_vola_12(t,wr)
+af_wind(t,wr,n)$MapWR(wr,n) =          availup_vola_12(t,wr)
 ;
 $ontext
 $offtext

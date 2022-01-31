@@ -1,3 +1,73 @@
 B 3 C o m p i l a t i o n
-B 276 Include File Summary
-B 292 E x e c u t i o n
+B 492 Include File Summary
+B 507 Equation Listing    SOLVE Quant_reliab_res_EU Using MIP From line 478
+D 510 Total_costs
+D 5063 Balance
+D 5074 max_gen
+D 5085 max_cap
+D 5096 startup_constr
+D 5107 max_res_biomass
+D 5118 max_res_sun
+D 5129 max_res_wind
+D 5140 max_gencap_ror
+D 5151 max_inflow_ror
+D 5162 min_reservoir
+D 5173 max_reservoir_cap
+D 5184 max_reservoir_inflow
+D 5195 Store_level_start
+D 5206 Store_level
+D 5217 Store_level_end
+D 5228 Store_level_max
+D 5239 Store_prod_max
+D 5250 Store_prod_max_end
+D 5261 NTC_max_ex
+D 5272 NTC_max_im
+D 5283 LS_det
+B 5295 Column Listing      SOLVE Quant_reliab_res_EU Using MIP From line 478
+E 5298 Costs
+E 5305 Gen_g
+E 5327 Gen_r
+E 5346 Gen_s
+E 5369 Power_flow
+E 5388 storagelvl
+E 5410 charge
+E 5433 Su
+E 5452 P_on
+E 5477 Load_shed
+E 5499 Curtailment
+B 5519 Model Statistics    SOLVE Quant_reliab_res_EU Using MIP From line 478
+B 5532 Solution Report     SOLVE Quant_reliab_res_EU Using MIP From line 478
+F 5566 Total_costs
+F 5568 Balance
+F 163253 max_gen
+F 1056778 max_cap
+F 1950303 startup_constr
+F 2843828 max_res_biomass
+F 2992753 max_res_sun
+F 3132918 max_res_wind
+F 3273083 max_gencap_ror
+F 3422008 max_inflow_ror
+F 3562173 min_reservoir
+F 3702338 max_reservoir_cap
+F 3842503 max_reservoir_inflow
+F 3982668 Store_level_start
+F 3982690 Store_level
+F 4131598 Store_level_end
+F 4131620 Store_level_max
+F 4280545 Store_prod_max
+F 4429470 Store_prod_max_end
+F 4429492 NTC_max_ex
+F 7267737 NTC_max_im
+F 10105982 LS_det
+G 10263669 Costs
+G 10263671 Gen_g
+G 11157196 Gen_r
+G 11586441 Gen_s
+G 12024446 Power_flow
+G 14862691 storagelvl
+G 15011616 charge
+G 15160541 Su
+G 16054066 P_on
+G 16947591 Load_shed
+G 17105276 Curtailment
+B 17552048 E x e c u t i o n

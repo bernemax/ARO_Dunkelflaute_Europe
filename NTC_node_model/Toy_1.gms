@@ -296,8 +296,8 @@ var_costs(g,t)   =          ((FC_conv(g,t)+ co2_costs(t) * co2_content(g)) / Eff
 su_costs(g,t)     =          depri_costs(g) + su_fact(g) * fuel_start(g) * FC_conv(g,t) + co2_content(g) * co2_costs(t)
 ;
 
-execute_unload "check_Toy_1.gdx";
-$stop
+*execute_unload "check_Toy_1.gdx";
+*$stop
 *************************************upload table clearing**************************
 
 *option kill = Node_Demand ;

@@ -1,5 +1,5 @@
 
---- Job Toy_1.gms Start 01/30/22 15:30:07 34.2.0 r6925a71 WEX-WEI x86 64bit/MS Windows
+--- Job Toy_1.gms Start 01/30/22 15:38:30 34.2.0 r6925a71 WEX-WEI x86 64bit/MS Windows
 --- Applying:
     C:\GAMS\34\gmsprmNT.txt
 --- GAMS Parameters defined
@@ -30,13 +30,11 @@ Value expected in cell: Gen_hydro!G3; found reservoir
 Value expected in cell: Gen_hydro!B4; found AT
 Additional errors suppressed
 Total number of bad values for symbol Gen_Hydro = 99
-**** There were 4 duplicate entries for symbol NTC_cap
+**** There were 2 duplicate entries for symbol NTC_cap
  1: DE,DK
- 2: DK,DE
- 3: DK,SE
- 4: SE,DK
+ 2: DK,SE
 Output gdx file deleted: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data.gdx
-Total time = 37796 Ms
+Total time = 37062 Ms
 The option "MaxDupeErrors = <integer>" can be used to allow for some duplicate records
 --- Toy_1.gms(135) 4 Mb
 *** GDXIN failed Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data.gdx
@@ -62,11 +60,11 @@ The option "MaxDupeErrors = <integer>" can be used to allow for some duplicate r
 GDXXRW           34.2.0 r6925a71 Released Feb 05, 2021 WEI x86 64bit/MS Window
 Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.xlsx
 Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.gdx
-Total time = 68156 Ms
+Total time = 75422 Ms
 --- Toy_1.gms(153) 4 Mb
 --- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.gdx
 --- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.gdx
---- Toy_1.gms(154) 27 Mb  9 secs
+--- Toy_1.gms(154) 27 Mb  10 secs
 --- Toy_1.gms(160) 33 Mb 7 Errors
 *** Error 141 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
     Symbol declared but no values have been assigned. Check for missing
@@ -173,4 +171,4 @@ Total time = 68156 Ms
        text of a declaration. Check symbol reference list.
 --- Toy_1.gms(300) 33 Mb 29 Errors
 *** Status: Compilation error(s)
---- Job Toy_1.gms Stop 01/30/22 15:32:07 elapsed 0:01:59.770
+--- Job Toy_1.gms Stop 01/30/22 15:40:38 elapsed 0:02:07.741

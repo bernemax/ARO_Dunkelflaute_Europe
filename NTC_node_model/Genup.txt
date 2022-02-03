@@ -8,7 +8,7 @@ set=MapHr                       rng=Mapping!P2:Q30                      rdim=2 c
 par=load                        rng=Load!A1:R8761                       rDim=1 cdim=1
 par=Gen_conv                    rng=Gen_conv!B1:J103                    rDim=1 cdim=1
 par=Gen_res                     rng=Gen_res!B1:F52                      rDim=1 cdim=1
-par=Gen_Hydro                   rng=Gen_Hydro!A1:H52                    rDim=1 cdim=1
+par=Gen_Hydro                   rng=Gen_Hydro!A1:I52                    rDim=1 cdim=1
 par=priceup                     rng=prices!A1:I8761                     rDim=1 cdim=1
 par=availup_hydro               rng=Availability!A2:R8762               rDim=1 cdim=1
 par=NTC_cap                     rng=NTC!A1:CE83                         rDim=1 cdim=1

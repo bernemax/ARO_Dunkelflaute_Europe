@@ -97,6 +97,7 @@ Eff_hydro(s)                    efficiency of hydro powerplants
 Eff_res(res)                    efficiency of renewable powerplants
 
 share_inflow(s,n)
+reservoir_stor_cap(s,n)         maximum reservoir storage capacity resp. filling level
 af_hydro(t,hr,n)                availability of hydro potential inflow
 af_sun(t,sr,n)                  capacity factor of solar energy
 af_wind(t,wr,n)                 capacity factor of wind energy
@@ -123,7 +124,7 @@ set=MapHr                       rng=Mapping!P2:Q30                      rdim=2 c
 par=load                        rng=Load!A1:R8761                       rDim=1 cdim=1
 par=Gen_conv                    rng=Gen_conv!B1:J103                    rDim=1 cdim=1
 par=Gen_res                     rng=Gen_res!B1:F52                      rDim=1 cdim=1
-par=Gen_Hydro                   rng=Gen_Hydro!A1:H52                    rDim=1 cdim=1
+par=Gen_Hydro                   rng=Gen_Hydro!A1:I52                    rDim=1 cdim=1
 par=priceup                     rng=prices!A1:I8761                     rDim=1 cdim=1
 par=availup_hydro               rng=Availability!A2:R8762               rDim=1 cdim=1
 par=NTC_cap                     rng=NTC!A1:CE83                         rDim=1 cdim=1
@@ -178,7 +179,9 @@ $offUNDF
 ;
         ror(s)          =    Gen_Hydro(s,'tech') = 9
 ;
-        share_inflow(s,n)$(MapS(s,n))  =    Gen_Hydro(s,'share_Reservoir_ROR ') 
+        share_inflow(s,n)$(MapS(s,n))  =    Gen_Hydro(s,'share_Reservoir_ROR') 
+;
+        reservoir_stor_cap(s,n)$(MapS(s,n)) =  Gen_Hydro(s,'Stor_cap')
 ;
 ****************************************res*****************************************
 
@@ -338,11 +341,13 @@ max_res_biomass
 max_res_sun
 max_res_wind
 
-max_gencap_ror
-max_inflow_ror
-min_reservoir
-max_reservoir_cap
-max_reservoir_inflow
+reservor_stor_lvl_start
+reservor_stor_lvl
+reservor_stor_lvl_end
+min_reservoir_gen
+max_reservoir_gen
+max_reservoir_stor_lvl
+min_reservoir_stor_lvl
 
 Store_level_start
 Store_level
@@ -418,11 +423,19 @@ Store_prod_max_end(psp,t)$(ord(t) = card(t))..                          gen_s(ps
 ;
 *****************************************************Hydro reservoir******************************************************
 
-min_reservoir(reservoir,n,hr,t)$(MapHR(hr,n) and MapS(reservoir,n))..   gen_s(reservoir,t) =g= (af_hydro(t,hr,n) *scale_to_MW) * share_inflow(reservoir,n) * 0.15
+reservor_stor_lvl_start(reservoir,n,hr,t)$(MapHR(hr,n) and (ord(t) =1))..              storagelvl(reservoir,t) =e= reservoir_stor_cap(reservoir,n) *0.7 - gen_s(reservoir,t) + (af_hydro(t,hr,n) * scale_to_MW) * share_inflow(reservoir,n)
 ;
-max_reservoir_cap(reservoir,n,hr,t)$(MapHR(hr,n) and MapS(reservoir,n))..   gen_s(reservoir,t) =l= cap_hydro(reservoir) 
+reservor_stor_lvl(reservoir,n,hr,t)$(MapHR(hr,n)  and (ord(t) gt 1))..                 storagelvl(reservoir,t) =e= reservoir_stor_cap(reservoir,n) - gen_s(reservoir,t) + (af_hydro(t,hr,n) * scale_to_MW) * share_inflow(reservoir,n)
 ;
-max_reservoir_inflow(reservoir,n,hr,t)$(MapHR(hr,n) and MapS(reservoir,n))..   gen_s(reservoir,t) =l= (af_hydro(t,hr,n) * scale_to_MW) * share_inflow(reservoir,n)
+reservor_stor_lvl_end(reservoir,n,hr,t)$(MapHR(hr,n)  and (ord(t) = card(t)))..        storagelvl(reservoir,t) =e= reservoir_stor_cap(reservoir,n) *0.7 - gen_s(reservoir,t) + (af_hydro(t,hr,n) * scale_to_MW) * share_inflow(reservoir,n)
+;
+min_reservoir_gen(reservoir,n,hr,t)$(MapHR(hr,n) )..                                   gen_s(reservoir,t) =g= (af_hydro(t,hr,n) *scale_to_MW) * share_inflow(reservoir,n) * 0.15
+;
+max_reservoir_gen(reservoir,n,hr,t)$(MapHR(hr,n) )..                                   gen_s(reservoir,t) =l= cap_hydro(reservoir) 
+;
+max_reservoir_stor_lvl(reservoir,n,hr,t)$(MapHR(hr,n) )..                              storagelvl(reservoir,t) =l= reservoir_stor_cap(reservoir,n)
+;
+min_reservoir_stor_lvl(reservoir,n,hr,t)$(MapHR(hr,n)and (ord(t) gt 1) )..             storagelvl(reservoir,t) =g= 0.15 * reservoir_stor_cap(reservoir,n)
 ;
 
 *##########################################################NTC exchange###########################################################
@@ -452,11 +465,13 @@ max_res_biomass
 max_res_sun
 max_res_wind
 
-max_gencap_ror
-max_inflow_ror
-min_reservoir
-max_reservoir_cap
-max_reservoir_inflow
+reservor_stor_lvl_start
+reservor_stor_lvl
+reservor_stor_lvl_end
+min_reservoir_gen
+max_reservoir_gen
+max_reservoir_stor_lvl
+min_reservoir_stor_lvl
 
 Store_level_start
 Store_level

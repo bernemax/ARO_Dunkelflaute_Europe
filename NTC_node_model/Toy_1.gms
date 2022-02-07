@@ -10,8 +10,8 @@ $set        Data_input         Data_input\
 
 Sets
 
-n /DE,DK,SE,PL,CZ,AT,CH,FR,BE,NL,
-   NO,UK,IT,ES,BALT,SI/
+n /DE,DK,SE,PL,CZ,AT,CH,FR,BE,NE,
+   NO,UK,IT,ES,BALT,SI,SEE,FI/
 g /g1*g102/
 s /s1*s51/
 res/res1*res51/
@@ -46,6 +46,7 @@ psp(s)
 MapG(g,n)
 MapS(s,n)
 MapRes(res,n)
+MapHr(hr,n)
 MapSr(sr,n)
 MapWr(wr,n)
 ;
@@ -55,6 +56,7 @@ alias (n,nn)
 Scalars
 cur_costs /150/
 store_cpf /7/
+scale_to_MW /1000/
 ;
 Parameters
 **********************************************************Input parameter********************************************
@@ -94,10 +96,11 @@ Eff_conv(g)                     efficiency of conventional powerplants
 Eff_hydro(s)                    efficiency of hydro powerplants
 Eff_res(res)                    efficiency of renewable powerplants
 
-af_hydro(n,hr,t)                availability of hydro potential
-af_sun(n,sr,t)                  capacity factor of solar energy
-*t,sr,n
-af_wind(n,wr,t)                 capacity factor of wind energy
+share_inflow(s,n)
+reservoir_stor_cap(s,n)         maximum reservoir storage capacity resp. filling level
+af_hydro(t,hr,n)                availability of hydro potential inflow
+af_sun(t,sr,n)                  capacity factor of solar energy
+af_wind(t,wr,n)                 capacity factor of wind energy
 **********************************************************report parameter*******************************************
 
 price(t,n)
@@ -110,28 +113,28 @@ report(n,*)
 ;
 
 ************************************technical & mapping******************************
-$onecho > TEP.txt
+$onecho > Genup.txt
 set=MapG                        rng=Mapping!A2:B104                     rdim=2 cDim=0
 set=MapS                        rng=Mapping!D2:E100                     rdim=2 cDim=0
 set=MapRes                      rng=Mapping!G2:H100                     rdim=2 cDim=0
 set=MapSr                       rng=Mapping!J2:K30                      rdim=2 cDim=0
 set=MapWr                       rng=Mapping!M2:N30                      rdim=2 cDim=0
-
+set=MapHr                       rng=Mapping!P2:Q30                      rdim=2 cDim=0
 
 par=load                        rng=Load!A1:R8761                       rDim=1 cdim=1
 par=Gen_conv                    rng=Gen_conv!B1:J103                    rDim=1 cdim=1
 par=Gen_res                     rng=Gen_res!B1:F52                      rDim=1 cdim=1
-par=Gen_Hydro                   rng=Gen_Hydro!B1:F52                    rDim=1 cdim=1
+par=Gen_Hydro                   rng=Gen_Hydro!A1:I52                    rDim=1 cdim=1
 par=priceup                     rng=prices!A1:I8761                     rDim=1 cdim=1
-par=availup_hydro               rng=Availability!AJ1:AZ8762             rDim=1 cdim=1
-par=NTC_cap                     rng=NTC!A1:BE57                         rDim=1 cdim=1
+par=availup_hydro               rng=Availability!A2:R8762               rDim=1 cdim=1
+par=NTC_cap                     rng=NTC!A1:CE83                         rDim=1 cdim=1
 
 $offecho
 
 $onUNDF
-$call   gdxxrw I=%Data_input%Data.xlsx O=%Data_input%Data.gdx @TEP.txt
+$call   gdxxrw I=%Data_input%Data.xlsx O=%Data_input%Data.gdx @Genup.txt
 $GDXin  %Data_input%Data.gdx
-$load   MapG, MapS, MapRes, MapSr, MapWr
+$load   MapG, MapS, MapRes, MapSr, MapWr, MapHr
 $load   load
 $load   Gen_conv, Gen_res, Gen_Hydro
 $load   priceup,availup_hydro, NTC_cap
@@ -139,7 +142,7 @@ $GDXin
 $offUNDF
 
 **************************************weather cap factors ***************************
-$onecho > TEP.txt
+$onecho > availup.txt
 par=availup_vola_89              rng=cf_1989!A2:AL8763                  rDim=1 cdim=1
 par=availup_vola_90              rng=cf_1990!A2:AL8763                  rDim=1 cdim=1
 par=availup_vola_10              rng=cf_2010!A2:AL8763                  rDim=1 cdim=1
@@ -147,7 +150,7 @@ par=availup_vola_12              rng=cf_2012!A2:AL8763                  rDim=1 c
 $offecho
 
 $onUNDF
-$call   gdxxrw I=%Data_input%Weather_cap_factors.xlsx O=%Data_input%Weather_cap_factors.gdx @TEP.txt
+$call   gdxxrw I=%Data_input%Weather_cap_factors.xlsx O=%Data_input%Weather_cap_factors.gdx @availup.txt
 $GDXin  %Data_input%Weather_cap_factors.gdx
 $load   availup_vola_89, availup_vola_90, availup_vola_10, availup_vola_12
 $GDXin
@@ -155,35 +158,38 @@ $offUNDF
 
 *####################################subset definitions#############################
 
-        gas(g)      =    Gen_conv(g,'tech')  = 1
+        gas(g)          =    Gen_conv(g,'tech')  = 1
 ;
-        oil(g)      =    Gen_conv(g,'tech')  = 2
+        oil(g)          =    Gen_conv(g,'tech')  = 2
 ;
-        coal(g)     =    Gen_conv(g,'tech')  = 3
+        coal(g)         =    Gen_conv(g,'tech')  = 3
 ;
-        lig(g)      =    Gen_conv(g,'tech')  = 4
+        lig(g)          =    Gen_conv(g,'tech')  = 4
 ;
-        nuc(g)      =    Gen_conv(g,'tech')  = 5
+        nuc(g)          =    Gen_conv(g,'tech')  = 5
 ;
-        waste(g)    =    Gen_conv(g,'tech')  = 6
+        waste(g)        =    Gen_conv(g,'tech')  = 6
 ;
 
 ***************************************hydro****************************************
 
-        psp(s)      =    Gen_Hydro(s,'tech') = 7
+        psp(s)          =    Gen_Hydro(s,'tech') = 7
 ;
-        reservoir(s)=    Gen_Hydro(s,'tech') = 8
+        reservoir(s)    =    Gen_Hydro(s,'tech') = 8
 ;
-        ror(s)      =    Gen_Hydro(s,'tech') = 9
+        ror(s)          =    Gen_Hydro(s,'tech') = 9
 ;
-
+        share_inflow(s,n)$(MapS(s,n))  =    Gen_Hydro(s,'share_Reservoir_ROR') 
+;
+        reservoir_stor_cap(s,n)$(MapS(s,n)) =  Gen_Hydro(s,'Stor_cap')
+;
 ****************************************res*****************************************
 
-        wind(res)   =    Gen_res(res,'tech') = 10
+        wind(res)       =    Gen_res(res,'tech') = 10
 ;
-        sun(res)    =    Gen_res(res,'tech') = 11
+        sun(res)        =    Gen_res(res,'tech') = 11
 ;
-        biomass(res)=    Gen_res(res,'tech') = 12
+        biomass(res)    =    Gen_res(res,'tech') = 12
 ;
 
 
@@ -240,69 +246,57 @@ fuel_start(g)       =          Gen_conv(g,'fuel_start')
 
 **************************1989
 %cf_1989%$ontext
-af_hydro(ror,t)             =          availup_hydro(t,'ror')
+
+af_sun(t,sr,n)$MapSR(sr,n)  =          availup_vola_89(t,sr)
 ;
-af_hydro(psp,t)             =          availup_hydro(t,'psp')
+af_wind(t,wr,n)$MapWR(wr,n) =          availup_vola_89(t,wr)
 ;
-af_hydro(reservoir,t)       =          availup_hydro(t,'reservoir')
-;
-af_sun(n,sr,t)$MapSR(sr,n)  =          availup_vola_89(t,sr)
-;
-af_wind(n,wr,t)$MapWR(wr,n) =          availup_vola_89(t,wr)
+af_hydro(t,hr,n)$MapHR(hr,n)=          availup_hydro(t,hr)
 ;
 $ontext
 $offtext
 
 **************************1990
 %cf_1990%$ontext
-af_hydro(ror,t)             =          availup_hydro(t,'ror')
+
+af_hydro(t,hr,n)$MapHR(hr,n)=          availup_hydro(t,hr)
 ;
-af_hydro(psp,t)             =          availup_hydro(t,'psp')
+af_sun(t,sr,n)$MapSR(sr,n)  =          availup_vola_90(t,sr)
 ;
-af_hydro(reservoir,t)       =          availup_hydro(t,'reservoir')
-;
-af_sun(n,sr,t)$MapSR(sr,n)  =          availup_vola_90(t,sr)
-;
-af_wind(n,wr,t)$MapWR(wr,n) =          availup_vola_90(t,wr)
+af_wind(t,wr,n)$MapWR(wr,n) =          availup_vola_90(t,wr)
 ;
 $ontext
 $offtext
 
 **************************2010
 %cf_2010%$ontext
-af_hydro(ror,t)             =          availup_hydro(t,'ror')
+
+af_hydro(t,hr,n)$MapHR(hr,n)=          availup_hydro(t,hr)
 ;
-af_hydro(psp,t)             =          availup_hydro(t,'psp')
+af_sun(t,sr,n)$MapSR(sr,n)  =          availup_vola_10(t,sr)
 ;
-af_hydro(reservoir,t)       =          availup_hydro(t,'reservoir')
-;
-af_sun(n,sr,t)$MapSR(sr,n)  =          availup_vola_10(t,sr)
-;
-af_wind(n,wr,t)$MapWR(wr,n) =          availup_vola_10(t,wr)
+af_wind(t,wr,n)$MapWR(wr,n) =          availup_vola_10(t,wr)
 ;
 $ontext
 $offtext
 
 **************************2012
 %cf_2012%$ontext
-af_hydro(ror,t)             =          availup_hydro(t,'ror')
+
+af_hydro(t,hr,n)$MapHR(hr,n)=          availup_hydro(t,hr)
 ;
-af_hydro(psp,t)             =          availup_hydro(t,'psp')
+af_sun(t,sr,n)$MapSR(sr,n)  =          availup_vola_12(t,sr)
 ;
-af_hydro(reservoir,t)       =          availup_hydro(t,'reservoir')
-;
-af_sun(n,sr,t)$MapSR(sr,n)  =          availup_vola_12(t,sr)
-;
-af_wind(n,wr,t)$MapWR(wr,n) =          availup_vola_12(t,wr)
+af_wind(t,wr,n)$MapWR(wr,n) =          availup_vola_12(t,wr)
 ;
 $ontext
 $offtext
 
 *************************************calculating************************************
 
-var_costs(g,t)              =          ((FC_conv(g,t)+ co2_costs(t) * co2_content(g)) / Eff_conv(g))
+var_costs(g,t)   =          ((FC_conv(g,t)+ co2_costs(t) * co2_content(g)) / Eff_conv(g) )
 ;
-su_costs(g,t)               =          depri_costs(g) + su_fact(g) * fuel_start(g) * FC_conv(g,t) + co2_content(g) * co2_costs(t)
+su_costs(g,t)     =          depri_costs(g) + su_fact(g) * fuel_start(g) * FC_conv(g,t) + co2_content(g) * co2_costs(t)
 ;
 
 *execute_unload "check_Toy_1.gdx";
@@ -315,6 +309,7 @@ su_costs(g,t)               =          depri_costs(g) + su_fact(g) * fuel_start(
 *######################################variables######################################
 Variables
 Costs
+*Power_flow(n,nn,t)
 ;
 
 positive Variables
@@ -346,10 +341,13 @@ max_res_biomass
 max_res_sun
 max_res_wind
 
-max_gencap_ror
-max_inflow_ror
-min_reservoir
-max_reservoir
+reservor_stor_lvl_start
+reservor_stor_lvl
+reservor_stor_lvl_end
+min_reservoir_gen
+max_reservoir_gen
+max_reservoir_stor_lvl
+min_reservoir_stor_lvl
 
 Store_level_start
 Store_level
@@ -373,7 +371,6 @@ Total_costs..                costs =e=   sum((g,t), Var_costs(g,t) * Gen_g(g,t))
 
 ;
 
-
 *####################################################energy balance########################################################
 
 Balance(t,n)..                (load(t,n) - Load_shed(t,n))  =e= sum(g$MapG(g,n),Gen_g(g,t))
@@ -387,60 +384,69 @@ Balance(t,n)..                (load(t,n) - Load_shed(t,n))  =e= sum(g$MapG(g,n),
 
                                                            + sum(s$MapS(s,n), Gen_s(s,t))
                                                            - sum(psp$MapS(psp,n), charge(psp,t))
-
-
 ;
 **Eff_res(biomass)
 *######################################################generation##########################################################
 
-max_gen(g,t)..                                                  Gen_g(g,t) =l= P_on(g,t)
+max_gen(g,t)..                                                          Gen_g(g,t) =l= P_on(g,t)
 ;
-max_cap(g,t)..                                                  P_on(g,t)  =l= cap_conv(g)
+max_cap(g,t)..                                                          P_on(g,t)  =l= cap_conv(g)
 ;
-startup_constr(g,t)..                                           P_on(g,t) - P_on(g,t-1) =l= Su(g,t)
+startup_constr(g,t)..                                                   P_on(g,t) - P_on(g,t-1) =l= Su(g,t)
 ;
-max_res_biomass(biomass,t)..                                    gen_r(biomass,t) =l=  cap_res(biomass)
+max_res_biomass(biomass,t)..                                            gen_r(biomass,t) =l=  cap_res(biomass)
 ;
-max_res_sun(sun,n,sr,t)$(MapSR(sr,n) and MapRes(sun,n))..       gen_r(sun,t) =e=  af_sun(n,sr,t) * cap_res(sun)- Curtailment(sun,t)
+max_res_sun(sun,n,sr,t)$(MapSR(sr,n) and MapRes(sun,n))..               gen_r(sun,t) =e=  af_sun(t,sr,n) * cap_res(sun)- Curtailment(sun,t)
 ;
-max_res_wind(wind,n,wr,t)$(MapWR(wr,n) and MapRes(wind,n))..    gen_r(wind,t) =e= af_wind(n,wr,t) * cap_res(wind)- Curtailment(wind,t)
+max_res_wind(wind,n,wr,t)$(MapWR(wr,n) and MapRes(wind,n))..            gen_r(wind,t) =e= af_wind(t,wr,n) * cap_res(wind)- Curtailment(wind,t)
 ;
 
 ********************************************************Hydro RoR**********************************************************
 
-max_gencap_ror(ror,t)..                                            gen_s(ror,t) =l=  cap_hydro(ror)
+max_gencap_ror(ror,t)..                                                 gen_s(ror,t) =l=  cap_hydro(ror)
 ;
-max_inflow_ror(ror,t)..                                            gen_s(ror,t) =l=          
-
+max_inflow_ror(ror,n,hr,t)$(MapHR(hr,n) and MapS(ror,n))..              gen_s(ror,t) =l=  (af_hydro(t,hr,n) * scale_to_MW) *  share_inflow(ror,n)     
+;
 ********************************************************Hydro PsP**********************************************************
-Store_level_start(psp,t)$(ord(t) =1)..                      storagelvl(psp,t) =e= cap_hydro(psp) *0.5 + charge(psp,t) * eff_hydro(psp) - gen_s(psp,t)
+
+Store_level_start(psp,t)$(ord(t) =1)..                                  storagelvl(psp,t) =e= cap_hydro(psp) *0.5 + charge(psp,t) * eff_hydro(psp) - gen_s(psp,t)
 ;
-Store_level(psp,t)$(ord(t) gt 1)..                          storagelvl(psp,t) =e= storagelvl(psp,t-1) + charge(psp,t-1) * eff_hydro(psp) - gen_s(psp,t-1)
+Store_level(psp,t)$(ord(t) gt 1)..                                      storagelvl(psp,t) =e= storagelvl(psp,t-1) + charge(psp,t-1) * eff_hydro(psp) - gen_s(psp,t-1)
 ;
-Store_level_end(psp,t)$(ord(t) = card(t))..                 storagelvl(psp,t) =e= cap_hydro(psp) * 0.5
+Store_level_end(psp,t)$(ord(t) = card(t))..                             storagelvl(psp,t) =e= cap_hydro(psp) * 0.5
 ;
-Store_level_max(psp,t)..                                    storagelvl(psp,t) =l= cap_hydro(psp) * store_cpf
+Store_level_max(psp,t)..                                                storagelvl(psp,t) =l= cap_hydro(psp) * store_cpf
 ;
-Store_prod_max(psp,t)..                                     gen_s(psp,t) + charge(psp,t) *1.2 =l= cap_hydro(psp) * af_hydro(psp,t)
+Store_prod_max(psp,t)..                                                 gen_s(psp,t) + charge(psp,t) *1.2 =l= cap_hydro(psp) 
 ;
-Store_prod_max_end(psp,t)$(ord(t) = card(t))..              gen_s(psp,t)      =l= storagelvl(psp,t)
+Store_prod_max_end(psp,t)$(ord(t) = card(t))..                          gen_s(psp,t)      =l= storagelvl(psp,t)
 ;
 *****************************************************Hydro reservoir******************************************************
 
-min_reservoir(reservoir,t)..                                gen_s(reservoir,t) =G= cap_hydro(reservoir) * af_hydro(reservoir,t) * 0.15
+reservor_stor_lvl_start(reservoir,n,hr,t)$(MapHR(hr,n) and (ord(t) =1))..              storagelvl(reservoir,t) =e= reservoir_stor_cap(reservoir,n) *0.7 - gen_s(reservoir,t) + (af_hydro(t,hr,n) * scale_to_MW) * share_inflow(reservoir,n)
 ;
-max_reservoir(reservoir,t)..                                gen_s(reservoir,t) =l= cap_hydro(reservoir) * af_hydro(reservoir,t)
+reservor_stor_lvl(reservoir,n,hr,t)$(MapHR(hr,n)  and (ord(t) gt 1))..                 storagelvl(reservoir,t) =e= reservoir_stor_cap(reservoir,n) - gen_s(reservoir,t) + (af_hydro(t,hr,n) * scale_to_MW) * share_inflow(reservoir,n)
+;
+reservor_stor_lvl_end(reservoir,n,hr,t)$(MapHR(hr,n)  and (ord(t) = card(t)))..        storagelvl(reservoir,t) =e= reservoir_stor_cap(reservoir,n) *0.7 - gen_s(reservoir,t) + (af_hydro(t,hr,n) * scale_to_MW) * share_inflow(reservoir,n)
+;
+min_reservoir_gen(reservoir,n,hr,t)$(MapHR(hr,n) )..                                   gen_s(reservoir,t) =g= (af_hydro(t,hr,n) *scale_to_MW) * share_inflow(reservoir,n) * 0.15
+;
+max_reservoir_gen(reservoir,n,hr,t)$(MapHR(hr,n) )..                                   gen_s(reservoir,t) =l= cap_hydro(reservoir) 
+;
+max_reservoir_stor_lvl(reservoir,n,hr,t)$(MapHR(hr,n) )..                              storagelvl(reservoir,t) =l= reservoir_stor_cap(reservoir,n)
+;
+min_reservoir_stor_lvl(reservoir,n,hr,t)$(MapHR(hr,n)and (ord(t) gt 1) )..             storagelvl(reservoir,t) =g= 0.15 * reservoir_stor_cap(reservoir,n)
 ;
 
 *##########################################################NTC exchange###########################################################
 
-ntc_max_ex(n,nn,t)..                                        power_flow(n,nn,t) =l= NTC_cap(n,nn)
+ntc_max_ex(n,nn,t)..                                                    power_flow(n,nn,t) =l= NTC_cap(n,nn)
 ;
-ntc_max_im(nn,n,t)..                                        power_flow(nn,n,t) =l= NTC_cap(nn,n)
+ntc_max_im(nn,n,t)..                                                    power_flow(nn,n,t) =l= NTC_cap(nn,n)
 ;
 *****************************************************load shedding determination*******************************************
 
-LS_det(t,n)..                                               Load_shed(t,n)     =l= load(t,n)
+LS_det(t,n)..                                                           Load_shed(t,n)     =l= load(t,n)
 ;
 *execute_unload "check_Toy_1.gdx";
 *$stop
@@ -459,9 +465,13 @@ max_res_biomass
 max_res_sun
 max_res_wind
 
-max_ror
-min_reservoir
-max_reservoir
+reservor_stor_lvl_start
+reservor_stor_lvl
+reservor_stor_lvl_end
+min_reservoir_gen
+max_reservoir_gen
+max_reservoir_stor_lvl
+min_reservoir_stor_lvl
 
 Store_level_start
 Store_level
@@ -475,6 +485,7 @@ NTC_max_im
 LS_det
 /
 ;
+*option names = no;
 
 *#########################################################Solving##################################################################
 

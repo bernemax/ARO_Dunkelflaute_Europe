@@ -16,7 +16,7 @@ g /g1*g102/
 s /s1*s51/
 res/res1*res51/
 *NTC/ntc1*ntc100/
-t/t1*t8760/
+t/t1*t4760/
 sr/sr1*sr17/
 wr/wr1*wr17/
 hr/hr1*hr17/
@@ -341,6 +341,9 @@ max_res_biomass
 max_res_sun
 max_res_wind
 
+max_gencap_ror
+max_inflow_ror
+
 reservor_stor_lvl_start
 reservor_stor_lvl
 reservor_stor_lvl_end
@@ -423,19 +426,19 @@ Store_prod_max_end(psp,t)$(ord(t) = card(t))..                          gen_s(ps
 ;
 *****************************************************Hydro reservoir******************************************************
 
-reservor_stor_lvl_start(reservoir,n,hr,t)$(MapHR(hr,n) and (ord(t) =1))..              storagelvl(reservoir,t) =e= reservoir_stor_cap(reservoir,n) *0.7 - gen_s(reservoir,t) + (af_hydro(t,hr,n) * scale_to_MW) * share_inflow(reservoir,n)
+reservor_stor_lvl_start(reservoir,n,hr,t)$(MapHR(hr,n) and MapS(reservoir,n) and ord(t) =1)..               storagelvl(reservoir,t) =e= reservoir_stor_cap(reservoir,n) *0.7 - gen_s(reservoir,t) + (af_hydro(t,hr,n) * scale_to_MW) * share_inflow(reservoir,n)
 ;
-reservor_stor_lvl(reservoir,n,hr,t)$(MapHR(hr,n)  and (ord(t) gt 1))..                 storagelvl(reservoir,t) =e= reservoir_stor_cap(reservoir,n) - gen_s(reservoir,t) + (af_hydro(t,hr,n) * scale_to_MW) * share_inflow(reservoir,n)
+reservor_stor_lvl(reservoir,n,hr,t)$(MapHR(hr,n) and MapS(reservoir,n) and ord(t) gt 1)..                   storagelvl(reservoir,t) =e= storagelvl(reservoir,t-1) - gen_s(reservoir,t-1) + (af_hydro(t-1,hr,n) * scale_to_MW) * share_inflow(reservoir,n)
 ;
-reservor_stor_lvl_end(reservoir,n,hr,t)$(MapHR(hr,n)  and (ord(t) = card(t)))..        storagelvl(reservoir,t) =e= reservoir_stor_cap(reservoir,n) *0.7 - gen_s(reservoir,t) + (af_hydro(t,hr,n) * scale_to_MW) * share_inflow(reservoir,n)
+reservor_stor_lvl_end(reservoir,n,hr,t)$(MapHR(hr,n) and MapS(reservoir,n) and ord(t) = card(t))..          storagelvl(reservoir,t) =e= reservoir_stor_cap(reservoir,n) *0.7 - gen_s(reservoir,t-1) + (af_hydro(t-1,hr,n) * scale_to_MW) * share_inflow(reservoir,n)
 ;
-min_reservoir_gen(reservoir,n,hr,t)$(MapHR(hr,n) )..                                   gen_s(reservoir,t) =g= (af_hydro(t,hr,n) *scale_to_MW) * share_inflow(reservoir,n) * 0.15
+min_reservoir_gen(reservoir,n,hr,t)$(MapHR(hr,n) and MapS(reservoir,n))..                                   gen_s(reservoir,t) =g= (af_hydro(t,hr,n) *scale_to_MW) * share_inflow(reservoir,n) * 0.1
 ;
-max_reservoir_gen(reservoir,n,hr,t)$(MapHR(hr,n) )..                                   gen_s(reservoir,t) =l= cap_hydro(reservoir) 
+max_reservoir_gen(reservoir,n,hr,t)$(MapHR(hr,n) and MapS(reservoir,n))..                                   gen_s(reservoir,t) =l= cap_hydro(reservoir) 
 ;
-max_reservoir_stor_lvl(reservoir,n,hr,t)$(MapHR(hr,n) )..                              storagelvl(reservoir,t) =l= reservoir_stor_cap(reservoir,n)
+max_reservoir_stor_lvl(reservoir,n,hr,t)$(MapHR(hr,n) and MapS(reservoir,n))..                              storagelvl(reservoir,t) =l= reservoir_stor_cap(reservoir,n)
 ;
-min_reservoir_stor_lvl(reservoir,n,hr,t)$(MapHR(hr,n)and (ord(t) gt 1) )..             storagelvl(reservoir,t) =g= 0.15 * reservoir_stor_cap(reservoir,n)
+min_reservoir_stor_lvl(reservoir,n,hr,t)$(MapHR(hr,n) and MapS(reservoir,n) and (ord(t) gt 1) )..             storagelvl(reservoir,t) =g= 0.15 * reservoir_stor_cap(reservoir,n)
 ;
 
 *##########################################################NTC exchange###########################################################
@@ -464,6 +467,9 @@ startup_constr
 max_res_biomass
 max_res_sun
 max_res_wind
+
+max_gencap_ror
+max_inflow_ror
 
 reservor_stor_lvl_start
 reservor_stor_lvl

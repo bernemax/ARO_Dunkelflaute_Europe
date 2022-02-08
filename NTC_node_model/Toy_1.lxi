@@ -1,3 +1,81 @@
 B 3 C o m p i l a t i o n
-B 279 Include File Summary
-B 295 E x e c u t i o n
+B 513 Include File Summary
+B 528 Equation Listing    SOLVE Quant_reliab_res_EU Using MIP From line 499
+D 531 Total_costs
+D 2992 Balance
+D 3003 max_gen
+D 3014 max_cap
+D 3025 startup_constr
+D 3036 max_res_biomass
+D 3047 max_res_sun
+D 3058 max_res_wind
+D 3069 max_gencap_ror
+D 3080 max_inflow_ror
+D 3091 reservor_stor_lvl_start
+D 3102 reservor_stor_lvl
+D 3113 reservor_stor_lvl_end
+D 3124 min_reservoir_gen
+D 3135 max_reservoir_gen
+D 3146 max_reservoir_stor_lvl
+D 3157 min_reservoir_stor_lvl
+D 3168 Store_level_start
+D 3179 Store_level
+D 3190 Store_level_end
+D 3201 Store_level_max
+D 3212 Store_prod_max
+D 3223 Store_prod_max_end
+D 3234 NTC_max_ex
+D 3245 NTC_max_im
+D 3256 LS_det
+B 3268 Column Listing      SOLVE Quant_reliab_res_EU Using MIP From line 499
+E 3271 Costs
+E 3278 Gen_g
+E 3300 Gen_r
+E 3319 Gen_s
+E 3342 Power_flow
+E 3361 storagelvl
+E 3383 charge
+E 3406 Su
+E 3425 P_on
+E 3450 Load_shed
+E 3472 Curtailment
+B 3492 Model Statistics    SOLVE Quant_reliab_res_EU Using MIP From line 499
+B 3505 Solution Report     SOLVE Quant_reliab_res_EU Using MIP From line 499
+F 3544 Total_costs
+F 3546 Balance
+F 89231 max_gen
+F 574756 max_cap
+F 1060281 startup_constr
+F 1545806 max_res_biomass
+F 1626731 max_res_sun
+F 1702896 max_res_wind
+F 1779061 max_gencap_ror
+F 1859986 max_inflow_ror
+F 1936151 reservor_stor_lvl_start
+F 1936172 reservor_stor_lvl
+F 2012321 reservor_stor_lvl_end
+F 2012342 min_reservoir_gen
+F 2088507 max_reservoir_gen
+F 2164672 max_reservoir_stor_lvl
+F 2240837 min_reservoir_stor_lvl
+F 2316986 Store_level_start
+F 2317008 Store_level
+F 2397916 Store_level_end
+F 2397938 Store_level_max
+F 2478863 Store_prod_max
+F 2559788 Store_prod_max_end
+F 2559810 NTC_max_ex
+F 4102055 NTC_max_im
+F 5644300 LS_det
+G 5729987 Costs
+G 5729989 Gen_g
+G 6215514 Gen_r
+G 6448759 Gen_s
+G 6686764 Power_flow
+G 8229009 storagelvl
+G 8386094 charge
+G 8467019 Su
+G 8952544 P_on
+G 9438069 Load_shed
+G 9523754 Curtailment
+B 9766529 E x e c u t i o n

@@ -438,7 +438,7 @@ max_reservoir_gen(reservoir,n,hr,t)$(MapHR(hr,n) and MapS(reservoir,n))..       
 ;
 max_reservoir_stor_lvl(reservoir,n,hr,t)$(MapHR(hr,n) and MapS(reservoir,n))..                              storagelvl(reservoir,t) =l= reservoir_stor_cap(reservoir,n)
 ;
-min_reservoir_stor_lvl(reservoir,n,hr,t)$(MapHR(hr,n) and MapS(reservoir,n) and (ord(t) gt 1) )..             storagelvl(reservoir,t) =g= 0.15 * reservoir_stor_cap(reservoir,n)
+min_reservoir_stor_lvl(reservoir,n,hr,t)$(MapHR(hr,n) and MapS(reservoir,n) and (ord(t) gt 1) )..           storagelvl(reservoir,t) =g= 0.15 * reservoir_stor_cap(reservoir,n)
 ;
 
 *##########################################################NTC exchange###########################################################

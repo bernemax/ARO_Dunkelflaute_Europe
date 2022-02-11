@@ -1,11 +1,11 @@
---- Toy_1.gms(379) 715 Mb  160 secs
---- Job Toy_1.gms Start 02/08/22 17:56:21 35.1.0 r82a9585 WEX-WEI x86 64bit/MS Windows
+
+--- Job Toy_1.gms Start 02/08/22 18:13:28 35.1.0 r82a9585 WEX-WEI x86 64bit/MS Windows
 --- Applying:
     C:\GAMS\35\gmsprmNT.txt
 --- GAMS Parameters defined
     Input "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms"
     PageSize 0
-    ScrDir "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\225c\"
+    ScrDir "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\225d\"
     SysDir C:\GAMS\35\
     LogOption 3
     ErrMsg 1
@@ -32,7 +32,7 @@ Value expected in cell: Gen_hydro!H3; found reservoir
 Value expected in cell: Gen_hydro!B4; found AT
 Additional errors suppressed
 Total number of bad values for symbol Gen_Hydro = 99
-Total time = 2453 Ms
+Total time = 2563 Ms
 --- Toy_1.gms(136) 3 Mb
 --- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data.gdx
 --- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data.gdx
@@ -44,32 +44,12 @@ Total time = 2453 Ms
 GDXXRW           35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
 Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.xlsx
 Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.gdx
-Total time = 4110 Ms
+Total time = 4109 Ms
 --- Toy_1.gms(154) 13 Mb
 --- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.gdx
 --- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.gdx
---- Toy_1.gms(429) 43 Mb 2 Errors
-*** Error 149 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
-    Uncontrolled set entered as constant
-*** Error 149 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
-    Uncontrolled set entered as constant
---- Toy_1.gms(499) 43 Mb 3 Errors
-*** Error 257 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
-    Solve statement not checked because of previous errors
---- Toy_1.gms(504) 43 Mb 4 Errors
-*** Error 141 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
-    Symbol declared but no values have been assigned. Check for missing
-       data definition, assignment, data loading or implicit assignment
-       via a solve statement.
-       A wild shot: You may have spurious commas in the explanatory
-       text of a declaration. Check symbol reference list.
---- Toy_1.gms(508) 43 Mb 5 Errors
-*** Error 141 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
-    Symbol declared but no values have been assigned. Check for missing
-       data definition, assignment, data loading or implicit assignment
-       via a solve statement.
-       A wild shot: You may have spurious commas in the explanatory
-       text of a declaration. Check symbol reference list.
---- Toy_1.gms(537) 43 Mb 5 Errors
-*** Status: Compilation error(s)
---- Job Toy_1.gms Stop 02/08/22 17:56:28 elapsed 0:00:06.950
+--- Toy_1.gms(537) 43 Mb
+--- Starting execution: elapsed 0:00:07.207
+--- Toy_1.gms(299) 105 Mb
+--- Generating MIP model Quant_reliab_res_EU
+--- Toy_1.gms(369) 220 Mb  17 secs

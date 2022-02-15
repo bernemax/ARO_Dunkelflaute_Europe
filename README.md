@@ -7,7 +7,7 @@
 
 
 ## Modelling framework
-- GEP  
+- chance constrained GEP 
 - unit commitment  
 
 ## Reliability frameworks:

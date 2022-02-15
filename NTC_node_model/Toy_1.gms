@@ -1,9 +1,22 @@
 
 * only one "*" for a model run is possible for now
+************************** representative european weather years
 $setglobal  cf_1989  "*"       if "*" considered, if "" taken out
 $setglobal  cf_1990  ""       if "*" considered, if "" taken out
 $setglobal  cf_2010  ""       if "*" considered, if "" taken out
 $setglobal  cf_2012  ""       if "*" considered, if "" taken out
+
+************************** capacity options for 2020 - 2050
+$setglobal  cap_exo20 ""      if "*" considered, if "" taken out
+$setglobal  cap_exo30 "*"      if "*" considered, if "" taken out
+$setglobal  cap_exo40 ""      if "*" considered, if "" taken out
+$setglobal  cap_exo50 ""      if "*" considered, if "" taken out
+
+************************** representative load Secnarios for 2020 - 2050
+$setglobal  Load_exo20 ""      if "*" considered, if "" taken out
+$setglobal  Load_exo30 "*"      if "*" considered, if "" taken out
+$setglobal  Load_exo40 ""      if "*" considered, if "" taken out
+$setglobal  Load_exo50 ""      if "*" considered, if "" taken out
 
 $set        Data_input         Data_input\
 
@@ -16,7 +29,7 @@ g /g1*g102/
 s /s1*s51/
 res/res1*res51/
 *NTC/ntc1*ntc100/
-t/t1*t4760/
+t/t1*t8760/
 sr/sr1*sr17/
 wr/wr1*wr17/
 hr/hr1*hr17/
@@ -70,8 +83,12 @@ availup_vola_90                 upload table for PV and Wind cap factors 1990
 availup_vola_10                 upload table for PV and Wind cap factors 2010
 availup_vola_12                 upload table for PV and Wind cap factors 2012
 
-availup_hydro                   upload table for hydro availability
+load20                          upload table for country wise load data 2020
+load30                          upload table for country wise load data 2030
+load40                          upload table for country wise load data 2040
+load50                          upload table for country wise load data 2050
 
+availup_hydro                   upload table for hydro availability
 NTC_cap(n,nn)                   upload parameter
 
 Fc_conv(g,t)                    fuel costs conventional powerplants
@@ -121,10 +138,10 @@ set=MapSr                       rng=Mapping!J2:K30                      rdim=2 c
 set=MapWr                       rng=Mapping!M2:N30                      rdim=2 cDim=0
 set=MapHr                       rng=Mapping!P2:Q30                      rdim=2 cDim=0
 
-par=load                        rng=Load!A1:R8761                       rDim=1 cdim=1
-par=Gen_conv                    rng=Gen_conv!B1:J103                    rDim=1 cdim=1
-par=Gen_res                     rng=Gen_res!B1:F52                      rDim=1 cdim=1
-par=Gen_Hydro                   rng=Gen_Hydro!A1:I52                    rDim=1 cdim=1
+par=Gen_conv                    rng=Gen_conv!B1:N103                    rDim=1 cdim=1
+par=Gen_Hydro                   rng=Gen_Hydro!A1:M52                    rDim=1 cdim=1
+par=Gen_res                     rng=Gen_res!B1:I52                      rDim=1 cdim=1
+
 par=priceup                     rng=prices!A1:I8761                     rDim=1 cdim=1
 par=availup_hydro               rng=Availability!A2:R8762               rDim=1 cdim=1
 par=NTC_cap                     rng=NTC!A1:CE83                         rDim=1 cdim=1
@@ -135,7 +152,6 @@ $onUNDF
 $call   gdxxrw I=%Data_input%Data.xlsx O=%Data_input%Data.gdx @Genup.txt
 $GDXin  %Data_input%Data.gdx
 $load   MapG, MapS, MapRes, MapSr, MapWr, MapHr
-$load   load
 $load   Gen_conv, Gen_res, Gen_Hydro
 $load   priceup,availup_hydro, NTC_cap
 $GDXin
@@ -155,6 +171,23 @@ $GDXin  %Data_input%Weather_cap_factors.gdx
 $load   availup_vola_89, availup_vola_90, availup_vola_10, availup_vola_12
 $GDXin
 $offUNDF
+
+***********************************load for each country****************************
+
+$onecho > load.txt
+par=load20                        rng=Load_2020!A1:R8761                       rDim=1 cdim=1
+par=load30                        rng=Load_2030!A1:R8761                       rDim=1 cdim=1
+par=load40                        rng=Load_2040!A1:R8761                       rDim=1 cdim=1
+par=load50                        rng=Load_2050!A1:R8761                       rDim=1 cdim=1
+$offecho
+
+$onUNDF
+$call   gdxxrw I=%Data_input%Load_combined.xlsx O=%Data_input%Load_combined.gdx @load.txt
+$GDXin  %Data_input%Load_combined.gdx
+$load   load20, load30, load40, load50
+$GDXin
+$offUNDF
+
 
 *####################################subset definitions#############################
 
@@ -221,12 +254,6 @@ CO2_costs(t)        =          priceup(t,'CO2')
 
 *************************************generators*************************************
 
-Cap_conv(g)         =          Gen_conv(g,'Gen_cap')
-;
-Cap_hydro(s)        =          Gen_Hydro(s,'Gen_cap')
-;
-Cap_res(res)        =          Gen_res(res,'Gen_cap')
-;
 Eff_conv(g)         =          Gen_conv(g,'eff')
 ;
 Eff_hydro(s)        =          Gen_hydro(s,'eff')
@@ -289,6 +316,74 @@ af_sun(t,sr,n)$MapSR(sr,n)  =          availup_vola_12(t,sr)
 ;
 af_wind(t,wr,n)$MapWR(wr,n) =          availup_vola_12(t,wr)
 ;
+$ontext
+$offtext
+*************************************Generation Capacity**********************
+**************************2020
+%cap_exo20%$ontext
+
+Cap_conv(g)         =          Gen_conv(g,'Gen_cap')
+;
+Cap_hydro(s)        =          Gen_Hydro(s,'Gen_cap')
+;
+Cap_res(res)        =          Gen_res(res,'Gen_cap')
+;
+$ontext
+$offtext
+
+**************************2030
+%cap_exo30%$ontext
+
+Cap_conv(g)         =          Gen_conv(g,'cap_exo30')
+;
+Cap_hydro(s)        =          Gen_Hydro(s,'cap_exo30')
+;
+Cap_res(res)        =          Gen_res(res,'cap_exo30')
+;
+$ontext
+$offtext
+
+**************************2040
+%cap_exo40%$ontext
+Cap_conv(g)         =          Gen_conv(g,'cap_exo40')
+;
+Cap_hydro(s)        =          Gen_Hydro(s,'cap_exo40')
+;
+Cap_res(res)        =          Gen_res(res,'cap_exo40')
+;
+
+$ontext
+$offtext
+*************************************load data**********************************
+**************************2020
+%Load_exo20%$ontext
+
+load(t,n)           =           load20(t,n)
+;                 
+$ontext
+$offtext
+
+**************************2030
+%Load_exo30%$ontext
+
+load(t,n)           =           load30(t,n)
+;                 
+$ontext
+$offText
+
+**************************2040
+%Load_exo40%$ontext
+
+load(t,n)           =           load40(t,n)
+;                 
+$ontext
+$offText
+
+**************************2050
+%Load_exo50%$ontext
+
+load(t,n)           =           load50(t,n)
+;                 
 $ontext
 $offtext
 

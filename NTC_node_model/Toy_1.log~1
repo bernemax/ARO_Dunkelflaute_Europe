@@ -1,4 +1,5 @@
---- Job Toy_1.gms Start 02/11/22 15:49:48 35.1.0 r82a9585 WEX-WEI x86 64bit/MS Windows
+
+--- Job Toy_1.gms Start 02/15/22 16:51:59 35.1.0 r82a9585 WEX-WEI x86 64bit/MS Windows
 --- Applying:
     C:\GAMS\35\gmsprmNT.txt
 --- GAMS Parameters defined
@@ -16,55 +17,81 @@ Licensee: Small MUD - 5 User License                     S201118/0001AN-WIN
           C:\Users\Max Bernecker\Documents\GAMS\gamslice.txt
 GAMS 35.1.0   Copyright (C) 1987-2021 GAMS Development. All rights reserved
 --- Starting compilation
---- Toy_1.gms(116) 3 Mb
+--- Toy_1.gms(133) 4 Mb
 --- $echo File Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Genup.txt
---- Toy_1.gms(135) 3 Mb
+--- Toy_1.gms(152) 4 Mb
 --- call gdxxrw I=Data_input\Data.xlsx O=Data_input\Data.gdx @Genup.txt
 
 GDXXRW           35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
 Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data.xlsx
 Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data.gdx
+Value expected in cell: Gen_conv!L2; found gas
+Value expected in cell: Gen_conv!L3; found coal
+Value expected in cell: Gen_conv!L4; found lig
+Value expected in cell: Gen_conv!L5; found nuc
+Value expected in cell: Gen_conv!L6; found waste
+Additional errors suppressed
+Total number of bad values for symbol Gen_conv = 102
 Value expected in cell: Gen_hydro!B2; found AT
 Value expected in cell: Gen_hydro!H2; found psp
 Value expected in cell: Gen_hydro!B3; found AT
 Value expected in cell: Gen_hydro!H3; found reservoir
 Value expected in cell: Gen_hydro!B4; found AT
 Additional errors suppressed
-Total number of bad values for symbol Gen_Hydro = 99
-Total time = 3657 Ms
---- Toy_1.gms(136) 3 Mb
+Total number of bad values for symbol Gen_Hydro = 100
+Value expected in cell: Gen_res!G2; found Wind
+Value expected in cell: Gen_res!G3; found Solar
+Value expected in cell: Gen_res!G4; found Bio
+Value expected in cell: Gen_res!G5; found Wind
+Value expected in cell: Gen_res!G6; found Solar
+Additional errors suppressed
+Total number of bad values for symbol Gen_res = 51
+Total time = 2235 Ms
+--- Toy_1.gms(153) 4 Mb
 --- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data.gdx
 --- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data.gdx
---- Toy_1.gms(145) 13 Mb
+--- Toy_1.gms(161) 11 Mb
 --- $echo File Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\availup.txt
---- Toy_1.gms(153) 13 Mb
+--- Toy_1.gms(169) 11 Mb
 --- call gdxxrw I=Data_input\Weather_cap_factors.xlsx O=Data_input\Weather_cap_factors.gdx @availup.txt
 
 GDXXRW           35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
 Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.xlsx
 Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.gdx
-Total time = 4891 Ms
---- Toy_1.gms(154) 13 Mb
+Total time = 4343 Ms
+--- Toy_1.gms(170) 11 Mb
 --- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.gdx
 --- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.gdx
---- Toy_1.gms(537) 43 Mb
---- Starting execution: elapsed 0:00:09.041
---- Toy_1.gms(299) 105 Mb
+--- Toy_1.gms(177) 41 Mb
+--- $echo File Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\load.txt
+--- Toy_1.gms(185) 41 Mb
+--- call gdxxrw I=Data_input\Load_combined.xlsx O=Data_input\Load_combined.gdx @load.txt
+
+GDXXRW           35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
+Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Load_combined.xlsx
+Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Load_combined.gdx
+Total time = 2531 Ms
+--- Toy_1.gms(186) 41 Mb
+--- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Load_combined.gdx
+--- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Load_combined.gdx
+--- Toy_1.gms(632) 61 Mb
+--- Starting execution: elapsed 0:00:09.619
+--- Toy_1.gms(394) 177 Mb
 --- Generating MIP model Quant_reliab_res_EU
---- Toy_1.gms(369) 193 Mb  18 secs
---- Toy_1.gms(379) 743 Mb  470 secs
---- Toy_1.gms(499) 1468 Mb  16 secs
----   5,726,315 rows  4,036,481 columns  13,094,693 non-zeroes
---- Executing CPLEX (Solvelink=2): elapsed 0:08:38.768
+--- Toy_1.gms(464) 340 Mb  30 secs
+--- Toy_1.gms(474) 1351 Mb  1665 secs
+--- Toy_1.gms(594) 2685 Mb  30 secs
+---   10,538,315 rows  7,428,481 columns  24,098,693 non-zeroes
+--- Executing CPLEX (Solvelink=2): elapsed 0:29:08.188
 
 IBM ILOG CPLEX   35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
 
 --- GAMS/Cplex Link licensed for continuous and discrete problems.
---- Space for names approximately 285.03 Mb
+--- Space for names approximately 526.36 Mb
 --- Use option 'names no' to turn use of names off
---- GMO memory 1710.32 Mb (peak 1741.11 Mb)
+--- GMO memory 3147.77 Mb (peak 3204.45 Mb)
 --- Dictionary memory 0.00 Mb
---- Cplex 20.1.0.1 link memory 142.52 Mb (peak 659.46 Mb)
+--- Cplex 20.1.0.1 link memory 262.29 Mb (peak 1215.44 Mb)
 --- Starting Cplex
 
 Version identifier: 20.1.0.1 | 2021-04-07 | 3a818710c
@@ -72,11 +99,11 @@ CPXPARAM_Advance                                 0
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Display                             4
 CPXPARAM_MIP_Tolerances_AbsMIPGap                0
-Row 'reservor_stor_lvl(s41,PL,hr14,t2162)' infeasible, all entries at implied bounds.
-Presolve time = 1.08 sec. (1138.01 ticks)
+Bound infeasibility column 'Gen_s(s38,t1)'.
+Presolve time = 2.09 sec. (1626.21 ticks)
 
 --- LP status (3): infeasible.
---- Cplex Time: 1.09sec (det. 1154.39 ticks)
+--- Cplex Time: 2.12sec (det. 1656.36 ticks)
 
 --- Rerunning with presolve turned off and solving with LPMETHOD=1.
 
@@ -89,224 +116,352 @@ CPXPARAM_MIP_Display                             4
 CPXPARAM_MIP_Tolerances_AbsMIPGap                0
 
 Iteration log . . .
-Iteration:     1    Infeasibility =  230913891153.481232
-Iteration: 40746    Infeasibility =  219888008757.400085
-Iteration: 45433    Infeasibility =  154328648791.042145
-Iteration: 48259    Infeasibility =  152264572625.978424
-Iteration: 49066    Infeasibility =  152205643076.611389
-Iteration: 49949    Infeasibility =  152135852774.243256
-Iteration: 50625    Infeasibility =  152068004305.407257
-Elapsed time = 6.33 sec. (10597.12 ticks, 50625 iterations)
-Iteration: 51256    Infeasibility =  151997700868.966553
-Iteration: 51823    Infeasibility =  151932529298.801910
-Iteration: 52369    Infeasibility =  151859663984.220154
-Iteration: 52882    Infeasibility =  151771144855.818695
-Iteration: 53346    Infeasibility =  151639166874.504272
-Iteration: 53846    Infeasibility =  151516733600.882843
-Iteration: 54276    Infeasibility =  151343180325.552643
-Iteration: 54716    Infeasibility =  151132767958.645325
-Iteration: 55106    Infeasibility =  150893265887.779816
-Iteration: 55497    Infeasibility =  150594008276.269165
-Elapsed time = 12.66 sec. (21177.77 ticks, 55497 iterations)
-Iteration: 55913    Infeasibility =  150218547790.792389
-Iteration: 56283    Infeasibility =  149752139536.428040
-Iteration: 56656    Infeasibility =  149047045529.383514
-Iteration: 57134    Infeasibility =  148379503020.423340
-Iteration: 57519    Infeasibility =  147401746605.298584
-Iteration: 57863    Infeasibility =  146158659376.247894
-Iteration: 58289    Infeasibility =  145147839094.532074
-Iteration: 58645    Infeasibility =  143828671635.748169
-Iteration: 59009    Infeasibility =  142142052479.138062
-Iteration: 59358    Infeasibility =  140567892683.203064
-Elapsed time = 19.13 sec. (32146.23 ticks, 59358 iterations)
-Iteration: 59720    Infeasibility =  138460800155.977051
-Iteration: 60154    Infeasibility =  136226089417.626297
-Iteration: 60355    Infeasibility =  135074928009.459381
-Iteration: 63473    Infeasibility =   82849881573.043274
-Iteration: 70048    Infeasibility =   70787824920.704987
-Iteration: 75366    Infeasibility =   43900369633.917892
-Elapsed time = 23.63 sec. (42735.26 ticks, 80862 iterations)
-Iteration: 80862    Infeasibility =   30925227416.964943
-Iteration: 85144    Infeasibility =   30425061244.572121
-Iteration: 85926    Infeasibility =   19041217490.476727
-Iteration: 87968    Infeasibility =   16535971531.578428
-Iteration: 91605    Infeasibility =   13291768697.959776
-Iteration: 96352    Infeasibility =   13180449307.597469
-Iteration: 99100    Infeasibility =   13009117853.231730
-Iteration: 102179    Infeasibility =    1082613009.188978
-Iteration: 103850    Infeasibility =     884941482.224960
-Iteration: 107715    Infeasibility =     355621598.670138
-Elapsed time = 29.09 sec. (53543.60 ticks, 111705 iterations)
-Iteration: 111705    Infeasibility =     345897239.894026
-Iteration: 114692    Infeasibility =     265178639.892965
-Iteration: 117901    Infeasibility =     260068353.064578
-Iteration: 121953    Infeasibility =     255385553.727353
-Iteration: 124720    Infeasibility =     250392681.044363
-Iteration: 127483    Infeasibility =     240986339.633490
-Iteration: 130648    Infeasibility =     238461692.673992
-Iteration: 134285    Infeasibility =     236351736.747576
-Iteration: 136972    Infeasibility =     232429722.042970
-Iteration: 139578    Infeasibility =     229384575.653256
-Elapsed time = 34.86 sec. (63577.33 ticks, 142395 iterations)
-Iteration: 142395    Infeasibility =     227977836.595680
-Iteration: 144647    Infeasibility =     226887157.708946
-Iteration: 148458    Infeasibility =     225274324.012689
-Iteration: 150485    Infeasibility =     224054735.787129
-Iteration: 153440    Infeasibility =     221256439.370214
-Iteration: 155235    Infeasibility =     219659831.760543
-Iteration: 158752    Infeasibility =     218585834.408328
-Iteration: 160176    Infeasibility =     216480974.018106
-Iteration: 160688    Infeasibility =     213458275.984673
-Elapsed time = 39.86 sec. (73577.81 ticks, 166085 iterations)
-Iteration: 167268    Infeasibility =     210185985.965964
-Iteration: 169010    Infeasibility =     209989124.526102
-Iteration: 171157    Infeasibility =     209484641.333619
-Iteration: 172735    Infeasibility =     209369510.081684
-Iteration: 173578    Infeasibility =     205734469.290141
-Iteration: 174380    Infeasibility =     204947942.358365
-Iteration: 175193    Infeasibility =     204241454.509441
-Elapsed time = 44.20 sec. (83578.08 ticks, 181007 iterations)
-Iteration: 182338    Infeasibility =     201607144.795842
-Iteration: 183850    Infeasibility =     200914916.702911
-Iteration: 186105    Infeasibility =     199617176.769247
-Iteration: 188236    Infeasibility =     198824259.523469
-Iteration: 188778    Infeasibility =     197931793.309752
-Iteration: 192007    Infeasibility =     196213403.883817
-Iteration: 193011    Infeasibility =     195900110.986973
-Iteration: 194450    Infeasibility =     194426304.066341
-Elapsed time = 49.88 sec. (94038.45 ticks, 195992 iterations)
-Iteration: 195992    Infeasibility =     193614131.465382
-Iteration: 197037    Infeasibility =     192980128.917890
-Iteration: 198184    Infeasibility =     192348724.170376
-Iteration: 199263    Infeasibility =     191932608.859946
-Iteration: 201063    Infeasibility =     190518450.452206
-Iteration: 202683    Infeasibility =     189475174.656326
-Iteration: 206290    Infeasibility =     185717479.999920
-Iteration: 208746    Infeasibility =     184580794.473666
-Iteration: 212747    Infeasibility =     183112016.387214
-Elapsed time = 56.56 sec. (104598.21 ticks, 217130 iterations)
-Iteration: 217130    Infeasibility =     179072216.094235
-Iteration: 221749    Infeasibility =     176726829.978682
-Iteration: 225247    Infeasibility =     173752682.904084
-Iteration: 230538    Infeasibility =     169540803.635443
-Iteration: 232085    Infeasibility =     168911782.212145
-Iteration: 235100    Infeasibility =     165296664.842522
-Iteration: 239302    Infeasibility =     152450247.947973
-Iteration: 243405    Infeasibility =     151543451.178479
-Elapsed time = 62.76 sec. (114598.23 ticks, 246568 iterations)
-Iteration: 247183    Infeasibility =     150583230.293164
-Iteration: 249826    Infeasibility =     148254699.401192
-Iteration: 252245    Infeasibility =     140629746.518085
-Iteration: 254977    Infeasibility =     139636585.261559
-Iteration: 256714    Infeasibility =     137938106.638585
-Iteration: 257142    Infeasibility =     135998547.713154
-Elapsed time = 67.03 sec. (125221.86 ticks, 267143 iterations)
-Iteration: 267143    Infeasibility =     133564745.024557
-Iteration: 270322    Infeasibility =     128448302.699286
-Iteration: 272255    Infeasibility =     127482317.394777
-Iteration: 276442    Infeasibility =     125927379.108001
-Iteration: 278331    Infeasibility =     125754007.878611
-Iteration: 279163    Infeasibility =     125728786.073458
-Iteration: 285592    Infeasibility =     120298656.522172
-Elapsed time = 71.66 sec. (135785.16 ticks, 286926 iterations)
-Iteration: 286926    Infeasibility =     119695708.319370
-Iteration: 287173    Infeasibility =     117811744.210956
-Iteration: 294074    Infeasibility =     111418800.062897
-Iteration: 294612    Infeasibility =     110642756.626336
-Elapsed time = 75.14 sec. (145785.47 ticks, 300965 iterations)
-Iteration: 302051    Infeasibility =     104091219.302894
-Iteration: 304820    Infeasibility =     103506782.663063
-Iteration: 310327    Infeasibility =     102203503.702566
-Iteration: 313845    Infeasibility =      99449419.033427
-Iteration: 317777    Infeasibility =      94370714.616813
-Iteration: 319745    Infeasibility =      93985795.200328
-Iteration: 320746    Infeasibility =      93590918.299732
-Elapsed time = 80.19 sec. (155914.56 ticks, 322779 iterations)
-Iteration: 322779    Infeasibility =      93018803.242086
-Iteration: 325534    Infeasibility =      91874890.725907
-Iteration: 326323    Infeasibility =      91344274.197912
-Iteration: 331610    Infeasibility =      89041947.993174
-Iteration: 335110    Infeasibility =      87164838.338797
-Iteration: 337393    Infeasibility =      85521193.928321
-Iteration: 340710    Infeasibility =      82271923.583558
-Elapsed time = 85.39 sec. (165914.64 ticks, 341102 iterations)
-Iteration: 342178    Infeasibility =      81761072.389404
-Iteration: 343647    Infeasibility =      81054576.298088
-Iteration: 344530    Infeasibility =      80390445.893070
-Iteration: 349292    Infeasibility =      77265846.137857
-Iteration: 350375    Infeasibility =      76672116.617856
-Elapsed time = 91.45 sec. (176374.39 ticks, 352238 iterations)
-Iteration: 352238    Infeasibility =      73889069.658433
-Iteration: 357298    Infeasibility =      64064884.307892
-Iteration: 362578    Infeasibility =      58148165.966132
-Iteration: 366491    Infeasibility =      54396656.169813
-Iteration: 368588    Infeasibility =      52225214.971691
-Iteration: 369718    Infeasibility =      50517090.779238
-Elapsed time = 97.66 sec. (186374.61 ticks, 369786 iterations)
-Iteration: 369967    Infeasibility =      49587009.036394
-Iteration: 374493    Infeasibility =      47323906.012555
-Iteration: 375311    Infeasibility =      45464474.748060
-Iteration: 375558    Infeasibility =      41127281.707502
-Elapsed time = 103.41 sec. (196668.09 ticks, 379368 iterations)
-Iteration: 379368    Infeasibility =      26315774.594220
-Iteration: 380432    Infeasibility =      25961100.102559
-Iteration: 382513    Infeasibility =      24866541.864035
-Iteration: 383379    Infeasibility =      24465914.093508
-Iteration: 384103    Infeasibility =      24166718.066243
-Elapsed time = 110.38 sec. (206669.07 ticks, 386803 iterations)
-Iteration: 390993    Infeasibility =      19778785.772483
-Iteration: 391576    Infeasibility =      19352033.923170
-Elapsed time = 116.81 sec. (216921.87 ticks, 397265 iterations)
-Iteration: 397265    Infeasibility =      15999056.873953
-Iteration: 397853    Infeasibility =      15839622.065548
-Iteration: 403912    Infeasibility =      11618094.972282
-Iteration: 404528    Infeasibility =       6129865.971205
-Elapsed time = 122.73 sec. (226921.93 ticks, 409785 iterations)
-Iteration: 414529    Infeasibility =        435146.904991
-Iteration: 417129    Infeasibility =        203724.079036
-Iteration: 420042    Infeasibility =        139887.398169
-Iteration: 420971    Infeasibility =         98838.612023
-Elapsed time = 129.86 sec. (236924.99 ticks, 421204 iterations)
-Iteration: 422101    Infeasibility =         91312.853755
-Elapsed time = 138.70 sec. (247008.69 ticks, 423970 iterations)
-Elapsed time = 147.59 sec. (257053.85 ticks, 424163 iterations)
-Elapsed time = 156.36 sec. (267093.08 ticks, 424387 iterations)
-Elapsed time = 165.67 sec. (277134.52 ticks, 424613 iterations)
-Elapsed time = 174.38 sec. (287177.72 ticks, 424837 iterations)
-Elapsed time = 183.17 sec. (297223.05 ticks, 425061 iterations)
-Elapsed time = 191.91 sec. (307270.38 ticks, 425285 iterations)
-Elapsed time = 200.64 sec. (317319.56 ticks, 425509 iterations)
-Elapsed time = 209.33 sec. (327370.86 ticks, 425733 iterations)
-Elapsed time = 218.31 sec. (337424.08 ticks, 425957 iterations)
-Elapsed time = 227.31 sec. (347479.27 ticks, 426181 iterations)
-Elapsed time = 236.05 sec. (357536.33 ticks, 426405 iterations)
-Elapsed time = 244.84 sec. (367537.84 ticks, 426628 iterations)
-Elapsed time = 253.48 sec. (377565.88 ticks, 426851 iterations)
-Elapsed time = 262.20 sec. (387571.13 ticks, 427074 iterations)
-Elapsed time = 270.95 sec. (397603.38 ticks, 427297 iterations)
-Elapsed time = 279.64 sec. (407612.15 ticks, 427520 iterations)
-Elapsed time = 288.38 sec. (417647.38 ticks, 427743 iterations)
+Iteration:     1    Infeasibility =  511404998022.974670
+Iteration: 77194    Infeasibility =  467615644985.735168
+Iteration: 86469    Infeasibility =  281606849376.565674
+Elapsed time = 9.44 sec. (12292.94 ticks, 86469 iterations)
+Iteration: 90214    Infeasibility =  280628061917.845459
+Iteration: 92905    Infeasibility =  280516266883.863037
+Iteration: 94704    Infeasibility =  280372324443.608521
+Iteration: 96296    Infeasibility =  280260319236.279114
+Iteration: 97663    Infeasibility =  279515399338.718384
+Elapsed time = 16.16 sec. (22357.32 ticks, 97663 iterations)
+Iteration: 98849    Infeasibility =  279380372950.675232
+Iteration: 99927    Infeasibility =  279127757903.502563
+Iteration: 100918    Infeasibility =  278537904150.714172
+Iteration: 101870    Infeasibility =  278279899959.334290
+Iteration: 102752    Infeasibility =  277979387509.154846
+Iteration: 103642    Infeasibility =  277568859029.486511
+Elapsed time = 24.03 sec. (34122.36 ticks, 103642 iterations)
+Iteration: 104589    Infeasibility =  277097713452.355713
+Iteration: 105421    Infeasibility =  276319423616.528137
+Iteration: 106304    Infeasibility =  275639456310.902344
+Iteration: 107030    Infeasibility =  274776844915.300964
+Iteration: 107750    Infeasibility =  273939012944.848328
+Iteration: 108469    Infeasibility =  272710149424.297150
+Elapsed time = 31.55 sec. (45999.68 ticks, 108469 iterations)
+Iteration: 109149    Infeasibility =  271267479978.896179
+Iteration: 109987    Infeasibility =  268507356418.643677
+Iteration: 110667    Infeasibility =  267090629469.080719
+Iteration: 111178    Infeasibility =  265750667889.207794
+Iteration: 111649    Infeasibility =  262169728884.221313
+Elapsed time = 37.95 sec. (56030.55 ticks, 111649 iterations)
+Iteration: 112183    Infeasibility =  260575568681.859406
+Iteration: 112537    Infeasibility =  259719284449.523529
+Iteration: 113002    Infeasibility =  258226108230.413666
+Iteration: 113420    Infeasibility =  256948102312.455414
+Iteration: 113869    Infeasibility =  253497945029.677582
+Elapsed time = 43.98 sec. (66036.99 ticks, 113869 iterations)
+Iteration: 114180    Infeasibility =  252191624246.443756
+Iteration: 114494    Infeasibility =  251060880929.921021
+Iteration: 114811    Infeasibility =  249299872388.785431
+Iteration: 115202    Infeasibility =  247571180896.848267
+Iteration: 115525    Infeasibility =  243566953478.879089
+Iteration: 115857    Infeasibility =  242096215717.835144
+Elapsed time = 51.42 sec. (77999.42 ticks, 115857 iterations)
+Iteration: 116575    Infeasibility =  239421030860.982208
+Iteration: 116914    Infeasibility =  237002223930.410706
+Iteration: 117202    Infeasibility =  235285474203.323700
+Iteration: 117476    Infeasibility =  232630617929.275787
+Iteration: 117773    Infeasibility =  230759739539.153259
+Elapsed time = 57.88 sec. (88067.45 ticks, 117773 iterations)
+Iteration: 118113    Infeasibility =  229430134593.698212
+Iteration: 118441    Infeasibility =  227190886395.504211
+Iteration: 118683    Infeasibility =  225122388345.346832
+Elapsed time = 62.27 sec. (98068.05 ticks, 119456 iterations)
+Iteration: 119875    Infeasibility =  126127536227.129837
+Elapsed time = 64.80 sec. (109405.64 ticks, 123570 iterations)
+Iteration: 123570    Infeasibility =   82792769316.410034
+Iteration: 127565    Infeasibility =   77776823957.037048
+Iteration: 129027    Infeasibility =   77728778340.725998
+Iteration: 130122    Infeasibility =   77575185350.364212
+Iteration: 132529    Infeasibility =   77322409390.836105
+Iteration: 137156    Infeasibility =   68318974257.455467
+Elapsed time = 70.91 sec. (120884.23 ticks, 143058 iterations)
+Iteration: 143058    Infeasibility =   57142557192.094398
+Iteration: 148109    Infeasibility =   51610355491.463669
+Iteration: 152580    Infeasibility =   50793483705.882980
+Iteration: 158868    Infeasibility =   44746529600.120789
+Iteration: 165971    Infeasibility =   27681172020.635002
+Elapsed time = 76.03 sec. (131320.54 ticks, 171083 iterations)
+Iteration: 171083    Infeasibility =   27600356705.719219
+Iteration: 177495    Infeasibility =   27543968869.582615
+Iteration: 181086    Infeasibility =   26312254522.898670
+Iteration: 185553    Infeasibility =   21174152859.345978
+Iteration: 189095    Infeasibility =   20076205223.064831
+Iteration: 194372    Infeasibility =   18458476221.442600
+Elapsed time = 81.66 sec. (142583.10 ticks, 198068 iterations)
+Iteration: 198068    Infeasibility =   18448920288.305187
+Iteration: 203155    Infeasibility =   18440180626.864239
+Iteration: 205582    Infeasibility =   18356638252.032757
+Iteration: 207973    Infeasibility =   18171073090.274944
+Iteration: 212112    Infeasibility =   14484717216.709318
+Iteration: 216792    Infeasibility =    7810714654.834985
+Elapsed time = 87.53 sec. (154126.62 ticks, 221930 iterations)
+Iteration: 221930    Infeasibility =    1903840294.342190
+Iteration: 227122    Infeasibility =    1858643151.702925
+Iteration: 229015    Infeasibility =    1825746589.109446
+Iteration: 233971    Infeasibility =    1811764732.143338
+Iteration: 237076    Infeasibility =    1807640228.858992
+Iteration: 243461    Infeasibility =    1778107125.333194
+Elapsed time = 92.97 sec. (165336.82 ticks, 249389 iterations)
+Iteration: 249389    Infeasibility =    1073915989.101039
+Iteration: 253952    Infeasibility =    1066966410.949298
+Iteration: 258764    Infeasibility =    1060439081.218101
+Iteration: 262538    Infeasibility =    1057698135.273191
+Iteration: 265946    Infeasibility =    1053855811.020857
+Iteration: 271089    Infeasibility =    1043572615.519006
+Elapsed time = 99.08 sec. (176380.77 ticks, 276716 iterations)
+Iteration: 276716    Infeasibility =    1039253889.273576
+Iteration: 281270    Infeasibility =    1035348424.780253
+Iteration: 282495    Infeasibility =    1034542970.176960
+Iteration: 283527    Infeasibility =    1034272483.268583
+Iteration: 286279    Infeasibility =    1030990307.590137
+Elapsed time = 104.31 sec. (186586.00 ticks, 289697 iterations)
+Iteration: 289697    Infeasibility =    1018096064.951592
+Iteration: 294502    Infeasibility =     848611817.142999
+Iteration: 295970    Infeasibility =     848128950.776047
+Iteration: 298576    Infeasibility =     846497839.469163
+Elapsed time = 108.66 sec. (196847.92 ticks, 301679 iterations)
+Iteration: 301679    Infeasibility =     840610654.722149
+Iteration: 305054    Infeasibility =     836889933.236226
+Iteration: 306703    Infeasibility =     835874844.839245
+Iteration: 309964    Infeasibility =     730878498.097998
+Iteration: 314106    Infeasibility =     542730512.674366
+Iteration: 315974    Infeasibility =     542026997.153551
+Elapsed time = 115.09 sec. (207967.35 ticks, 319702 iterations)
+Iteration: 319702    Infeasibility =     534378146.164455
+Iteration: 320164    Infeasibility =     533529656.690617
+Iteration: 329049    Infeasibility =     527177318.270592
+Elapsed time = 118.73 sec. (218197.78 ticks, 334132 iterations)
+Iteration: 334132    Infeasibility =     393513782.564255
+Iteration: 337902    Infeasibility =     390571618.368304
+Iteration: 341300    Infeasibility =     389728240.554518
+Iteration: 346283    Infeasibility =     386265057.690981
+Iteration: 350339    Infeasibility =     384606502.705492
+Iteration: 353515    Infeasibility =     378753672.391027
+Elapsed time = 125.44 sec. (229549.39 ticks, 356736 iterations)
+Iteration: 356736    Infeasibility =     376419754.760347
+Iteration: 360236    Infeasibility =     374554157.875994
+Iteration: 362459    Infeasibility =     373969221.780029
+Iteration: 363849    Infeasibility =     373208281.099603
+Iteration: 366233    Infeasibility =     372246658.005308
+Iteration: 369652    Infeasibility =     370260648.244259
+Elapsed time = 132.13 sec. (240561.32 ticks, 372160 iterations)
+Iteration: 372160    Infeasibility =     369563208.495859
+Iteration: 375216    Infeasibility =     338562746.798290
+Iteration: 377280    Infeasibility =     337975363.628040
+Iteration: 379292    Infeasibility =     336557054.540403
+Iteration: 382643    Infeasibility =     333951291.158995
+Iteration: 385823    Infeasibility =     333202409.648329
+Elapsed time = 138.97 sec. (251764.57 ticks, 388682 iterations)
+Iteration: 388682    Infeasibility =     332493611.073642
+Iteration: 390524    Infeasibility =     332067455.628125
+Iteration: 393058    Infeasibility =     331309249.861589
+Iteration: 394956    Infeasibility =     330979231.236075
+Iteration: 397602    Infeasibility =     330460474.438570
+Iteration: 401584    Infeasibility =     327585285.741934
+Elapsed time = 146.31 sec. (263033.98 ticks, 403670 iterations)
+Iteration: 403670    Infeasibility =     327105016.713860
+Iteration: 404752    Infeasibility =     325964269.591614
+Iteration: 407052    Infeasibility =     325310842.227556
+Iteration: 410991    Infeasibility =     323326548.568480
+Iteration: 412548    Infeasibility =     322777309.682820
+Iteration: 413673    Infeasibility =     322616232.350942
+Elapsed time = 152.77 sec. (273034.35 ticks, 415802 iterations)
+Iteration: 421193    Infeasibility =     319689163.202004
+Iteration: 422445    Infeasibility =     318912397.704565
+Iteration: 424314    Infeasibility =     317785682.725948
+Elapsed time = 158.59 sec. (284656.68 ticks, 426428 iterations)
+Iteration: 426428    Infeasibility =     316781570.284273
+Iteration: 426999    Infeasibility =     316594844.321131
+Iteration: 431171    Infeasibility =     313202046.315169
+Iteration: 432132    Infeasibility =     312379829.118656
+Iteration: 434569    Infeasibility =     311431734.195124
+Elapsed time = 164.20 sec. (294657.36 ticks, 435656 iterations)
+Iteration: 438618    Infeasibility =     308953715.868965
+Iteration: 441716    Infeasibility =     306769973.448648
+Iteration: 445323    Infeasibility =     303667010.432180
+Iteration: 448422    Infeasibility =     300226232.544239
+Elapsed time = 171.11 sec. (304659.53 ticks, 449157 iterations)
+Iteration: 453419    Infeasibility =     297670407.751179
+Iteration: 456260    Infeasibility =     293940038.000231
+Iteration: 457593    Infeasibility =     292556723.046971
+Elapsed time = 178.06 sec. (314871.99 ticks, 459558 iterations)
+Iteration: 459558    Infeasibility =     291569976.707646
+Iteration: 462653    Infeasibility =     290226159.957319
+Iteration: 463899    Infeasibility =     288811276.308677
+Iteration: 464297    Infeasibility =     288513949.259705
+Elapsed time = 184.05 sec. (324872.93 ticks, 469502 iterations)
+Iteration: 471236    Infeasibility =     284187224.696350
+Iteration: 471956    Infeasibility =     283872703.666317
+Elapsed time = 189.84 sec. (336302.73 ticks, 477370 iterations)
+Iteration: 477370    Infeasibility =     278432470.997137
+Iteration: 478698    Infeasibility =     278005350.876153
+Iteration: 479191    Infeasibility =     277769362.594163
+Elapsed time = 195.64 sec. (347783.31 ticks, 485207 iterations)
+Iteration: 485207    Infeasibility =     274488255.680654
+Iteration: 485876    Infeasibility =     274235364.974186
+Elapsed time = 199.78 sec. (357788.64 ticks, 492705 iterations)
+Iteration: 493658    Infeasibility =     268196822.198188
+Iteration: 494422    Infeasibility =     267788143.480643
+Elapsed time = 204.84 sec. (367788.90 ticks, 498257 iterations)
+Iteration: 501890    Infeasibility =     261324304.780746
+Iteration: 504107    Infeasibility =     259877368.775095
+Elapsed time = 209.45 sec. (377789.01 ticks, 505735 iterations)
+Iteration: 505843    Infeasibility =     259379005.191891
+Iteration: 507451    Infeasibility =     258152468.028717
+Iteration: 508950    Infeasibility =     257184321.915015
+Iteration: 510219    Infeasibility =     255192418.906916
+Elapsed time = 217.05 sec. (389245.29 ticks, 511525 iterations)
+Iteration: 511525    Infeasibility =     254343192.705290
+Iteration: 512483    Infeasibility =     253987619.555636
+Iteration: 514492    Infeasibility =     251182941.717995
+Iteration: 516259    Infeasibility =     248872654.951582
+Elapsed time = 224.36 sec. (400026.86 ticks, 518289 iterations)
+Iteration: 518289    Infeasibility =     247274285.170505
+Iteration: 519178    Infeasibility =     246825800.476934
+Elapsed time = 229.52 sec. (410053.62 ticks, 525456 iterations)
+Iteration: 528193    Infeasibility =     238679834.037378
+Iteration: 528822    Infeasibility =     238401778.346301
+Elapsed time = 235.11 sec. (420054.09 ticks, 530696 iterations)
+Iteration: 537048    Infeasibility =     232402227.432946
+Elapsed time = 240.23 sec. (430610.79 ticks, 539281 iterations)
+Iteration: 539281    Infeasibility =     204331727.464639
+Iteration: 539529    Infeasibility =     202361160.825286
+Elapsed time = 245.64 sec. (441793.73 ticks, 546619 iterations)
+Iteration: 546619    Infeasibility =     198101755.015955
+Iteration: 548037    Infeasibility =     197563860.701728
+Iteration: 550849    Infeasibility =     195802918.078479
+Iteration: 554039    Infeasibility =     193477467.322505
+Elapsed time = 253.27 sec. (451797.47 ticks, 554782 iterations)
+Iteration: 556038    Infeasibility =     192755673.760809
+Iteration: 557997    Infeasibility =     191909002.794339
+Iteration: 560013    Infeasibility =     189418755.543466
+Elapsed time = 261.17 sec. (463080.30 ticks, 560963 iterations)
+Iteration: 560963    Infeasibility =     188417335.183825
+Iteration: 561886    Infeasibility =     186766956.512860
+Iteration: 568943    Infeasibility =     176842649.480758
+Elapsed time = 268.50 sec. (473080.35 ticks, 569229 iterations)
+Iteration: 571819    Infeasibility =     173356730.871039
+Iteration: 575065    Infeasibility =     169478912.424382
+Elapsed time = 276.61 sec. (483080.53 ticks, 577250 iterations)
+Iteration: 578598    Infeasibility =     166367422.008194
+Iteration: 581035    Infeasibility =     164104539.907980
+Elapsed time = 284.41 sec. (493083.66 ticks, 583172 iterations)
+Iteration: 583484    Infeasibility =     161354150.525200
+Iteration: 588578    Infeasibility =     153188049.558967
+Elapsed time = 291.66 sec. (503320.30 ticks, 591540 iterations)
+Iteration: 591540    Infeasibility =     148693273.445481
+Iteration: 592842    Infeasibility =     147120979.851934
+Elapsed time = 300.05 sec. (514103.69 ticks, 594135 iterations)
+Iteration: 594135    Infeasibility =     144628778.589912
+Iteration: 595783    Infeasibility =     142395124.690669
+Iteration: 597086    Infeasibility =     141192791.167239
+Elapsed time = 308.05 sec. (524104.43 ticks, 597321 iterations)
+Iteration: 597393    Infeasibility =     140876767.691513
+Elapsed time = 316.55 sec. (534263.23 ticks, 598983 iterations)
+Elapsed time = 325.05 sec. (544365.90 ticks, 599208 iterations)
+Elapsed time = 333.41 sec. (554367.79 ticks, 599469 iterations)
+Elapsed time = 342.00 sec. (564523.30 ticks, 599980 iterations)
+Elapsed time = 350.61 sec. (574584.52 ticks, 600324 iterations)
+Elapsed time = 359.33 sec. (584602.11 ticks, 600574 iterations)
+Elapsed time = 367.78 sec. (594641.36 ticks, 600635 iterations)
+Elapsed time = 376.23 sec. (604700.30 ticks, 600696 iterations)
+Elapsed time = 384.88 sec. (614759.50 ticks, 600757 iterations)
+Elapsed time = 393.45 sec. (624818.94 ticks, 600818 iterations)
+Elapsed time = 402.06 sec. (634878.64 ticks, 600879 iterations)
+Elapsed time = 410.48 sec. (644938.62 ticks, 600940 iterations)
+Elapsed time = 418.88 sec. (654998.82 ticks, 601001 iterations)
+Elapsed time = 427.28 sec. (665059.27 ticks, 601062 iterations)
+Elapsed time = 435.78 sec. (675120.04 ticks, 601123 iterations)
+Elapsed time = 444.06 sec. (685181.07 ticks, 601184 iterations)
+Elapsed time = 452.38 sec. (695243.03 ticks, 601245 iterations)
+Elapsed time = 460.66 sec. (705243.11 ticks, 601306 iterations)
+Elapsed time = 468.92 sec. (715302.30 ticks, 601367 iterations)
+Elapsed time = 477.20 sec. (725361.76 ticks, 601428 iterations)
+Elapsed time = 485.47 sec. (735421.49 ticks, 601489 iterations)
+Elapsed time = 493.73 sec. (745481.48 ticks, 601550 iterations)
+Elapsed time = 502.19 sec. (755541.74 ticks, 601611 iterations)
+Elapsed time = 510.75 sec. (765602.27 ticks, 601672 iterations)
+Elapsed time = 519.02 sec. (775663.05 ticks, 601733 iterations)
+Elapsed time = 527.27 sec. (785724.11 ticks, 601794 iterations)
+Elapsed time = 535.56 sec. (795785.43 ticks, 601855 iterations)
+Elapsed time = 543.84 sec. (805846.96 ticks, 601916 iterations)
+Elapsed time = 552.14 sec. (815908.81 ticks, 601977 iterations)
+Elapsed time = 560.64 sec. (825970.94 ticks, 602038 iterations)
+Elapsed time = 569.34 sec. (836033.22 ticks, 602099 iterations)
+Elapsed time = 577.72 sec. (846095.82 ticks, 602160 iterations)
+Elapsed time = 586.05 sec. (856158.71 ticks, 602221 iterations)
+Elapsed time = 594.34 sec. (866221.89 ticks, 602282 iterations)
+Elapsed time = 602.63 sec. (876285.21 ticks, 602343 iterations)
+Elapsed time = 610.91 sec. (886348.68 ticks, 602404 iterations)
+Elapsed time = 619.20 sec. (896412.68 ticks, 602465 iterations)
+Elapsed time = 627.50 sec. (906476.72 ticks, 602526 iterations)
+Elapsed time = 635.78 sec. (916540.97 ticks, 602587 iterations)
+Elapsed time = 644.06 sec. (926605.79 ticks, 602648 iterations)
+Elapsed time = 652.34 sec. (936670.79 ticks, 602709 iterations)
+Elapsed time = 660.66 sec. (946736.07 ticks, 602770 iterations)
+Elapsed time = 668.95 sec. (956801.64 ticks, 602831 iterations)
+Elapsed time = 677.25 sec. (966867.46 ticks, 602892 iterations)
+Elapsed time = 685.53 sec. (976933.59 ticks, 602953 iterations)
+Elapsed time = 693.84 sec. (986999.98 ticks, 603014 iterations)
+Elapsed time = 702.38 sec. (997066.56 ticks, 603075 iterations)
+Elapsed time = 710.89 sec. (1007133.47 ticks, 603136 iterations)
+Elapsed time = 719.61 sec. (1017200.69 ticks, 603197 iterations)
+Elapsed time = 728.20 sec. (1027268.13 ticks, 603258 iterations)
+Elapsed time = 736.83 sec. (1037335.83 ticks, 603319 iterations)
+Elapsed time = 745.34 sec. (1047403.73 ticks, 603380 iterations)
+Elapsed time = 753.88 sec. (1057471.99 ticks, 603441 iterations)
+Elapsed time = 762.19 sec. (1067540.50 ticks, 603502 iterations)
+Elapsed time = 770.48 sec. (1077609.22 ticks, 603563 iterations)
+Elapsed time = 778.81 sec. (1087678.37 ticks, 603624 iterations)
+Elapsed time = 787.38 sec. (1097747.76 ticks, 603685 iterations)
+Elapsed time = 796.05 sec. (1107817.32 ticks, 603746 iterations)
+Elapsed time = 804.75 sec. (1117886.99 ticks, 603807 iterations)
+Elapsed time = 813.17 sec. (1127957.02 ticks, 603868 iterations)
+Elapsed time = 821.50 sec. (1138027.47 ticks, 603929 iterations)
+Elapsed time = 829.81 sec. (1148098.22 ticks, 603990 iterations)
+Elapsed time = 838.11 sec. (1158169.19 ticks, 604051 iterations)
+Elapsed time = 846.44 sec. (1168240.37 ticks, 604112 iterations)
+Elapsed time = 854.84 sec. (1178311.82 ticks, 604173 iterations)
+Elapsed time = 863.39 sec. (1188383.51 ticks, 604234 iterations)
+Elapsed time = 871.97 sec. (1198455.37 ticks, 604295 iterations)
+Elapsed time = 880.33 sec. (1208527.49 ticks, 604356 iterations)
+Elapsed time = 889.03 sec. (1218599.88 ticks, 604417 iterations)
+Elapsed time = 897.81 sec. (1228672.48 ticks, 604478 iterations)
+Elapsed time = 906.56 sec. (1238745.38 ticks, 604539 iterations)
+Elapsed time = 915.13 sec. (1248818.56 ticks, 604600 iterations)
+Elapsed time = 923.55 sec. (1258892.01 ticks, 604661 iterations)
+Elapsed time = 931.97 sec. (1268965.74 ticks, 604722 iterations)
+Elapsed time = 940.34 sec. (1279039.72 ticks, 604783 iterations)
+Elapsed time = 948.66 sec. (1289113.95 ticks, 604844 iterations)
+Elapsed time = 957.00 sec. (1299188.43 ticks, 604905 iterations)
+Elapsed time = 965.36 sec. (1309263.22 ticks, 604966 iterations)
+Elapsed time = 973.78 sec. (1319338.28 ticks, 605027 iterations)
+Elapsed time = 982.34 sec. (1329413.60 ticks, 605088 iterations)
+Elapsed time = 991.03 sec. (1339489.15 ticks, 605149 iterations)
 Perturbation started.
 Switched to devex.
-Iteration: 427785    Infeasibility =         64430.045361
+Iteration: 605177    Infeasibility =     137700826.057711
 Removing perturbation.
 
 --- LP status (3): infeasible.
---- Cplex Time: 292.16sec (det. 422632.14 ticks)
+--- Cplex Time: 1000.05sec (det. 1350574.84 ticks)
 
 
 Model has been proven infeasible
 
 --- Reading solution for model Quant_reliab_res_EU
---- Toy_1.gms(499) 1468 Mb  468 secs
---- Executing after solve: elapsed 0:16:11.271
---- Toy_1.gms(520) 1468 Mb  4 secs
+--- Toy_1.gms(594) 2685 Mb  1246 secs
+--- Executing after solve: elapsed 0:49:23.918
+--- Toy_1.gms(615) 2685 Mb  7 secs
 --- GDX File (execute_unload) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\check_Toy_1.gdx
---- Toy_1.gms(525) 1468 Mb
+--- Toy_1.gms(620) 2685 Mb
 
 GDXXRW           35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
 Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\check_Toy_1.gdx
 Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Output_toy_1.xlsx
 
 *** Status: Normal completion
---- Job Toy_1.gms Stop 02/11/22 16:06:05 elapsed 0:16:16.710
+--- Job Toy_1.gms Stop 02/15/22 17:41:32 elapsed 0:49:32.547

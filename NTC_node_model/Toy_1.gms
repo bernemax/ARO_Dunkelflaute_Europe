@@ -1,21 +1,21 @@
 
 * only one "*" for a model run is possible for now
 ************************** representative european weather years
-$setglobal  cf_1989  "*"       if "*" considered, if "" taken out
+$setglobal  cf_1989  ""       if "*" considered, if "" taken out
 $setglobal  cf_1990  ""       if "*" considered, if "" taken out
-$setglobal  cf_2010  ""       if "*" considered, if "" taken out
+$setglobal  cf_2010  "*"       if "*" considered, if "" taken out
 $setglobal  cf_2012  ""       if "*" considered, if "" taken out
 
 ************************** capacity options for 2020 - 2050
 $setglobal  cap_exo20 ""      if "*" considered, if "" taken out
-$setglobal  cap_exo30 "*"      if "*" considered, if "" taken out
-$setglobal  cap_exo40 ""      if "*" considered, if "" taken out
+$setglobal  cap_exo30 ""      if "*" considered, if "" taken out
+$setglobal  cap_exo40 "*"      if "*" considered, if "" taken out
 $setglobal  cap_exo50 ""      if "*" considered, if "" taken out
 
 ************************** representative load Secnarios for 2020 - 2050
 $setglobal  Load_exo20 ""      if "*" considered, if "" taken out
-$setglobal  Load_exo30 "*"      if "*" considered, if "" taken out
-$setglobal  Load_exo40 ""      if "*" considered, if "" taken out
+$setglobal  Load_exo30 ""      if "*" considered, if "" taken out
+$setglobal  Load_exo40 "*"      if "*" considered, if "" taken out
 $setglobal  Load_exo50 ""      if "*" considered, if "" taken out
 
 $set        Data_input         Data_input\
@@ -124,7 +124,9 @@ price(t,n)
 Average_price(n)
 count_time(t)
 Count_LS_hours(t,n)
+Count_curtail_hours(res,t)
 report(n,*)
+hourly_price_report(t,n)
 
 **********************************************************input Excel table******************************************
 ;
@@ -602,14 +604,19 @@ Average_price(n) = sum(t,price(t,n)/count_time(t))
 ;
 Count_LS_hours(t,n)$(Load_shed.l(t,n) gt 0) = 1
 ;
+Count_curtail_hours(res,t)$(Curtailment.l(res,t) gt 0) =1;
 
 ******************************************************report parameter definition**************************************************
 
 report(n,'Average Price') = Average_price(n)
 ;
+hourly_price_report(t,n) = price(t,n)
+;
 report(n,'LOLH') = sum(t, Count_LS_hours(t,n))
 ;
 report(n,'EENS') = sum((t),Load_shed.l(t,n))
+;
+report(n,'Curtailment')= sum((res,t)$MapRes(res,n), Count_curtail_hours(res,t))
 ;
 ****************************************************write to gdx*******************************************************************
 execute_unload "check_Toy_1.gdx"
@@ -618,6 +625,7 @@ execute_unload "check_Toy_1.gdx"
 ****************************************************output*************************************************************************
 
 execute "gdxxrw check_Toy_1.gdx output=Output_toy_1.xlsx  par=report  rng=report!A1"
+execute "gdxxrw check_Toy_1.gdx output=Output_toy_1.xlsx  par=hourly_price_report  rng=price_report!A1"
 ;
 
 

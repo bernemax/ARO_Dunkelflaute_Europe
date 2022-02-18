@@ -1,11 +1,11 @@
 
---- Job Toy_1.gms Start 02/15/22 16:49:55 35.1.0 r82a9585 WEX-WEI x86 64bit/MS Windows
+--- Job Toy_1.gms Start 02/18/22 18:05:56 35.1.0 r82a9585 WEX-WEI x86 64bit/MS Windows
 --- Applying:
     C:\GAMS\35\gmsprmNT.txt
 --- GAMS Parameters defined
     Input "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms"
     PageSize 0
-    ScrDir "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\225a\"
+    ScrDir "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\225b\"
     SysDir C:\GAMS\35\
     LogOption 3
     ErrMsg 1
@@ -17,9 +17,9 @@ Licensee: Small MUD - 5 User License                     S201118/0001AN-WIN
           C:\Users\Max Bernecker\Documents\GAMS\gamslice.txt
 GAMS 35.1.0   Copyright (C) 1987-2021 GAMS Development. All rights reserved
 --- Starting compilation
---- Toy_1.gms(133) 4 Mb
+--- Toy_1.gms(135) 4 Mb
 --- $echo File Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Genup.txt
---- Toy_1.gms(152) 4 Mb
+--- Toy_1.gms(154) 4 Mb
 --- call gdxxrw I=Data_input\Data.xlsx O=Data_input\Data.gdx @Genup.txt
 
 GDXXRW           35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
@@ -46,37 +46,14 @@ Value expected in cell: Gen_res!G5; found Wind
 Value expected in cell: Gen_res!G6; found Solar
 Additional errors suppressed
 Total number of bad values for symbol Gen_res = 51
-Total time = 2234 Ms
---- Toy_1.gms(153) 4 Mb
+Total time = 2390 Ms
+--- Toy_1.gms(155) 4 Mb
 --- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data.gdx
 --- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data.gdx
---- Toy_1.gms(161) 11 Mb
+--- Toy_1.gms(163) 11 Mb
 --- $echo File Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\availup.txt
---- Toy_1.gms(169) 11 Mb
+--- Toy_1.gms(171) 11 Mb
 --- call gdxxrw I=Data_input\Weather_cap_factors.xlsx O=Data_input\Weather_cap_factors.gdx @availup.txt
 
 GDXXRW           35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
 Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.xlsx
-Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.gdx
-Total time = 4406 Ms
---- Toy_1.gms(170) 11 Mb
---- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.gdx
---- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.gdx
---- Toy_1.gms(177) 41 Mb
---- $echo File Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\load.txt
---- Toy_1.gms(185) 41 Mb
---- call gdxxrw I=Data_input\Load_combined.xlsx O=Data_input\Load_combined.gdx @load.txt
-
-GDXXRW           35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
-Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Load_combined.xlsx
-Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Load_combined.gdx
-Total time = 2547 Ms
---- Toy_1.gms(186) 41 Mb
---- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Load_combined.gdx
---- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Load_combined.gdx
---- Toy_1.gms(398) 61 Mb
---- Starting execution: elapsed 0:00:09.716
---- Toy_1.gms(397) 177 Mb
---- GDX File (execute_unload) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\check_Toy_1.gdx
-*** Status: Normal completion
---- Job Toy_1.gms Stop 02/15/22 16:50:07 elapsed 0:00:11.946

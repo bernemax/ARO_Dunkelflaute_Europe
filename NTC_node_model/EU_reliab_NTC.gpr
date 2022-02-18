@@ -5,8 +5,7 @@
 
 [OPENWINDOW_1]
 FILE0=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
-FILE1=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.lst
-FILE2=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
+FILE1=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms
 MAXIM=0
 TOP=0
 LEFT=9

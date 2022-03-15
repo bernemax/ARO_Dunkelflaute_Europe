@@ -6,12 +6,17 @@
 * Therefore a system of 18 EU countries is examined. 
 
 
-## Modelling framework
-- chance constrained operation 
+## Actual Modelling framework
 - unit commitment  
 
+## Future Modelling framework
+- dispatch investment model
+- UC-chance constrained or robut optimization
+
 ## Reliability frameworks:
-- loss of load hours (LOLH) and expected energy not served (EENS)
+- loss of load hours (LOLH)
+- expected energy not served (EENS)
+- Loss of load probability (LOLP)
 
 ## Consideration: 
 - renewable elecricity resources like PV, wind, hydro & biomass

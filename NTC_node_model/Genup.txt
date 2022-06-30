@@ -1,15 +1,17 @@
 set=MapG                        rng=Mapping!A2:B104                     rdim=2 cDim=0
 set=MapS                        rng=Mapping!D2:E100                     rdim=2 cDim=0
-set=MapRes                      rng=Mapping!G2:H100                     rdim=2 cDim=0
-set=MapSr                       rng=Mapping!J2:K30                      rdim=2 cDim=0
-set=MapWr                       rng=Mapping!M2:N30                      rdim=2 cDim=0
+set=Map_DF                      rng=Mapping!S2:T8762                    rdim=2 cDim=0
+set=Map_RR                      rng=Mapping!J2:K19                      rdim=2 cDim=0
+set=Map_RR_res                  rng=Mapping!J23:K40                     rdim=2 cDim=0
+set=MapRes                      rng=Mapping!M2:N19                      rdim=2 cDim=0
 set=MapHr                       rng=Mapping!P2:Q30                      rdim=2 cDim=0
+set=Map_link_NTC                rng=Mapping!V2:X86                      rdim=3 cDim=0
 
-par=Gen_conv                    rng=Gen_conv!B1:N103                    rDim=1 cdim=1
+par=Gen_conv                    rng=Gen_conv!B1:N120                    rDim=1 cdim=1
 par=Gen_Hydro                   rng=Gen_Hydro!A1:M52                    rDim=1 cdim=1
-par=Gen_res                     rng=Gen_res!B1:I52                      rDim=1 cdim=1
+par=Gen_res                     rng=Gen_res!R1:W18                      rDim=1 cdim=1
 
 par=priceup                     rng=prices!A1:I8761                     rDim=1 cdim=1
 par=availup_hydro               rng=Availability!A2:R8762               rDim=1 cdim=1
-par=NTC_cap                     rng=NTC!A1:CE83                         rDim=1 cdim=1
+par=NTC_cap_ex                  rng=NTC!A1:CE83                         rDim=1 cdim=1
 

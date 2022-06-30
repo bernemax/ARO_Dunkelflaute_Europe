@@ -1,0 +1,497 @@
+GAMS 38.2.1  96226ea8 Feb 19, 2022          WEX-WEI x86 64bit/MS Windows - 06/30/22 13:27:14 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1   
+   2  * only one "*" for a model run is possible for now
+   3  ************************** representative european weather years
+   8   
+   9  ************************** capacity options for 2020 - 2050
+  14   
+  15  ************************** representative load Secnarios for 2020 - 2050
+  20   
+  22   
+  23   
+  24  Sets
+  25   
+  26  n /DE,DK,SE,PL,CZ,AT,CH,FR,BE,NE,
+  27     NW,UK,IT,ES,BALT,SI,SEE,FI/
+  28  g /g1*g102/
+  29  s /s1*s51/
+  30  *NTC/ntc1*ntc100/
+  31  t/t1*t100/
+  32  v /v1*v5/
+  33   
+  34  link/l1*l168/
+  35   
+  36  rr/rr1*rr17/
+  37  res/res1*res17/
+  38  *wind and solar
+  39  hr/hr1*hr17/
+  40   
+  41  DF/DF1*DF365/
+  42   
+  43  ;
+  44  alias (n,nn),(t,tt), (v,vv)
+  45  ;
+  46   
+  47  * Subsets
+  48  sets
+  49  ****************************thermal************************************************
+  50  gas(g)
+  51  lig(g)
+  52  coal(g)
+  53  nuc(g)
+  54  oil(g)
+  55  waste(g)
+  56  biomass(g)
+  57   
+  58  ****************************hydro***************************************************
+  59  ror(s)
+  60  reservoir(s)
+  61  psp(s)
+  62  ****************************links***************************************************
+  63   
+  64  ex(link)
+  65  /l1*l84/
+  66  prosp(link)
+  67  /l85*l164/
+  68   
+  69  ****************************mapping*************************************************
+  70   
+  71  MapG(g,n)
+  72  MapS(s,n)
+  73  MapRes(res,n)
+  74  Map_RR(rr,n)
+  75  Map_RR_RES(rr,res)
+  76  MapHr(hr,n)
+  77  Map_DF(t,DF)
+  78  Map_link_NTC(link,n,nn)
+  79  ;
+  80  *execute_unload "check_ARO_Toy.gdx";
+  81  *$stop
+INCLUDE    Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Loading_input_data.gms
+  83  alias (n,nn)
+  84  ;
+  85  Scalars
+  86  store_cpf /7/
+  87  scale_to_MW /1000/
+  88  Df_factor /0.2/
+  89   
+  90  M         /15000/
+  91   
+  92  Gamma_Res_total
+  93   
+  94  LB
+  95  UB
+  96  Toleranz  /1/
+  97  itaux     /1/
+  98   
+  99  toy_inv_costs /100000/
+ 100  ;
+ 101  Parameters
+ 102  **********************************************************Input parameter********************************************
+ 103  Gen_conv                        upload table
+ 104  Gen_res                         upload table
+ 105  Gen_hydro                       upload table
+ 106   
+ 107  priceup                         upload table
+ 108  availup_vola_89                 upload table for PV and Wind cap factors 1989
+ 109  availup_vola_90                 upload table for PV and Wind cap factors 1990
+ 110  availup_vola_10                 upload table for PV and Wind cap factors 2010
+ 111  availup_vola_12                 upload table for PV and Wind cap factors 2012
+ 112   
+ 113  load20                          upload table for country wise load data 2020
+ 114  load30                          upload table for country wise load data 2030
+ 115  load40                          upload table for country wise load data 2040
+ 116  load50                          upload table for country wise load data 2050
+ 117   
+ 118  availup_hydro                   upload table for hydro availability
+ 119  NTC_cap_ex(n,nn)                existing NTC
+ 120  NTC_cap_prosp(n,nn)             prospective NTC
+ 121  NTC_cap_sub(n,nn)               Sum NTC of existing and invested prospective NTC for subproblem
+ 122   
+ 123  Fc_conv(g,t)                    fuel costs conventional powerplants
+ 124  Fc_res(res,t)                   fuel costs renewable powerplants
+ 125  CO2_content(g)                  Co2 content
+ 126  CO2_costs(t)                    CO2 costs
+ 127  SU_costs(g,t)                   start-up costs conventionals
+ 128   
+ 129  su_fact(g)                      start-up factor conventionals
+ 130  fuel_start(g)                   fuel consumption factor if start-up decision
+ 131  depri_costs(g)                  deprication costs conventionals
+ 132   
+ 133  load(t,n)                       electrical demand in each node in hour t
+ 134  LS_costs(n)                     loadshedding costs per node
+ 135  var_costs(g,t)                  variable costs conventional power plants
+ 136   
+ 137  cap_conv(g)                     max. generation capacity of each conventional generator
+ 138  cap_hydro(s)                    max. generation capacity of each psp
+ 139  cap_res(res)                    max. generation capacity of each RES
+ 140   
+ 141  Eff_conv(g)                     efficiency of conventional powerplants
+ 142  Eff_hydro(s)                    efficiency of hydro powerplants
+ 143  Eff_res(res)                    efficiency of renewable powerplants
+ 144   
+ 145  share_inflow(s,n)
+ 146  reservoir_stor_cap(s,n)         maximum reservoir storage capacity resp. filling level
+ 147  af_hydro(t,hr,n)                availability of hydro potential inflow
+ 148   
+ 149   
+ 150  **************************************combined solar and wind availability****************************************
+ 151   
+ 152  *af_sun(t,sr,n)                  capacity factor of solar energy
+ 153  *af_wind(t,wr,n)                 capacity factor of wind energy
+ 154   
+ 155  af_res_up(t,rr,n)               upper capacity factor of wind and solar pv energy
+ 156  delta_af_res(t,rr,n)
+ 157   
+ 158  Ratio_N(t,DF,rr,n)
+ 159  Ratio_DF(t,DF,rr,n)
+ 160  Budget_N(DF,rr,n)             budget of renewable availability during a specific time horizion previous to Dunkelflaute even
+ 161  Budget_Delta(DF,rr,n)
+ 162  Budget_DF(DF,rr,n)            budget of renewable availability during a specific time horizion previous to Dunkelflaute event
+ 163   
+ 164  ***************************************Uncerttainty budget
+ 165   
+ 166  Gamma_PG_res(rr)
+ 167   
+ 168  **************************************renewable generation connection of Subproblem to Master
+ 169   
+ 170  AF_M_Res_fixed(t,rr,n,v)         fixed combined wind and solar pv availability
+ 171   
+ 172   
+ 173  **********************************************************report parameter*******************************************
+ 174  report_main(*,*)
+ 175  report_decomp(v,*,*)
+ 176  inv_cost_master
+ 177   
+ 178  Report_dunkel_time_Z(rr)
+ 179  Report_dunkel_hours_Z(DF,rr)
+ 180  Report_total_cost
+ 181  Report_line_constr_cost
+ 182   
+ 183  price(t,n)
+ 184  Average_price(n)
+ 185  count_time(t)
+ 186  Count_LS_hours(t,n)
+ 187  Count_curtail_hours(res,t)
+ 188  report(n,*)
+ 189  hourly_price_report(t,n)
+ 190   
+ 191  **********************************************************input Excel table******************************************
+ 192  ;
+ 193   
+ 194  ************************************technical & mapping******************************
+ 214   
+GDXIN   Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data_ARO.gdx
+--- LOAD  MapG = 1:MapG
+--- LOAD  MapS = 2:MapS
+--- LOAD  Map_DF = 3:Map_DF
+--- LOAD  Map_RR = 4:Map_RR
+--- LOAD  Map_RR_RES = 5:Map_RR_res
+--- LOAD  MapRes = 6:MapRes
+--- LOAD  MapHr = 7:MapHr
+--- LOAD  Map_link_NTC = 8:Map_link_NTC
+--- LOAD  Gen_conv = 9:Gen_conv
+--- LOAD  Gen_res = 11:Gen_res
+--- LOAD  Gen_hydro = 10:Gen_Hydro
+--- LOAD  priceup = 12:priceup
+--- LOAD  availup_hydro = 13:availup_hydro
+--- LOAD  NTC_cap_ex = 14:NTC_cap_ex
+ 223   
+ 224  **************************************weather cap factors ***************************
+ 231   
+GDXIN   Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.gdx
+--- LOAD  availup_vola_89 = 1:availup_vola_89
+--- LOAD  availup_vola_90 = 2:availup_vola_90
+--- LOAD  availup_vola_10 = 3:availup_vola_10
+--- LOAD  availup_vola_12 = 4:availup_vola_12
+ 238   
+ 239  ***********************************load for each country****************************
+ 240   
+ 247   
+GDXIN   Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Load_combined.gdx
+--- LOAD  load20 = 1:load20
+--- LOAD  load30 = 2:load30
+--- LOAD  load40 = 3:load40
+--- LOAD  load50 = 4:load50
+ 254   
+ 255   
+ 256  *####################################subset definitions#############################
+ 257   
+ 258          gas(g)          =    Gen_conv(g,'tech')  = 1
+ 259  ;
+ 260          oil(g)          =    Gen_conv(g,'tech')  = 2
+ 261  ;
+ 262          coal(g)         =    Gen_conv(g,'tech')  = 3
+ 263  ;
+ 264          lig(g)          =    Gen_conv(g,'tech')  = 4
+ 265  ;
+ 266          nuc(g)          =    Gen_conv(g,'tech')  = 5
+ 267  ;
+ 268          waste(g)        =    Gen_conv(g,'tech')  = 6
+ 269  ;
+ 270          biomass(g)      =    Gen_conv(g,'tech')  = 7
+ 271  ;
+ 272   
+ 273   
+ 274  ***************************************hydro****************************************
+ 275   
+ 276          psp(s)          =    Gen_Hydro(s,'tech') = 8
+ 277  ;
+ 278          reservoir(s)    =    Gen_Hydro(s,'tech') = 9
+ 279  ;
+ 280          ror(s)          =    Gen_Hydro(s,'tech') = 10
+ 281  ;
+ 282          share_inflow(s,n)$(MapS(s,n))  =    Gen_Hydro(s,'share_Reservoir_ROR')
+ 283  ;
+ 284          reservoir_stor_cap(s,n)$(MapS(s,n)) =  Gen_Hydro(s,'Stor_cap')
+ 285  ;
+ 286   
+ 287   
+ 288   
+ 289  *###################################loading parameter###############################
+ 290   
+ 291  *****************************************demand*************************************
+ 292   
+ 293  LS_costs(n)         =          3000
+ 294  ;
+ 295   
+ 296  *****************************************prices*************************************
+ 297   
+ 298  Fc_conv(gas,t)      =          priceup(t,'gas')
+ 299  ;
+ 300  Fc_conv(oil,t)      =          priceup(t,'oil')
+ 301  ;
+ 302  Fc_conv(coal,t)     =          priceup(t,'coal')
+ 303  ;
+ 304  Fc_conv(lig,t)      =          priceup(t,'lignite')
+ 305  ;
+ 306  Fc_conv(nuc,t)      =          priceup(t,'nuclear')
+ 307  ;
+ 308  Fc_conv(waste,t)    =          priceup(t,'waste')
+ 309  ;
+ 310  Fc_conv(biomass,t)   =         priceup(t,'biomass')
+ 311  ;
+ 312  CO2_costs(t)        =          priceup(t,'CO2')
+ 313  ;
+ 314   
+ 315  *************************************generators*************************************
+ 316   
+ 317  Eff_conv(g)         =          Gen_conv(g,'eff')
+ 318  ;
+ 319  Eff_hydro(s)        =          Gen_hydro(s,'eff')
+ 320  ;
+ 321  Eff_res(res)        =          Gen_res(res,'eff')
+ 322  ;
+ 323  Co2_content(g)      =          Gen_conv(g,'CO2')
+ 324  ;
+ 325  su_fact(g)          =          Gen_conv(g,'su_fact')
+ 326  ;
+ 327  depri_costs(g)      =          Gen_conv(g,'depri_costs')
+ 328  ;
+ 329  fuel_start(g)       =          Gen_conv(g,'fuel_start')
+ 330  ;
+ 331   
+ 332  ************************************availability************************************
+ 333   
+ 334  **************************1989
+      af_hydro(t,hr,n)$MapHR(hr,n)=          availup_hydro(t,hr)
+      ;
+      *af_sun(t,sr,n)$MapSR(sr,n)  =          availup_vola_89(t,sr)
+      *;
+      *af_wind(t,wr,n)$MapWR(wr,n) =          availup_vola_89(t,wr)
+      *;
+      af_res_up(t,rr,n)$Map_RR(rr,n)          =      availup_vola_89(t,rr)
+      ;
+      delta_af_res(t,rr,n)$Map_RR(rr,n)       =     (af_res_up(t,rr,n) - Df_factor)$(af_res_up(t,rr,n) gt Df_factor)
+      ;
+       
+      $ontext
+ 349   
+ 350  **************************1990
+ 351  *$ontext
+ 352   
+ 353  af_hydro(t,hr,n)$MapHR(hr,n)=          availup_hydro(t,hr)
+ 354  ;
+ 355  *af_sun(t,sr,n)$MapSR(sr,n)  =          availup_vola_90(t,sr)
+ 356  *;
+ 357  *af_wind(t,wr,n)$MapWR(wr,n) =          availup_vola_90(t,wr)
+ 358  *;
+ 359  af_res_up(t,rr,n)$Map_RR(rr,n)          =     availup_vola_90(t,rr)
+ 360  ;
+ 361  delta_af_res(t,rr,n)$Map_RR(rr,n)       =     (af_res_up(t,rr,n) - Df_factor)$(af_res_up(t,rr,n) gt Df_factor)
+ 362  ;
+ 365   
+ 366  **************************2010
+       
+      af_hydro(t,hr,n)$MapHR(hr,n)=          availup_hydro(t,hr)
+      ;
+      *af_sun(t,sr,n)$MapSR(sr,n)  =          availup_vola_10(t,sr)
+      *;
+      *af_wind(t,wr,n)$MapWR(wr,n) =          availup_vola_10(t,wr)
+      *;
+      af_res_up(t,rr,n)$Map_RR(rr,n)          =     availup_vola_10(t,rr)
+      ;
+      delta_af_res(t,rr,n)$Map_RR(rr,n)       =     (af_res_up(t,rr,n) - Df_factor)$(af_res_up(t,rr,n) gt Df_factor)
+      ;
+      $ontext
+ 381   
+ 382  **************************2012
+       
+      af_hydro(t,hr,n)$MapHR(hr,n)=          availup_hydro(t,hr)
+      ;
+      *af_sun(t,sr,n)$MapSR(sr,n)  =          availup_vola_12(t,sr)
+      *;
+      *af_wind(t,wr,n)$MapWR(wr,n) =          availup_vola_12(t,wr)
+      *;
+      af_res_up(t,rr,n)$Map_RR(rr,n)          =     availup_vola_12(t,rr)
+      ;
+      delta_af_res(t,rr,n)$Map_RR(rr,n)       =     (af_res_up(t,rr,n) - Df_factor)$(af_res_up(t,rr,n) gt Df_factor)
+      ;
+      $ontext
+ 397  *************************************Generation Capacity**********************
+ 398  **************************2020
+ 399  *$ontext
+ 400   
+ 401  Cap_conv(g)         =          Gen_conv(g,'Gen_cap')
+ 402  ;
+ 403  Cap_hydro(s)        =          Gen_Hydro(s,'Gen_cap')
+ 404  ;
+ 405  Cap_res(res)        =          Gen_res(res,'Gen_cap')
+ 406  ;
+ 409   
+ 410  **************************2030
+       
+      Cap_conv(g)         =          Gen_conv(g,'cap_exo30')
+      ;
+      Cap_hydro(s)        =          Gen_Hydro(s,'cap_exo30')
+      ;
+      Cap_res(res)        =          Gen_res(res,'cap_exo30')
+      ;
+      $ontext
+ 421   
+ 422  **************************2040
+      Cap_conv(g)         =          Gen_conv(g,'cap_exo40')
+      ;
+      Cap_hydro(s)        =          Gen_Hydro(s,'cap_exo40')
+      ;
+      Cap_res(res)        =          Gen_res(res,'cap_exo40')
+      ;
+       
+      $ontext
+ 433  *************************************load data**********************************
+ 434  **************************2020
+ 435  *$ontext
+ 436   
+ 437  load(t,n)           =           load20(t,n)
+ 438  ;
+ 441   
+ 442  **************************2030
+       
+      load(t,n)           =           load30(t,n)
+      ;                 
+      $ontext
+ 449   
+ 450  **************************2040
+       
+      load(t,n)           =           load40(t,n)
+      ;                 
+      $ontext
+ 457   
+ 458  **************************2050
+       
+      load(t,n)           =           load50(t,n)
+      ;                 
+      $ontext
+ 465   
+ 466  *************************************calculating************************************
+ 467   
+ 468  var_costs(g,t)   =          ((FC_conv(g,t)+ co2_costs(t) * co2_content(g)) / Eff_conv(g) )
+ 469  ;
+ 470  su_costs(g,t)     =          depri_costs(g) + su_fact(g) * fuel_start(g) * FC_conv(g,t) + co2_content(g) * co2_costs(t)
+ 471  ;
+ 472   
+ 473  *execute_unload "check_Toy_1.gdx";
+ 474  *$stop
+ 475  *************************************upload table clearing**************************
+ 476   
+ 477  *option kill = Node_Demand ;
+ 478   
+ 479   
+ 480   
+ 481   
+ 482   
+ 483   
+ 484   
+ 485   
+ 486  *************************************Renewable Uncertainty budgets - approach
+ 487   
+ 488  Budget_N(DF,rr,n)                        = sum((t)$Map_DF(t,DF), af_res_up(t,rr,n))
+ 489  ;
+ 490  Budget_Delta(DF,rr,n)                    = sum((t)$Map_DF(t,DF), delta_af_res(t,rr,n))
+ 491  ;
+ 492  Budget_DF(DF,rr,n)                       = Budget_N(DF,rr,n) - Budget_Delta(DF,rr,n)
+ 493  ;
+ 494  Ratio_N(t,DF,rr,n)$(MAP_DF(t,DF) and Map_RR(rr,n) and (Budget_N(DF,rr,n) gt 0))     = af_res_up(t,rr,n)/(Budget_N(DF,rr,n))
+ 495  ;
+ 496   
+ 497  Ratio_DF(t,DF,rr,n)$(MAP_DF(t,DF) and Map_RR(rr,n) and (af_res_up(t,rr,n) = 0 ))    = 0
+ 498  ;
+ 499  Ratio_DF(t,DF,rr,n)$(MAP_DF(t,DF) and Map_RR(rr,n) and (Budget_N(DF,rr,n) gt 0) and (Budget_Delta(DF,rr,n) gt 0 ))    = delta_af_res(t,rr,n) / Budget_Delta(DF,rr,n)
+ 500  ;
+ 501   
+ 502   
+ 503   
+ 504   
+ 505   
+ 506   
+ 507   
+ 508   
+ 509   
+ 510   
+ 511   
+ 512   
+ 513   
+ 514   
+ 515  ;
+ 516  execute_unload "check_ARO_Toy.gdx";
+STOP Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_ARO.gms
+GAMS 38.2.1  96226ea8 Feb 19, 2022          WEX-WEI x86 64bit/MS Windows - 06/30/22 13:27:14 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Include File Summary
+
+
+   SEQ   GLOBAL TYPE      PARENT   LOCAL  FILENAME
+
+     1        1 INPUT          0       0  Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_ARO.gms
+     2       82 INCLUDE        1      82  .Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Loading_input_data.gms
+     3      216 CALL           2     134  .gdxxrw I=Data_input\Data_ARO.xlsx O=Data_input\Data_ARO.gdx @Genup.txt
+     4      217 GDXIN          2     135  .Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data_ARO.gdx
+     5      233 CALL           2     151  .gdxxrw I=Data_input\Weather_cap_factors.xlsx O=Data_input\Weather_cap_factors.gdx @availup.txt
+     6      234 GDXIN          2     152  .Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.gdx
+     7      249 CALL           2     167  .gdxxrw I=Data_input\Load_combined.xlsx O=Data_input\Load_combined.gdx @load.txt
+     8      250 GDXIN          2     168  .Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Load_combined.gdx
+     9      517 STOP           1      85  Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_ARO.gms
+
+
+COMPILATION TIME     =       24.422 SECONDS     79 MB  38.2.1 96226ea8 WEX-WEI
+GAMS 38.2.1  96226ea8 Feb 19, 2022          WEX-WEI x86 64bit/MS Windows - 06/30/22 13:27:14 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+E x e c u t i o n
+
+
+EXECUTION TIME       =        0.843 SECONDS     81 MB  38.2.1 96226ea8 WEX-WEI
+
+
+USER: Small MUD - 5 User License                     S211124|0002AN-WIN
+      BTU Cottbus-Senftenberg, FG Energiewirtschaft              DC5591
+      License for teaching and research at degree granting institutions
+
+
+**** FILE SUMMARY
+
+Input      Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_ARO.gms
+Output     Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_ARO.lst

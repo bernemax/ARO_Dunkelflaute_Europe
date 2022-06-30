@@ -1,0 +1,330 @@
+--- Toy_ARO.gms(696) 206 Mb
+--- Job Toy_ARO.gms Start 06/10/22 15:38:03 38.2.1 96226ea8 WEX-WEI x86 64bit/MS Windows
+--- Applying:
+    C:\GAMS\38\gmsprmNT.txt
+--- GAMS Parameters defined
+    Input "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_ARO.gms"
+    PageSize 0
+    ScrDir "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\225p\"
+    SysDir C:\GAMS\38\
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+Licensee: Small MUD - 5 User License                     S211124|0002AN-WIN
+          BTU Cottbus-Senftenberg, FG Energiewirtschaft              DC5591
+          C:\Users\Max Bernecker\Documents\GAMS\gamslice.txt
+          License Admin: Felix Muesgens, Fg-energiewirtschaft@b-tu.de      
+Processor information: 1 socket(s), 8 core(s), and 16 thread(s) available
+GAMS 38.2.1   Copyright (C) 1987-2022 GAMS Development. All rights reserved
+--- Starting compilation
+--- Toy_ARO.gms(82) 3 Mb
+--- . Loading_input_data.gms(113) 3 Mb
+--- $echo File Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Genup.txt
+--- . Loading_input_data.gms(134) 3 Mb
+--- call gdxxrw I=Data_input\Data_ARO.xlsx O=Data_input\Data_ARO.gdx @Genup.txt
+
+GDXXRW           38.2.1 96226ea8 Feb 19, 2022          VS8 x86 32bit/MS Window
+Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data_ARO.xlsx
+Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data_ARO.gdx
+Value expected in cell: Gen_conv!L2; found gas
+Value expected in cell: Gen_conv!L3; found coal
+Value expected in cell: Gen_conv!L4; found lig
+Value expected in cell: Gen_conv!L5; found nuc
+Value expected in cell: Gen_conv!L6; found waste
+Additional errors suppressed
+Total number of bad values for symbol Gen_conv = 119
+Value expected in cell: Gen_hydro!B2; found AT
+Value expected in cell: Gen_hydro!H2; found psp
+Value expected in cell: Gen_hydro!B3; found AT
+Value expected in cell: Gen_hydro!H3; found reservoir
+Value expected in cell: Gen_hydro!B4; found AT
+Additional errors suppressed
+Total number of bad values for symbol Gen_Hydro = 103
+Value expected in cell: Gen_res!R2; found Res1
+Value expected in cell: Gen_res!R3; found Res2
+Value expected in cell: Gen_res!R4; found Res3
+Value expected in cell: Gen_res!R5; found Res4
+Value expected in cell: Gen_res!R6; found Res5
+Additional errors suppressed
+Total number of bad values for symbol Gen_res = 17
+Total time = 3234 Ms
+--- . Loading_input_data.gms(135) 3 Mb
+--- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data_ARO.gdx
+--- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data_ARO.gdx
+--- . Loading_input_data.gms(143) 11 Mb
+--- $echo File Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\availup.txt
+--- . Loading_input_data.gms(151) 11 Mb
+--- call gdxxrw I=Data_input\Weather_cap_factors.xlsx O=Data_input\Weather_cap_factors.gdx @availup.txt
+
+GDXXRW           38.2.1 96226ea8 Feb 19, 2022          VS8 x86 32bit/MS Window
+Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.xlsx
+Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.gdx
+Total time = 15578 Ms
+--- . Loading_input_data.gms(152) 11 Mb
+--- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.gdx
+--- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.gdx
+--- . Loading_input_data.gms(159) 59 Mb
+--- $echo File Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\load.txt
+--- . Loading_input_data.gms(167) 59 Mb
+--- call gdxxrw I=Data_input\Load_combined.xlsx O=Data_input\Load_combined.gdx @load.txt
+
+GDXXRW           38.2.1 96226ea8 Feb 19, 2022          VS8 x86 32bit/MS Window
+Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Load_combined.xlsx
+Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Load_combined.gdx
+Total time = 2657 Ms
+--- . Loading_input_data.gms(168) 59 Mb
+--- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Load_combined.gdx
+--- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Load_combined.gdx
+--- . Loading_input_data.gms(432) 79 Mb
+--- Toy_ARO.gms(596) 79 Mb
+--- . NTC_merge.gms(4) 79 Mb
+--- Toy_ARO.gms(626) 79 Mb
+--- . Clean_NTC_inv.gms(7) 79 Mb
+--- Toy_ARO.gms(682) 79 Mb
+--- Starting execution: elapsed 0:00:22.431
+--- Toy_ARO.gms(984) 81 Mb
+--- Generating MIP model Master_VO
+--- Toy_ARO.gms(1000) 102 Mb
+--- LOOPS v = v1
+---   1,805 rows  77,926 columns  140,430 non-zeroes
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:22.755
+
+IBM ILOG CPLEX   38.2.1 96226ea8 Feb 19, 2022          WEI x86 64bit/MS Window
+
+--- GAMS/Cplex Link licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 2.70 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 15.92 Mb (peak 16.51 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 20.1.0.1 link memory 1.51 Mb (peak 7.30 Mb)
+--- Starting Cplex
+
+Version identifier: 20.1.0.1 | 2021-04-07 | 3a818710c
+CPXPARAM_Advance                                 0
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+CPXPARAM_MIP_Tolerances_MIPGap                   0
+Tried aggregator 1 time.
+LP Presolve eliminated 1805 rows and 77927 columns.
+All rows and columns eliminated.
+Presolve time = 0.02 sec. (22.81 ticks)
+
+--- LP status (1): optimal.
+--- Cplex Time: 0.03sec (det. 32.11 ticks)
+
+
+Optimal solution found
+Objective:            0.000000
+
+--- Reading solution for model Master_VO
+--- Executing after solve: elapsed 0:00:24.739
+--- Toy_ARO.gms(984) 102 Mb
+--- Generating MIP model Subproblem
+--- Toy_ARO.gms(1043) 107 Mb
+--- LOOPS v = v1
+---   40,719 rows  47,954 columns  189,327 non-zeroes
+---   6,205 discrete-columns
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:25.311
+
+IBM ILOG CPLEX   38.2.1 96226ea8 Feb 19, 2022          WEI x86 64bit/MS Window
+
+--- GAMS/Cplex Link licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 2.61 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 19.18 Mb (peak 19.54 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 20.1.0.1 link memory 1.38 Mb (peak 7.02 Mb)
+--- Starting Cplex
+
+Version identifier: 20.1.0.1 | 2021-04-07 | 3a818710c
+CPXPARAM_Advance                                 0
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+CPXPARAM_MIP_Tolerances_MIPGap                   0
+Generic callback                                 0x50
+Found incumbent of value 0.000000 after 0.00 sec. (1.83 ticks)
+Tried aggregator 2 times.
+MIP Presolve eliminated 33108 rows and 39489 columns.
+MIP Presolve modified 6800 coefficients.
+Aggregator did 2734 substitutions.
+Reduced MIP has 3176 rows, 5731 columns, and 10770 nonzeros.
+Reduced MIP has 0 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.05 sec. (73.39 ticks)
+Tried aggregator 1 time.
+MIP Presolve eliminated 769 rows and 912 columns.
+Reduced MIP has 2407 rows, 4819 columns, and 9002 nonzeros.
+Reduced MIP has 0 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (3.69 ticks)
+Tried aggregator 2 times.
+Detecting symmetries...
+MIP Presolve eliminated 301 rows and 438 columns.
+Aggregator did 1 substitutions.
+Reduced MIP has 2105 rows, 4380 columns, and 8064 nonzeros.
+Reduced MIP has 0 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (5.74 ticks)
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Initializing dual steep norms . . .
+
+Iteration log . . .
+Iteration:     1   Dual objective     =  318345847784.115784
+Iteration:   301   Dual objective     =  314928687954.347290
+Iteration:   596   Dual objective     =  304470600089.631165
+Iteration:   788   Dual objective     =  288263166886.362427
+Iteration:  1075   Dual objective     =  275470475919.621155
+Iteration:  1278   Dual objective     =  275363747195.952087
+Iteration:  1491   Dual objective     =  275302782133.947266
+Iteration:  1749   Dual objective     =  275302781046.523926
+Root relaxation solution time = 0.02 sec. (7.90 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                            0.0000   3.18353e+11              --- 
+Found incumbent of value 0.000000 after 0.08 sec. (106.42 ticks)
+*     0     0      integral     0   2.75303e+11   2.75303e+11     1847    0.00%
+Elapsed time = 0.08 sec. (107.29 ticks, tree = 0.00 MB)
+Found incumbent of value 2.7530278e+11 after 0.08 sec. (107.29 ticks)
+
+Root node processing (before b&c):
+  Real time             =    0.08 sec. (107.86 ticks)
+Sequential b&c:
+  Real time             =    0.00 sec. (0.00 ticks)
+                          ------------
+Total (root+branch&cut) =    0.08 sec. (107.86 ticks)
+
+--- MIP status (101): integer optimal solution.
+--- Cplex Time: 0.08sec (det. 108.00 ticks)
+
+--- Fixing integer variables and solving final LP...
+
+Version identifier: 20.1.0.1 | 2021-04-07 | 3a818710c
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+CPXPARAM_MIP_Tolerances_MIPGap                   0
+Tried aggregator 1 time.
+LP Presolve eliminated 34808 rows and 39489 columns.
+Aggregator did 2734 substitutions.
+Reduced LP has 3176 rows, 5731 columns, and 10770 nonzeros.
+Presolve time = 0.03 sec. (46.39 ticks)
+Initializing dual steep norms . . .
+
+Iteration log . . .
+Iteration:     1   Dual objective     =  342450020476.503052
+Iteration:   367   Dual objective     =  336603369685.387268
+Iteration:   729   Dual objective     =  320776810899.357361
+Iteration:  1063   Dual objective     =  309540248530.168701
+Iteration:  1282   Dual objective     =  287743336349.321899
+Iteration:  1637   Dual objective     =  275488230152.707397
+Iteration:  1891   Dual objective     =  275379918589.705444
+Iteration:  2198   Dual objective     =  275318858630.944885
+Perturbation started.
+Iteration:  2505   Dual objective     =  275302780748.351135
+Removing perturbation.
+
+--- Fixed MIP status (1): optimal.
+--- Cplex Time: 0.06sec (det. 77.90 ticks)
+
+
+Proven optimal solution
+MIP Solution:  275302780738.386475    (1847 iterations, 0 nodes)
+Final Solve:   275302780738.385925    (2740 iterations)
+
+Best possible: 275302780738.386475
+Absolute gap:            0.000000
+Relative gap:            0.000000
+
+--- Reading solution for model Subproblem
+--- Executing after solve: elapsed 0:00:26.798
+--- Toy_ARO.gms(984) 107 Mb
+--- GDX File (execute_unload) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\check_Loop_Run.gdx
+--- Generating MIP model Master
+--- Toy_ARO.gms(1005) 168 Mb
+--- LOOPS v = v2
+---   194,207 rows  201,326 columns  640,028 non-zeroes
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:31.634
+
+IBM ILOG CPLEX   38.2.1 96226ea8 Feb 19, 2022          WEI x86 64bit/MS Window
+
+--- GAMS/Cplex Link licensed for continuous and discrete problems.
+--- GMO setup time: 0.03s
+--- Space for names approximately 13.27 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 74.79 Mb (peak 76.33 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 20.1.0.1 link memory 6.06 Mb (peak 30.68 Mb)
+--- Starting Cplex
+
+Version identifier: 20.1.0.1 | 2021-04-07 | 3a818710c
+CPXPARAM_Advance                                 0
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+CPXPARAM_MIP_Tolerances_MIPGap                   0
+Tried aggregator 1 time.
+LP Presolve eliminated 105805 rows and 101220 columns.
+Aggregator did 122 substitutions.
+Reduced LP has 88280 rows, 99985 columns, and 345240 nonzeros.
+Presolve time = 0.38 sec. (493.08 ticks)
+Initializing dual steep norms . . .
+
+Iteration log . . .
+Iteration:     1   Dual objective     =             0.000000
+Perturbation started.
+Iteration:   101   Dual objective     =             0.000000
+Iteration:  1022   Dual objective     =    2641647897.997111
+Iteration:  1966   Dual objective     =    9043275640.800251
+Iteration:  2875   Dual objective     =   12869902378.230494
+Iteration:  3759   Dual objective     =   16540519318.894075
+Iteration:  4711   Dual objective     =   18363359673.558273
+Iteration:  5593   Dual objective     =   18797961573.921806
+Iteration:  6726   Dual objective     =   18843056944.932392
+Iteration:  7245   Dual objective     =   18844179290.804657
+Iteration:  7785   Dual objective     =   18846118989.841564
+Iteration:  8370   Dual objective     =   18848310393.960770
+Iteration:  8877   Dual objective     =   18849047153.375900
+Iteration:  9355   Dual objective     =   18849047154.330639
+Iteration: 10288   Dual objective     =   18850194212.715988
+Iteration: 10643   Dual objective     =   18850194213.390308
+Iteration: 11107   Dual objective     =   18850194659.236500
+Iteration: 12030   Dual objective     =   18851491295.253403
+Iteration: 12771   Dual objective     =   18851491296.604866
+Iteration: 13187   Dual objective     =   18851491297.323677
+Iteration: 13680   Dual objective     =   18851491298.051628
+Iteration: 14579   Dual objective     =   18853827312.550377
+Iteration: 15079   Dual objective     =   19485634983.225094
+Iteration: 15880   Dual objective     =   20106057634.582733
+Iteration: 16600   Dual objective     =   21098705417.351772
+Iteration: 17196   Dual objective     =   22190546902.424034
+Iteration: 18034   Dual objective     =   23553852896.391445
+Iteration: 18934   Dual objective     =   25317712296.101322
+Iteration: 19782   Dual objective     =   28795548690.853653
+Iteration: 20688   Dual objective     =   32310720343.727985
+Iteration: 21623   Dual objective     =   34066834272.883080
+Iteration: 22593   Dual objective     =   35441996738.721001
+Iteration: 23530   Dual objective     =   36407332967.938873
+Iteration: 24293   Dual objective     =   38852610526.371422
+Iteration: 25248   Dual objective     =   39467541441.757011
+Iteration: 26109   Dual objective     =   39711239642.083351
+Iteration: 27055   Dual objective     =   39712281796.801712
+Iteration: 28012   Dual objective     =   39757514183.257576
+Iteration: 29034   Dual objective     =   39760649280.092827
+Iteration: 30186   Dual objective     =   39761133720.572502
+Iteration: 30703   Dual objective     =   39761284234.920753
+Iteration: 31053   Dual objective     =   39761284298.181427
+Iteration: 31409   Dual objective     =   39761284825.282707
+Iteration: 32491   Dual objective     =   39761611285.900459
+Iteration: 33544   Dual objective     =   39804151153.358994

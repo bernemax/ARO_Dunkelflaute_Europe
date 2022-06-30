@@ -1,100 +1,1323 @@
 
---- Job Toy_1.gms Start 02/18/22 18:57:28 35.1.0 r82a9585 WEX-WEI x86 64bit/MS Windows
+--- Job Toy_1.gms Start 06/29/22 11:51:55 34.2.0 r6925a71 WEX-WEI x86 64bit/MS Windows
 --- Applying:
-    C:\GAMS\35\gmsprmNT.txt
+    C:\GAMS\34\gmsprmNT.txt
 --- GAMS Parameters defined
     Input "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Toy_1.gms"
     PageSize 0
-    ScrDir "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\225c\"
-    SysDir C:\GAMS\35\
+    ScrDir "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\225a\"
+    SysDir C:\GAMS\34\
     LogOption 3
     ErrMsg 1
     ErrorLog 99
     IDE 1
     LstTitleLeftAligned 1
-Licensee: Small MUD - 5 User License                     S201118/0001AN-WIN
+Licensee: Small MUD - 5 User License                     S211124|0002AN-WIN
           BTU Cottbus-Senftenberg, FG Energiewirtschaft              DC5591
-          C:\Users\Max Bernecker\Documents\GAMS\gamslice.txt
-GAMS 35.1.0   Copyright (C) 1987-2021 GAMS Development. All rights reserved
+          C:\Users\berne\Documents\GAMS\gamslice.txt
+          License Admin: Felix Muesgens, Fg-energiewirtschaft@b-tu.de      
+GAMS 34.2.0   Copyright (C) 1987-2021 GAMS Development. All rights reserved
 --- Starting compilation
---- Toy_1.gms(135) 4 Mb
---- $echo File Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Genup.txt
---- Toy_1.gms(154) 4 Mb
---- call gdxxrw I=Data_input\Data.xlsx O=Data_input\Data.gdx @Genup.txt
-
-GDXXRW           35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
-Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data.xlsx
-Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data.gdx
-Value expected in cell: Gen_conv!L2; found gas
-Value expected in cell: Gen_conv!L3; found coal
-Value expected in cell: Gen_conv!L4; found lig
-Value expected in cell: Gen_conv!L5; found nuc
-Value expected in cell: Gen_conv!L6; found waste
-Additional errors suppressed
-Total number of bad values for symbol Gen_conv = 102
-Value expected in cell: Gen_hydro!B2; found AT
-Value expected in cell: Gen_hydro!H2; found psp
-Value expected in cell: Gen_hydro!B3; found AT
-Value expected in cell: Gen_hydro!H3; found reservoir
-Value expected in cell: Gen_hydro!B4; found AT
-Additional errors suppressed
-Total number of bad values for symbol Gen_Hydro = 100
-Value expected in cell: Gen_res!G2; found Wind
-Value expected in cell: Gen_res!G3; found Solar
-Value expected in cell: Gen_res!G4; found Bio
-Value expected in cell: Gen_res!G5; found Wind
-Value expected in cell: Gen_res!G6; found Solar
-Additional errors suppressed
-Total number of bad values for symbol Gen_res = 51
-Total time = 2266 Ms
---- Toy_1.gms(155) 4 Mb
---- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data.gdx
---- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Data.gdx
---- Toy_1.gms(163) 11 Mb
---- $echo File Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\availup.txt
---- Toy_1.gms(171) 11 Mb
---- call gdxxrw I=Data_input\Weather_cap_factors.xlsx O=Data_input\Weather_cap_factors.gdx @availup.txt
-
-GDXXRW           35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
-Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.xlsx
-Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.gdx
-Total time = 4281 Ms
---- Toy_1.gms(172) 11 Mb
---- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.gdx
---- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Weather_cap_factors.gdx
---- Toy_1.gms(179) 41 Mb
---- $echo File Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\load.txt
---- Toy_1.gms(187) 41 Mb
---- call gdxxrw I=Data_input\Load_combined.xlsx O=Data_input\Load_combined.gdx @load.txt
-
-GDXXRW           35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
-Input file : Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Load_combined.xlsx
-Output file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Load_combined.gdx
-Total time = 2562 Ms
---- Toy_1.gms(188) 41 Mb
---- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Load_combined.gdx
---- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\Load_combined.gdx
---- Toy_1.gms(640) 61 Mb
---- Starting execution: elapsed 0:00:09.758
---- Toy_1.gms(396) 177 Mb
---- Generating MIP model Quant_reliab_res_EU
---- Toy_1.gms(466) 340 Mb  30 secs
---- Toy_1.gms(476) 1351 Mb  1650 secs
---- Toy_1.gms(596) 2601 Mb
-*** Status: Terminated due to file open error in writelp
-***         No such file or directory for file: Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\225c\gamsmatr.dat
-***         Inspect listing file for more information
-*** 
-*** GAMS Base Module 35.1.0 r82a9585 Released Apr 29, 2021 WEI x86 64bit/MS Window
-*** 
-*** GAMS Development Corporation
-*** 2751 Prosperity Ave, Suite 210
-*** Fairfax, VA 22031, USA
-*** +1 202-342-0180, +1 202-342-0181 fax
-*** support@gams.com, www.gams.com
-*** 
---- Job Toy_1.gms Stop 02/18/22 19:25:49 elapsed 0:28:20.807
-
-***
-*** Gams Exit Msg = writelp
-***
+--- Toy_1.gms(69) 4 Mb
+--- . Loading_input_deterministic.gms(71) 4 Mb
+--- .. syn_sol_TDY.txt(1) 4 Mb 1 Error
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+--- .. syn_sol_TDY.txt(2) 4 Mb 7 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+--- .. syn_sol_TDY.txt(3) 4 Mb 21 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(4) 4 Mb 26 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+--- .. syn_sol_TDY.txt(5) 4 Mb 40 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(6) 4 Mb 43 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+--- .. syn_sol_TDY.txt(7) 4 Mb 57 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(8) 4 Mb 60 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+--- .. syn_sol_TDY.txt(9) 4 Mb 72 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(10) 4 Mb 77 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+--- .. syn_sol_TDY.txt(11) 4 Mb 86 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+--- .. syn_sol_TDY.txt(12) 4 Mb 95 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+--- .. syn_sol_TDY.txt(13) 4 Mb 102 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+--- .. syn_sol_TDY.txt(13) 4 Mb  5 secs
+--- .. syn_sol_TDY.txt(14) 4 Mb 116 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(15) 4 Mb 121 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+--- .. syn_sol_TDY.txt(16) 4 Mb 135 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(17) 4 Mb 138 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+--- .. syn_sol_TDY.txt(17) 4 Mb  3 secs
+--- .. syn_sol_TDY.txt(18) 4 Mb 152 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(19) 4 Mb 155 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+--- .. syn_sol_TDY.txt(20) 4 Mb 169 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(21) 4 Mb 172 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+--- .. syn_sol_TDY.txt(22) 4 Mb 184 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(23) 4 Mb 191 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+--- .. syn_sol_TDY.txt(24) 4 Mb 200 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+--- .. syn_sol_TDY.txt(25) 4 Mb 212 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(26) 4 Mb 219 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+--- .. syn_sol_TDY.txt(27) 4 Mb 233 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(28) 4 Mb 238 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+--- .. syn_sol_TDY.txt(29) 4 Mb 252 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(30) 4 Mb 255 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+--- .. syn_sol_TDY.txt(31) 4 Mb 268 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(32) 4 Mb 271 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+--- .. syn_sol_TDY.txt(33) 4 Mb 283 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(34) 4 Mb 288 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+--- .. syn_sol_TDY.txt(35) 4 Mb 297 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+--- .. syn_sol_TDY.txt(36) 4 Mb 306 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+--- .. syn_sol_TDY.txt(37) 4 Mb 313 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+--- .. syn_sol_TDY.txt(38) 4 Mb 327 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(39) 4 Mb 332 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+--- .. syn_sol_TDY.txt(40) 4 Mb 345 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(41) 4 Mb 348 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+--- .. syn_sol_TDY.txt(42) 4 Mb 362 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(43) 4 Mb 365 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+--- .. syn_sol_TDY.txt(44) 4 Mb 379 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(45) 4 Mb 382 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+--- .. syn_sol_TDY.txt(46) 4 Mb 394 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(47) 4 Mb 403 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+--- .. syn_sol_TDY.txt(48) 4 Mb 412 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+--- .. syn_sol_TDY.txt(49) 4 Mb 426 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(50) 4 Mb 433 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+--- .. syn_sol_TDY.txt(51) 4 Mb 447 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(52) 4 Mb 452 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+--- .. syn_sol_TDY.txt(53) 4 Mb 466 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(54) 4 Mb 469 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+--- .. syn_sol_TDY.txt(55) 4 Mb 483 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(56) 4 Mb 486 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+--- .. syn_sol_TDY.txt(57) 4 Mb 498 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(58) 4 Mb 505 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+--- .. syn_sol_TDY.txt(59) 4 Mb 514 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+--- .. syn_sol_TDY.txt(60) 4 Mb 526 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(61) 4 Mb 533 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+--- .. syn_sol_TDY.txt(62) 4 Mb 547 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(63) 4 Mb 552 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+--- .. syn_sol_TDY.txt(64) 4 Mb 566 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(65) 4 Mb 569 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+--- .. syn_sol_TDY.txt(66) 4 Mb 583 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(67) 4 Mb 586 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+--- .. syn_sol_TDY.txt(68) 4 Mb 600 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(69) 4 Mb 605 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+--- .. syn_sol_TDY.txt(70) 4 Mb 617 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(71) 4 Mb 626 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+--- .. syn_sol_TDY.txt(72) 4 Mb 635 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+--- .. syn_sol_TDY.txt(73) 4 Mb 649 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(74) 4 Mb 656 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+--- .. syn_sol_TDY.txt(75) 4 Mb 670 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(76) 4 Mb 675 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 226 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Multiple entry ignored
+--- .. syn_sol_TDY.txt(77) 4 Mb 688 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(78) 4 Mb 691 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+--- .. syn_sol_TDY.txt(79) 4 Mb 705 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 222 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Row dimension inconsistent with declared dimension and
+      column dimension
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 224 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping entry ignored
+*** Error 225 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Floating entry ignored
+*** Error 300 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Remaining errors not printed for this line
+--- .. syn_sol_TDY.txt(80) 4 Mb 708 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element
+*** Error 176 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    A row with the same name has been defined before in this table.
+*** Error 223 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Overlapping row name
+--- .. syn_sol_TDY.txt(81) 4 Mb 720 Errors
+*** Error 170 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Quant-Reliability-Energy-Systems\NTC_node_model\Data_input\syn_sol_TDY.txt
+    Domain violation for element

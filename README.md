@@ -7,26 +7,26 @@
 
 
 ## Actual Modelling framework
-- unit commitment  
+- Unit commitment  (UC)
 
 ## Future Modelling framework
-- dispatch investment model
+- Dispatch investment model
 - UC-chance constrained or robut optimization
 
 ## Reliability frameworks:
-- loss of load hours (LOLH)
-- expected energy not served (EENS)
+- Loss of load hours (LOLH)
+- Expected energy not served (EENS)
 - Loss of load probability (LOLP)
 
 ## Consideration: 
-- renewable elecricity resources like PV, wind, hydro & biomass
-- technical constraints like ramping times of conventional power plants
-- storages like battery, psp, reservoire
+- Renewable elecricity resources like PV, wind, hydro & biomass
+- Technical constraints like ramping times of conventional power plants
+- Storages like battery, psp, reservoire
 - NTC between the countries
-- future synthetic country based demand profiles (8760 h)
-- wind and PV generation capacity profiles (historically)
-- hydro generation potentials country wise
-- engineering risks (FOR)
+- Future synthetic country based demand profiles (8760 h)
+- Wind and PV generation capacity profiles (historically)
+- Hydro generation potentials country wise
+- Engineering risks (FOR)
 
 
 ## Map 

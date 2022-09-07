@@ -1,0 +1,15 @@
+set=MapG                        rng=Mapping!A2:B121                     rdim=2 cDim=0
+set=MapS                        rng=Mapping!D2:E53                      rdim=2 cDim=0
+set=MapRen                      rng=Mapping!G2:H53                      rdim=2 cDim=0
+
+par=Gen_conv                    rng=Sheet_conv!B1:N120                  rDim=1 cdim=1
+par=Gen_Hydro                   rng=Sheet_hydro!B1:M52                  rDim=1 cdim=1
+par=Gen_ren                     rng=Sheet_ren!B1:I35                    rDim=1 cdim=1
+
+par=Inv_conv                    rng=Investments!A1:B8                   rDim=1 cdim=1
+par=Inv_ren                     rng=Investments!D1:E3                   rDim=1 cdim=1
+par=Inv_hydro                   rng=Investments!G1:H4                   rDim=1 cdim=1
+
+par=priceup                     rng=prices!A1:I8761                     rDim=1 cdim=1
+par=availup_hydro               rng=Availability!C2:T8763               rDim=1 cdim=1
+par=NTC_cap                     rng=NTC!A1:CE83                         rDim=1 cdim=1

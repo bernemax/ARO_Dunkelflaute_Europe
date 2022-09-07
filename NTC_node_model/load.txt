@@ -1,4 +1,0 @@
-par=load20                        rng=Load_2020!A1:R8761                       rDim=1 cdim=1
-par=load30                        rng=Load_2030!A1:R8761                       rDim=1 cdim=1
-par=load40                        rng=Load_2040!A1:R8761                       rDim=1 cdim=1
-par=load50                        rng=Load_2050!A1:R8761                       rDim=1 cdim=1

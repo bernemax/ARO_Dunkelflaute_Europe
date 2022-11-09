@@ -1,5 +1,5 @@
 
---- Job ARO_EU_Core.gms Start 11/09/22 13:57:18 38.2.1 96226ea8 WEX-WEI x86 64bit/MS Windows
+--- Job ARO_EU_Core.gms Start 11/09/22 15:21:34 38.2.1 96226ea8 WEX-WEI x86 64bit/MS Windows
 --- Applying:
     C:\GAMS\38\gmsprmNT.txt
 --- GAMS Parameters defined
@@ -19,7 +19,7 @@ Licensee: Small MUD - 5 User License                     S211124|0002AN-WIN
 Processor information: 1 socket(s), 8 core(s), and 16 thread(s) available
 GAMS 38.2.1   Copyright (C) 1987-2022 GAMS Development. All rights reserved
 --- Starting compilation
---- ARO_EU_Core.gms(74) 3 Mb
+--- ARO_EU_Core.gms(73) 3 Mb
 --- . Loading_ARO_EU_Data.gms(148) 3 Mb
 --- $echo File Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\TEP.txt
 --- . Loading_ARO_EU_Data.gms(173) 3 Mb
@@ -63,90 +63,540 @@ Value expected in cell: Hydro!C5; found ror
 Value expected in cell: Hydro!C6; found PSP
 Additional errors suppressed
 Total number of bad values for symbol Gen_Hydro = 97
-Total time = 6219 Ms
+Total time = 6234 Ms
 --- . Loading_ARO_EU_Data.gms(174) 3 Mb
 --- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\Data_Input.gdx
 --- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\Data_Input.gdx
 --- . Loading_ARO_EU_Data.gms(311) 7 Mb
---- ARO_EU_Core.gms(288) 7 Mb 1 Error
-*** Error 140 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\ARO_EU_Core.gms
-    Unknown symbol
---- ARO_EU_Core.gms(682) 7 Mb 2 Errors
-*** Error 257 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\ARO_EU_Core.gms
-    Solve statement not checked because of previous errors
---- ARO_EU_Core.gms(687) 7 Mb 3 Errors
-*** Error 257 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\ARO_EU_Core.gms
-    Solve statement not checked because of previous errors
---- ARO_EU_Core.gms(691) 7 Mb 4 Errors
-*** Error 141 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\ARO_EU_Core.gms
-    Symbol declared but no values have been assigned. Check for missing
-       data definition, assignment, data loading or implicit assignment
-       via a solve statement.
-       A wild shot: You may have spurious commas in the explanatory
-       text of a declaration. Check symbol reference list.
---- ARO_EU_Core.gms(694) 7 Mb 5 Errors
-*** Error 141 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\ARO_EU_Core.gms
-    Symbol declared but no values have been assigned. Check for missing
-       data definition, assignment, data loading or implicit assignment
-       via a solve statement.
-       A wild shot: You may have spurious commas in the explanatory
-       text of a declaration. Check symbol reference list.
---- ARO_EU_Core.gms(704) 7 Mb 6 Errors
-*** Error 141 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\ARO_EU_Core.gms
-    Symbol declared but no values have been assigned. Check for missing
-       data definition, assignment, data loading or implicit assignment
-       via a solve statement.
-       A wild shot: You may have spurious commas in the explanatory
-       text of a declaration. Check symbol reference list.
---- ARO_EU_Core.gms(706) 7 Mb 7 Errors
-*** Error 141 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\ARO_EU_Core.gms
-    Symbol declared but no values have been assigned. Check for missing
-       data definition, assignment, data loading or implicit assignment
-       via a solve statement.
-       A wild shot: You may have spurious commas in the explanatory
-       text of a declaration. Check symbol reference list.
---- ARO_EU_Core.gms(707) 7 Mb 8 Errors
-*** Error 141 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\ARO_EU_Core.gms
-    Symbol declared but no values have been assigned. Check for missing
-       data definition, assignment, data loading or implicit assignment
-       via a solve statement.
-       A wild shot: You may have spurious commas in the explanatory
-       text of a declaration. Check symbol reference list.
---- ARO_EU_Core.gms(714) 7 Mb
+--- ARO_EU_Core.gms(713) 7 Mb
 --- . network_expansion_merge_conti.gms(97) 7 Mb
---- ARO_EU_Core.gms(722) 7 Mb 9 Errors
-*** Error 257 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\ARO_EU_Core.gms
-    Solve statement not checked because of previous errors
---- ARO_EU_Core.gms(725) 7 Mb 10 Errors
-*** Error 141 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\ARO_EU_Core.gms
-    Symbol declared but no values have been assigned. Check for missing
-       data definition, assignment, data loading or implicit assignment
-       via a solve statement.
-       A wild shot: You may have spurious commas in the explanatory
-       text of a declaration. Check symbol reference list.
---- ARO_EU_Core.gms(731) 7 Mb 11 Errors
-*** Error 141 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\ARO_EU_Core.gms
-    Symbol declared but no values have been assigned. Check for missing
-       data definition, assignment, data loading or implicit assignment
-       via a solve statement.
-       A wild shot: You may have spurious commas in the explanatory
-       text of a declaration. Check symbol reference list.
---- ARO_EU_Core.gms(732) 7 Mb 12 Errors
-*** Error 141 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\ARO_EU_Core.gms
-    Symbol declared but no values have been assigned. Check for missing
-       data definition, assignment, data loading or implicit assignment
-       via a solve statement.
-       A wild shot: You may have spurious commas in the explanatory
-       text of a declaration. Check symbol reference list.
---- ARO_EU_Core.gms(747) 7 Mb 13 Errors
-*** Error 141 in Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\ARO_EU_Core.gms
-    Symbol declared but no values have been assigned. Check for missing
-       data definition, assignment, data loading or implicit assignment
-       via a solve statement.
-       A wild shot: You may have spurious commas in the explanatory
-       text of a declaration. Check symbol reference list.
---- ARO_EU_Core.gms(751) 7 Mb
+--- ARO_EU_Core.gms(750) 7 Mb
 --- . network_expansion_clean.gms(97) 7 Mb
---- ARO_EU_Core.gms(808) 7 Mb 13 Errors
-*** Status: Compilation error(s)
---- Job ARO_EU_Core.gms Stop 11/09/22 13:57:25 elapsed 0:00:06.596
+--- ARO_EU_Core.gms(807) 7 Mb
+--- Starting execution: elapsed 0:00:06.724
+--- ARO_EU_Core.gms(970) 14 Mb
+--- Generating MIP model Master_VO
+--- ARO_EU_Core.gms(992) 14 Mb
+--- LOOPS v = v1
+---   10 rows  99 columns  980 non-zeroes
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:06.773
+
+IBM ILOG CPLEX   38.2.1 96226ea8 Feb 19, 2022          WEI x86 64bit/MS Window
+
+--- GAMS/Cplex Link licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- GMO memory 0.51 Mb (peak 0.51 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 20.1.0.1 link memory 0.00 Mb (peak 0.01 Mb)
+--- Starting Cplex
+
+Version identifier: 20.1.0.1 | 2021-04-07 | 3a818710c
+CPXPARAM_Advance                                 0
+CPXPARAM_Simplex_Display                         2
+CPXPARAM_Threads                                 4
+CPXPARAM_Parallel                                1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+CPXPARAM_MIP_Tolerances_MIPGap                   0
+Tried aggregator 1 time.
+LP Presolve eliminated 5 rows and 100 columns.
+All rows and columns eliminated.
+Presolve time = 0.00 sec. (0.05 ticks)
+
+--- LP status (1): optimal.
+--- Cplex Time: 0.00sec (det. 0.07 ticks)
+
+
+Optimal solution found
+Objective:            0.000000
+
+--- Reading solution for model Master_VO
+--- Executing after solve: elapsed 0:00:06.841
+--- ARO_EU_Core.gms(970) 14 Mb
+--- Generating MIP model Subproblem
+--- ARO_EU_Core.gms(1129) 31 Mb
+--- LOOPS v = v1
+---   57,226 rows  53,389 columns  180,877 non-zeroes
+---   288 discrete-columns
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:07.718
+
+IBM ILOG CPLEX   38.2.1 96226ea8 Feb 19, 2022          WEI x86 64bit/MS Window
+
+--- GAMS/Cplex Link licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 3.31 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 21.14 Mb (peak 21.55 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 20.1.0.1 link memory 1.67 Mb (peak 7.77 Mb)
+--- Starting Cplex
+
+Version identifier: 20.1.0.1 | 2021-04-07 | 3a818710c
+CPXPARAM_Advance                                 0
+CPXPARAM_Threads                                 4
+CPXPARAM_Parallel                                1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+CPXPARAM_MIP_Tolerances_MIPGap                   0
+Generic callback                                 0x50
+Found incumbent of value 0.000000 after 0.00 sec. (2.47 ticks)
+Tried aggregator 2 times.
+MIP Presolve eliminated 34801 rows and 21747 columns.
+MIP Presolve modified 130 coefficients.
+Aggregator did 4250 substitutions.
+Reduced MIP has 18174 rows, 26011 columns, and 60684 nonzeros.
+Reduced MIP has 0 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.09 sec. (77.85 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+MIP Presolve eliminated 1383 rows and 6 columns.
+Reduced MIP has 16791 rows, 24628 columns, and 57918 nonzeros.
+Reduced MIP has 0 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.05 sec. (37.30 ticks)
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 4 threads.
+Parallel mode: deterministic, using up to 4 threads for concurrent optimization:
+ * Starting dual Simplex on 1 thread...
+ * Starting Barrier on 3 threads...
+Initializing dual steep norms . . .
+
+Iteration log . . .
+Iteration:     1   Dual objective     =  156471434912.511261
+Iteration:   350   Dual objective     =  142449308675.379395
+Iteration:   672   Dual objective     =  137334180057.258759
+Iteration:  1032   Dual objective     =  129935019235.742462
+Iteration:  1390   Dual objective     =  123544949032.531006
+Iteration:  1800   Dual objective     =  113664475234.020554
+Iteration:  2200   Dual objective     =  104783300202.237915
+Iteration:  3155   Dual objective     =   93134191956.203888
+Iteration:  4165   Dual objective     =   88030737971.247604
+Iteration:  4586   Dual objective     =   79929961130.527618
+Iteration:  5517   Dual objective     =   51475212145.398003
+Iteration:  5906   Dual objective     =   42748446269.088264
+Iteration:  6785   Dual objective     =   33714008120.695168
+Iteration:  7271   Dual objective     =   26114598096.255989
+Iteration:  8127   Dual objective     =    9940287416.407108
+Iteration:  8565   Dual objective     =    7880170105.140330
+Iteration:  9273   Dual objective     =     195028773.223585
+Iteration:  9918   Dual objective     =     172913540.585998
+Iteration: 10499   Dual objective     =     162572975.896889
+Iteration: 11130   Dual objective     =     147026091.029857
+Iteration: 11700   Dual objective     =     140352995.142294
+Iteration: 12081   Dual objective     =     133994330.738709
+Iteration: 12494   Dual objective     =     128676533.460772
+Iteration: 12855   Dual objective     =     124007852.862547
+Iteration: 13227   Dual objective     =     122818422.948486
+Iteration: 13587   Dual objective     =     122463578.107672
+
+Dual simplex solved model.
+
+Root relaxation solution time = 0.25 sec. (269.20 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                            0.0000   1.56641e+11              --- 
+Found incumbent of value 0.000000 after 0.42 sec. (404.90 ticks)
+*     0     0      integral     0   1.22411e+08   1.22411e+08    13735    0.00%
+Elapsed time = 0.42 sec. (414.66 ticks, tree = 0.00 MB)
+Found incumbent of value 1.2241084e+08 after 0.42 sec. (414.66 ticks)
+
+Root node processing (before b&c):
+  Real time             =    0.44 sec. (415.74 ticks)
+Parallel b&c, 4 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    0.44 sec. (415.74 ticks)
+
+--- MIP status (101): integer optimal solution.
+--- Cplex Time: 0.44sec (det. 415.89 ticks)
+
+--- Fixing integer variables and solving final LP...
+
+Version identifier: 20.1.0.1 | 2021-04-07 | 3a818710c
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 4
+CPXPARAM_Parallel                                1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+CPXPARAM_MIP_Tolerances_MIPGap                   0
+Parallel mode: deterministic, using up to 4 threads for concurrent optimization:
+ * Starting dual Simplex on 1 thread...
+ * Starting Barrier on 3 threads...
+Tried aggregator 1 time.
+LP Presolve eliminated 33457 rows and 21784 columns.
+Aggregator did 4400 substitutions.
+Reduced LP has 19368 rows, 27205 columns, and 64395 nonzeros.
+Presolve time = 0.06 sec. (61.42 ticks)
+Initializing dual steep norms . . .
+
+Iteration log . . .
+Iteration:     1   Scaled dual infeas =         96165.231374
+Iteration:    80   Dual objective     =  151353208091.955353
+Iteration:   422   Dual objective     =  148154430741.271973
+Iteration:   735   Dual objective     =  141979421264.011871
+Iteration:  1108   Dual objective     =  136221918653.764359
+Iteration:  1492   Dual objective     =  131000861345.869385
+Iteration:  1880   Dual objective     =  122778661172.270935
+Iteration:  2368   Dual objective     =  117745213856.934708
+Iteration:  3423   Dual objective     =  106384718429.552048
+Iteration:  3932   Dual objective     =  100713171573.168777
+Iteration:  4603   Dual objective     =   91852471193.953583
+Iteration:  5442   Dual objective     =   87039934277.327774
+Iteration:  6070   Dual objective     =   75476766367.578140
+Iteration:  6554   Dual objective     =   57811080000.866760
+Iteration:  7435   Dual objective     =   40862223303.460747
+Iteration:  7953   Dual objective     =   36155056446.955894
+Iteration:  8746   Dual objective     =   27591280186.042274
+Iteration:  9529   Dual objective     =   15753093333.331398
+Iteration: 10203   Dual objective     =    7235105179.111242
+Iteration: 10830   Dual objective     =     268057456.614267
+Iteration: 11545   Dual objective     =     174524054.071763
+Iteration: 12216   Dual objective     =     162790901.989693
+Iteration: 12851   Dual objective     =     147101104.404288
+Iteration: 13463   Dual objective     =     139628028.010597
+Iteration: 14040   Dual objective     =     134601453.513115
+Iteration: 14468   Dual objective     =     129302539.828085
+Iteration: 14869   Dual objective     =     125785997.507132
+Iteration: 15259   Dual objective     =     122998463.087484
+Iteration: 15644   Dual objective     =     122549846.097367
+
+Dual simplex solved model.
+
+
+--- Fixed MIP status (1): optimal.
+--- Cplex Time: 0.36sec (det. 418.76 ticks)
+
+
+Proven optimal solution
+MIP Solution:    122410839.966590    (13735 iterations, 0 nodes)
+Final Solve:     122410839.966590    (15959 iterations)
+
+Best possible:   122410839.966590
+Absolute gap:            0.000000
+Relative gap:            0.000000
+
+--- Reading solution for model Subproblem
+--- Executing after solve: elapsed 0:00:10.249
+--- ARO_EU_Core.gms(970) 31 Mb
+--- GDX File (execute_unload) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\check_Loop_Run.gdx
+--- Generating MIP model Master
+--- ARO_EU_Core.gms(997) 49 Mb
+--- LOOPS v = v2
+---   107,812 rows  68,799 columns  261,282 non-zeroes
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:11.607
+
+IBM ILOG CPLEX   38.2.1 96226ea8 Feb 19, 2022          WEI x86 64bit/MS Window
+
+--- GAMS/Cplex Link licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 5.46 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 32.89 Mb (peak 33.30 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 20.1.0.1 link memory 2.55 Mb (peak 12.82 Mb)
+--- Starting Cplex
+
+Version identifier: 20.1.0.1 | 2021-04-07 | 3a818710c
+CPXPARAM_Advance                                 0
+CPXPARAM_Threads                                 4
+CPXPARAM_Parallel                                1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+CPXPARAM_MIP_Tolerances_MIPGap                   0
+Parallel mode: deterministic, using up to 4 threads for concurrent optimization:
+ * Starting dual Simplex on 1 thread...
+ * Starting Barrier on 3 threads...
+Tried aggregator 1 time.
+LP Presolve eliminated 65209 rows and 14429 columns.
+Aggregator did 14500 substitutions.
+Reduced LP has 28098 rows, 39871 columns, and 155058 nonzeros.
+Presolve time = 0.14 sec. (116.49 ticks)
+Symmetry aggregator did 33937 additional substitutions.
+
+Iteration log . . .
+Iteration:     1   Dual objective     =             0.000000
+Perturbation started.
+Iteration:   101   Dual objective     =             0.000000
+Iteration:   399   Dual objective     =             2.519036
+Iteration:   715   Dual objective     =             3.912162
+Iteration:  1059   Dual objective     =             4.950173
+Iteration:  1462   Dual objective     =             5.953856
+Iteration:  1835   Dual objective     =             6.716070
+Iteration:  2228   Dual objective     =             7.508321
+Iteration:  2562   Dual objective     =          7944.422751
+Iteration:  2969   Dual objective     =         11257.605393
+Iteration:  3215   Dual objective     =         15118.375038
+Iteration:  3403   Dual objective     =         22501.814429
+Iteration:  3708   Dual objective     =         24594.849032
+Iteration:  3894   Dual objective     =         29704.880281
+Iteration:  4056   Dual objective     =         37095.091267
+Iteration:  4336   Dual objective     =         41737.965625
+Iteration:  4562   Dual objective     =         45231.756665
+Iteration:  4741   Dual objective     =         48398.177169
+Iteration:  4978   Dual objective     =         51738.101226
+Iteration:  5214   Dual objective     =         54216.230098
+Iteration:  5391   Dual objective     =         57975.882587
+Iteration:  5580   Dual objective     =         66419.357687
+Iteration:  5731   Dual objective     =         73690.384525
+Iteration:  5978   Dual objective     =         77970.356309
+Iteration:  6134   Dual objective     =         83556.734481
+Iteration:  6271   Dual objective     =         91674.206130
+Iteration:  6427   Dual objective     =         99060.379712
+Iteration:  6572   Dual objective     =        108167.284591
+Iteration:  6715   Dual objective     =        111460.930382
+Iteration:  6880   Dual objective     =        115962.940675
+Iteration:  7065   Dual objective     =        121363.548683
+Iteration:  7206   Dual objective     =        140167.608942
+Iteration:  7334   Dual objective     =        163053.537622
+Iteration:  7472   Dual objective     =        197167.414645
+Iteration:  7626   Dual objective     =        234856.310164
+Iteration:  7769   Dual objective     =        279670.250305
+Iteration:  7924   Dual objective     =        312187.258236
+Iteration:  8070   Dual objective     =        451637.376630
+Iteration:  8214   Dual objective     =        625669.515801
+Iteration:  8367   Dual objective     =       1377783.707746
+Iteration:  8562   Dual objective     =      20480042.443772
+Iteration:  8844   Dual objective     =      24868606.119029
+Iteration:  9086   Dual objective     =      30273818.393489
+Iteration:  9344   Dual objective     =      31515081.730514
+Iteration:  9784   Dual objective     =      31883457.196934
+Iteration: 10139   Dual objective     =      36996163.229378
+Iteration: 10433   Dual objective     =      39291207.144390
+Iteration: 10703   Dual objective     =      41551026.363681
+Iteration: 10992   Dual objective     =      48454902.918879
+Iteration: 11268   Dual objective     =      58852838.611098
+Iteration: 11621   Dual objective     =      70721976.141306
+Markowitz threshold set to 0.1
+Iteration: 11829   Dual objective     =      80631540.805583
+Iteration: 12177   Dual objective     =      85471322.424462
+Iteration: 12523   Dual objective     =      88891716.135653
+Iteration: 12900   Dual objective     =      95612710.689190
+Iteration: 13257   Dual objective     =     106807854.108433
+Iteration: 13600   Dual objective     =     113434183.053338
+Iteration: 14013   Dual objective     =     117977542.476194
+Removing perturbation.
+
+Dual crossover.
+  Dual:  Fixing 96 variables.
+       95 DMoves:  Infeasibility  3.75426533e-11  Objective  1.18337448e+08
+        0 DMoves:  Infeasibility  3.75325014e-11  Objective  1.18337448e+08
+  Dual:  Pushed 24, exchanged 72.
+  Primal:  Fixed no variables.
+
+Dual simplex solved model.
+
+
+--- LP status (1): optimal.
+--- Cplex Time: 2.47sec (det. 3527.94 ticks)
+
+
+Optimal solution found
+Objective:    118337447.644321
+
+--- Reading solution for model Master
+--- ARO_EU_Core.gms(997) 49 Mb  5 secs
+--- Executing after solve: elapsed 0:00:16.676
+--- ARO_EU_Core.gms(970) 49 Mb
+--- Generating MIP model Subproblem
+--- ARO_EU_Core.gms(1129) 59 Mb
+--- LOOPS v = v2
+---   61,926 rows  67,489 columns  221,627 non-zeroes
+---   288 discrete-columns
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:18.031
+
+IBM ILOG CPLEX   38.2.1 96226ea8 Feb 19, 2022          WEI x86 64bit/MS Window
+
+--- GAMS/Cplex Link licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 3.80 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 25.33 Mb (peak 25.85 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 20.1.0.1 link memory 2.00 Mb (peak 9.23 Mb)
+--- Starting Cplex
+
+Version identifier: 20.1.0.1 | 2021-04-07 | 3a818710c
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 4
+CPXPARAM_Parallel                                1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+CPXPARAM_MIP_Tolerances_MIPGap                   0
+Generic callback                                 0x50
+Found incumbent of value 0.000000 after 0.00 sec. (3.14 ticks)
+Tried aggregator 3 times.
+MIP Presolve eliminated 34572 rows and 28636 columns.
+MIP Presolve modified 400 coefficients.
+Aggregator did 7750 substitutions.
+Reduced MIP has 19603 rows, 29817 columns, and 66081 nonzeros.
+Reduced MIP has 0 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.09 sec. (117.17 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+MIP Presolve eliminated 1348 rows and 12 columns.
+Reduced MIP has 18255 rows, 28469 columns, and 63385 nonzeros.
+Reduced MIP has 0 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.05 sec. (42.19 ticks)
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 4 threads.
+Parallel mode: deterministic, using up to 4 threads for concurrent optimization:
+ * Starting dual Simplex on 1 thread...
+ * Starting Barrier on 3 threads...
+Initializing dual steep norms . . .
+
+Iteration log . . .
+Iteration:     1   Scaled dual infeas =          2704.192000
+Iteration:    21   Dual objective     =  161497513355.446594
+Iteration:   417   Dual objective     =  149419139110.443451
+Iteration:   753   Dual objective     =  144034063666.959473
+Iteration:  1147   Dual objective     =  137401798548.686432
+Iteration:  1516   Dual objective     =  131535521875.255051
+Iteration:  1902   Dual objective     =  120952188359.373978
+Iteration:  2341   Dual objective     =  109565479015.856277
+Iteration:  3269   Dual objective     =   99975220548.857849
+Iteration:  4305   Dual objective     =   92907067475.366379
+Iteration:  4790   Dual objective     =   85178094857.088120
+Iteration:  5335   Dual objective     =   81769134195.587845
+Iteration:  6059   Dual objective     =   62671306670.562195
+Iteration:  6834   Dual objective     =   42515546981.157051
+Iteration:  7640   Dual objective     =   30423943759.965755
+Iteration:  8466   Dual objective     =   19289405904.922939
+Iteration:  9283   Dual objective     =    7913036738.745901
+Iteration:  9943   Dual objective     =    3021140109.829974
+Iteration: 10606   Dual objective     =     186794589.822215
+Iteration: 11232   Dual objective     =     170752014.036462
+Iteration: 11867   Dual objective     =     156994587.838963
+Iteration: 12455   Dual objective     =     145926833.174806
+Iteration: 13046   Dual objective     =     138053757.306114
+Iteration: 13402   Dual objective     =     131758017.487204
+Iteration: 13775   Dual objective     =     127757868.770224
+Iteration: 14129   Dual objective     =     123924054.398210
+Iteration: 14534   Dual objective     =     120427393.853748
+Iteration: 14894   Dual objective     =     119028321.949209
+Iteration: 15235   Dual objective     =     118443326.194073
+
+Dual simplex solved model.
+
+Root relaxation solution time = 0.30 sec. (352.17 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                            0.0000                           0.00%
+Found incumbent of value 0.000000 after 0.47 sec. (535.39 ticks)
+*     0     0      integral     0   1.18262e+08   1.18262e+08    15594    0.00%
+Elapsed time = 0.49 sec. (546.99 ticks, tree = 0.00 MB)
+Found incumbent of value 1.1826170e+08 after 0.49 sec. (546.99 ticks)
+
+Root node processing (before b&c):
+  Real time             =    0.49 sec. (548.29 ticks)
+Parallel b&c, 4 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    0.49 sec. (548.29 ticks)
+
+--- MIP status (101): integer optimal solution.
+--- Cplex Time: 0.49sec (det. 548.48 ticks)
+
+--- Fixing integer variables and solving final LP...
+
+Version identifier: 20.1.0.1 | 2021-04-07 | 3a818710c
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 4
+CPXPARAM_Parallel                                1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+CPXPARAM_MIP_Tolerances_MIPGap                   0
+Parallel mode: deterministic, using up to 4 threads for concurrent optimization:
+ * Starting dual Simplex on 1 thread...
+ * Starting Barrier on 3 threads...
+Tried aggregator 1 time.
+LP Presolve eliminated 33249 rows and 28499 columns.
+Aggregator did 7600 substitutions.
+Reduced LP has 21076 rows, 31390 columns, and 69241 nonzeros.
+Presolve time = 0.09 sec. (73.44 ticks)
+Initializing dual steep norms . . .
+
+Iteration log . . .
+Iteration:     1   Scaled dual infeas =          4913.897396
+Iteration:    99   Dual objective     =  161611482424.470673
+Iteration:   470   Dual objective     =  152695822850.150604
+Iteration:   811   Dual objective     =  147653097445.276642
+Iteration:  1208   Dual objective     =  142484721825.678925
+Iteration:  1596   Dual objective     =  138859758706.013000
+Iteration:  1991   Dual objective     =  131245654084.912796
+Iteration:  2463   Dual objective     =  124755915389.654922
+Iteration:  3231   Dual objective     =  118698860335.354782
+Iteration:  4314   Dual objective     =  107110802304.749298
+Iteration:  5258   Dual objective     =   95830061164.088898
+Iteration:  6164   Dual objective     =   90926042619.749481
+Iteration:  6730   Dual objective     =   77668266941.687225
+Iteration:  7301   Dual objective     =   66821459216.137222
+Iteration:  8037   Dual objective     =   49181746904.399467
+Iteration:  8881   Dual objective     =   36179635565.448639
+Iteration:  9618   Dual objective     =   28252833172.224476
+Iteration: 10340   Dual objective     =   18561712219.094028
+Iteration: 10953   Dual objective     =    9314773648.841766
+Iteration: 11693   Dual objective     =    2841695495.159846
+Iteration: 12564   Dual objective     =     186060521.846979
+Iteration: 13061   Dual objective     =     175967235.143510
+Iteration: 13778   Dual objective     =     160962288.692652
+Iteration: 14406   Dual objective     =     150924561.104645
+Iteration: 15027   Dual objective     =     142742921.590393
+Iteration: 15640   Dual objective     =     135946362.712851
+Iteration: 16050   Dual objective     =     129121014.424288
+Iteration: 16448   Dual objective     =     124982170.415790
+Iteration: 16847   Dual objective     =     122215723.437655
+Iteration: 17266   Dual objective     =     119922350.026770
+Iteration: 17648   Dual objective     =     118907741.193689
+Iteration: 18003   Dual objective     =     118514287.689548
+Iteration: 18386   Dual objective     =     118261907.448630
+
+Barrier solved model.
+
+
+--- Fixed MIP status (1): optimal.
+--- Cplex Time: 0.47sec (det. 537.00 ticks)
+
+
+Proven optimal solution
+MIP Solution:    118261696.512296    (15594 iterations, 0 nodes)
+Final Solve:     118261696.512296    (0 iterations)
+
+Best possible:   118261696.512296
+Absolute gap:            0.000000
+Relative gap:            0.000000
+
+--- Reading solution for model Subproblem
+--- ARO_EU_Core.gms(1129) 59 Mb  3 secs
+--- Executing after solve: elapsed 0:00:20.800
+--- ARO_EU_Core.gms(970) 59 Mb
+--- GDX File (execute_unload) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\check_Loop_Run.gdx
+--- ARO_EU_Core.gms(1260) 59 Mb
+--- GDX File (execute_unload) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\check_TEP_ARO.gdx
+--- Profile Summary (37 records processed)
+    14.437   0.059GB       970 Loop       
+     2.906   0.049GB       997 Solve Alg  Master
+     2.156   0.049GB       997 Solve Read Master
+     1.500   0.059GB      1129 Solve Read Subproblem
+     1.437   0.031GB      1129 Solve Read Subproblem
+     1.266   0.059GB      1129 Solve Alg  Subproblem
+     1.094   0.031GB      1129 Solve Alg  Subproblem
+     0.672   0.049GB       673 Equation   SUB_Dual_Objective (1)
+     0.546   0.059GB      1129 Solve Fini Subproblem (221627)
+     0.531   0.018GB       673 Equation   SUB_Dual_Objective (1)
+*** Status: Normal completion
+--- Job ARO_EU_Core.gms Stop 11/09/22 15:21:56 elapsed 0:00:21.493

@@ -1,5 +1,5 @@
 
---- Job ARO_EU_Core.gms Start 11/09/22 13:56:10 38.2.1 96226ea8 WEX-WEI x86 64bit/MS Windows
+--- Job ARO_EU_Core.gms Start 11/09/22 13:57:47 38.2.1 96226ea8 WEX-WEI x86 64bit/MS Windows
 --- Applying:
     C:\GAMS\38\gmsprmNT.txt
 --- GAMS Parameters defined
@@ -63,7 +63,7 @@ Value expected in cell: Hydro!C5; found ror
 Value expected in cell: Hydro!C6; found PSP
 Additional errors suppressed
 Total number of bad values for symbol Gen_Hydro = 97
-Total time = 6031 Ms
+Total time = 6032 Ms
 --- . Loading_ARO_EU_Data.gms(174) 3 Mb
 --- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\Data_Input.gdx
 --- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\Data_Input.gdx
@@ -73,13 +73,13 @@ Total time = 6031 Ms
 --- ARO_EU_Core.gms(751) 7 Mb
 --- . network_expansion_clean.gms(97) 7 Mb
 --- ARO_EU_Core.gms(808) 7 Mb
---- Starting execution: elapsed 0:00:06.476
+--- Starting execution: elapsed 0:00:06.392
 --- ARO_EU_Core.gms(971) 9 Mb
 --- Generating MIP model Master_VO
 --- ARO_EU_Core.gms(993) 9 Mb
 --- LOOPS v = v1
 ---   10 rows  99 columns  980 non-zeroes
---- Executing CPLEX (Solvelink=2): elapsed 0:00:06.506
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:06.428
 
 IBM ILOG CPLEX   38.2.1 96226ea8 Feb 19, 2022          WEI x86 64bit/MS Window
 
@@ -112,14 +112,14 @@ Optimal solution found
 Objective:            0.000000
 
 --- Reading solution for model Master_VO
---- Executing after solve: elapsed 0:00:06.560
+--- Executing after solve: elapsed 0:00:06.482
 --- ARO_EU_Core.gms(971) 9 Mb
 --- Generating MIP model Subproblem
 --- ARO_EU_Core.gms(1130) 23 Mb
 --- LOOPS v = v1
 ---   31,826 rows  41,639 columns  106,877 non-zeroes
 ---   288 discrete-columns
---- Executing CPLEX (Solvelink=2): elapsed 0:00:07.032
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:06.993
 
 IBM ILOG CPLEX   38.2.1 96226ea8 Feb 19, 2022          WEI x86 64bit/MS Window
 
@@ -214,7 +214,7 @@ Dual simplex solved model.
 
 
 --- Fixed MIP status (1): optimal.
---- Cplex Time: 0.05sec (det. 39.26 ticks)
+--- Cplex Time: 0.06sec (det. 39.26 ticks)
 
 
 Proven optimal solution
@@ -226,24 +226,24 @@ Absolute gap:            0.000000
 Relative gap:            0.000000
 
 --- Reading solution for model Subproblem
---- Executing after solve: elapsed 0:00:08.552
+--- Executing after solve: elapsed 0:00:08.431
 --- ARO_EU_Core.gms(971) 23 Mb
 --- GDX File (execute_unload) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\check_Loop_Run.gdx
 --- Generating MIP model Master
 --- ARO_EU_Core.gms(998) 34 Mb
 --- LOOPS v = v2
----   86,512 rows  47,699 columns  139,482 non-zeroes
---- Executing CPLEX (Solvelink=2): elapsed 0:00:09.303
+---   86,212 rows  47,399 columns  139,182 non-zeroes
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:09.202
 
 IBM ILOG CPLEX   38.2.1 96226ea8 Feb 19, 2022          WEI x86 64bit/MS Window
 
 --- GAMS/Cplex Link licensed for continuous and discrete problems.
---- GMO setup time: 0.02s
---- Space for names approximately 4.13 Mb
+--- GMO setup time: 0.00s
+--- Space for names approximately 4.11 Mb
 --- Use option 'names no' to turn use of names off
---- GMO memory 22.37 Mb (peak 22.70 Mb)
+--- GMO memory 22.30 Mb (peak 22.63 Mb)
 --- Dictionary memory 0.00 Mb
---- Cplex 20.1.0.1 link memory 1.90 Mb (peak 8.94 Mb)
+--- Cplex 20.1.0.1 link memory 1.89 Mb (peak 8.90 Mb)
 --- Starting Cplex
 
 Version identifier: 20.1.0.1 | 2021-04-07 | 3a818710c
@@ -258,45 +258,45 @@ Parallel mode: deterministic, using up to 4 threads for concurrent optimization:
  * Starting dual Simplex on 1 thread...
  * Starting Barrier on 3 threads...
 Tried aggregator 1 time.
-LP Presolve eliminated 82205 rows and 43589 columns.
+LP Presolve eliminated 81905 rows and 43289 columns.
 Aggregator did 1200 substitutions.
 Reduced LP has 3102 rows, 2911 columns, and 10202 nonzeros.
-Presolve time = 0.05 sec. (41.87 ticks)
+Presolve time = 0.05 sec. (41.73 ticks)
 Initializing dual steep norms . . .
 
 Iteration log . . .
 Iteration:     1   Dual objective     =             0.000000
 Perturbation started.
 Iteration:   101   Dual objective     =             0.000000
-Iteration:   262   Dual objective     =             0.160598
-Iteration:   461   Dual objective     =             0.238156
-Iteration:   651   Dual objective     =             0.370059
-Iteration:   858   Dual objective     =             0.519672
-Iteration:   950   Dual objective     =          1279.860528
-Iteration:  1042   Dual objective     =          1788.729116
-Iteration:  1114   Dual objective     =          2893.865365
-Iteration:  1192   Dual objective     =         18309.791474
+Iteration:   269   Dual objective     =             0.160461
+Iteration:   463   Dual objective     =             0.237298
+Iteration:   673   Dual objective     =             0.374310
+Iteration:   863   Dual objective     =             0.556300
+Iteration:   969   Dual objective     =           971.250453
+Iteration:  1042   Dual objective     =          1986.380697
+Iteration:  1123   Dual objective     =          5439.697785
+Iteration:  1211   Dual objective     =       1543086.406069
 Removing perturbation.
 
 Dual simplex solved model.
 
 
 --- LP status (1): optimal.
---- Cplex Time: 0.12sec (det. 136.48 ticks)
+--- Cplex Time: 0.16sec (det. 134.77 ticks)
 
 
 Optimal solution found
 Objective:      1543096.697477
 
 --- Reading solution for model Master
---- Executing after solve: elapsed 0:00:11.632
+--- Executing after solve: elapsed 0:00:10.833
 --- ARO_EU_Core.gms(971) 34 Mb
 --- Generating MIP model Subproblem
 --- ARO_EU_Core.gms(1130) 41 Mb
 --- LOOPS v = v2
 ---   32,326 rows  43,139 columns  110,427 non-zeroes
 ---   288 discrete-columns
---- Executing CPLEX (Solvelink=2): elapsed 0:00:13.427
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:11.416
 
 IBM ILOG CPLEX   38.2.1 96226ea8 Feb 19, 2022          WEI x86 64bit/MS Window
 
@@ -386,14 +386,14 @@ Presolve time = 0.02 sec. (22.45 ticks)
 Iteration log . . .
 Iteration:     1   Dual objective     =    8980136956.860001
 Iteration:   123   Dual objective     =    4522059911.605865
-Iteration:   250   Dual objective     =    2682357033.458351
-Iteration:   434   Dual objective     =       1550494.499390
+Iteration:   250   Dual objective     =    2684616894.843320
+Iteration:   433   Dual objective     =       1550126.534385
 
 Dual simplex solved model.
 
 
 --- Fixed MIP status (1): optimal.
---- Cplex Time: 0.06sec (det. 41.51 ticks)
+--- Cplex Time: 0.06sec (det. 41.49 ticks)
 
 
 Proven optimal solution
@@ -405,21 +405,21 @@ Absolute gap:            0.000000
 Relative gap:            0.000000
 
 --- Reading solution for model Subproblem
---- Executing after solve: elapsed 0:00:14.946
+--- Executing after solve: elapsed 0:00:12.795
 --- ARO_EU_Core.gms(971) 41 Mb
 --- GDX File (execute_unload) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\check_Loop_Run.gdx
 --- ARO_EU_Core.gms(1261) 41 Mb
 --- GDX File (execute_unload) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\check_TEP_ARO.gdx
---- Profile Summary (29 records processed)
-     8.719   0.041GB       971 Loop       
-     2.016   0.034GB       998 Solve Read Master
-     1.359   0.041GB      1130 Solve Fini Subproblem (110427)
-     1.250   0.041GB      1130 Solve Read Subproblem
-     1.218   0.023GB      1130 Solve Read Subproblem
-     0.359   0.034GB       674 Equation   SUB_Dual_Objective (1)
-     0.328   0.034GB       998 Solve Alg  Master
-     0.313   0.033GB       666 Equation   MP_ETA (2)
-     0.297   0.012GB       674 Equation   SUB_Dual_Objective (1)
-     0.297   0.023GB      1130 Solve Alg  Subproblem
+--- Profile Summary (28 records processed)
+     6.656   0.041GB       971 Loop       
+     1.250   0.034GB       998 Solve Read Master
+     1.156   0.023GB      1130 Solve Read Subproblem
+     1.093   0.041GB      1130 Solve Read Subproblem
+     0.375   0.034GB       998 Solve Alg  Master
+     0.328   0.034GB       674 Equation   SUB_Dual_Objective (1)
+     0.328   0.012GB       674 Equation   SUB_Dual_Objective (1)
+     0.328   0.033GB       666 Equation   MP_ETA (2)
+     0.297   0.041GB      1130 Solve Alg  Subproblem
+     0.281   0.023GB      1130 Solve Alg  Subproblem
 *** Status: Normal completion
---- Job ARO_EU_Core.gms Stop 11/09/22 13:56:26 elapsed 0:00:15.425
+--- Job ARO_EU_Core.gms Stop 11/09/22 13:58:00 elapsed 0:00:13.256

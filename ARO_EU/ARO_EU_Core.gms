@@ -8,13 +8,12 @@ Sets
 
 t/t1*t50/
 
-n /AT0,BE0,CH0
+n /AT0,BE0,CH0,CZ0,DE0,DE1,DE2,DE3,DE4,DE5,
+DE6,DK0,DK1,EE0,ES0,ES1,ES2,ES3,FI0,FR0,FR1,
+FR2,FR3,FR4,FR5,FR6,GB0,GB1,GB2,GB3,GB4,GB5,
+HU0,IE0,IT0,IT1,IT2,IT3,IT4,LT0,LU0,LV0,NL0,
+NO0,PL0,PT0,SE0,SE1,SI0,SK0
 /
-*,CZ0,DE0,DE1,DE2,DE3,DE4,DE5,
-*DE6,DK0,DK1,EE0,ES0,ES1,ES2,ES3,FI0,FR0,FR1,
-*FR2,FR3,FR4,FR5,FR6,GB0,GB1,GB2,GB3,GB4,GB5,
-*HU0,IE0,IT0,IT1,IT2,IT3,IT4,LT0,LU0,LV0,NL0,
-*NO0,PL0,PT0,SE0,SE1,SI0,SK0
 l /l1*l97,l1001*l1097/
 g /g1*g172/
 s /s1*s97/
@@ -263,7 +262,7 @@ MP_marketclear(t,n,vv)$(ord(vv) lt (itaux+1))..
                                                                                               
                                                                                                 =e= sum((g)$MapG (g,n), PG_M_conv(g,t,vv))
 *                                                                                                +  sum((ren)$Map_Ren_node(ren,n), PG_M_Ren(ren,t,vv))
-*                                                                                                +  sum((ren)$Map_PV(ren,n), PG_M_PV(ren,t,vv))
+                                                                                                +  sum((ren)$Map_PV(ren,n), PG_M_PV(ren,t,vv))
                                                                                                 + sum((ren)$Map_wind(ren,n), PG_M_Wind(ren,t,vv))
 
                                                                                                 + sum((ror)$MapS(ror,n),  PG_M_Hydro(ror,t,vv))
@@ -283,9 +282,9 @@ MP_marketclear(t,n,vv)$(ord(vv) lt (itaux+1))..
 
 MP_PG_RR(ren,t,rr,n,vv)$(MAP_RR_Ren(rr,ren) and Map_RR(rr,n) and (ord(vv) lt (itaux+1)))..      PG_M_Ren(ren,t,vv)       =l= Cap_ren(ren) * AF_M_Ren_fixed(t,rr,n,vv)
 ;
-MP_PG_PV(ren,t,rr,n,vv)$(Map_PV(ren,n) and (ord(vv) lt (itaux+1)))..                            PG_M_PV(ren,t,vv)        =l= Cap_ren(ren) * AF_M_PV_fixed(t,rr,n,vv)
+MP_PG_PV(ren,t,rr,n,vv)$(MAP_RR_Ren_node(rr,ren,n) and (ord(vv) lt (itaux+1)))..                PG_M_PV(ren,t,vv)        =l= Cap_ren(ren) * AF_M_PV_fixed(t,rr,n,vv)
 ;
-MP_PG_Wind(ren,t,rr,n,vv)$(Map_wind(ren,n) and MAP_RR_Ren_node(rr,ren,n) and (ord(vv) lt (itaux+1)))..              PG_M_Wind(ren,t,vv)      =l= Cap_ren(ren) * AF_M_Wind_fixed(t,rr,n,vv)
+MP_PG_Wind(ren,t,rr,n,vv)$(MAP_RR_Ren_node(rr,ren,n) and (ord(vv) lt (itaux+1)))..              PG_M_Wind(ren,t,vv)      =l= Cap_ren(ren) * AF_M_Wind_fixed(t,rr,n,vv)
 ;
 *Map_wind(ren,n)
 *********************************************************************************Dispatchable Generation*********************************************************************************
@@ -364,9 +363,9 @@ SUB_Dual_Objective..                                                O_Sub =e= su
 
                                                                     + sum((g,t), - phiPG_conv(g,t) * Cap_conv(g))
                                                                     
-*                                                                    + sum((ren,t,n)$(Map_PV(ren,n)),
-*                                                                    - phiPG_PV(ren,t) * af_PV_up(t,n)
-*                                                                    + aux_phi_PV(ren,t)  * delta_af_PV(t,n))
+                                                                    + sum((ren,t,n)$(Map_PV(ren,n)),
+                                                                    - phiPG_PV(ren,t) * (Cap_ren(ren) * af_PV_up(t,n))
+                                                                    + aux_phi_PV(ren,t)  * (Cap_ren(ren) * delta_af_PV(t,n)))
                                                                     
                                                                     + sum((ren,t,n)$(Map_wind(ren,n)),
                                                                     - phiPG_wind(ren,t) * (Cap_ren(ren) * af_wind_up(t,n))
@@ -540,7 +539,7 @@ MP_IB
 MP_marketclear
 
 *MP_PG_RR
-*MP_PG_PV
+MP_PG_PV
 MP_PG_Wind
 
 MP_PG_conv
@@ -580,7 +579,7 @@ model Subproblem
 SUB_Dual_Objective
 
 *SUB_Dual_PG_Ren
-*SUB_Dual_PG_PV
+SUB_Dual_PG_PV
 SUB_Dual_PG_Wind
 
 SUB_Dual_PG_conv
@@ -603,9 +602,9 @@ SUB_US_LOAD
 *SUB_UB_Total
 *SUB_UB_PG_RR
 
-*SUB_US_PG_PV
-*SUB_UB_PV_Total
-*SUB_UB_PG_PV_RR
+SUB_US_PG_PV
+SUB_UB_PV_Total
+SUB_UB_PG_PV_RR
 
 SUB_US_PG_Wind
 SUB_UB_Wind_Total
@@ -616,10 +615,10 @@ SUB_UB_PG_Wind_RR
 *SUB_lin35
 *SUB_lin36
 
-*SUB_lin37
-*SUB_lin38
-*SUB_lin39
-*SUB_lin40
+SUB_lin37
+SUB_lin38
+SUB_lin39
+SUB_lin40
 
 SUB_lin41
 SUB_lin42

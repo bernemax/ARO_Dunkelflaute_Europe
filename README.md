@@ -29,7 +29,7 @@
 
 
 ## Map 
-![](https://https://github.com/bernemax/Quant.-Reliability-Energy-Systems/blob/main/Pictures%20and%20Maps/System_Map.pdf)
+![](https://https://github.com/bernemax/Quant.-Reliability-Energy-Systems/blob/main/Pictures%20and%20Maps/EU_ARO_Map.png)
 
 
 

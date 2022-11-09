@@ -263,7 +263,7 @@ MP_marketclear(t,n,vv)$(ord(vv) lt (itaux+1))..
                                                                                                 =e= sum((g)$MapG (g,n), PG_M_conv(g,t,vv))
 *                                                                                                +  sum((ren)$Map_Ren_node(ren,n), PG_M_Ren(ren,t,vv))
 *                                                                                                +  sum((ren)$Map_PV(ren,n), PG_M_PV(ren,t,vv))
-                                                                                                + sum((ren)$Map_wind(ren,n),PG_M_Wind(ren,t,vv))
+                                                                                                + sum((ren)$Map_wind(ren,n), PG_M_Wind(ren,t,vv))
 
                                                                                                 + sum((ror)$MapS(ror,n),  PG_M_Hydro(ror,t,vv))
                                                                                                 + sum((reservoir)$MapS(reservoir,n),  PG_M_Hydro(reservoir,t,vv))
@@ -289,7 +289,7 @@ MP_PG_Wind(ren,t,rr,n,vv)$(Map_wind(ren,n) and (ord(vv) lt (itaux+1)))..        
 *Map_wind(ren,n)
 *********************************************************************************Dispatchable Generation*********************************************************************************
 
-MP_PG_conv(g,t,vv)$(ord(vv) lt (itaux+1))..                                                     PG_M_conv(g,t,vv)       =l= PG_M_fixed_conv(g,t,vv)
+MP_PG_conv(g,t,vv)$(ord(vv) lt (itaux+1))..                                                     PG_M_conv(g,t,vv)        =l= PG_M_fixed_conv(g,t,vv)
 ;
 MP_PG_ROR(ror,t,vv)$(ord(vv) lt (itaux+1))..                                                    PG_M_Hydro(ror,t,vv)     =l= Cap_hydro(ror)
 ;
@@ -298,7 +298,7 @@ MP_PG_Reservoir(reservoir,t,vv)$(ord(vv) lt (itaux+1))..                        
 
 *********************************************************************************Hydro Storage Generation********************************************************************************
 
-MP_PG_Stor(psp,t,vv)$(ord(vv) lt (itaux+1))..                                                   PG_M_Hydro(psp,t,vv)        =l= Cap_hydro(psp) *0.75
+MP_PG_Stor(psp,t,vv)$(ord(vv) lt (itaux+1))..                                                   PG_M_Hydro(psp,t,vv)        =l= Cap_hydro(psp) * 0.75
 ;
 *MP_PG_Stor(psp,t,vv)$(ord(vv) lt (itaux+1))..                                                   PG_M_Hydro(psp,t,vv)        =l= Cap_hydro(psp) 
 *;
@@ -723,14 +723,16 @@ solve Subproblem using MIP maximizing O_Sub
 
 UB = min(UB, (sum(l, new_line_M.l(l) * I_costs_new(l)) + O_Sub.l))
 ;
-
             report_decomp(v,'network','')       = card(ex_l);
             report_decomp(v,'Sub_obj','')       = O_Sub.L                                                       + EPS;
             report_decomp(v,'UB','')            = UB;
-            report_decomp(v,'Sub_Shed','')      = SUM((t,n), phiLS.m(t,n))                                      + EPS;
             report_decomp(v,'UB-LB','')         = UB - LB                                                       + EPS;
-*            report_decomp(v,'Gen_conv','')      = SUM((g,t), PE_conv.l(g,t))                                    + EPS;
+            report_decomp(v,'Sub_Shed','')      = SUM((t,n), phiLS.m(t,n))                                      + EPS;
+            report_decomp(v,'Sub_Gen','')       = SUM((g,t), phiPG_conv.m(g,t))                                 + EPS;
+
 *            compare_av_ren(n,rr,t)              = AF_Ren.l(n,rr,t) - af_ren_up(n,rr,t);
+
+
 *######################################################Step 7
 Demand_data_fixed(t,n,v) = load(t,n)
 ;

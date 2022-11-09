@@ -1,0 +1,145 @@
+
+--- Job ARO_EU_Core.gms Start 11/08/22 16:52:16 38.2.1 96226ea8 WEX-WEI x86 64bit/MS Windows
+--- Applying:
+    C:\GAMS\38\gmsprmNT.txt
+--- GAMS Parameters defined
+    Input "C:\Users\Max Bernecker\Dropbox\Dunkelflaute & ARO\ARO-EU\model\ARO_EU_Core.gms"
+    PageSize 0
+    ScrDir "C:\Users\Max Bernecker\Dropbox\Dunkelflaute & ARO\ARO-EU\model\225f\"
+    SysDir C:\GAMS\38\
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+Licensee: Small MUD - 5 User License                     S211124|0002AN-WIN
+          BTU Cottbus-Senftenberg, FG Energiewirtschaft              DC5591
+          C:\Users\Max Bernecker\Documents\GAMS\gamslice.txt
+          License Admin: Felix Muesgens, Fg-energiewirtschaft@b-tu.de      
+Processor information: 1 socket(s), 8 core(s), and 16 thread(s) available
+GAMS 38.2.1   Copyright (C) 1987-2022 GAMS Development. All rights reserved
+--- Starting compilation
+--- ARO_EU_Core.gms(73) 3 Mb
+--- . Loading_ARO_EU_Data.gms(148) 3 Mb
+--- $echo File C:\Users\Max Bernecker\Dropbox\Dunkelflaute & ARO\ARO-EU\model\TEP.txt
+--- . Loading_ARO_EU_Data.gms(172) 3 Mb
+--- call gdxxrw Data_Input.xlsx @TEP.txt
+
+GDXXRW           38.2.1 96226ea8 Feb 19, 2022          VS8 x86 32bit/MS Window
+Input file : C:\Users\Max Bernecker\Dropbox\Dunkelflaute & ARO\ARO-EU\model\Data_Input.xlsx
+Output file: C:\Users\Max Bernecker\Dropbox\Dunkelflaute & ARO\ARO-EU\model\Data_Input.gdx
+Value expected in cell: Demand!P7436; found #Error
+Value expected in cell: Demand!Q7436; found #Error
+Value expected in cell: Demand!R7436; found #Error
+Value expected in cell: Demand!S7436; found #Error
+Value expected in cell: Demand!P7451; found #Error
+Additional errors suppressed
+Total number of bad values for symbol load = 8
+Value expected in cell: Grid_Tech!B2; found AC
+Value expected in cell: Grid_Tech!E2; found AT0
+Value expected in cell: Grid_Tech!F2; found CH0
+Value expected in cell: Grid_Tech!I2; found Al/St 240/40 4-bundle 380.0
+Value expected in cell: Grid_Tech!B3; found AC
+Additional errors suppressed
+Total number of bad values for symbol Grid_tech = 730
+Value expected in cell: Conventional!C2; found CCGT
+Value expected in cell: Conventional!C3; found coal
+Value expected in cell: Conventional!C4; found CCGT
+Value expected in cell: Conventional!C5; found OCGT
+Value expected in cell: Conventional!C6; found biomass
+Additional errors suppressed
+Total number of bad values for symbol Gen_conv = 172
+Value expected in cell: Renewable!C2; found onwind
+Value expected in cell: Renewable!C3; found solar
+Value expected in cell: Renewable!C4; found offwind
+Value expected in cell: Renewable!C5; found onwind
+Value expected in cell: Renewable!C6; found solar
+Additional errors suppressed
+Total number of bad values for symbol Gen_ren = 126
+Value expected in cell: Hydro!C2; found ror
+Value expected in cell: Hydro!C3; found PSP
+
+Value expected in cell: Hydro!C5; found ror
+Value expected in cell: Hydro!C6; found PSP
+Additional errors suppressed
+Total number of bad values for symbol Gen_Hydro = 97
+Total time = 5375 Ms
+--- . Loading_ARO_EU_Data.gms(173) 3 Mb
+--- GDXin=C:\Users\Max Bernecker\Dropbox\Dunkelflaute & ARO\ARO-EU\model\Data_Input.gdx
+--- GDX File ($gdxIn) C:\Users\Max Bernecker\Dropbox\Dunkelflaute & ARO\ARO-EU\model\Data_Input.gdx
+--- . Loading_ARO_EU_Data.gms(310) 7 Mb
+--- ARO_EU_Core.gms(374) 7 Mb 1 Error
+*** Error 149 in C:\Users\Max Bernecker\Dropbox\Dunkelflaute & ARO\ARO-EU\model\ARO_EU_Core.gms
+    Uncontrolled set entered as constant
+--- ARO_EU_Core.gms(681) 7 Mb 2 Errors
+*** Error 257 in C:\Users\Max Bernecker\Dropbox\Dunkelflaute & ARO\ARO-EU\model\ARO_EU_Core.gms
+    Solve statement not checked because of previous errors
+--- ARO_EU_Core.gms(686) 7 Mb 3 Errors
+*** Error 257 in C:\Users\Max Bernecker\Dropbox\Dunkelflaute & ARO\ARO-EU\model\ARO_EU_Core.gms
+    Solve statement not checked because of previous errors
+--- ARO_EU_Core.gms(690) 7 Mb 4 Errors
+*** Error 141 in C:\Users\Max Bernecker\Dropbox\Dunkelflaute & ARO\ARO-EU\model\ARO_EU_Core.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- ARO_EU_Core.gms(693) 7 Mb 5 Errors
+*** Error 141 in C:\Users\Max Bernecker\Dropbox\Dunkelflaute & ARO\ARO-EU\model\ARO_EU_Core.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- ARO_EU_Core.gms(703) 7 Mb 6 Errors
+*** Error 141 in C:\Users\Max Bernecker\Dropbox\Dunkelflaute & ARO\ARO-EU\model\ARO_EU_Core.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- ARO_EU_Core.gms(705) 7 Mb 7 Errors
+*** Error 141 in C:\Users\Max Bernecker\Dropbox\Dunkelflaute & ARO\ARO-EU\model\ARO_EU_Core.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- ARO_EU_Core.gms(706) 7 Mb 8 Errors
+*** Error 141 in C:\Users\Max Bernecker\Dropbox\Dunkelflaute & ARO\ARO-EU\model\ARO_EU_Core.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- ARO_EU_Core.gms(713) 7 Mb
+--- . network_expansion_merge_conti.gms(97) 7 Mb
+--- ARO_EU_Core.gms(721) 7 Mb 9 Errors
+*** Error 257 in C:\Users\Max Bernecker\Dropbox\Dunkelflaute & ARO\ARO-EU\model\ARO_EU_Core.gms
+    Solve statement not checked because of previous errors
+--- ARO_EU_Core.gms(724) 7 Mb 10 Errors
+*** Error 141 in C:\Users\Max Bernecker\Dropbox\Dunkelflaute & ARO\ARO-EU\model\ARO_EU_Core.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- ARO_EU_Core.gms(730) 7 Mb 11 Errors
+*** Error 141 in C:\Users\Max Bernecker\Dropbox\Dunkelflaute & ARO\ARO-EU\model\ARO_EU_Core.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- ARO_EU_Core.gms(744) 7 Mb 12 Errors
+*** Error 141 in C:\Users\Max Bernecker\Dropbox\Dunkelflaute & ARO\ARO-EU\model\ARO_EU_Core.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- ARO_EU_Core.gms(749) 7 Mb
+--- . network_expansion_clean.gms(97) 7 Mb
+--- ARO_EU_Core.gms(808) 7 Mb 12 Errors
+*** Status: Compilation error(s)
+--- Job ARO_EU_Core.gms Stop 11/08/22 16:52:21 elapsed 0:00:05.489

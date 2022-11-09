@@ -156,6 +156,7 @@ set=Map_PV                      rng=Mapping!S2:T60                      rdim=2 c
 set=Map_wind                    rng=Mapping!V2:W80                      rdim=2 cDim=0
 set=Map_RR                      rng=Mapping!Y2:Z60                      rdim=2 cDim=0
 set=Map_RR_ren                  rng=Mapping!AB2:AC130                   rdim=2 cDim=0
+set=MAP_RR_Ren_node             rng=Mapping!AE2:AG130                   rdim=3 cDim=0
 
 par=load                        rng=Demand!A1:AY8761                    rDim=1 cdim=1
 par=Grid_tech                   rng=Grid_tech!A1:J200                   rDim=1 cdim=1
@@ -172,7 +173,7 @@ $onUNDF
 $call   gdxxrw Data_Input.xlsx @TEP.txt
 $GDXin  Data_Input.gdx
 $load   load
-$load   MAP_WM, Map_send_L, Map_res_L, MapG, MapS, Map_Ren_node, Map_PV, Map_Wind, Map_RR, Map_RR_ren
+$load   MAP_WM, Map_send_L, Map_res_L, MapG, MapS, Map_Ren_node, Map_PV, Map_Wind, Map_RR, Map_RR_ren, MAP_RR_Ren_node
 $load   Grid_tech, Gen_conv, Gen_ren, Gen_Hydro
 $load   priceup
 $load   availup_hydro, af_PV_up, af_wind_up

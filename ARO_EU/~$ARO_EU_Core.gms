@@ -8,12 +8,13 @@ Sets
 
 t/t1*t50/
 
-n /AT0,BE0,CH0,CZ0,DE0,DE1,DE2,DE3,DE4,DE5,
-DE6,DK0,DK1,EE0,ES0,ES1,ES2,ES3,FI0,FR0,FR1,
-FR2,FR3,FR4,FR5,FR6,GB0,GB1,GB2,GB3,GB4,GB5,
-HU0,IE0,IT0,IT1,IT2,IT3,IT4,LT0,LU0,LV0,NL0,
-NO0,PL0,PT0,SE0,SE1,SI0,SK0
+n /AT0,BE0,CH0
 /
+*,CZ0,DE0,DE1,DE2,DE3,DE4,DE5,
+*DE6,DK0,DK1,EE0,ES0,ES1,ES2,ES3,FI0,FR0,FR1,
+*FR2,FR3,FR4,FR5,FR6,GB0,GB1,GB2,GB3,GB4,GB5,
+*HU0,IE0,IT0,IT1,IT2,IT3,IT4,LT0,LU0,LV0,NL0,
+*NO0,PL0,PT0,SE0,SE1,SI0,SK0
 l /l1*l97,l1001*l1097/
 g /g1*g172/
 s /s1*s97/
@@ -64,7 +65,7 @@ MAP_WM(t,WM)
 
 Map_RR(rr,n)
 
-*MAP_RR_Ren(rr,ren,n)
+MAP_RR_Ren_node(rr,ren,n)
 Map_RR_ren(rr,ren)
 ;
 alias (n,nn),(t,tt),(l,ll), (v,vv)
@@ -282,9 +283,9 @@ MP_marketclear(t,n,vv)$(ord(vv) lt (itaux+1))..
 
 MP_PG_RR(ren,t,rr,n,vv)$(MAP_RR_Ren(rr,ren) and Map_RR(rr,n) and (ord(vv) lt (itaux+1)))..      PG_M_Ren(ren,t,vv)       =l= Cap_ren(ren) * AF_M_Ren_fixed(t,rr,n,vv)
 ;
-MP_PG_PV(ren,t,rr,n,vv)$(Map_PV(ren,n) and (ord(vv) lt (itaux+1)))..                            PG_M_PV(ren,t,vv)        =l= Cap_ren(ren) * AF_M_PV_fixed(t,rr,n,vv)
+MP_PG_PV(ren,t,rr,n,vv)$(MAP_RR_Ren_node(rr,ren,n) and (ord(vv) lt (itaux+1)))..                PG_M_PV(ren,t,vv)        =l= Cap_ren(ren) * AF_M_PV_fixed(t,rr,n,vv)
 ;
-MP_PG_Wind(ren,t,rr,n,vv)$(Map_wind(ren,n) and (ord(vv) lt (itaux+1)))..                        PG_M_Wind(ren,t,vv)      =l= Cap_ren(ren) * AF_M_Wind_fixed(t,rr,n,vv)
+MP_PG_Wind(ren,t,rr,n,vv)$(MAP_RR_Ren_node(rr,ren,n) and (ord(vv) lt (itaux+1)))..              PG_M_Wind(ren,t,vv)      =l= Cap_ren(ren) * AF_M_Wind_fixed(t,rr,n,vv)
 ;
 *Map_wind(ren,n)
 *********************************************************************************Dispatchable Generation*********************************************************************************
@@ -368,8 +369,8 @@ SUB_Dual_Objective..                                                O_Sub =e= su
 *                                                                    + aux_phi_PV(ren,t)  * delta_af_PV(t,n))
                                                                     
                                                                     + sum((ren,t,n)$(Map_wind(ren,n)),
-                                                                    - phiPG_wind(ren,t) * af_wind_up(t,n)
-                                                                    + aux_phi_wind(ren,t)  *  delta_af_wind(t,n))
+                                                                    - phiPG_wind(ren,t) * (Cap_ren(ren) * af_wind_up(t,n))
+                                                                    + aux_phi_wind(ren,t)  * (Cap_ren(ren) * delta_af_wind(t,n)))
 
                                                                     + sum((ror,t), - phiPG_ror(ror,t) * Cap_Hydro(ror))
                                                                     + sum((reservoir,t), - phiPG_reservoir(reservoir,t) * Cap_Hydro(reservoir))

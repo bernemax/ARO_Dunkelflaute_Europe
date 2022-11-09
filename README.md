@@ -1,17 +1,17 @@
-# Quantification-of-Reliability-of-future-Energy-Systems-with-a-high-share-of-renewable-generation-under-extreme-weather-effects
+# Effects of climate induced uncertainties on the future Eruopean electricity system
 
 * The composition of the future EU elecricity energy system will change significantly in the next decades.
 * The stochastic nature of weather based energy sources will play a major role in a future renewable energy supply. 
-* Goal of this work is to point a view on reliability and cost efficiency of Energy systems with a high share of renewable penetration under extreme weather effects.
-* Therefore a system of 18 EU countries is examined. 
+* Goal of this work is to point a view on reliability and cost efficiency of Energy systems with a high share of renewable penetration taking climate and weather conditions into account .
+* Therefore a system of 24 EU countries is examined 
 
 
 ## Actual Modelling framework
-- Unit commitment  (UC)
+- Adaptive Robust Optimization
 
 ## Future Modelling framework
-- Dispatch investment model
-- UC-chance constrained or robut optimization
+- Generation and transmission expansion
+- DC optimal power flow
 
 ## Reliability frameworks:
 - Loss of load hours (LOLH)
@@ -20,13 +20,12 @@
 
 ## Consideration: 
 - Renewable elecricity resources like PV, wind, hydro & biomass
-- Technical constraints like ramping times of conventional power plants
 - Storages like battery, psp, reservoire
-- NTC between the countries
+- High voltage electricity grid
 - Future synthetic country based demand profiles (8760 h)
 - Wind and PV generation capacity profiles (historically)
 - Hydro generation potentials country wise
-- Engineering risks (FOR)
+
 
 
 ## Map 

@@ -1,4 +1,4 @@
-# Effects of climate induced uncertainties on the future Eruopean electricity system
+# Effects of climate induced uncertainties on the future European electricity system
 
 * The composition of the future EU elecricity energy system will change significantly in the next decades.
 * The stochastic nature of weather based energy sources will play a major role in a future renewable energy supply. 

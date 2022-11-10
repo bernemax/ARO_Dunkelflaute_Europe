@@ -2,9 +2,9 @@
 
 - investments in generation capacity (renewable - which ? wind-off, wind-on, pc, Hydro, Biomass, Hydrogen, Storage?)
 
-- limit of possible max. capacity extension per node
+- limit of possible max. renewable capacity extension per node (available area)
 
-- dynamic investments for time steps - 2025, 2030, 2035, 2040, 2045, 2050
+- green field for 2050 or dynamic investments for time steps - 2025, 2030, 2035, 2040, 2045, 2050 ? 
 
 - depreciation of conventional capacity and removal?
 

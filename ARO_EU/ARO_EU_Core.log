@@ -1,18 +1,18 @@
 
---- Job ARO_EU_Core.gms Start 11/10/22 10:21:20 38.2.1 96226ea8 WEX-WEI x86 64bit/MS Windows
+--- Job ARO_EU_Core.gms Start 11/10/22 15:12:47 38.2.1 96226ea8 WEX-WEI x86 64bit/MS Windows
 --- Applying:
     C:\GAMS\38\gmsprmNT.txt
 --- GAMS Parameters defined
     Input "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\ARO_EU_Core.gms"
     PageSize 0
-    ScrDir "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\225d\"
+    ScrDir "Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\225a\"
     SysDir C:\GAMS\38\
     LogOption 3
     ErrMsg 1
     ErrorLog 99
     IDE 1
     LstTitleLeftAligned 1
-Licensee: Small MUD - 5 User License                     S211124|0002AN-WIN
+Licensee: Small MUD - 5 User License                     S221110|0002AN-WIN
           BTU Cottbus-Senftenberg, FG Energiewirtschaft              DC5591
           C:\Users\Max Bernecker\Documents\GAMS\gamslice.txt
           License Admin: Felix Muesgens, Fg-energiewirtschaft@b-tu.de      
@@ -63,7 +63,7 @@ Value expected in cell: Hydro!C5; found ror
 Value expected in cell: Hydro!C6; found PSP
 Additional errors suppressed
 Total number of bad values for symbol Gen_Hydro = 97
-Total time = 6391 Ms
+Total time = 5953 Ms
 --- . Loading_ARO_EU_Data.gms(174) 3 Mb
 --- GDXin=Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\Data_Input.gdx
 --- GDX File ($gdxIn) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\Data_Input.gdx
@@ -73,13 +73,13 @@ Total time = 6391 Ms
 --- ARO_EU_Core.gms(748) 8 Mb
 --- . network_expansion_clean.gms(97) 8 Mb
 --- ARO_EU_Core.gms(805) 8 Mb
---- Starting execution: elapsed 0:00:07.010
+--- Starting execution: elapsed 0:00:06.980
 --- ARO_EU_Core.gms(967) 20 Mb
 --- Generating MIP model Master_VO
 --- ARO_EU_Core.gms(990) 21 Mb
 --- LOOPS v = v1
 ---   10 rows  99 columns  980 non-zeroes
---- Executing CPLEX (Solvelink=2): elapsed 0:00:07.117
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:07.064
 
 IBM ILOG CPLEX   38.2.1 96226ea8 Feb 19, 2022          WEI x86 64bit/MS Window
 
@@ -112,14 +112,14 @@ Optimal solution found
 Objective:            0.000000
 
 --- Reading solution for model Master_VO
---- Executing after solve: elapsed 0:00:07.279
+--- Executing after solve: elapsed 0:00:07.157
 --- ARO_EU_Core.gms(967) 21 Mb
 --- Generating MIP model Subproblem
 --- ARO_EU_Core.gms(1127) 70 Mb
 --- LOOPS v = v1
 ---   181,251 rows  146,577 columns  536,401 non-zeroes
 ---   576 discrete-columns
---- Executing CPLEX (Solvelink=2): elapsed 0:00:09.638
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:09.138
 
 IBM ILOG CPLEX   38.2.1 96226ea8 Feb 19, 2022          WEI x86 64bit/MS Window
 
@@ -141,14 +141,14 @@ CPXPARAM_MIP_Pool_Capacity                       0
 CPXPARAM_MIP_Tolerances_AbsMIPGap                0
 CPXPARAM_MIP_Tolerances_MIPGap                   0
 Generic callback                                 0x50
-Found incumbent of value 0.000000 after 0.02 sec. (6.86 ticks)
+Found incumbent of value 0.000000 after 0.00 sec. (6.86 ticks)
 Tried aggregator 3 times.
 MIP Presolve eliminated 81461 rows and 49810 columns.
 MIP Presolve modified 63490 coefficients.
 Aggregator did 14943 substitutions.
 Reduced MIP has 72144 rows, 73106 columns, and 230071 nonzeros.
 Reduced MIP has 48 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.61 sec. (1107.11 ticks)
+Presolve time = 0.56 sec. (1107.11 ticks)
 Probing fixed 0 vars, tightened 3826 bounds.
 Probing time = 0.02 sec. (8.77 ticks)
 Tried aggregator 1 time.
@@ -156,7 +156,7 @@ Detecting symmetries...
 Reduced MIP has 72144 rows, 73106 columns, and 230071 nonzeros.
 Reduced MIP has 48 binaries, 0 generals, 0 SOSs, and 0 indicators.
 Presolve time = 0.14 sec. (158.25 ticks)
-Probing time = 0.02 sec. (3.74 ticks)
+Probing time = 0.00 sec. (3.74 ticks)
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: deterministic, using up to 4 threads.
@@ -238,21 +238,21 @@ Initializing dual steep norms . . .
 
 Iteration log . . .
 Iteration:     1   Dual objective     =     406179869.799854
-Root relaxation solution time = 2.67 sec. (1942.64 ticks)
+Root relaxation solution time = 2.58 sec. (1942.64 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
 *     0+    0                            0.0000                           0.00%
-Found incumbent of value 0.000000 after 3.59 sec. (3345.80 ticks)
+Found incumbent of value 0.000000 after 3.44 sec. (3345.80 ticks)
       0     0   4.06180e+08    35        0.0000   4.06180e+08    51764     --- 
 *     0+    0                       2.66874e+08   4.06180e+08            52.20%
-Found incumbent of value 2.6687395e+08 after 4.28 sec. (4250.88 ticks)
+Found incumbent of value 2.6687395e+08 after 4.13 sec. (4250.88 ticks)
 *     0+    0                       3.32622e+08   4.06180e+08            22.11%
-Found incumbent of value 3.3262166e+08 after 11.78 sec. (13358.77 ticks)
+Found incumbent of value 3.3262166e+08 after 11.00 sec. (13358.77 ticks)
       0     0   3.77215e+08    30   3.32622e+08    Cuts: 8013    59112   13.41%
 *     0+    0                       3.51411e+08   3.77215e+08             7.34%
-Found incumbent of value 3.5141117e+08 after 12.58 sec. (14303.68 ticks)
+Found incumbent of value 3.5141117e+08 after 11.80 sec. (14303.68 ticks)
       0     0   3.65789e+08    31   3.51411e+08    Cuts: 1549    61642    4.09%
       0     0   3.62458e+08    29   3.51411e+08     Cuts: 719    62464    3.14%
       0     0   3.61396e+08    29   3.51411e+08     Cuts: 189    62825    2.84%
@@ -263,7 +263,7 @@ Detecting symmetries...
       0     0   3.60272e+08    29   3.51411e+08  Flowcuts: 11    63178    2.52%
 Detecting symmetries...
       0     2   3.60272e+08    29   3.51411e+08   3.60272e+08    63178    2.52%
-Elapsed time = 33.17 sec. (38480.14 ticks, tree = 0.02 MB)
+Elapsed time = 31.34 sec. (38480.14 ticks, tree = 0.02 MB)
       1     3   3.59991e+08    26   3.51411e+08   3.60271e+08    63659    2.52%
       2     4   3.59807e+08    30   3.51411e+08   3.60271e+08    64425    2.52%
       3     5   3.52133e+08    25   3.51411e+08   3.60271e+08    65820    2.52%
@@ -277,7 +277,7 @@ Elapsed time = 33.17 sec. (38480.14 ticks, tree = 0.02 MB)
      15     6   3.51736e+08    13   3.51411e+08   3.59679e+08    75396    2.35%
      38     8   3.53859e+08    23   3.51411e+08   3.59678e+08    79708    2.35%
                                                      Cuts: 16                  
-Elapsed time = 41.05 sec. (43640.50 ticks, tree = 0.04 MB)
+Elapsed time = 38.44 sec. (43640.50 ticks, tree = 0.04 MB)
      49    11   3.52852e+08    27   3.51411e+08   3.59678e+08    85909    2.35%
                                                      Cuts: 24                  
      59    11        cutoff         3.51411e+08   3.59678e+08    88264    2.35%
@@ -286,29 +286,29 @@ Elapsed time = 41.05 sec. (43640.50 ticks, tree = 0.04 MB)
                                                      Cuts: 57                  
      99     5        cutoff         3.51411e+08   3.59678e+08   103538    2.35%
 *   102+   15                       3.52521e+08   3.59678e+08             2.03%
-Found incumbent of value 3.5252076e+08 after 50.23 sec. (50165.81 ticks)
+Found incumbent of value 3.5252076e+08 after 46.24 sec. (50165.81 ticks)
     102    17   3.56919e+08    26   3.52521e+08   3.56919e+08    95271    1.25%
     107     4        cutoff         3.52521e+08   3.56919e+08   107825    1.25%
                                                      Cuts: 43                  
     120     7   3.52531e+08     4   3.52521e+08   3.56675e+08   111773    1.18%
 *   135+    8                       3.52536e+08   3.56675e+08             1.17%
-Found incumbent of value 3.5253565e+08 after 52.02 sec. (52563.77 ticks)
+Found incumbent of value 3.5253565e+08 after 47.92 sec. (52563.77 ticks)
 
 Flow cuts applied:  5866
 Mixed integer rounding cuts applied:  2959
 Gomory fractional cuts applied:  12
 
 Root node processing (before b&c):
-  Real time             =   33.08 sec. (38437.78 ticks)
+  Real time             =   31.27 sec. (38437.78 ticks)
 Parallel b&c, 4 threads:
-  Real time             =   19.14 sec. (14269.33 ticks)
-  Sync time (average)   =    4.38 sec.
+  Real time             =   16.84 sec. (14269.33 ticks)
+  Sync time (average)   =    4.08 sec.
   Wait time (average)   =    0.00 sec.
                           ------------
-Total (root+branch&cut) =   52.22 sec. (52707.11 ticks)
+Total (root+branch&cut) =   48.11 sec. (52707.11 ticks)
 
 --- MIP status (101): integer optimal solution.
---- Cplex Time: 52.22sec (det. 52707.53 ticks)
+--- Cplex Time: 48.11sec (det. 52707.53 ticks)
 
 --- Fixing integer variables and solving final LP...
 
@@ -401,20 +401,20 @@ Absolute gap:            0.000000
 Relative gap:            0.000000
 
 --- Reading solution for model Subproblem
---- ARO_EU_Core.gms(1127) 70 Mb  55 secs
---- Executing after solve: elapsed 0:01:07.706
+--- ARO_EU_Core.gms(1127) 70 Mb  50 secs
+--- Executing after solve: elapsed 0:01:03.199
 --- ARO_EU_Core.gms(967) 70 Mb
 --- GDX File (execute_unload) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\check_Loop_Run.gdx
 --- Generating MIP model Master
 --- ARO_EU_Core.gms(995) 107 Mb
 --- LOOPS v = v2
 ---   260,012 rows  175,499 columns  595,118 non-zeroes
---- Executing CPLEX (Solvelink=2): elapsed 0:01:10.638
+--- Executing CPLEX (Solvelink=2): elapsed 0:01:05.940
 
 IBM ILOG CPLEX   38.2.1 96226ea8 Feb 19, 2022          WEI x86 64bit/MS Window
 
 --- GAMS/Cplex Link licensed for continuous and discrete problems.
---- GMO setup time: 0.01s
+--- GMO setup time: 0.00s
 --- Space for names approximately 13.54 Mb
 --- Use option 'names no' to turn use of names off
 --- GMO memory 79.00 Mb (peak 79.99 Mb)
@@ -437,7 +437,7 @@ Tried aggregator 1 time.
 LP Presolve eliminated 168405 rows and 55869 columns.
 Aggregator did 29256 substitutions.
 Reduced LP has 62346 rows, 90375 columns, and 331498 nonzeros.
-Presolve time = 0.39 sec. (268.88 ticks)
+Presolve time = 0.38 sec. (268.88 ticks)
 
 Iteration log . . .
 Iteration:     1   Dual objective     =             0.000000
@@ -553,7 +553,7 @@ Iteration: 74474   Dual objective     =     167801618.690522
 Iteration: 75168   Dual objective     =     167852307.706951
 Iteration: 75834   Dual objective     =     167853957.313065
 Iteration: 76358   Dual objective     =     167945823.012157
-Elapsed time = 20.44 sec. (20000.77 ticks, 76875 iterations)
+Elapsed time = 20.55 sec. (20000.77 ticks, 76875 iterations)
 Iteration: 77045   Dual objective     =     167951612.422573
 Iteration: 77655   Dual objective     =     167956283.928210
 Iteration: 78185   Dual objective     =     167956591.332837
@@ -580,7 +580,7 @@ Barrier solved model.
 
 
 --- LP status (1): optimal.
---- Cplex Time: 23.45sec (det. 23513.16 ticks)
+--- Cplex Time: 23.16sec (det. 23513.16 ticks)
 
 
 Optimal solution found
@@ -588,14 +588,14 @@ Objective:    431693733.335931
 
 --- Reading solution for model Master
 --- ARO_EU_Core.gms(995) 107 Mb  30 secs
---- Executing after solve: elapsed 0:01:40.617
+--- Executing after solve: elapsed 0:01:35.642
 --- ARO_EU_Core.gms(967) 107 Mb
 --- Generating MIP model Subproblem
 --- ARO_EU_Core.gms(1127) 138 Mb
 --- LOOPS v = v2
 ---   190,651 rows  174,777 columns  617,901 non-zeroes
 ---   576 discrete-columns
---- Executing CPLEX (Solvelink=2): elapsed 0:01:43.756
+--- Executing CPLEX (Solvelink=2): elapsed 0:01:38.757
 
 IBM ILOG CPLEX   38.2.1 96226ea8 Feb 19, 2022          WEI x86 64bit/MS Window
 
@@ -617,14 +617,14 @@ CPXPARAM_MIP_Pool_Capacity                       0
 CPXPARAM_MIP_Tolerances_AbsMIPGap                0
 CPXPARAM_MIP_Tolerances_MIPGap                   0
 Generic callback                                 0x50
-Found incumbent of value 0.000000 after 0.02 sec. (8.19 ticks)
+Found incumbent of value 0.000000 after 0.00 sec. (8.19 ticks)
 Tried aggregator 3 times.
 MIP Presolve eliminated 82169 rows and 63731 columns.
 MIP Presolve modified 60263 coefficients.
 Aggregator did 22215 substitutions.
 Reduced MIP has 74889 rows, 80131 columns, and 240850 nonzeros.
 Reduced MIP has 48 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.61 sec. (1147.85 ticks)
+Presolve time = 0.63 sec. (1147.85 ticks)
 Probing fixed 0 vars, tightened 3847 bounds.
 Probing time = 0.02 sec. (9.11 ticks)
 Tried aggregator 2 times.
@@ -633,7 +633,7 @@ MIP Presolve eliminated 0 rows and 1 columns.
 Aggregator did 10 substitutions.
 Reduced MIP has 74879 rows, 80120 columns, and 240838 nonzeros.
 Reduced MIP has 48 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.17 sec. (202.00 ticks)
+Presolve time = 0.19 sec. (202.00 ticks)
 Probing time = 0.02 sec. (3.91 ticks)
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
@@ -721,19 +721,19 @@ Initializing dual steep norms . . .
 
 Iteration log . . .
 Iteration:     1   Dual objective     =     403958733.902840
-Root relaxation solution time = 3.20 sec. (2359.76 ticks)
+Root relaxation solution time = 3.47 sec. (2359.76 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
 *     0+    0                            0.0000                           0.00%
-Found incumbent of value 0.000000 after 4.16 sec. (3855.42 ticks)
+Found incumbent of value 0.000000 after 4.42 sec. (3855.42 ticks)
       0     0   4.03959e+08    41        0.0000   4.03959e+08    56949     --- 
 *     0+    0                       2.86636e+08   4.03959e+08            40.93%
-Found incumbent of value 2.8663555e+08 after 15.92 sec. (17602.13 ticks)
+Found incumbent of value 2.8663555e+08 after 16.19 sec. (17602.13 ticks)
       0     0   3.60143e+08    34   2.86636e+08    Cuts: 8679    65701   25.64%
 *     0+    0                       3.42771e+08   3.60143e+08             5.07%
-Found incumbent of value 3.4277109e+08 after 17.47 sec. (19201.62 ticks)
+Found incumbent of value 3.4277109e+08 after 17.70 sec. (19201.62 ticks)
       0     0   3.51181e+08    32   3.42771e+08    Cuts: 1474    68378    2.45%
       0     0   3.49643e+08    33   3.42771e+08     Cuts: 455    69177    2.00%
       0     0   3.49208e+08    31   3.42771e+08     Cuts: 189    69421    1.88%
@@ -744,7 +744,7 @@ Detecting symmetries...
       0     0   3.48764e+08    31   3.42771e+08      Cuts: 43    69898    1.75%
 Detecting symmetries...
       0     2   3.48764e+08    31   3.42771e+08   3.48764e+08    69898    1.75%
-Elapsed time = 36.39 sec. (41530.37 ticks, tree = 0.02 MB)
+Elapsed time = 36.51 sec. (41530.37 ticks, tree = 0.02 MB)
       1     3   3.48522e+08    31   3.42771e+08   3.48758e+08    70588    1.75%
       2     4   3.48268e+08    31   3.42771e+08   3.48758e+08    71046    1.75%
       3     3        cutoff         3.42771e+08   3.48758e+08    72657    1.75%
@@ -759,10 +759,10 @@ Elapsed time = 36.39 sec. (41530.37 ticks, tree = 0.02 MB)
      14     4        cutoff         3.42771e+08   3.48239e+08    77631    1.60%
      32    11        cutoff         3.42771e+08   3.48173e+08    85068    1.58%
                                                    MIRcuts: 3                  
-Elapsed time = 46.64 sec. (48024.85 ticks, tree = 0.13 MB)
+Elapsed time = 46.86 sec. (48024.85 ticks, tree = 0.13 MB)
      72     8        cutoff         3.42771e+08   3.46618e+08    89793    1.12%
 *    75     6      integral     0   3.42771e+08   3.46618e+08    89801    1.12%
-Found incumbent of value 3.4277109e+08 after 48.23 sec. (49097.02 ticks)
+Found incumbent of value 3.4277109e+08 after 48.41 sec. (49097.02 ticks)
      85     5   3.45010e+08    27   3.42771e+08   3.45029e+08    99612    0.66%
                                                      Cuts: 10                  
 
@@ -771,16 +771,16 @@ Mixed integer rounding cuts applied:  3433
 Gomory fractional cuts applied:  4
 
 Root node processing (before b&c):
-  Real time             =   36.28 sec. (41484.44 ticks)
+  Real time             =   36.42 sec. (41484.44 ticks)
 Parallel b&c, 4 threads:
-  Real time             =   13.44 sec. (9259.96 ticks)
-  Sync time (average)   =    2.58 sec.
+  Real time             =   13.47 sec. (9259.96 ticks)
+  Sync time (average)   =    2.64 sec.
   Wait time (average)   =    0.00 sec.
                           ------------
-Total (root+branch&cut) =   49.72 sec. (50744.40 ticks)
+Total (root+branch&cut) =   49.89 sec. (50744.40 ticks)
 
 --- MIP status (101): integer optimal solution.
---- Cplex Time: 49.72sec (det. 50744.90 ticks)
+--- Cplex Time: 49.91sec (det. 50744.90 ticks)
 
 --- Fixing integer variables and solving final LP...
 
@@ -799,7 +799,7 @@ Tried aggregator 1 time.
 LP Presolve eliminated 119352 rows and 80334 columns.
 Aggregator did 22713 substitutions.
 Reduced LP has 48585 rows, 71730 columns, and 177287 nonzeros.
-Presolve time = 0.25 sec. (210.98 ticks)
+Presolve time = 0.27 sec. (210.98 ticks)
 Initializing dual steep norms . . .
 
 Iteration log . . .
@@ -867,7 +867,7 @@ Barrier solved model.
 
 
 --- Fixed MIP status (1): optimal.
---- Cplex Time: 1.55sec (det. 1753.07 ticks)
+--- Cplex Time: 1.69sec (det. 1753.07 ticks)
 
 
 Proven optimal solution
@@ -879,22 +879,22 @@ Absolute gap:            0.000000
 Relative gap:            0.000000
 
 --- Reading solution for model Subproblem
---- ARO_EU_Core.gms(1127) 138 Mb  58 secs
---- Executing after solve: elapsed 0:02:40.847
+--- ARO_EU_Core.gms(1127) 138 Mb  53 secs
+--- Executing after solve: elapsed 0:02:35.664
 --- ARO_EU_Core.gms(967) 138 Mb
 --- GDX File (execute_unload) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\check_Loop_Run.gdx
 --- ARO_EU_Core.gms(1258) 138 Mb
 --- GDX File (execute_unload) Z:\MitarbeiterOrdner\Bernecker\GitHub Desktop Project Foulder\Project_ARO_EU\ARO_EU\check_TEP_ARO.gdx
---- Profile Summary (60 records processed)
-   154.532   0.138GB       967 Loop       
-    54.000   0.070GB      1127 Solve Alg  Subproblem
-    52.062   0.138GB      1127 Solve Alg  Subproblem
-    24.390   0.107GB       995 Solve Alg  Master
-     5.594   0.107GB       995 Solve Read Master
-     5.032   0.138GB      1127 Solve Read Subproblem
-     4.078   0.070GB      1127 Solve Read Subproblem
-     1.469   0.107GB       670 Equation   SUB_Dual_Objective (1)
-     1.297   0.138GB      1127 Solve Fini Subproblem (617901)
-     1.250   0.107GB       995 Solve Fini Master (595118)
+--- Profile Summary (62 records processed)
+   149.422   0.138GB       967 Loop       
+    52.344   0.138GB      1127 Solve Alg  Subproblem
+    49.937   0.070GB      1127 Solve Alg  Subproblem
+    23.969   0.107GB       995 Solve Alg  Master
+     5.719   0.107GB       995 Solve Read Master
+     4.562   0.138GB      1127 Solve Read Subproblem
+     4.125   0.070GB      1127 Solve Read Subproblem
+     1.406   0.107GB       670 Equation   SUB_Dual_Objective (1)
+     1.344   0.138GB      1127 Solve Fini Subproblem (617901)
+     1.062   0.029GB       670 Equation   SUB_Dual_Objective (1)
 *** Status: Normal completion
---- Job ARO_EU_Core.gms Stop 11/10/22 10:24:02 elapsed 0:02:42.296
+--- Job ARO_EU_Core.gms Stop 11/10/22 15:15:24 elapsed 0:02:37.232

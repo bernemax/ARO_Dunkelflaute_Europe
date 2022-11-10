@@ -6,7 +6,7 @@ option profiletol = 0.01;
 
 Sets
 
-t/t1*t50/
+t/t1*t100/
 
 n /AT0,BE0,CH0,CZ0,DE0,DE1,DE2,DE3,DE4,DE5,
 DE6,DK0,DK1,EE0,ES0,ES1,ES2,ES3,FI0,FR0,FR1,
@@ -105,10 +105,10 @@ PG_M_Wind(ren,t,v)          cummulative power generation level of renewable wind
 
 PLS_M(t,n,v)                load shedding
 
-M_Stor_lvl(s,t,v)
-M_charge(s,t,v)
+M_Stor_lvl(s,t,v)           storage level of psp 
+M_charge(s,t,v)             discha re variable of psp
 
-new_line_M(l)                Investment decision variable regarding capacity investment in a new prospective line
+new_line_M(l)               Investment decision variable regarding capacity investment in a new prospective line
 
 *********************************************Subproblem*********************************************
 
@@ -116,22 +116,22 @@ Pdem(t,n)                   Uncertain load in node n in time step t
 
 PE_conv(g,t)                realization of conventional supply (Ro)
 
-AF_Ren(t,rr,n)              realization of combined wind and pv
-AF_PV(t,rr,n)
-AF_Wind(t,rr,n)
+AF_Ren(t,rr,n)              realization of combined wind and pv availability
+AF_PV(t,rr,n)               realization of pv availability
+AF_Wind(t,rr,n)             realization of wind availability
 
 phiPG_conv(g,t)             dual var phi assoziated with Equation: MP_PG_conv
-phiPG_ror(s,t)              dual Var phi assoziated with Equation: MP_PG_Ror
-phi_cap_psp(s,t)            dual Var phi assoziated with Equation: MP_Cap_Stor
-phiPG_reservoir(s,t)        dual Var phi assoziated with Equation: MP_PG_Reservoir
 
-phi_PG_psp(s,t)             dual var phi assoziated with Equation: MP_PG_Stor
-phi_C_psp(s,t)              dual var phi assoziated with Equation: MP_C_Stor
+mu_ror(s,t)                 dual Var phi assoziated with Equation: MP_PG_Ror
+mu_cap_psp(s,t)             dual Var phi assoziated with Equation: MP_Cap_Stor
+mu_reservoir(s,t)           dual Var phi assoziated with Equation: MP_PG_Reservoir
+mu_PG_psp(s,t)              dual var phi assoziated with Equation: MP_PG_Stor
+mu_C_psp(s,t)               dual var phi assoziated with Equation: MP_C_Stor
 
-phiPG_PV(ren,t)
-aux_phi_PV(ren,t)
-phiPG_wind(ren,t)
-aux_phi_wind(ren,t)
+phiPG_PV(ren,t)             dual Var phi assoziated with Equation: MP_PG_PV
+aux_phi_PV(ren,t)           auxilary variable to linearize uncertain term in objective function
+phiPG_wind(ren,t)           dual Var phi assoziated with Equation: MP_PG_WInd
+aux_phi_wind(ren,t)         auxilary variable to linearize uncertain term in objective function
 
 phiPG_Ren(ren,t)            dual variable of combined wind and solar pv generation assoziated with Equation: MP_PG_RR
 aux_phi_Ren_WM(ren,t)       aux continuous var to linearize
@@ -143,8 +143,6 @@ omega_LB(l,t)               dual var phi assoziated with Equation: MP_PF_EX_Cap_
 
 teta_UB(t,n)                dual var beta assoziated with Equation: Theta_UB
 teta_LB(t,n)                dual var beta assoziated with Equation: Theta_LB
- 
-
 ;
 
 Binary Variables
@@ -245,7 +243,6 @@ SUB_lin41
 SUB_lin42
 SUB_lin43
 SUB_lin44
-
 ;
 *#####################################################################################Master####################################################################################
 
@@ -262,13 +259,13 @@ MP_marketclear(t,n,vv)$(ord(vv) lt (itaux+1))..
                                                                                               
                                                                                                 =e= sum((g)$MapG (g,n), PG_M_conv(g,t,vv))
 *                                                                                                +  sum((ren)$Map_Ren_node(ren,n), PG_M_Ren(ren,t,vv))
-                                                                                                +  sum((ren)$Map_PV(ren,n), PG_M_PV(ren,t,vv))
+                                                                                                + sum((ren)$Map_PV(ren,n), PG_M_PV(ren,t,vv))
                                                                                                 + sum((ren)$Map_wind(ren,n), PG_M_Wind(ren,t,vv))
 
                                                                                                 + sum((ror)$MapS(ror,n),  PG_M_Hydro(ror,t,vv))
                                                                                                 + sum((reservoir)$MapS(reservoir,n),  PG_M_Hydro(reservoir,t,vv))
-*                                                                                                + sum((psp)$MapS(psp,n), PG_M_Hydro(psp,t,vv))
-*                                                                                                - sum((psp)$MapS(psp,n), M_charge(psp,t,vv))
+                                                                                                + sum((psp)$MapS(psp,n), PG_M_Hydro(psp,t,vv))
+                                                                                                - sum((psp)$MapS(psp,n), M_charge(psp,t,vv))
                                                                                                 
 
                                                                                                 +  sum(l$(Map_Res_l(l,n) and ex_l(l)), PF_M(l,t,vv))
@@ -371,17 +368,17 @@ SUB_Dual_Objective..                                                O_Sub =e= su
                                                                     - phiPG_wind(ren,t) * (Cap_ren(ren) * af_wind_up(t,n))
                                                                     + aux_phi_wind(ren,t)  * (Cap_ren(ren) * delta_af_wind(t,n)))
 
-                                                                    + sum((ror,t), - phiPG_ror(ror,t) * Cap_Hydro(ror))
-                                                                    + sum((reservoir,t), - phiPG_reservoir(reservoir,t) * Cap_Hydro(reservoir))
+                                                                    + sum((ror,t), - mu_ror(ror,t) * Cap_Hydro(ror))
+                                                                    + sum((reservoir,t), - mu_reservoir(reservoir,t) * Cap_Hydro(reservoir))
                                                                     
-*                                                                    + sum((psp,t), - phi_PG_psp(psp,t) * (Cap_hydro(psp) *0.75))
-*                                                                    + sum((psp,t), - phi_C_psp(psp,t) * Cap_hydro(psp))
-*                                                                    + sum((psp,t), - phi_cap_psp(psp,t) * (Cap_hydro(psp) * psp_cpf))
-*                                                                    + sum((psp,t)$(ord(t) =1), ((Cap_hydro(psp) * psp_cpf)/2) * phi_SL_psp(psp,t))
+                                                                    + sum((psp,t), - mu_PG_psp(psp,t) * (Cap_hydro(psp) *0.75))
+                                                                    + sum((psp,t), - mu_C_psp(psp,t) * Cap_hydro(psp))
+                                                                    + sum((psp,t), - mu_cap_psp(psp,t) * (Cap_hydro(psp) * psp_cpf))
+                                                                    - sum((psp,t)$(ord(t) =1), ((Cap_hydro(psp) * psp_cpf)/2) * phi_SL_psp(psp,t))
                                                                     
-*                                                                    + sum((psp,t), - phi_PG_psp(psp,t) * (Cap_hydro(psp)))
-*                                                                    + sum((psp,t), - phi_C_psp(psp,t) * Cap_hydro(psp))
-*                                                                    + sum((psp,t), - phi_cap_psp(psp,t) * (Cap_hydro(psp) * psp_cpf))
+*                                                                    + sum((psp,t), - mu_PG_psp(psp,t) * (Cap_hydro(psp)))
+*                                                                    + sum((psp,t), - mu_C_psp(pso,t) * Cap_hydro(psp))
+*                                                                    + sum((psp,t), - mu_cap_psp(s,t) * (Cap_hydro(psp) * psp_cpf))
 *                                                                    + sum((psp,t)$(ord(t) =1), ((Cap_hydro(psp) * psp_cpf)/2) * phi_SL_psp(psp,t))
                                                                     
 
@@ -411,25 +408,25 @@ SUB_Dual_PG_wind(ren,t)..                                           sum((n)$Map_
 
 SUB_Dual_PG_conv(g,t)..                                             sum((n)$MapG(g,n), lam(t,n) -  phiPG_conv(g,t))                                   =l=  var_costs(g,t)
 ;
-SUB_Dual_PG_ror(ror,t)..                                            sum((n)$MapS(ror,n), lam(t,n) -  phiPG_ror(ror,t))                                =l=   0
+SUB_Dual_PG_ror(ror,t)..                                            sum((n)$MapS(ror,n), lam(t,n) -  mu_ror(ror,t))                                =l=   0
 ; 
-SUB_Dual_PG_reservoir(reservoir,t)..                                sum((n)$MapS(reservoir,n), lam(t,n) -  phiPG_reservoir(reservoir,t))              =l=   20
+SUB_Dual_PG_reservoir(reservoir,t)..                                sum((n)$MapS(reservoir,n), lam(t,n) -  mu_reservoir(reservoir,t))              =l=   20
 ;
 
 
-SUB_Dual_PG_psp(psp,t)..                                            sum((n)$MapS(psp,n), lam(t,n)  - phi_SL_psp(psp,t) - phi_PG_psp(psp,t))           =l=   0
+SUB_Dual_PG_psp(psp,t)..                                            sum((n)$MapS(psp,n), lam(t,n)  - phi_SL_psp(psp,t) - mu_PG_psp(psp,t))           =l=   0
 ;
-SUB_Dual_C_psp(psp,t)..                                             sum((n)$MapS(psp,n), - lam(t,n) +  phi_SL_psp(psp,t) - phi_C_psp(psp,t))          =l=   0
+SUB_Dual_C_psp(psp,t)..                                             sum((n)$MapS(psp,n), - lam(t,n) +  phi_SL_psp(psp,t) - mu_C_psp(psp,t))          =l=   0
 ;
-*SUB_Dual_PG_psp(psp,t)..                                            sum((n)$MapS(psp,n), lam(t,n)  + (1/eff_psp ) * phi_SL_psp(psp,t) - phi_PG_psp(psp,t))      =l=   0
+*SUB_Dual_PG_psp(psp,t)..                                            sum((n)$MapS(psp,n), lam(t,n)  + (1/eff_psp ) * phi_SL_psp(psp,t) - mu_PG_psp(psp,t))      =l=   0
 *;
-*SUB_Dual_C_psp(psp,t)..                                             sum((n)$MapS(psp,n), - lam(t,n) + eff_psp * phi_SL_psp(psp,t) - phi_C_psp(psp,t))           =l=   0
+*SUB_Dual_C_psp(psp,t)..                                             sum((n)$MapS(psp,n), - lam(t,n) + eff_psp * phi_SL_psp(psp,t) - mu_C_psp(pso,t))           =l=   0
 *;
-SUB_Dual_lvl_psp(psp,t)$(ord(t) lt card(t))..                       phi_SL_psp(psp,t) -  phi_SL_psp(psp,t-1) - phi_cap_psp(psp,t)                     =e=   0
+SUB_Dual_lvl_psp(psp,t)$(ord(t) lt card(t))..                       - phi_SL_psp(psp,t) -  phi_SL_psp(psp,t+1) - mu_cap_psp(psp,t)                     =e=   0
 ;
 *$(ord(t) gt 1)
 *ord(t) lt card(t)
-SUB_Dual_lvl_psp_end(psp,t)$(ord(t) = card(t))..                    phi_SL_psp(psp,t)  - phi_cap_psp(psp,t)                                           =e=   0
+SUB_Dual_lvl_psp_end(psp,t)$(ord(t) = card(t))..                    - phi_SL_psp(psp,t)  - mu_cap_psp(psp,t)                                           =e=   0
 ;
 *$(ord(t) = card(t))
 *****************************************************************Dual Load shedding equation*********************************************************************
@@ -546,11 +543,11 @@ MP_PG_conv
 MP_PG_ROR
 MP_PG_Reservoir
 
-*MP_PG_Stor
-*MP_C_Stor
-*MP_Cap_Stor
-*MP_Stor_lvl_start
-*MP_Stor_lvl
+MP_PG_Stor
+MP_C_Stor
+MP_Cap_Stor
+MP_Stor_lvl_start
+MP_Stor_lvl
 
 MP_PF_EX
 MP_PF_EX_Cap_UB
@@ -586,10 +583,10 @@ SUB_Dual_PG_conv
 SUB_Dual_PG_ror
 SUB_Dual_PG_reservoir
 
-*SUB_Dual_PG_psp
-*SUB_Dual_C_psp
-*SUB_Dual_lvl_psp
-*SUB_Dual_lvl_psp_end
+SUB_Dual_PG_psp
+SUB_Dual_C_psp
+SUB_Dual_lvl_psp
+SUB_Dual_lvl_psp_end
 
 SUB_Dual_PF
 SUB_Lin_Dual
@@ -636,14 +633,14 @@ option optcr = 0
 Gamma_Load = 0
 ;
 
-Gamma_PG_PV(rr) = 0
+Gamma_PG_PV(rr) = 1
 ;
-Gamma_PV_total = 0
+Gamma_PV_total = 4
 ;
 
-Gamma_PG_Wind(rr) = 0
+Gamma_PG_Wind(rr) = 1
 ;
-Gamma_Wind_total = 0
+Gamma_Wind_total = 5
 ;
 
 Gamma_Ren_total = 0
@@ -664,6 +661,7 @@ PG_M_fixed_conv(g,t,v) = Cap_conv(g)
 ;
 *AF_M_Ren_fixed(t,n,v)  = af_ren_up(n,rr,t)
 *;
+
 AF_M_PV_fixed(t,rr,n,v)  = af_PV_up(t,n)
 ;
 AF_M_Wind_fixed(t,rr,n,v)  = af_Wind_up(t,n)
@@ -741,8 +739,8 @@ PG_M_fixed_conv(g,t,v) = Cap_conv(g)
 *AF_M_Ren_fixed(n,rr,t,v) = AF_Ren.l(n,rr,t)
 *;
 
-*AF_M_PV_fixed(t,rr,n,v) = AF_PV.l(t,rr,n)
-*;
+AF_M_PV_fixed(t,rr,n,v) = AF_PV.l(t,rr,n)
+;
 AF_M_Wind_fixed(t,rr,n,v) = AF_Wind.l(t,rr,n) 
 ;
 

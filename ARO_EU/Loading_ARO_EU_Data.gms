@@ -293,9 +293,9 @@ af_hydro(t,psp)                       =          availup_hydro(t,'psp')
 af_hydro(t,reservoir)                 =          availup_hydro(t,'reservoir')
 ;
 
-delta_af_PV(t,n)                        =          af_PV_up(t,n)  * 0.95
+delta_af_PV(t,n)                        =          af_PV_up(t,n)  * 0.8
 ;
-delta_af_Wind(t,n)                      =          af_Wind_up(t,n) * 0.95
+delta_af_Wind(t,n)                      =          af_Wind_up(t,n) * 0.8
 ;
 
 *************************************Investments************************************

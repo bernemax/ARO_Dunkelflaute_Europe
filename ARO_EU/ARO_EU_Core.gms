@@ -123,7 +123,8 @@ AF_Wind(t,rr,n)             realization of wind availability
 phiPG_conv(g,t)             dual var phi assoziated with Equation: MP_PG_conv
 
 mu_ror(s,t)                 dual Var phi assoziated with Equation: MP_PG_Ror
-mu_cap_psp(s,t)             dual Var phi assoziated with Equation: MP_Cap_Stor
+mu_cap_U(s,t)               dual Var phi assoziated with Equation: MP_Cap_Stor upper bound
+mu_cap_L(s,t)               dual Var phi assoziated with Equation: MP_Cap_Stor lower bound (=0)
 mu_reservoir(s,t)           dual Var phi assoziated with Equation: MP_PG_Reservoir
 mu_PG_psp(s,t)              dual var phi assoziated with Equation: MP_PG_Stor
 mu_C_psp(s,t)               dual var phi assoziated with Equation: MP_C_Stor
@@ -373,7 +374,7 @@ SUB_Dual_Objective..                                                O_Sub =e= su
                                                                     
                                                                     + sum((psp,t), - mu_PG_psp(psp,t) * (Cap_hydro(psp) *0.75))
                                                                     + sum((psp,t), - mu_C_psp(psp,t) * Cap_hydro(psp))
-                                                                    + sum((psp,t), - mu_cap_psp(psp,t) * (Cap_hydro(psp) * psp_cpf))
+                                                                    + sum((psp,t), - mu_cap_U(s,t) * (Cap_hydro(psp) * psp_cpf))
                                                                     - sum((psp,t)$(ord(t) =1), ((Cap_hydro(psp) * psp_cpf)/2) * phi_SL_psp(psp,t))
                                                                     
 *                                                                    + sum((psp,t), - mu_PG_psp(psp,t) * (Cap_hydro(psp)))
@@ -422,11 +423,11 @@ SUB_Dual_C_psp(psp,t)..                                             sum((n)$MapS
 *;
 *SUB_Dual_C_psp(psp,t)..                                             sum((n)$MapS(psp,n), - lam(t,n) + eff_psp * phi_SL_psp(psp,t) - mu_C_psp(pso,t))           =l=   0
 *;
-SUB_Dual_lvl_psp(psp,t)$(ord(t) lt card(t))..                       - phi_SL_psp(psp,t) -  phi_SL_psp(psp,t+1) - mu_cap_psp(psp,t)                     =e=   0
+SUB_Dual_lvl_psp(psp,t)$(ord(t) lt card(t))..                       - phi_SL_psp(psp,t) -  phi_SL_psp(psp,t+1) - mu_cap_U(psp,t) + mu_cap_L(s,t)     =e=   0
 ;
 *$(ord(t) gt 1)
 *ord(t) lt card(t)
-SUB_Dual_lvl_psp_end(psp,t)$(ord(t) = card(t))..                    - phi_SL_psp(psp,t)  - mu_cap_psp(psp,t)                                           =e=   0
+SUB_Dual_lvl_psp_end(psp,t)$(ord(t) = card(t))..                    - phi_SL_psp(psp,t)  - mu_cap_U(psp,t)  + mu_cap_L(s,t)                          =e=   0
 ;
 *$(ord(t) = card(t))
 *****************************************************************Dual Load shedding equation*********************************************************************

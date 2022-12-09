@@ -423,11 +423,11 @@ SUB_Dual_C_psp(psp,t)..                                             sum((n)$MapS
 *;
 *SUB_Dual_C_psp(psp,t)..                                             sum((n)$MapS(psp,n), - lam(t,n) + eff_psp * phi_SL_psp(psp,t) - mu_C_psp(pso,t))           =l=   0
 *;
-SUB_Dual_lvl_psp(psp,t)$(ord(t) lt card(t))..                        phi_SL_psp(psp,t) -  phi_SL_psp(psp,t+1) - mu_cap_U(psp,t) + mu_cap_L(s,t)     =e=   0
+SUB_Dual_lvl_psp(psp,t)$(ord(t) gt 1)..                             phi_SL_psp(psp,t) -  phi_SL_psp(psp,t+1) - mu_cap_U(psp,t) + mu_cap_L(s,t)     =e=   0
 ;
 *$(ord(t) gt 1)
 *ord(t) lt card(t)
-SUB_Dual_lvl_psp_end(psp,t)$(ord(t) = card(t))..                     phi_SL_psp(psp,t)  - mu_cap_U(psp,t)  + mu_cap_L(s,t)                          =e=   0
+SUB_Dual_lvl_psp_end(psp,t)$(ord(t) = 1)..                          phi_SL_psp(psp,t)  - mu_cap_U(psp,t)  + mu_cap_L(s,t)                          =e=   0
 ;
 *$(ord(t) = card(t))
 *****************************************************************Dual Load shedding equation*********************************************************************

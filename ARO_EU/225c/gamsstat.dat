@@ -1,0 +1,93 @@
+=1
+=2
+=0IBM ILOG CPLEX   38.2.1 96226ea8 Feb 19, 2022          WEI x86 64bit/MS Window
+=1
+--- GAMS/Cplex Link licensed for continuous and discrete problems.
+=2
+=1
+--- GMO setup time: 0.01s
+=2
+=1
+--- Space for names approximately 20.31 Mb
+=2
+=1
+--- Use option 'names no' to turn use of names off
+=2
+=1
+--- GMO memory 118.75 Mb (peak 120.23 Mb)
+=2
+=1
+--- Dictionary memory 0.00 Mb
+=2
+=1
+--- Cplex 20.1.0.1 link memory 9.48 Mb (peak 46.99 Mb)
+=2
+=1
+--- Starting Cplex
+=2
+=C
+Version identifier: 20.1.0.1 | 2021-04-07 | 3a818710c
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 4
+CPXPARAM_Parallel                                1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+CPXPARAM_MIP_Tolerances_MIPGap                   0
+Parallel mode: deterministic, using up to 4 threads for concurrent optimization:
+ * Starting dual Simplex on 1 thread...
+ * Starting Barrier on 3 threads...
+Tried aggregator 1 time.
+LP Presolve eliminated 249005 rows and 81998 columns.
+Aggregator did 44784 substitutions.
+Reduced LP has 96219 rows, 136418 columns, and 522747 nonzeros.
+Presolve time = 0.69 sec. (414.25 ticks)
+
+Iteration log . . .
+Iteration:     1   Dual objective     =             0.000000
+Perturbation started.
+Iteration:   101   Dual objective     =             0.000000
+Iteration:   788   Dual objective     =             2.304407
+Iteration:  1460   Dual objective     =             3.232169
+Iteration:  2095   Dual objective     =             4.058278
+Iteration:  2861   Dual objective     =             5.488100
+Iteration:  3714   Dual objective     =             8.320917
+Iteration:  4537   Dual objective     =            10.166769
+Iteration:  5449   Dual objective     =            13.285450
+Iteration:  6279   Dual objective     =            14.975830
+Iteration:  7101   Dual objective     =            16.698503
+Iteration:  8011   Dual objective     =            18.056429
+Iteration:  8817   Dual objective     =            19.661998
+Iteration:  9860   Dual objective     =            21.856703
+Iteration: 10940   Dual objective     =            23.190772
+Iteration: 12010   Dual objective     =            24.297005
+Iteration: 13028   Dual objective     =            25.228212
+Iteration: 13748   Dual objective     =            26.037105
+Iteration: 14683   Dual objective     =            26.903475
+Iteration: 15545   Dual objective     =            27.520643
+Iteration: 16242   Dual objective     =            27.936084
+Iteration: 17049   Dual objective     =            28.561800
+Iteration: 18103   Dual objective     =            29.268899
+Iteration: 18918   Dual objective     =            29.898232
+Iteration: 19949   Dual objective     =            32.009301
+Iteration: 20922   Dual objective     =            34.261137
+Iteration: 21926   Dual objective     =            37.143545
+Iteration: 22793   Dual objective     =            39.875531
+Iteration: 23672   Dual objective     =            42.208088
+Iteration: 24616   Dual objective     =            44.803744
+Iteration: 25615   Dual objective     =            48.357685
+Iteration: 26685   Dual objective     =            52.038741
+Iteration: 27097   Dual objective     =            56.039422
+Iteration: 27797   Dual objective     =            60.832113
+Iteration: 28907   Dual objective     =            65.386929
+Iteration: 29706   Dual objective     =            68.135074
+Iteration: 30466   Dual objective     =            70.237977
+Iteration: 31297   Dual objective     =            72.841293
+Iteration: 31778   Dual objective     =            74.940058
+Iteration: 32170   Dual objective     =            75.464758
+Iteration: 32538   Dual objective     =            76.109799
+Iteration: 32921   Dual objective     =            77.393018
+Iteration: 33453   Dual objective     =            79.584419
+Iteration: 33852   Dual objective     =            82.650471
+Iteration: 34213   Dual objective     =            87.482974
+Elapsed time = 14.47 sec. (10001.84 ticks, 34390 

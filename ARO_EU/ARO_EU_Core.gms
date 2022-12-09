@@ -105,10 +105,10 @@ PG_M_Wind(ren,t,v)          cummulative power generation level of renewable wind
 
 PLS_M(t,n,v)                load shedding
 
-M_Stor_lvl(s,t,v)           storage level of psp 
-M_charge(s,t,v)             discha re variable of psp
+M_Stor_lvl(s,t,v)
+M_charge(s,t,v)
 
-new_line_M(l)               Investment decision variable regarding capacity investment in a new prospective line
+new_line_M(l)                Investment decision variable regarding capacity investment in a new prospective line
 
 *********************************************Subproblem*********************************************
 
@@ -116,23 +116,23 @@ Pdem(t,n)                   Uncertain load in node n in time step t
 
 PE_conv(g,t)                realization of conventional supply (Ro)
 
-AF_Ren(t,rr,n)              realization of combined wind and pv availability
-AF_PV(t,rr,n)               realization of pv availability
-AF_Wind(t,rr,n)             realization of wind availability
+AF_Ren(t,rr,n)              realization of combined wind and pv
+AF_PV(t,rr,n)
+AF_Wind(t,rr,n)
 
 phiPG_conv(g,t)             dual var phi assoziated with Equation: MP_PG_conv
+phiPG_ror(s,t)              dual Var phi assoziated with Equation: MP_PG_Ror
+phi_cap_psp(s,t)            dual Var phi assoziated with Equation: MP_Cap_Stor
+phi_cap_psp_l(s,t)
+phiPG_reservoir(s,t)        dual Var phi assoziated with Equation: MP_PG_Reservoir
 
-mu_ror(s,t)                 dual Var phi assoziated with Equation: MP_PG_Ror
-mu_cap_U(s,t)               dual Var phi assoziated with Equation: MP_Cap_Stor upper bound
-mu_cap_L(s,t)               dual Var phi assoziated with Equation: MP_Cap_Stor lower bound (=0)
-mu_reservoir(s,t)           dual Var phi assoziated with Equation: MP_PG_Reservoir
-mu_PG_psp(s,t)              dual var phi assoziated with Equation: MP_PG_Stor
-mu_C_psp(s,t)               dual var phi assoziated with Equation: MP_C_Stor
+phi_PG_psp(s,t)             dual var phi assoziated with Equation: MP_PG_Stor
+phi_C_psp(s,t)              dual var phi assoziated with Equation: MP_C_Stor
 
-phiPG_PV(ren,t)             dual Var phi assoziated with Equation: MP_PG_PV
-aux_phi_PV(ren,t)           auxilary variable to linearize uncertain term in objective function
-phiPG_wind(ren,t)           dual Var phi assoziated with Equation: MP_PG_WInd
-aux_phi_wind(ren,t)         auxilary variable to linearize uncertain term in objective function
+phiPG_PV(ren,t)
+aux_phi_PV(ren,t)
+phiPG_wind(ren,t)
+aux_phi_wind(ren,t)
 
 phiPG_Ren(ren,t)            dual variable of combined wind and solar pv generation assoziated with Equation: MP_PG_RR
 aux_phi_Ren_WM(ren,t)       aux continuous var to linearize
@@ -144,6 +144,8 @@ omega_LB(l,t)               dual var phi assoziated with Equation: MP_PF_EX_Cap_
 
 teta_UB(t,n)                dual var beta assoziated with Equation: Theta_UB
 teta_LB(t,n)                dual var beta assoziated with Equation: Theta_LB
+ 
+
 ;
 
 Binary Variables
@@ -244,6 +246,7 @@ SUB_lin41
 SUB_lin42
 SUB_lin43
 SUB_lin44
+
 ;
 *#####################################################################################Master####################################################################################
 
@@ -298,8 +301,6 @@ MP_PG_Reservoir(reservoir,t,vv)$(ord(vv) lt (itaux+1))..                        
 
 MP_PG_Stor(psp,t,vv)$(ord(vv) lt (itaux+1))..                                                   PG_M_Hydro(psp,t,vv)        =l= Cap_hydro(psp) * 0.75
 ;
-*MP_PG_Stor(psp,t,vv)$(ord(vv) lt (itaux+1))..                                                   PG_M_Hydro(psp,t,vv)        =l= Cap_hydro(psp) 
-*;
 MP_C_Stor(psp,t,vv)$(ord(vv) lt (itaux+1))..                                                    M_charge(psp,t,vv)          =l= Cap_hydro(psp) 
 ;
 MP_Cap_Stor(psp,t,vv)$(ord(vv) lt (itaux+1))..                                                  M_Stor_lvl(psp,t,vv)        =l= Cap_hydro(psp) * psp_cpf
@@ -307,13 +308,9 @@ MP_Cap_Stor(psp,t,vv)$(ord(vv) lt (itaux+1))..                                  
 
 MP_Stor_lvl_start(psp,t,vv)$(ord(vv) lt (itaux+1)and ord(t) = 1)..                              M_Stor_lvl(psp,t,vv)        =e= (Cap_hydro(psp) * psp_cpf)/2 + M_charge(psp,t,vv) - PG_M_Hydro(psp,t,vv) 
 ;
-MP_Stor_lvl(psp,t,vv)$(ord(vv) lt (itaux+1) and ord(t) gt 1)..                                  M_Stor_lvl(psp,t,vv)        =e= M_Stor_lvl(psp,t-1,vv) + M_charge(psp,t-1,vv)  -  PG_M_Hydro(psp,t-1,vv) 
+MP_Stor_lvl(psp,t,vv)$(ord(vv) lt (itaux+1) and ord(t) gt 1)..                                  M_Stor_lvl(psp,t,vv)        =e= M_Stor_lvl(psp,t-1,vv) + M_charge(psp,t,vv)  -  PG_M_Hydro(psp,t,vv) 
 ;
 
-*MP_Stor_lvl_start(psp,t,vv)$(ord(vv) lt (itaux+1)and ord(t) = 1)..                              M_Stor_lvl(psp,t,vv)        =e= (Cap_hydro(psp) * psp_cpf)/2 + M_charge(psp,t,vv) * eff_psp - (1/eff_psp ) * PG_M_Hydro(psp,t,vv) 
-*;
-*MP_Stor_lvl(psp,t,vv)$(ord(vv) lt (itaux+1) and ord(t) gt 1)..                                  M_Stor_lvl(psp,t,vv)        =e= M_Stor_lvl(psp,t-1,vv) + M_charge(psp,t-1,vv) * eff_psp - (1/eff_psp ) * PG_M_Hydro(psp,t-1,vv) 
-*;
 
 *********************************************************************************DC Power flow lines***********************************************************************************
 
@@ -369,18 +366,15 @@ SUB_Dual_Objective..                                                O_Sub =e= su
                                                                     - phiPG_wind(ren,t) * (Cap_ren(ren) * af_wind_up(t,n))
                                                                     + aux_phi_wind(ren,t)  * (Cap_ren(ren) * delta_af_wind(t,n)))
 
-                                                                    + sum((ror,t), - mu_ror(ror,t) * Cap_Hydro(ror))
-                                                                    + sum((reservoir,t), - mu_reservoir(reservoir,t) * Cap_Hydro(reservoir))
+                                                                    + sum((ror,t), - phiPG_ror(ror,t) * Cap_Hydro(ror))
+                                                                    + sum((reservoir,t), - phiPG_reservoir(reservoir,t) * Cap_Hydro(reservoir))
                                                                     
-                                                                    + sum((psp,t), - mu_PG_psp(psp,t) * (Cap_hydro(psp) *0.75))
-                                                                    + sum((psp,t), - mu_C_psp(psp,t) * Cap_hydro(psp))
-                                                                    + sum((psp,t), - mu_cap_U(s,t) * (Cap_hydro(psp) * psp_cpf))
-                                                                    - sum((psp,t)$(ord(t) =1), ((Cap_hydro(psp) * psp_cpf)/2) * phi_SL_psp(psp,t))
                                                                     
-*                                                                    + sum((psp,t), - mu_PG_psp(psp,t) * (Cap_hydro(psp)))
-*                                                                    + sum((psp,t), - mu_C_psp(pso,t) * Cap_hydro(psp))
-*                                                                    + sum((psp,t), - mu_cap_psp(s,t) * (Cap_hydro(psp) * psp_cpf))
-*                                                                    + sum((psp,t)$(ord(t) =1), ((Cap_hydro(psp) * psp_cpf)/2) * phi_SL_psp(psp,t))
+                                                                    - sum((psp,t), phi_PG_psp(psp,t) * (Cap_hydro(psp) *0.75) + phi_C_psp(psp,t) * Cap_hydro(psp) + phi_cap_psp(psp,t) * (Cap_hydro(psp) * psp_cpf))
+*                                                                    + sum((psp,t), - phi_PG_psp(psp,t) * (Cap_hydro(psp)))
+*                                                                    + sum((psp,t), - phi_C_psp(psp,t) * Cap_hydro(psp))
+*                                                                    + sum((psp,t), - phi_cap_psp(psp,t) * (Cap_hydro(psp) * psp_cpf))
+                                                                    + sum((psp,t)$(ord(t) =1), ((Cap_hydro(psp) * psp_cpf)/2) * phi_SL_psp(psp,t))
                                                                     
 
 *                                                                    + sum((rr,ren,n,WM,t)$(MAP_RR_Ren(rr,ren,n)),
@@ -400,35 +394,38 @@ SUB_Dual_Objective..                                                O_Sub =e= su
 *delta_af_PV(t,n)
 *****************************************************************Dual Power generation equation*****************************************************************
 
-SUB_Dual_PG_Ren(ren,t)..                                            sum((n)$Map_Ren_node(ren,n), lam(t,n) - phiPG_Ren(ren,t))                         =l=   0
+SUB_Dual_PG_Ren(ren,t,n)$Map_Ren_node(ren,n)..                        lam(t,n) - phiPG_Ren(ren,t)                         =l=   0
 ;
-SUB_Dual_PG_PV(ren,t)..                                             sum((n)$Map_PV(ren,n), lam(t,n) - phiPG_PV(ren,t))                                =l=   0
+SUB_Dual_PG_PV(ren,t,n)$Map_PV(ren,n)..                               lam(t,n) - phiPG_PV(ren,t)                          =l=   0
 ; 
-SUB_Dual_PG_wind(ren,t)..                                           sum((n)$Map_Wind(ren,n), lam(t,n) - phiPG_wind(ren,t))                            =l=   0
+SUB_Dual_PG_wind(ren,t,n)$Map_Wind(ren,n)..                           lam(t,n) - phiPG_wind(ren,t)                        =l=   0
 ;
 
-SUB_Dual_PG_conv(g,t)..                                             sum((n)$MapG(g,n), lam(t,n) -  phiPG_conv(g,t))                                   =l=  var_costs(g,t)
+SUB_Dual_PG_conv(g,t,n)$MapG(g,n)..                                   lam(t,n) -  phiPG_conv(g,t)                         =l=  var_costs(g,t)
 ;
-SUB_Dual_PG_ror(ror,t)..                                            sum((n)$MapS(ror,n), lam(t,n) -  mu_ror(ror,t))                                =l=   0
+SUB_Dual_PG_ror(ror,t,n)$MapS(ror,n)..                                lam(t,n) -  phiPG_ror(ror,t)                        =l=   0
 ; 
-SUB_Dual_PG_reservoir(reservoir,t)..                                sum((n)$MapS(reservoir,n), lam(t,n) -  mu_reservoir(reservoir,t))              =l=   20
+SUB_Dual_PG_reservoir(reservoir,t,n)$MapS(reservoir,n)..              lam(t,n) -  phiPG_reservoir(reservoir,t)            =l=   20
 ;
 
 
-SUB_Dual_PG_psp(psp,t)..                                            sum((n)$MapS(psp,n), lam(t,n)  - phi_SL_psp(psp,t) - mu_PG_psp(psp,t))           =l=   0
+SUB_Dual_PG_psp(psp,t,n)$MapS(psp,n)..                               lam(t,n)  - phi_SL_psp(psp,t) - phi_PG_psp(psp,t)            =l=   0
 ;
-SUB_Dual_C_psp(psp,t)..                                             sum((n)$MapS(psp,n), - lam(t,n) +  phi_SL_psp(psp,t) - mu_C_psp(psp,t))          =l=   0
+SUB_Dual_C_psp(psp,t,n)$MapS(psp,n)..                                 - lam(t,n) +  phi_SL_psp(psp,t) - phi_C_psp(psp,t)          =l=   0
 ;
-*SUB_Dual_PG_psp(psp,t)..                                            sum((n)$MapS(psp,n), lam(t,n)  + (1/eff_psp ) * phi_SL_psp(psp,t) - mu_PG_psp(psp,t))      =l=   0
+*SUB_Dual_PG_psp(psp,t)..                                            sum((n)$MapS(psp,n), lam(t,n)  - (1/eff_psp ) * phi_SL_psp(psp,t) - phi_PG_psp(psp,t))      =l=   0
 *;
-*SUB_Dual_C_psp(psp,t)..                                             sum((n)$MapS(psp,n), - lam(t,n) + eff_psp * phi_SL_psp(psp,t) - mu_C_psp(pso,t))           =l=   0
+*SUB_Dual_C_psp(psp,t)..                                             sum((n)$MapS(psp,n), - lam(t,n) + eff_psp * phi_SL_psp(psp,t) - phi_C_psp(psp,t))           =l=   0
 *;
-SUB_Dual_lvl_psp(psp,t)$(ord(t) gt 1)..                             phi_SL_psp(psp,t) -  phi_SL_psp(psp,t+1) - mu_cap_U(psp,t) + mu_cap_L(s,t)     =e=   0
+SUB_Dual_lvl_psp(psp,t)$(ord(t) gt 1)..                         phi_SL_psp(psp,t) -  phi_SL_psp(psp,t-1) - phi_cap_psp(psp,t) + phi_cap_psp_l(psp,t)    =e=   0
+*(ord(t) lt card(t))
 ;
 *$(ord(t) gt 1)
 *ord(t) lt card(t)
-SUB_Dual_lvl_psp_end(psp,t)$(ord(t) = 1)..                          phi_SL_psp(psp,t)  - mu_cap_U(psp,t)  + mu_cap_L(s,t)                          =e=   0
+SUB_Dual_lvl_psp_end(psp,t)$(ord(t) = 1)..                      phi_SL_psp(psp,t)  - phi_cap_psp(psp,t) + phi_cap_psp_l(psp,t)                          =e=   0
+*(ord(t) = card(t))
 ;
+*+ phi_cap_psp_l(psp,t)
 *$(ord(t) = card(t))
 *****************************************************************Dual Load shedding equation*********************************************************************
 
@@ -627,21 +624,21 @@ SUB_lin44
 ;
 Subproblem.scaleopt = 1
 ;
-option threads =  4
+option threads =  50
 ;
 option optcr = 0
 ;
 Gamma_Load = 0
 ;
 
-Gamma_PG_PV(rr) = 1
+Gamma_PG_PV(rr) = 0
 ;
-Gamma_PV_total = 4
+Gamma_PV_total = 0
 ;
 
-Gamma_PG_Wind(rr) = 1
+Gamma_PG_Wind(rr) = 0
 ;
-Gamma_Wind_total = 5
+Gamma_Wind_total = 0
 ;
 
 Gamma_Ren_total = 0
@@ -649,9 +646,9 @@ Gamma_Ren_total = 0
 Gamma_PG_ren(rr) = 0
 ;
 *inv_iter_hist(l,v)  = 0;
-LB                  = -1e10
+LB                  = -1e12
 ;
-UB                  =  1e10
+UB                  =  1e12
 ;
 
 Loop(v$((UB - LB) gt Toleranz),
@@ -662,7 +659,6 @@ PG_M_fixed_conv(g,t,v) = Cap_conv(g)
 ;
 *AF_M_Ren_fixed(t,n,v)  = af_ren_up(n,rr,t)
 *;
-
 AF_M_PV_fixed(t,rr,n,v)  = af_PV_up(t,n)
 ;
 AF_M_Wind_fixed(t,rr,n,v)  = af_Wind_up(t,n)
@@ -694,8 +690,8 @@ inv_cost_master(v) = sum(l,  new_line_M.l(l) * (I_costs_new(l)));
             report_decomp(v,'itaux','')         = itaux;
             report_decomp(v,'Gamma_Load','')    = Gamma_Load                                                    + EPS;
             report_decomp(v,'GAMMA_PG_conv','') = GAMMA_PG_conv                                                 + EPS;
-            report_decomp(v,'GAMMA_PG_PV','')   = Gamma_PV_total                                                 + EPS;
-            report_decomp(v,'GAMMA_PG_wind','') = Gamma_Wind_total                                               + EPS;
+            report_decomp(v,'GAMMA_PG_PV','')   = Gamma_PV_total                                                + EPS;
+            report_decomp(v,'GAMMA_PG_wind','') = Gamma_Wind_total                                              + EPS;
             report_decomp(v,'Line built',l)     = new_line_M.l(l)                                                     ;
             report_decomp(v,'line cost','')     = inv_cost_master(v)                                            + EPS;
             report_decomp(v,'M_obj','')         = O_M.L                                                         + EPS;
@@ -704,6 +700,7 @@ inv_cost_master(v) = sum(l,  new_line_M.l(l) * (I_costs_new(l)));
             report_decomp(v,'M_Shed','')        = SUM((t,n), PLS_M.l(t,n,v))                                    + EPS;
             report_decomp(v,'M_GC','')          = SUM((g,t), var_costs(g,t) * PG_M_conv.l(g,t,v))               + EPS;
             report_decomp(v,'M_LS','')          = SUM((t,n), LS_costs(n) * PLS_M.l(t,n,v))                      + EPS;
+
 
            
 ;
@@ -747,16 +744,31 @@ AF_M_Wind_fixed(t,rr,n,v) = AF_Wind.l(t,rr,n)
 
 *execute_unload "check_ARO_toy_complete.gdx"
 $include network_expansion_clean.gms
-execute_unload "check_Loop_Run.gdx";
+execute_unload "check_Loop_Run_2.gdx";
 ;
 )
 
-execute_unload "check_TEP_ARO.gdx";
+*execute_unload "check_TEP_ARO_2.gdx";
 ***************************************************output**************************************************
-$ontext
-Report_dunkel_time_Z(rr) = sum(WM, z_PG_Ren.l(rr,WM))
+Parameter
+Report_dunkel_time_Z(rr)
+Report_dunkel_PV_Z(rr,WM)
+Report_dunkel_Wind_Z(rr,WM)
+Report_lines_built(l) 
+Report_total_cost
+Report_line_constr_cost(V)
+Report_LS_node(t,n,vv)
+Report_LS_per_hour(t,vv)
+Report_LS_total(vv)
+Report_PG(*,*,t,vv)
+Report_lineflow(l,t,vv)
 ;
-Report_dunkel_hours_Z(rr,WM) =  z_PG_Ren.l(rr,WM)
+*$ontext
+Report_dunkel_time_Z(rr) = sum(WM, z_PG_wind.l(rr,WM) + z_PG_PV.l(rr,WM))
+;
+Report_dunkel_PV_Z(rr,WM) =  z_PG_PV.l(rr,WM)
+;
+Report_dunkel_Wind_Z(rr,WM) = z_PG_wind.l(rr,WM)
 ;
 Report_lines_built(l) = new_line_M.l(l)
 ;
@@ -777,22 +789,21 @@ Report_PG('conv',g,t,vv)  = PG_M_conv.l(g,t,vv)
 ;
 Report_PG('ROR',ror,t,vv)  = PG_M_Hydro.l(ror,t,vv)
 ;
-Report_PG('PSP',psp,t,vv)  = PG_M_Hydro.l(psp,t,vv)
-;
+*Report_PG('PSP',psp,t,vv)  = PG_M_Hydro.l(psp,t,vv)
+*;
 Report_PG('Reservoir',reservoir,t,vv)  = PG_M_Hydro.l(reservoir,t,vv)
 ;
-Report_PG('REN',ren,t,vv)  = PG_M_Ren.l(ren,t,vv)
-;
+*Report_PG('REN',ren,t,vv)  = PG_M_Ren.l(ren,t,vv)
+*;
 
 Report_lineflow(l,t,vv) = PF_M.l(l,t,vv)
 ;
 
-execute_unload "Results_Clustered_ARO.gdx"
-Report_dunkel_time_Z, Report_dunkel_hours_Z, Report_lines_built, Report_total_cost,
-Report_line_constr_cost, Report_LS_CP, Report_LS_NMM, Report_LS_FT, Report_LS_TL,
-Report_LS_PPP, Report_LS_WP, Report_LS_TE, Report_LS_MC, Report_LS_C, Report_LS_OI,
-Report_LS_X,Report_LS_node,Report_LS_per_hour,Report_LS_total, Report_PG, Report_lineflow
+execute_unload "Results_ARO_EU.gdx"
+Report_dunkel_time_Z, Report_dunkel_PV_Z,Report_dunkel_Wind_Z,  Report_lines_built, Report_total_cost,
+Report_line_constr_cost,Report_LS_node,Report_LS_per_hour,Report_LS_total, Report_PG, Report_lineflow
 ;
+
 
 execute '=gams Master lo=2 gdx=Results_Clustered_ARO'
 ;
@@ -803,4 +814,4 @@ execute '=gdx2xls Results_Clustered_ARO.gdx'
 
 
 $stop
-$offtext
+*$offtext

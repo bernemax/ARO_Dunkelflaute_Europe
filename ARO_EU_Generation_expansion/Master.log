@@ -1,0 +1,13 @@
+--- Job Master Start 01/16/23 15:21:20 41.3.0 0f17a8d6 WEX-WEI x86 64bit/MS Windows
+*** Unable to open input file (RC=2) Master
+*** SysMsg: No such file or directory
+--- Applying:
+    C:\GAMS\41\gmsprmNT.txt
+--- GAMS Parameters defined
+    Input Master
+    ScrDir "C:\Users\HP_Bernecker\Desktop\ARO EU\ARO_EU_Generation_expansion\225c\"
+    SysDir C:\GAMS\41\
+    LogOption 2
+    GDX "C:\Users\HP_Bernecker\Desktop\ARO EU\ARO_EU_Generation_expansion\Results_Clustered_ARO.gdx"
+*** Status: Terminated due to parameter errors
+--- Job Master Stop 01/16/23 15:21:20 elapsed 0:00:00.000

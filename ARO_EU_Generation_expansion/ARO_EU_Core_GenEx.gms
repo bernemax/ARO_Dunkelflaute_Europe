@@ -768,6 +768,8 @@ inv_cost_master(v) = sum(ren, Cap_ren_M.l(ren) * IC_ren(ren)* df)
             report_cap_ren(n,ren,v,'On_Wind')        = Cap_ren_M.l(ren)$Map_Onwind(ren,n);
             report_cap_ren(n,ren,v,'Off_Wind')       = Cap_ren_M.l(ren)$Map_Offwind(ren,n);
             report_cap_ren(n,ren,v,'PV')             = Cap_ren_M.l(ren)$Map_PV(ren,n);
+            report_cap_battery(n,b,v,'Battery')      = Cap_battery_M.l(b)$Map_Battery(b,n);
+            report_cap_battery(n,b,v,'Inverter')     = Cap_inverter_M.l(b)$Map_Battery(b,n);
            
 
 

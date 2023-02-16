@@ -687,9 +687,17 @@ option threads =  50
 ;
 option optcr = 0
 ;
-Gamma_Load = 0
+
+Cap_ren_M.up(ren) = 50000
+;
+Cap_conv_M.up(g) = 50000
+;
+Cap_battery_M.up(b) = 50000
 ;
 
+
+Gamma_Load = 0
+;
 Gamma_PG_PV(rr) = 0
 ;
 Gamma_PV_total = 0

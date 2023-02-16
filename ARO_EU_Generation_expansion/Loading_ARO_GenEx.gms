@@ -177,7 +177,9 @@ par=Gen_Hydro                   rng=Hydro!B1:H98                        rDim=1 c
 par=priceup                     rng=Ressource_prices!A1:H8761           rDim=1 cdim=1
 par=availup_hydro               rng=Availability!A2:D8762               rDim=1 cdim=1
 par=af_PV_up                    rng=Availability!F2:BD8762              rDim=1 cdim=1
+par=delta_af_PV                 rng=Reduction!A2:AY8762                 rDim=1 cdim=1
 par=af_wind_up                  rng=Availability!BG2:DE8762             rDim=1 cdim=1
+par=delta_af_Wind               rng=Reduction!BB2:CZ8762                rDim=1 cdim=1
 $offecho
 
 $onUNDF
@@ -188,7 +190,7 @@ $load   MAP_WM, Map_send_L, Map_res_L,  MapS, Map_Ren_node, Map_PV, Map_Wind, Ma
 $load   MapG, Map_OCGT, Map_CCGT, Map_Biomass, Map_Nuclear, Map_Onwind, Map_Offwind, Map_battery
 $load   Grid_tech, Gen_conv, Gen_ren, Gen_Hydro
 $load   priceup, battery_up
-$load   availup_hydro, af_PV_up, af_wind_up
+$load   availup_hydro, af_PV_up, delta_af_PV, af_wind_up, delta_af_Wind
 $GDXin
 $offUNDF
 
@@ -307,20 +309,12 @@ fuel_start(g)       =          Gen_conv(g,'fuel_start')
 
 ************************************availability************************************
 
-
 af_hydro(t,ror)                       =          availup_hydro(t,'ror')
 ;
 af_hydro(t,psp)                       =          availup_hydro(t,'psp')
 ;
 af_hydro(t,reservoir)                 =          availup_hydro(t,'reservoir')
 ;
-
-delta_af_PV(t,n)                        =          af_PV_up(t,n)  * 0.8
-;
-delta_af_Wind(t,n)                      =          af_Wind_up(t,n) * 0.8
-;
-
-
 
 *************************************Investments************************************
 IC_conv(g)        =    Gen_conv(g,'IC_costs_conv')

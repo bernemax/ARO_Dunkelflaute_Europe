@@ -26,4 +26,6 @@ par=Gen_Hydro                   rng=Hydro!B1:H98                        rDim=1 c
 par=priceup                     rng=Ressource_prices!A1:H8761           rDim=1 cdim=1
 par=availup_hydro               rng=Availability!A2:D8762               rDim=1 cdim=1
 par=af_PV_up                    rng=Availability!F2:BD8762              rDim=1 cdim=1
+par=delta_af_PV                 rng=Reduction!A2:AY8762                 rDim=1 cdim=1
 par=af_wind_up                  rng=Availability!BG2:DE8762             rDim=1 cdim=1
+par=delta_af_Wind               rng=Reduction!BB2:CZ8762                rDim=1 cdim=1

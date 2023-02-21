@@ -1,2 +1,0 @@
-par=af_sun                       rng=CF_table!U2:AM25922                         rDim=2 cdim=1
-par=af_wind                      rng=CF_table!A2:S25922                          rDim=2 cdim=1

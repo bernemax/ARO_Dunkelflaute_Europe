@@ -8,17 +8,17 @@ $setGlobal bat ""      if "*" no battery in the model, if "" otherwise
 
 Sets
 
-t/t4500*t5000/
+t/t1*t4000/
 
-*n /DE0,DE1,DE2,DE3,DE4,DE5,DE6/
-*$ontext
+n /DE0,DE1,DE2,DE3,DE4,DE5,DE6/
+$ontext
 n /AT0,BE0,CH0,CZ0,DE0,DE1,DE2,DE3,DE4,DE5,
 DE6,DK0,DK1,EE0,ES0,ES1,ES2,ES3,FI0,FR0,FR1,
 FR2,FR3,FR4,FR5,FR6,GB0,GB1,GB2,GB3,GB4,GB5,
 HU0,IE0,IT0,IT1,IT2,IT3,IT4,LT0,LU0,LV0,NL0,
 NO0,PL0,PT0,SE0,SE1,SI0,SK0
 /
-*$offtext
+$offtext
 l /l1*l97,l1001*l1097/
 g /g1*g172/
 b /b1 * b50/

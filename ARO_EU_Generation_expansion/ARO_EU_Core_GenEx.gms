@@ -3,25 +3,24 @@ option profile = 1;
 option profiletol = 0.01;
 
 $setGlobal bat ""      if "*" no battery in the model, if "" otherwise
-
+$setGlobal hydrogen ""      if "*" no hydrogen in the model, if "" otherwise
 ;
 
 Sets
 
-t/t1*t4000/
+t/t1*t500/
 
-n /DE0,DE1,DE2,DE3,DE4,DE5,DE6/
-$ontext
-n /AT0,BE0,CH0,CZ0,DE0,DE1,DE2,DE3,DE4,DE5,
-DE6,DK0,DK1,EE0,ES0,ES1,ES2,ES3,FI0,FR0,FR1,
+n /DE0,DE1,DE2,DE3,DE4,DE5,DE6,AT0,BE0,CH0,CZ0
+,DK0,DK1,EE0,ES0,ES1,ES2,ES3,FI0,FR0,FR1,
 FR2,FR3,FR4,FR5,FR6,GB0,GB1,GB2,GB3,GB4,GB5,
 HU0,IE0,IT0,IT1,IT2,IT3,IT4,LT0,LU0,LV0,NL0,
 NO0,PL0,PT0,SE0,SE1,SI0,SK0
 /
-$offtext
+
 l /l1*l97,l1001*l1097/
 g /g1*g172/
 b /b1 * b50/
+h /h1 * h50/
 s /s1*s97/
 Ren/ren1*ren126/
 rr/rr1*rr24/
@@ -40,15 +39,12 @@ pros_l(l)/l1001*l1097/
 OCGT(g)
 CCGT(g)
 nuc(g)
-$ontext
-CCGT(g)
 lig(g)
 coal(g)
-nuc(g)
 oil(g)
 waste(g)
 biomass(g)
-$offtext
+
 ****************************volatil renewables**************************************
 wind_on(ren)
 wind_off(ren)
@@ -78,6 +74,7 @@ Map_Offwind(ren,n)
 Map_Onwind(ren,n)
 
 Map_Battery(b,n)
+Map_hydrogen(h,n)
 
 MAP_WM(t,WM)
 
@@ -90,9 +87,7 @@ alias (n,nn),(t,tt),(l,ll), (v,vv)
 ;
 
 $include Loading_ARO_GenEx.gms
-;
-
-*execute_unload "check_input.gdx";
+*execute_unload "check_input_DE.gdx";
 *$stop
 
 *######################################variables######################################
@@ -110,6 +105,7 @@ lam(t,n)                    dual var lamda assoziated with Equation: MP_marketcl
 phi(l,t)                    dual var phi assoziated with Equation: MP_PF_Ex
 phi_SL_psp(s,t)             dual var phi assoziated with Equation: MP_Stor_lvl
 phi_SL_battery(b,t)         dual var phi assoziated with Equation: MP_battery_lvl
+phi_SL_hydrogen(h,t)        dual var phi assoziated with Equation: MP_hydrogen_lvl
 teta_ref(t,n)               dual var beta assoziated with Equation: Theta_ref
 ;
 positive Variables
@@ -132,11 +128,19 @@ PG_M_battery(b,t,v)
 M_battery_lvl(b,t,v)
 M_battery_charge(b,t,v)
 
+PG_M_hydrogen(h,t,v)
+M_hydrogen_lvl(h,t,v)
+M_hydrogen_charge(h,t,v)
+
 *new_line_M(l)                decision variable regarding investment in a new prospective line
 Cap_conv_M(g)
 Cap_ren_M(ren)
 Cap_battery_M(b)
 Cap_inverter_M(b)
+
+Cap_hydro_stor_M(h)
+Cap_electrolysis_M(h)
+Cap_fuel_cell_M(h)
 
 
 *********************************************Subproblem*********************************************
@@ -163,6 +167,11 @@ phi_cap_battery_l(b,t)      dual Var phi assoziated with Equation: MP_Cap_Stor l
 phi_PG_battery(b,t)         dual var phi assoziated with Equation: MP_PG_Stor
 phi_C_battery(b,t)          dual var phi assoziated with Equation: MP_C_Stor
 
+phi_cap_hydrogen(h,t)        dual Var phi assoziated with Equation: MP_Cap_Stor upper bound
+phi_cap_hydrogen_l(h,t)      dual Var phi assoziated with Equation: MP_Cap_Stor lower bound
+phi_PG_hydrogen(h,t)         dual var phi assoziated with Equation: MP_PG_Stor
+phi_C_hydrogen(h,t)          dual var phi assoziated with Equation: MP_C_Stor
+
 phiPG_PV(ren,t)
 aux_phi_PV(ren,t)
 phiPG_wind(ren,t)
@@ -179,7 +188,6 @@ omega_LB(l,t)               dual var phi assoziated with Equation: MP_PF_EX_Cap_
 teta_UB(t,n)                dual var beta assoziated with Equation: Theta_UB
 teta_LB(t,n)                dual var beta assoziated with Equation: Theta_LB
  
-
 ;
 
 Binary Variables
@@ -221,6 +229,12 @@ MP_Cap_battery
 MP_battery_lvl_start
 MP_battery_lvl
 
+MP_PG_hydrogen
+MP_C_hydrogen
+MP_Cap_hydrogen
+MP_hydrogen_lvl_start
+MP_hydrogen_lvl
+
 MP_PF_EX
 MP_PF_EX_Cap_UB
 MP_PF_EX_Cap_LB
@@ -253,6 +267,11 @@ SUB_Dual_PG_battery
 SUB_Dual_C_battery
 SUB_Dual_lvl_battery
 SUB_Dual_lvl_battery_end
+
+SUB_Dual_PG_hydrogen
+SUB_Dual_C_hydrogen
+SUB_Dual_lvl_hydrogen
+SUB_Dual_lvl_hydrogen_end
 
 SUB_Dual_LS
 
@@ -295,6 +314,9 @@ MP_Objective(vv)..                                                              
                                                                                                         + sum((g), Cap_conv_M(g) * IC_conv(g) * df)
                                                                                                         + sum((b), Cap_battery_M(b) * IC_bs(b) * df)
                                                                                                         + sum((b), Cap_inverter_M(b) * IC_bi(b) * df)
+                                                                                                        + sum((h), Cap_hydro_stor_M(h) * IC_hs(h) * df)
+                                                                                                        + sum((h), Cap_electrolysis_M(h) * IC_hel(h) * df)
+                                                                                                        + sum((h), Cap_fuel_cell_M(h) * IC_hfc(h) * df)
                                                                                                         + ETA
 ;
 
@@ -316,6 +338,9 @@ MP_marketclear(t,n,vv)$(ord(vv) lt (itaux+1))..
                                                                                                 
 %bat%                                                                                           + sum((b)$Map_battery(b,n), PG_M_battery(b,t,vv))
 %bat%                                                                                           - sum((b)$Map_battery(b,n), M_battery_charge(b,t,vv))
+
+%hydrogen%                                                                                      + sum((h)$Map_hydrogen(h,n), PG_M_hydrogen(h,t,vv))
+%hydrogen%                                                                                      - sum((h)$Map_hydrogen(h,n), M_hydrogen_charge(h,t,vv))
                                                                                                 
                                                                                                 +  sum(l$(Map_Res_l(l,n) and ex_l(l)), PF_M(l,t,vv))
                                                                                                 -  sum(l$(Map_Send_l(l,n) and ex_l(l)), PF_M(l,t,vv))
@@ -325,14 +350,14 @@ MP_marketclear(t,n,vv)$(ord(vv) lt (itaux+1))..
 
 MP_PG_RR(ren,t,rr,n,vv)$(MAP_RR_Ren(rr,ren) and Map_RR(rr,n) and (ord(vv) lt (itaux+1)))..      PG_M_Ren(ren,t,vv)       =l= Cap_ren_M(ren) * AF_M_Ren_fixed(t,rr,n,vv)
 ;
-MP_PG_PV(ren,t,rr,n,vv)$(MAP_RR_Ren_node(rr,ren,n) and (ord(vv) lt (itaux+1)))..                PG_M_PV(ren,t,vv)        =l= Cap_ren_M(ren) * AF_M_PV_fixed(t,rr,n,vv)
+MP_PG_PV(ren,t,rr,n,vv)$(MAP_RR_Ren_node(rr,ren,n) and (ord(vv) lt (itaux+1)))..                PG_M_PV(ren,t,vv)        =l= Cap_ren_ex(ren) + Cap_ren_M(ren) * AF_M_PV_fixed(t,rr,n,vv)
 ;
-MP_PG_Wind(ren,t,rr,n,vv)$(MAP_RR_Ren_node(rr,ren,n) and (ord(vv) lt (itaux+1)))..              PG_M_Wind(ren,t,vv)      =l= Cap_ren_M(ren) * AF_M_Wind_fixed(t,rr,n,vv)
+MP_PG_Wind(ren,t,rr,n,vv)$(MAP_RR_Ren_node(rr,ren,n) and (ord(vv) lt (itaux+1)))..              PG_M_Wind(ren,t,vv)      =l= Cap_ren_ex(ren) +  Cap_ren_M(ren) * AF_M_Wind_fixed(t,rr,n,vv)
 ;
 *Map_wind(ren,n)
 *********************************************************************************Dispatchable Generation*********************************************************************************
 
-MP_PG_conv(g,t,vv)$(ord(vv) lt (itaux+1))..                                                     PG_M_conv(g,t,vv)        =l= Cap_conv_M(g)
+MP_PG_conv(g,t,vv)$(ord(vv) lt (itaux+1))..                                                     PG_M_conv(g,t,vv)        =l= Cap_conv_ex(g) + Cap_conv_M(g)
 ;
 MP_PG_ROR(ror,t,vv)$(ord(vv) lt (itaux+1))..                                                    PG_M_Hydro(ror,t,vv)     =l= Cap_hydro(ror)
 ;
@@ -359,12 +384,26 @@ MP_PG_Battery(b,t,vv)$(ord(vv) lt (itaux+1))..                                  
 ;
 MP_C_Battery(b,t,vv)$(ord(vv) lt (itaux+1))..                                                    M_Battery_charge(b,t,vv)    =l= Cap_inverter_M(b) * 0.96
 ;
-MP_Cap_Battery(b,t,vv)$(ord(vv) lt (itaux+1))..                                                  M_Battery_lvl(b,t,vv)        =l= Cap_battery_M(b)
+MP_Cap_Battery(b,t,vv)$(ord(vv) lt (itaux+1))..                                                  M_Battery_lvl(b,t,vv)        =l= Cap_battery_M(b) 
 ;
 
 MP_Battery_lvl_start(b,t,vv)$(ord(vv) lt (itaux+1)and ord(t) = 1)..                              M_Battery_lvl(b,t,vv)        =e= Cap_battery_M(b)/2 +  M_Battery_charge(b,t,vv) - PG_M_Battery(b,t,vv) 
 ;
 MP_Battery_lvl(b,t,vv)$(ord(vv) lt (itaux+1) and ord(t) gt 1)..                                  M_Battery_lvl(b,t,vv)        =e= M_Battery_lvl(b,t-1,vv) + M_Battery_charge(b,t,vv)  -  PG_M_Battery(b,t,vv) 
+;
+
+*********************************************************************************hydrogen********************************************************************************
+
+MP_PG_hydrogen(h,t,vv)$(ord(vv) lt (itaux+1))..                                                   PG_M_hydrogen(h,t,vv)        =l= Cap_fuel_cell_M(h) * 0.5
+;
+MP_C_hydrogen(h,t,vv)$(ord(vv) lt (itaux+1))..                                                    M_hydrogen_charge(h,t,vv)    =l= Cap_electrolysis_M(h) * 0.75
+;
+MP_Cap_hydrogen(h,t,vv)$(ord(vv) lt (itaux+1))..                                                  M_hydrogen_lvl(h,t,vv)        =l= Cap_hydro_stor_M(h)
+;
+
+MP_hydrogen_lvl_start(h,t,vv)$(ord(vv) lt (itaux+1)and ord(t) = 1)..                              M_hydrogen_lvl(h,t,vv)        =e= Cap_hydro_stor_M(h)/2 +   M_hydrogen_charge(h,t,vv) - PG_M_hydrogen(h,t,vv) 
+;
+MP_hydrogen_lvl(h,t,vv)$(ord(vv) lt (itaux+1) and ord(t) gt 1)..                                  M_hydrogen_lvl(h,t,vv)        =e= M_hydrogen_lvl(h,t-1,vv) +  M_hydrogen_charge(h,t,vv)  -  PG_M_hydrogen(h,t,vv) 
 ;
 
 *********************************************************************************DC Power flow lines***********************************************************************************
@@ -394,10 +433,10 @@ MP_LS(t,n,vv)$(ord(vv) lt (itaux+1))..                                          
 *********************************************************************************Iterative Objective function****************************************************************************
 
 
-MP_ETA(vv)$(ord(vv) lt (itaux+1))..                                                             ETA =g=   sum((g,t), var_costs(g,t) * PG_M_conv(g,t,vv))
-                                                                                                + sum((reservoir,t), 20 * PG_M_Hydro(reservoir,t,vv))
+MP_ETA(vv)$(ord(vv) lt (itaux+1))..                                                             ETA =g=   sum((g,t), var_costs(g,t) * PG_M_conv(g,t,vv)) 
+                                                                                                + sum((reservoir,t),OM_costs(reservoir,t) * PG_M_Hydro(reservoir,t,vv)) 
                                                                                                 
-                                                                                                + sum((t,n), LS_costs(n) * PLS_M(t,n,vv))
+                                                                                                + sum((t,n), LS_costs(n) * PLS_M(t,n,vv)) 
 
 ;
 *#####################################################################################Subproblem####################################################################################
@@ -427,6 +466,11 @@ SUB_Dual_Objective..                                                O_Sub =e= su
 %bat%                                                               + phi_C_battery(b,t) * (Cap_inverter_S(b) *0.96)
 %bat%                                                               + phi_cap_battery(b,t) * Cap_battery_S(b))
 %bat%                                                               + sum((b,t)$(ord(t) =1), (Cap_battery_S(b)/2) * phi_SL_battery(b,t))
+
+%hydrogen%                                                          - sum((h,t), phi_PG_hydrogen(h,t) * (Cap_fuel_Cell_S(h) *0.5)
+%hydrogen%                                                          + phi_C_hydrogen(h,t) * (Cap_electrolysis_S(h) *0.75)
+%hydrogen%                                                          + phi_cap_hydrogen(h,t) * Cap_hydrogen_S(h))
+%hydrogen%                                                          + sum((h,t)$(ord(t) =1), (Cap_hydrogen_S(h)/2) * phi_SL_hydrogen(h,t))
                                                                     
 
 *                                                                    + sum((rr,ren,n,WM,t)$(MAP_RR_Ren(rr,ren,n)),
@@ -454,20 +498,20 @@ SUB_Dual_PG_conv(g,t,n)$MapG(g,n)..                                   lam(t,n) -
 ;
 SUB_Dual_PG_ror(ror,t,n)$MapS(ror,n)..                                lam(t,n) -  phiPG_ror(ror,t)                        =l=   0
 ; 
-SUB_Dual_PG_reservoir(reservoir,t,n)$MapS(reservoir,n)..              lam(t,n) -  phiPG_reservoir(reservoir,t)            =l=   20
+SUB_Dual_PG_reservoir(reservoir,t,n)$MapS(reservoir,n)..              lam(t,n) -  phiPG_reservoir(reservoir,t)            =l=   OM_costs(reservoir,t) 
 ;
 
 **************************************************************************Dual Hydro PSP*****************************************************************
 
-SUB_Dual_PG_psp(psp,t,n)$MapS(psp,n)..                               lam(t,n)  - phi_SL_psp(psp,t) - phi_PG_psp(psp,t)            =l=   0
+SUB_Dual_PG_psp(psp,t,n)$MapS(psp,n)..                                lam(t,n)  - phi_SL_psp(psp,t) - phi_PG_psp(psp,t)            =l=   0
 ;
 SUB_Dual_C_psp(psp,t,n)$MapS(psp,n)..                                 - lam(t,n) +  phi_SL_psp(psp,t) - phi_C_psp(psp,t)          =l=   0
 ;
 
-SUB_Dual_lvl_psp(psp,t)$(ord(t) gt 1)..                              phi_SL_psp(psp,t) -  phi_SL_psp(psp,t-1) - phi_cap_psp(psp,t) + phi_cap_psp_l(psp,t)    =e=   0
+SUB_Dual_lvl_psp(psp,t)$(ord(t) gt 1)..                               phi_SL_psp(psp,t) -  phi_SL_psp(psp,t-1) - phi_cap_psp(psp,t) + phi_cap_psp_l(psp,t)    =e=   0
 ;
 
-SUB_Dual_lvl_psp_end(psp,t)$(ord(t) = 1)..                           phi_SL_psp(psp,t)  - phi_cap_psp(psp,t) + phi_cap_psp_l(psp,t)                          =e=   0
+SUB_Dual_lvl_psp_end(psp,t)$(ord(t) = 1)..                            phi_SL_psp(psp,t)  - phi_cap_psp(psp,t) + phi_cap_psp_l(psp,t)                          =e=   0
 ;
 
 *********************************************************************Dual Battery equation*****************************************************************
@@ -481,6 +525,19 @@ SUB_Dual_lvl_battery(b,t)$(ord(t) gt 1)..                              phi_SL_ba
 ;
 
 SUB_Dual_lvl_battery_end(b,t)$(ord(t) = 1)..                           phi_SL_battery(b,t)  - phi_cap_battery(b,t) + phi_cap_battery_l(b,t)                          =e=   0
+;
+
+*********************************************************************Dual Hydrogen equation*****************************************************************
+
+SUB_Dual_PG_hydrogen(h,t,n)$Map_hydrogen(h,n)..                         lam(t,n)  - phi_SL_hydrogen(h,t) - phi_PG_hydrogen(h,t)            =l=   0
+;
+SUB_Dual_C_hydrogen(h,t,n)$Map_hydrogen(h,n)..                          - lam(t,n) +  phi_SL_hydrogen(h,t) - phi_C_hydrogen(h,t)          =l=   0
+;
+
+SUB_Dual_lvl_hydrogen(h,t)$(ord(t) gt 1)..                              phi_SL_hydrogen(h,t) -  phi_SL_hydrogen(h,t-1) - phi_cap_hydrogen(h,t) + phi_cap_hydrogen_l(h,t)    =e=   0
+;
+
+SUB_Dual_lvl_hydrogen_end(h,t)$(ord(t) = 1)..                           phi_SL_hydrogen(h,t)  - phi_cap_hydrogen(h,t) + phi_cap_hydrogen_l(h,t)                          =e=   0
 ;
 
 
@@ -605,6 +662,12 @@ MP_Stor_lvl
 %bat%MP_battery_lvl_start
 %bat%MP_battery_lvl
 
+%hydrogen%MP_PG_hydrogen
+%hydrogen%MP_C_hydrogen
+%hydrogen%MP_Cap_hydrogen
+%hydrogen%MP_hydrogen_lvl_start
+%hydrogen%MP_hydrogen_lvl
+
 MP_PF_EX
 MP_PF_EX_Cap_UB
 MP_PF_EX_Cap_LB
@@ -645,6 +708,11 @@ SUB_Dual_lvl_psp_end
 %bat%SUB_Dual_lvl_battery
 %bat%SUB_Dual_lvl_battery_end
 
+%hydrogen%SUB_Dual_PG_hydrogen
+%hydrogen%SUB_Dual_C_hydrogen
+%hydrogen%SUB_Dual_lvl_hydrogen
+%hydrogen%SUB_Dual_lvl_hydrogen_end
+
 SUB_Dual_PF
 SUB_Lin_Dual
 SUB_Lin_Dual_n_ref
@@ -671,7 +739,7 @@ SUB_UB_PG_Wind_RR
 
 SUB_lin37
 SUB_lin38
-SUB_lin39
+*SUB_lin39
 SUB_lin40
 
 SUB_lin41
@@ -688,13 +756,12 @@ option threads =  50
 option optcr = 0
 ;
 
-Cap_ren_M.up(ren) = 50000
-;
-Cap_conv_M.up(g) = 50000
-;
-Cap_battery_M.up(b) = 50000
-;
-
+*Cap_ren_M.up(ren) = 200000
+*;
+*Cap_conv_M.up(g) = 100000
+*;
+*Cap_battery_M.up(b) = 100000
+*;
 
 Gamma_Load = 0
 ;
@@ -736,12 +803,16 @@ if( ord(v) = 1,
 
 
 *#######################################################Step 2
+*option MIP = Gamschk
+*;
 
     solve Master_VO using MIP minimizing O_M
     ;
 
 else
 
+*option MIP = Gamschk
+*;
     solve Master using MIP minimizing O_M
     ;
   );
@@ -754,7 +825,11 @@ inv_cost_master(v) = sum(ren, Cap_ren_M.l(ren) * IC_ren(ren)* df)
                     + sum((g), Cap_conv_M.l(g) * IC_conv(g)* df)
                     + sum((b), Cap_battery_M.l(b) * IC_bs(b) * df)
                     + sum((b), Cap_inverter_M.l(b) * IC_bi(b) * df)
+                    + sum((h), Cap_hydro_stor_M.l(h) * IC_hs(h) * df)
+                    + sum((h), Cap_electrolysis_M.l(h) * IC_hel(h) * df)
+                    + sum((h), Cap_fuel_cell_M.l(h) * IC_hfc(h) * df)
 ;
+
 
             report_decomp(v,'itaux','')         = itaux;
             report_decomp(v,'Gamma_Load','')    = Gamma_Load                                                    + EPS;
@@ -778,6 +853,10 @@ inv_cost_master(v) = sum(ren, Cap_ren_M.l(ren) * IC_ren(ren)* df)
             report_cap_ren(n,ren,v,'PV')             = Cap_ren_M.l(ren)$Map_PV(ren,n);
             report_cap_battery(n,b,v,'Battery')      = Cap_battery_M.l(b)$Map_Battery(b,n);
             report_cap_battery(n,b,v,'Inverter')     = Cap_inverter_M.l(b)$Map_Battery(b,n);
+            report_cap_hydrogen(n,h,v,'Hydrogen storage')   = Cap_hydro_stor_M.l(h)$Map_hydrogen(h,n);
+            report_cap_hydrogen(n,h,v,'Electrosysis')       = Cap_electrolysis_M.l(h)$Map_hydrogen(h,n);
+            report_cap_hydrogen(n,h,v,'Fuel cell')          = Cap_fuel_cell_M.l(h)$Map_hydrogen(h,n);
+            
            
 
 
@@ -786,16 +865,23 @@ inv_cost_master(v) = sum(ren, Cap_ren_M.l(ren) * IC_ren(ren)* df)
 
 *$include network_expansion_merge_conti.gms
 *;
-Cap_conv_S(g) = Cap_conv_M.l(g)
+Cap_conv_S(g) = sum(n$MapG(g,n),Cap_conv_ex(g)) + Cap_conv_M.l(g) 
 ;
-Cap_ren_S(ren) = Cap_ren_M.l(ren)
+Cap_ren_S(ren)= sum(n$Map_Ren_node(ren,n),Cap_ren_ex(ren)) + Cap_ren_M.l(ren)  
 ;
-Cap_battery_S(b) = Cap_battery_M.l(b)
+Cap_battery_S(b) = Cap_battery_M.l(b) 
 ;
-Cap_inverter_S(b) = Cap_inverter_m.l(b)
+Cap_inverter_S(b) = Cap_inverter_m.l(b) 
+;
+Cap_Hydrogen_S(h) = Cap_hydro_stor_M.l(h)
+;
+Cap_fuel_cell_S(h) = Cap_fuel_cell_M.l(h)
+;
+Cap_electrolysis_S(h) = Cap_electrolysis_M.l(h)
 ;
 *######################################################Step 5
-
+*option MIP = Gamschk
+*;
 solve Subproblem using MIP maximizing O_Sub
 ;
 *######################################################Step 6
@@ -804,6 +890,9 @@ UB = min(UB, (sum(ren, Cap_ren_M.l(ren) * IC_ren(ren)* df)
             + sum((g), Cap_conv_M.l(g) * IC_conv(g)* df)
             + sum((b), Cap_battery_M.l(b) * IC_bs(b) * df)
             + sum((b), Cap_inverter_M.l(b) * IC_bi(b) * df)
+            + sum((h), Cap_hydro_stor_M.l(h) * IC_hs(h) * df)
+            + sum((h), Cap_electrolysis_M.l(h) * IC_hel(h) * df)
+            + sum((h), Cap_fuel_cell_M.l(h) * IC_hfc(h) * df)
             + O_Sub.l))
 ;
             report_decomp(v,'network','')       = card(ex_l);
@@ -819,10 +908,6 @@ UB = min(UB, (sum(ren, Cap_ren_M.l(ren) * IC_ren(ren)* df)
 *######################################################Step 7
 Demand_data_fixed(t,n,v) = load(t,n)
 ;
-*Cap_conv_M(g) = Cap_conv_S(g)
-*;
-*Cap_ren_M(ren) = Cap_ren_S(ren) 
-*;
 *AF_M_Ren_fixed(n,rr,t,v) = AF_Ren.l(n,rr,t)
 *;
 AF_M_PV_fixed(t,rr,n,v) = AF_PV.l(t,rr,n)
@@ -832,7 +917,7 @@ AF_M_Wind_fixed(t,rr,n,v) = AF_Wind.l(t,rr,n)
 
 *execute_unload "check_ARO_toy_complete.gdx"
 *$include network_expansion_clean.gms
-execute_unload "check_Loop_Run_2.gdx";
+execute_unload "check_EU.gdx";
 ;
 )
 
@@ -884,7 +969,7 @@ Report_PG('Reservoir',reservoir,t,vv)  = PG_M_Hydro.l(reservoir,t,vv)
 Report_lineflow(l,t,vv) = PF_M.l(l,t,vv)
 ;
 
-execute_unload "Results_ARO_EU.gdx"
+execute_unload "Results_ARO_DE.gdx"
 Report_dunkel_time_Z, Report_dunkel_PV_Z,Report_dunkel_Wind_Z, Report_PP_constr_cost, Report_total_cost,
 Report_pp_constr_cost, Report_LS_node, Report_LS_per_hour, Report_LS_total, Report_PG, Report_lineflow
 ;

@@ -2,7 +2,7 @@ Scalars
 *max invest budget
 IB /inf/
 *big M
-M            /10000000/
+M            /10000/
 *reliability of powerlines (simplification of n-1 criteria)
 reliability  /1/
 *curtailment costs
@@ -16,7 +16,7 @@ df /0.05/
 
 ************************ARO
 
-Toleranz            / 100000 /
+Toleranz            / 1 /
 
 LB                  / -1e10 /
 
@@ -238,7 +238,9 @@ biomass(g)  =    Gen_conv(g,'tech')  = 10
 ;
 MapG(g,n) = no;
 
-MapG(g,n)$(Map_CCGT(g,n) or Map_OCGT(g,n) or Map_Nuclear(g,n) )  =  yes;
+MapG(g,n)$(Map_Nuclear(g,n) )  =  yes;
+
+*MapG(g,n)$(Map_CCGT(g,n) or Map_OCGT(g,n) or Map_Nuclear(g,n) )  =  yes;
 
 
 ***************************************renewables***********************************
@@ -289,15 +291,20 @@ B_sus(l)$ex_l(l)     =          Grid_tech(l,'Susceptance')
 ;
 incidence(l,n)      =          Map_Grid(l,n)
 ;
-L_cap(l)            =          Grid_tech(l,'L_cap') /1000
+L_cap(l)            =          Grid_tech(l,'L_cap') 
+;
+*from MW to GW
+L_cap(l)            =          L_cap(l)/1000
 ;
 *************************************generators*************************************
 
-Cap_conv_ex(g)$nuc(g)  =   Gen_conv(g,'cap') /1000
+Cap_conv_ex(g)$nuc(g)  = 0
+*Gen_conv(g,'cap') /1000
 ;
 Cap_hydro(s)        =          Gen_Hydro(s,'cap') /1000
 ;
-cap_ren_ex(ren)$(wind_on(ren) and solar_pv(ren))       =    Gen_ren(ren,'cap') /1000
+cap_ren_ex(ren)$(wind_on(ren) and solar_pv(ren))       =0
+*Gen_ren(ren,'cap') /1000
 ;
 Eff_conv(g)         =          Gen_conv(g,'efficiency')
 ;
@@ -320,29 +327,49 @@ af_hydro(t,psp)                       =          availup_hydro(t,'psp')
 ;
 af_hydro(t,reservoir)                 =          availup_hydro(t,'reservoir')
 ;
-delta_af_PV(t,n)                      =          af_PV_up(t,n) *0.2
+delta_af_PV(t,n)                      =          0
 ;
-delta_af_Wind(t,n)                    =          af_wind_up(t,n) *0.2
+delta_af_PV(t,n)$(ord(t) le 90)       =          af_PV_up(t,n) * 0.6
+;
+delta_af_Wind(t,n)                    =          0
+;
+delta_af_Wind(t,n)$(ord(t) le 90)     =          af_PV_up(t,n) * 0.6
 ;
 *************************************Investments************************************
 *from MW to GW
-IC_conv(g)        =    Gen_conv(g,'IC_costs_conv') *1000
+IC_conv(g)        = Gen_conv(g,'IC_costs_conv') *1000
 ;
 IC_ren(ren)       =    Gen_ren(ren,'IC_costs_ren') *1000
 ;
-*from kW to GW
-IC_bi(b)          =   battery_up(b,'inv_inverter') *1000000
+*from MW to GW
+IC_bi(b)          =   battery_up(b,'inv_inverter') *1000
 ;
-IC_bs(b)          =   battery_up(b,'inv_storage') *1000000
-;
-
-IC_hel(h)          =   hydrogen_up(h,'inv_electrolysis') *1000000 
-;
-IC_hfc(h)          =   hydrogen_up(h,'inv_fuel cell') *1000000
-;
-IC_hs(h)           =   hydrogen_up(h,'inv_Hydrogen storage') *1000000
+IC_bs(b)          =   battery_up(b,'inv_storage') *1000
 ;
 
+IC_hel(h)          =   hydrogen_up(h,'inv_electrolysis') *1000 
+;
+IC_hfc(h)          =   hydrogen_up(h,'inv_fuel cell') *1000
+;
+IC_hs(h)           =   hydrogen_up(h,'inv_Hydrogen storage') *1000
+;
+******************************from EUR to Million EUR
+IC_conv(g)        =    IC_conv(g) / 1000000
+;
+IC_ren(ren)       =    IC_ren(ren)/ 1000000
+;
+*from MW to GW
+IC_bi(b)          =   IC_bi(b) / 1000000
+;
+IC_bs(b)          =   IC_bs(b) / 1000000
+;
+
+IC_hel(h)          =   IC_hel(h) / 1000000
+;
+IC_hfc(h)          =   IC_hfc(h) / 1000000
+;
+IC_hs(h)           =   IC_hs(h) / 1000000
+;
 *************************************calculating************************************
 scale_to_year = 8760/card(t)
 ;
@@ -351,8 +378,18 @@ LS_costs(n)         =          3000000 * scale_to_year
 *from Mw to GW
 OM_costs(s,t)$reservoir(s)=          45 * 1000 * scale_to_year
 ;
-var_costs(g,t)      =            ((FC_conv(g,t)+ co2_costs(t) * co2_content(g)) / Eff_conv(g)) * 1000 * scale_to_year
+var_costs(g,t)      =            ((FC_conv(g,t)+ co2_costs(t) * co2_content(g)) / Eff_conv(g))  * 1000 * scale_to_year
 ;
 su_costs(g,t)       =            depri_costs(g) + su_fact(g) * fuel_start(g) * FC_conv(g,t) + co2_content(g) * co2_costs(t)
+;
+
+******************************from EUR to Million EUR
+
+LS_costs(n)         =          LS_costs(n) / 1000000
+;
+*from Mw to GW
+OM_costs(s,t)$reservoir(s)=          OM_costs(s,t)/ 1000000 
+;
+var_costs(g,t)      =            var_costs(g,t) / 1000000
 ;
 

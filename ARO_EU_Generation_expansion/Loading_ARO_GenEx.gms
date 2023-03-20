@@ -333,7 +333,7 @@ delta_af_PV(t,n)$(ord(t) le 90)       =          af_PV_up(t,n) * 0.6
 ;
 delta_af_Wind(t,n)                    =          0
 ;
-delta_af_Wind(t,n)$(ord(t) le 90)     =          af_PV_up(t,n) * 0.6
+delta_af_Wind(t,n)$(ord(t) le 90)     =          af_wind_up(t,n) * 0.6
 ;
 *************************************Investments************************************
 *from MW to GW

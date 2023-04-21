@@ -68,7 +68,7 @@ load(t,n)                       electrical demand in each node in hour t
 load_share(n)                   electrical demand share per node
 delta_load(t,n)
 
-LS_costs(n)                     load shedding costs
+LS_costs                        load shedding costs
 
 Demand_data_fixed(t,n,v)        fixed realisation of demand in subproblem and tranferred to master
 
@@ -85,12 +85,13 @@ Cap_ren_ex(ren)
 Cap_ren_S(ren)
 Cap_inverter_S(b)
 Cap_battery_S(b)
-Cap_fuel_Cell_S(h)
+Cap_Gen_S(h)
 Cap_electrolysis_S(h)
 Cap_hydrogen_S(h)
+scale
 AF_M_ren_fixed(t,rr,n,v)            fixed combined renewable availability factor in subproblem and tranferred to master
-AF_M_PV_fixed(t,rr,n,v)             fixed PV availability factor in subproblem and tranferred to master
-AF_M_Wind_fixed(t,rr,n,v)           fixed Wind availability factor in subproblem and tranferred to master
+AF_M_PV_fixed(ren,rr,t,v)             fixed PV availability factor in subproblem and tranferred to master
+AF_M_Wind_fixed(ren,rr,t,v)           fixed Wind availability factor in subproblem and tranferred to master
 
 compare_wind(t,rr,n,v)
 
@@ -101,9 +102,9 @@ CO2_content(g)                  Co2 content
 su_fact(g)                      start-up factor conventionals
 fuel_start(g)                   fuel consumption factor if start-up decision
 depri_costs(g)                  deprication costs conventionals
-var_costs(g,t)                  variable costs conventional power plants
+var_costs                       variable costs conventional power plants
 
-OM_costs(s,t)                   operation and maintanace costs hydropower
+OM_costs_s                      operation and maintanace costs hydropower
 
 cap_hydro(s)                    max. generation capacity of each psp
 
@@ -131,12 +132,13 @@ scale_to_year
 availup_hydro
 af_hydro(t,s)                   availability of hydro potential
 
-af_PV_up(t,n)                   upper capacity factor of solar energy
-delta_af_PV(t,n)                maximum derivation of capacity factor of solar energy
+af_PV_up(t,ren)
+af_PV(ren,t)                      upper capacity factor of solar energy
+delta_af_PV(ren,t)                maximum derivation of capacity factor of solar energy
 
-af_wind_up(t,n)                 upper capacity factor of wind energy
-delta_af_Wind(t,n)              maximum derivation of capacity factor of wind energy
-
+af_wind_up(t,ren) 
+af_wind(ren,t)                    upper capacity factor of wind energy
+delta_af_Wind(ren,t)              maximum derivation of capacity factor of wind energy
 
 Ratio_N(n,rr,t,WM)
 Budget_N(n,rr,WM)
@@ -159,6 +161,7 @@ report_cap_conv(n,g,v,*)
 report_cap_ren(n,ren,v,*)
 report_cap_battery(n,b,v,*)
 report_cap_hydrogen(n,h,v,*)
+
  
 
 **********************************************input Excel table*******************************************************
@@ -194,9 +197,9 @@ par=hydrogen_up                 rng=storage!J1:S51                      rDim=1 c
 par=Gen_Hydro                   rng=Hydro!B1:H98                        rDim=1 cdim=1
 par=priceup                     rng=Ressource_prices!A1:H8761           rDim=1 cdim=1
 par=availup_hydro               rng=Availability!A2:D8762               rDim=1 cdim=1
-par=af_PV_up                    rng=Availability!F2:BD8762              rDim=1 cdim=1
+par=af_PV_up                    rng=Availability!F3:BD8763              rDim=1 cdim=1
 par=delta_af_PV                 rng=Reduction!A2:AY8762                 rDim=1 cdim=1
-par=af_wind_up                  rng=Availability!BG2:DE8762             rDim=1 cdim=1
+par=af_wind_up                  rng=Availability!BF3:EB8763             rDim=1 cdim=1
 par=delta_af_Wind               rng=Reduction!BB2:CZ8762                rDim=1 cdim=1
 $offecho    
 
@@ -238,16 +241,19 @@ biomass(g)  =    Gen_conv(g,'tech')  = 10
 ;
 MapG(g,n) = no;
 
-MapG(g,n)$(Map_Nuclear(g,n) )  =  yes;
+*MapG(g,n)$(Map_Nuclear(g,n) )  =  yes;
 
+MapG(g,n)$(Map_Nuclear(g,n) )  =  yes;
+*and Map_Biomass(g,n)
 *MapG(g,n)$(Map_CCGT(g,n) or Map_OCGT(g,n) or Map_Nuclear(g,n) )  =  yes;
 
 
 ***************************************renewables***********************************
-
 wind_on(ren)    =    Gen_ren (ren,'tech')  = 11
 ;
 wind_off(ren)   =    Gen_ren (ren,'tech')  = 12
+;
+wind(ren)$(wind_on(ren) or wind_off(ren)) = yes
 ;
 solar_pv(ren)   =    Gen_ren (ren,'tech')  = 13
 ;
@@ -267,10 +273,10 @@ ror(s)      =    Gen_Hydro(s,'tech') = 20
 load(t,n)           = load(t,n)/1000
 ;
 *****************************************prices*************************************
-Fc_conv(OCGT,t)      =          priceup(t,'gas')
-;
-Fc_conv(CCGT,t)      =          priceup(t,'gas')
-;
+*Fc_conv(OCGT,t)      =          priceup(t,'gas')
+*;
+*Fc_conv(CCGT,t)      =          priceup(t,'gas')
+*;
 Fc_conv(nuc,t)      =          priceup(t,'nuclear')
 ;
 Fc_conv(oil,t)      =          priceup(t,'oil')
@@ -298,8 +304,7 @@ L_cap(l)            =          L_cap(l)/1000
 ;
 *************************************generators*************************************
 
-Cap_conv_ex(g)$nuc(g)  = 0
-*Gen_conv(g,'cap') /1000
+Cap_conv_ex(g)$nuc(g)  = Gen_conv(g,'cap') /1000
 ;
 Cap_hydro(s)        =          Gen_Hydro(s,'cap') /1000
 ;
@@ -327,14 +332,25 @@ af_hydro(t,psp)                       =          availup_hydro(t,'psp')
 ;
 af_hydro(t,reservoir)                 =          availup_hydro(t,'reservoir')
 ;
-delta_af_PV(t,n)                      =          0
+
+af_PV(ren,t)                            =          af_PV_up(t,ren)
 ;
-delta_af_PV(t,n)$(ord(t) le 90)       =          af_PV_up(t,n) * 0.6
+delta_af_PV(ren,t)                      =          0
 ;
-delta_af_Wind(t,n)                    =          0
+delta_af_PV(ren,t)$(ord(t) le 31)       =          af_PV(ren,t) * 0.9
 ;
-delta_af_Wind(t,n)$(ord(t) le 90)     =          af_wind_up(t,n) * 0.6
+delta_af_PV(ren,t)$(ord(t) gt 334)      =          af_PV(ren,t) * 0.9
 ;
+
+af_wind(ren,t)                          =          af_Wind_up(t,ren)
+;
+delta_af_Wind(ren,t)                    =          0
+;
+delta_af_Wind(ren,t)$(ord(t) le 31)     =          af_wind(ren,t) * 0.7
+;
+delta_af_Wind(ren,t)$(ord(t) gt 334)    =          af_wind(ren,t) * 0.7
+;
+
 *************************************Investments************************************
 *from MW to GW
 IC_conv(g)        = Gen_conv(g,'IC_costs_conv') *1000
@@ -349,7 +365,7 @@ IC_bs(b)          =   battery_up(b,'inv_storage') *1000
 
 IC_hel(h)          =   hydrogen_up(h,'inv_electrolysis') *1000 
 ;
-IC_hfc(h)          =   hydrogen_up(h,'inv_fuel cell') *1000
+IC_hfc(h)          =   hydrogen_up(h,'inv_Hydrogen OCGT') *1000
 ;
 IC_hs(h)           =   hydrogen_up(h,'inv_Hydrogen storage') *1000
 ;
@@ -371,25 +387,28 @@ IC_hfc(h)          =   IC_hfc(h) / 1000000
 IC_hs(h)           =   IC_hs(h) / 1000000
 ;
 *************************************calculating************************************
-scale_to_year = 8760/card(t)
+scale               = 8760/card(t)
 ;
-LS_costs(n)         =          3000000 * scale_to_year
+scale_to_year       = 8760/card(t)
+;
+LS_costs            =          3000000 * scale_to_year
 ;
 *from Mw to GW
-OM_costs(s,t)$reservoir(s)=          45 * 1000 * scale_to_year
+OM_costs_s          =          45 * 1000 * scale_to_year
 ;
-var_costs(g,t)      =            ((FC_conv(g,t)+ co2_costs(t) * co2_content(g)) / Eff_conv(g))  * 1000 * scale_to_year
+var_costs           =               0.218182
+*((FC_conv(g,t)+ co2_costs(t) * co2_content(g)) / Eff_conv(g))  * 1000 * scale_to_year
 ;
-su_costs(g,t)       =            depri_costs(g) + su_fact(g) * fuel_start(g) * FC_conv(g,t) + co2_content(g) * co2_costs(t)
-;
+*su_costs(g,t)       =            depri_costs(g) + su_fact(g) * fuel_start(g) * FC_conv(g,t) + co2_content(g) * co2_costs(t)
+*;
 
 ******************************from EUR to Million EUR
 
-LS_costs(n)         =          LS_costs(n) / 1000000
+LS_costs         =          LS_costs / 1000000
 ;
 *from Mw to GW
-OM_costs(s,t)$reservoir(s)=          OM_costs(s,t)/ 1000000 
+OM_costs_s       =          OM_costs_s/ 1000000 
 ;
-var_costs(g,t)      =            var_costs(g,t) / 1000000
+var_costs        =            var_costs / 1000000
 ;
 

@@ -30,7 +30,5 @@
 
 
 ## Map 
-![](https://github.com/bernemax/ARO_EU/blob/main/Pictures%20and%20Maps/Final%20ARO%20with%20legend.png)
-
-
+![](https://github.com/bernemax/ARO_EU/blob/main/Pictures%20and%20Maps/Benchmark%20System.png)
 

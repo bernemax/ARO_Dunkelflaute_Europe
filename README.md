@@ -29,6 +29,6 @@
 
 
 
-## Map 
+## Map of the Benchmark System  
 ![](https://github.com/bernemax/ARO_EU/blob/main/Pictures%20and%20Maps/Benchmark%20System.png)
 

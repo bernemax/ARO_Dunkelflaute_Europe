@@ -19,7 +19,7 @@
 - Loss of load probability (LOLP)
 
 ## Consideration: 
-- A system of 22 EU countries is examined
+- A system of 24 EU countries is examined
 - Renewable elecricity resources like PV, wind-onshore, wind-offshore, hydro 
 - Storages like battery, psp, reservoire, hydrogen
 - High voltage electricity grid

@@ -1,6 +1,6 @@
 # Adaptive Robust Optimization for European Electricity System Planning Considering Regional Dunkelflaute Events 
 
-This repository entails the capacity expansion model for a fully decarbonized European electricity system using an Adaptive Robust Optimization (ARO) framework. The model endogenously identifies the worst regional Dunkelflaute events, prolonged periods of low wind and solar availability, and incorporates multiple extreme weather realizations within a single optimization run. Furthermorethe deterministic counterpart is provided, which calculates capacity expansion based on an average weather year.
+This repository entails the capacity expansion model for a fully decarbonized European electricity system using an Adaptive Robust Optimization (ARO) framework. The model endogenously identifies the worst regional Dunkelflaute events, prolonged periods of low wind and solar availability, and incorporates multiple extreme weather realizations within a single optimization run. Furthermore the deterministic counterpart is provided, which calculates capacity expansion based on an average weather year.
 
 ## Actual Modelling framework
 - Deterministic

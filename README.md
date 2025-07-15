@@ -15,6 +15,6 @@ This repository entails the capacity expansion model for a fully decarbonized Eu
 - Wind and PV generation capacity profiles (historically 40 Years)
 - Hydro generation potentials country wise
 
-## Map of the Benchmark System  
+## Map of the Base System  
 ![](https://github.com/bernemax/ARO_EU/blob/main/Pictures%20and%20Maps/Benchmark%20System.png)
 

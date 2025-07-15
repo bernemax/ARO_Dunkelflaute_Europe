@@ -109,9 +109,15 @@ Cap_Gen_S(h)
 Cap_electrolysis_S(h)
 Cap_hydrogen_S(h)
 scale
+<<<<<<< HEAD:Model and Data/Deterministic Model/Loading_deterministic_Paper.gms
 AF_M_ren_fixed(t,rr,n)            fixed combined renewable availability factor in subproblem and tranferred to master
 AF_M_PV_fixed(ren,rr,t)             fixed PV availability factor in subproblem and tranferred to master
 AF_M_Wind_fixed(ren,rr,t)           fixed Wind availability factor in subproblem and tranferred to master
+=======
+AF_M_ren_fixed(t,rr,n,v)            fixed combined renewable availability factor in subproblem and tranferred to master
+AF_M_PV_fixed(ren,rr,t,v)             fixed PV availability factor in subproblem and tranferred to master
+AF_M_Wind_fixed(ren,rr,t,v)           fixed Wind availability factor in subproblem and tranferred to master
+>>>>>>> ad84b09b6bbe2d654a38e67eea320b585942e0b3:ARO_EU_Generation_expansion/Loading_ARO_GenEx.gms
 
 compare_wind(t,rr,n)
 
@@ -122,7 +128,13 @@ CO2_content(g)                  Co2 content
 su_fact(g)                      start-up factor conventionals
 fuel_start(g)                   fuel consumption factor if start-up decision
 depri_costs(g)                  deprication costs conventionals
+<<<<<<< HEAD:Model and Data/Deterministic Model/Loading_deterministic_Paper.gms
 var_costs(g)                       variable costs conventional power plants
+=======
+var_costs                       variable costs conventional power plants
+
+OM_costs_s                      operation and maintanace costs hydropower
+>>>>>>> ad84b09b6bbe2d654a38e67eea320b585942e0b3:ARO_EU_Generation_expansion/Loading_ARO_GenEx.gms
 
 cap_hydro(s)                    max. generation capacity of each psp
 
@@ -186,8 +198,20 @@ Gamma_PG_Wind(rr)
 
 Gamma_PG_ren(rr)
 
+<<<<<<< HEAD:Model and Data/Deterministic Model/Loading_deterministic_Paper.gms
 *****************************Report
 inv_cost_master
+=======
+*********************************************report parameters********************************************************
+inv_cost_master(v)
+report_main(*,*)
+report_decomp(v,*,*)
+report_cap_conv(n,g,v,*)
+report_cap_ren(n,ren,v,*)
+report_cap_battery(n,b,v,*)
+report_cap_hydrogen(n,h,v,*)
+
+>>>>>>> ad84b09b6bbe2d654a38e67eea320b585942e0b3:ARO_EU_Generation_expansion/Loading_ARO_GenEx.gms
  
 
 **********************************************input Excel table*******************************************************
@@ -233,9 +257,16 @@ par=Gen_Hydro                   rng=Hydro!B1:H98                        rDim=1 c
 par=priceup                     rng=Ressource_prices!A1:H8761           rDim=1 cdim=1
 par=availup_hydro               rng=Availability!A2:D8762               rDim=1 cdim=1
 par=af_PV_up                    rng=Availability!F3:BD8763              rDim=1 cdim=1
+<<<<<<< HEAD:Model and Data/Deterministic Model/Loading_deterministic_Paper.gms
 par=af_wind_up                  rng=Availability!BF3:EC8763             rDim=1 cdim=1
 
 $offecho
+=======
+par=delta_af_PV                 rng=Reduction!A2:AY8762                 rDim=1 cdim=1
+par=af_wind_up                  rng=Availability!BF3:EB8763             rDim=1 cdim=1
+par=delta_af_Wind               rng=Reduction!BB2:CZ8762                rDim=1 cdim=1
+$offecho    
+>>>>>>> ad84b09b6bbe2d654a38e67eea320b585942e0b3:ARO_EU_Generation_expansion/Loading_ARO_GenEx.gms
 
 $onUNDF
 $call   gdxxrw Data_Input.xlsx @TEP.txt
@@ -276,6 +307,7 @@ lig(g)      =    Gen_conv(g,'tech')  = 4
 ;
 biomass(g)  =    Gen_conv(g,'tech')  = 10
 ;
+<<<<<<< HEAD:Model and Data/Deterministic Model/Loading_deterministic_Paper.gms
 MapG(g,n) = no
 ;
 AC_l(l)$(ex_l(l))    =  yes
@@ -286,6 +318,14 @@ AC_l(l)$(Dc_l(l))  =no
 
 MapG(g,n)$(Map_Nuclear(g,n) or Map_Biomass(g,n) )  =  yes;
 *or Map_Biomass(g,n)
+=======
+MapG(g,n) = no;
+
+*MapG(g,n)$(Map_Nuclear(g,n) )  =  yes;
+
+MapG(g,n)$(Map_Nuclear(g,n) )  =  yes;
+*and Map_Biomass(g,n)
+>>>>>>> ad84b09b6bbe2d654a38e67eea320b585942e0b3:ARO_EU_Generation_expansion/Loading_ARO_GenEx.gms
 *MapG(g,n)$(Map_CCGT(g,n) or Map_OCGT(g,n) or Map_Nuclear(g,n) )  =  yes;
 
 
@@ -347,8 +387,12 @@ L_cap(l)            =          L_cap(l)/1000
           
 *************************************generators*************************************
 
+<<<<<<< HEAD:Model and Data/Deterministic Model/Loading_deterministic_Paper.gms
 Cap_conv_ex(g)$(nuc(g)or biomass(g) )  = Gen_conv(g,'cap') /1000
 *or biomass(g)
+=======
+Cap_conv_ex(g)$nuc(g)  = Gen_conv(g,'cap') /1000
+>>>>>>> ad84b09b6bbe2d654a38e67eea320b585942e0b3:ARO_EU_Generation_expansion/Loading_ARO_GenEx.gms
 ;
 Cap_hydro(s)        =          Gen_Hydro(s,'cap') /1000
 ;
@@ -376,11 +420,32 @@ af_hydro(t,psp)                       =          round(availup_hydro(t,'psp'),2)
 ;
 af_hydro(t,reservoir)                 =          round(availup_hydro(t,'reservoir'),2)
 ;
+<<<<<<< HEAD:Model and Data/Deterministic Model/Loading_deterministic_Paper.gms
 af_PV(ren,t)                          =          round(af_PV_up(t,ren),2)
 ;
 af_wind(ren,t)                        =          round(af_Wind_up(t,ren),2)
 ;
 
+=======
+
+af_PV(ren,t)                            =          af_PV_up(t,ren)
+;
+delta_af_PV(ren,t)                      =          0
+;
+delta_af_PV(ren,t)$(ord(t) le 31)       =          af_PV(ren,t) * 0.9
+;
+delta_af_PV(ren,t)$(ord(t) gt 334)      =          af_PV(ren,t) * 0.9
+;
+
+af_wind(ren,t)                          =          af_Wind_up(t,ren)
+;
+delta_af_Wind(ren,t)                    =          0
+;
+delta_af_Wind(ren,t)$(ord(t) le 31)     =          af_wind(ren,t) * 0.7
+;
+delta_af_Wind(ren,t)$(ord(t) gt 334)    =          af_wind(ren,t) * 0.7
+;
+>>>>>>> ad84b09b6bbe2d654a38e67eea320b585942e0b3:ARO_EU_Generation_expansion/Loading_ARO_GenEx.gms
 
 *************************************Investments************************************
 *from EUR / MW to  EUR / GW
@@ -394,7 +459,11 @@ IC_bs(b)          =   battery_up(b,'inv_storage') *1000
 ;
 IC_hel(h)          =   hydrogen_up(h,'inv_electrolysis') *1000
 ;
+<<<<<<< HEAD:Model and Data/Deterministic Model/Loading_deterministic_Paper.gms
 IC_hOCGT(h)        =   hydrogen_up(h,'inv_Hydrogen OCGT') *1000
+=======
+IC_hfc(h)          =   hydrogen_up(h,'inv_Hydrogen OCGT') *1000
+>>>>>>> ad84b09b6bbe2d654a38e67eea320b585942e0b3:ARO_EU_Generation_expansion/Loading_ARO_GenEx.gms
 ;
 IC_hs(h)           =   hydrogen_up(h,'inv_Hydrogen storage') *1000
 ;
@@ -480,10 +549,28 @@ IC_hOCGT(h)        =   IC_hOCGT(h)  / 1000000
 ;
 IC_hs(h)           =   IC_hs(h)  / 1000000
 ;
+<<<<<<< HEAD:Model and Data/Deterministic Model/Loading_deterministic_Paper.gms
 *EUR  / MW & km to Eur/ GW & km
 IC_line(l)         =   IC_line(l) / 1000000
+=======
+*************************************calculating************************************
+scale               = 8760/card(t)
 ;
+scale_to_year       = 8760/card(t)
+;
+LS_costs            =          3000000 * scale_to_year
+;
+*from Mw to GW
+OM_costs_s          =          45 * 1000 * scale_to_year
+;
+var_costs           =               0.218182
+*((FC_conv(g,t)+ co2_costs(t) * co2_content(g)) / Eff_conv(g))  * 1000 * scale_to_year
+>>>>>>> ad84b09b6bbe2d654a38e67eea320b585942e0b3:ARO_EU_Generation_expansion/Loading_ARO_GenEx.gms
+;
+*su_costs(g,t)       =            depri_costs(g) + su_fact(g) * fuel_start(g) * FC_conv(g,t) + co2_content(g) * co2_costs(t)
+*;
 
+<<<<<<< HEAD:Model and Data/Deterministic Model/Loading_deterministic_Paper.gms
 FOM_hydro(psp)       = FOM_hydro(psp) / 1000000
 ;
 FOM_hydro(ror)       = FOM_hydro(ror) / 1000000
@@ -509,4 +596,14 @@ FOM_ren(solar_pv)    = FOM_ren(solar_pv) / 1000000
 FOM_conv(nuc)        = FOM_conv(nuc) / 1000000
 ;
 FOM_conv(biomass)    = FOM_conv(biomass) / 1000000
+=======
+******************************from EUR to Million EUR
+
+LS_costs         =          LS_costs / 1000000
+;
+*from Mw to GW
+OM_costs_s       =          OM_costs_s/ 1000000 
+;
+var_costs        =            var_costs / 1000000
+>>>>>>> ad84b09b6bbe2d654a38e67eea320b585942e0b3:ARO_EU_Generation_expansion/Loading_ARO_GenEx.gms
 ;

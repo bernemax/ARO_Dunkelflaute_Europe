@@ -1,9 +1,0 @@
-@article{schlachtberger2017benefits,
-  title={The benefits of cooperation in a highly renewable European electricity network},
-  author={Schlachtberger, David P and Brown, Tom and Schramm, Stefan and Greiner, Martin},
-  journal={Energy},
-  volume={134},
-  pages={469--481},
-  year={2017},
-  publisher={Elsevier}
-}

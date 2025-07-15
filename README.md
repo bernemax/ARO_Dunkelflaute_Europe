@@ -19,18 +19,16 @@
 - Loss of load probability (LOLP)
 
 ## Consideration: 
-- A system of 24 EU countries is examined
-- Renewable elecricity resources like PV, wind, hydro & biomass
-- Storages like battery, psp, reservoire
+- A system of 22 EU countries is examined
+- Renewable elecricity resources like PV, wind-onshore, wind-offshore, hydro 
+- Storages like battery, psp, reservoire, hydrogen
 - High voltage electricity grid
-- Future synthetic country based demand profiles (8760 h)
-- Wind and PV generation capacity profiles (historically)
+- Future synthetic country based demand profiles
+- Wind and PV generation capacity profiles (historically 40 Years)
 - Hydro generation potentials country wise
 
 
 
-## Map 
-![](https://github.com/bernemax/Quant.-Reliability-Energy-Systems/blob/main/Pictures%20and%20Maps/EU_ARO_Map.png)
-
-
+## Map of the Benchmark System  
+![](https://github.com/bernemax/ARO_EU/blob/main/Pictures%20and%20Maps/Benchmark%20System.png)
 

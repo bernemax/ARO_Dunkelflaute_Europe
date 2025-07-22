@@ -11,9 +11,10 @@ The data for both models are stored in a excle file:
 
 ### Specifications Adaptive Robust Optimization Model:
 Gurobi solver parameters:
-Primal Problem: Method=2, BarConvTol =  0, Crossover = 0
-Dual Problem: ScaleFlag = 1, Barhomogeneous = 1, NumericFocus =1, Presolve=2, BarConvTol =  0.0
-The uncertianty buget must be adjusted mannualy within the GAMS code in section (line 869 - 884):
+- Primal Problem: Method=2, BarConvTol =  0, Crossover = 0
+- Dual Problem: ScaleFlag = 1, Barhomogeneous = 1, NumericFocus =1, Presolve=2, BarConvTol =  0.0
+
+The uncertianty buget must be adjusted mannualy within the GAMS code in section line 869 - line 884
 
 ## Consideration: 
 - A system of 24 EU countries is examined

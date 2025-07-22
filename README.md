@@ -5,7 +5,7 @@ The repository contains both, the deterministic expansion model based on an aver
 
 ## Model, Code, Solver and Data
 The optimization problem is formulated using GAMS. We use Gurobi 11.0 to solve the optimization problem using the Barrier algorithm. 
-- The data for both models are stored in a excle file:
+The data for both models are stored in a excle file:
 - Deterministic model: Data_Input.xlsx
 - ARO model: Data_Input_ARO.xlsx
 

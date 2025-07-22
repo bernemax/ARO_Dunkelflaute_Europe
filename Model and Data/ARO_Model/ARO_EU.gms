@@ -62,8 +62,6 @@ s93,s94,s95,s96,s97/
 * Renewable solar PV, wind onshore and offshore set
 Ren/ren1*ren125/
 
-Res/res1*res50/
-
 *regions
 rr/rr1*rr6/
 *iteration counter set
@@ -209,7 +207,6 @@ PG_M_hydrogen(h,t,v)
 M_hydrogen_lvl(h,t,v)
 M_hydrogen_charge(h,t,v)
 
-*new_line_M(l)                decision variable regarding investment in a new prospective line
 Cap_conv_M(g)
 Cap_ren_M(ren)
 Cap_battery_M(b)
@@ -869,24 +866,23 @@ option optcr = 0
 ;
 
 
+*######################################Uncertainty Budget Specification####################################
 
-
-Gamma_Load = 0
-;
+* specifyes how often a region can be affected by low solar availability
 Gamma_PG_PV(rr) = 1
 ;
+* specifyes how many regions can be affected by low solar availability
 Gamma_PV_total = 4
 ;
-
+* specifyes how often a region can be affected by low wind availability
 Gamma_PG_Wind(rr) = 1
 ;
+* specifyes how many regions can be affected by low wind availability
 Gamma_Wind_total = 4
 ;
 
-Gamma_Res_total = 0
-;
-Gamma_PG_res(rr) = 0
-;
+*#####################################Initialization of lower and upper bounds#############################
+
 *inv_iter_hist(l,v)  = 0;
 LB                  = -1e12
 ;

@@ -5,28 +5,15 @@ The repository contains both, the deterministic expansion model based on an aver
 
 ## Model, Code, Solver and Data
 The optimization problem is formulated using GAMS. We use Gurobi 11.0 to solve the optimization problem using the Barrier algorithm. 
-
+The data for both models are stored in a excle file:
+Deterministic model: Data_Input.xlsx
+ARO model: Data_Input_ARO.xlsx
 
 ### Specifications Adaptive Robust Optimization Model:
 Gurobi solver parameters:
-Primal Problem: method=2, BarConvTol =  0, Crossover = 0
+Primal Problem: Method=2, BarConvTol =  0, Crossover = 0
 Dual Problem: ScaleFlag = 1, Barhomogeneous = 1, NumericFocus =1, Presolve=2, BarConvTol =  0.0
-
 The uncertianty buget must be adjusted mannualy within the GAMS code in section (line 869 - 884):
-
-*######################################Uncertainty Budget Specification####################################
-* specifyes how often a region can be affected by low solar availability
-Gamma_PG_PV(rr) = 1
-;
-* specifyes how many regions can be affected by low solar availability
-Gamma_PV_total = 4
-;
-* specifyes how often a region can be affected by low wind availability
-Gamma_PG_Wind(rr) = 1
-;
-* specifyes how many regions can be affected by low wind availability
-Gamma_Wind_total = 4
-;
 
 ## Consideration: 
 - A system of 24 EU countries is examined
